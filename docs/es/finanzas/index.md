@@ -8,7 +8,7 @@ hide:
 
 # Finanzas
 
-Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cuentas financieras, extractos bancarios, conciliación, pagos y cobros, y la contabilidad de tus activos y su amortización.
+Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cuentas, extractos bancarios, conciliación, pagos y cobros, y la contabilidad de tus activos y su amortización.
 
 ## Introducción
 
@@ -18,7 +18,7 @@ Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cu
 
     ---
 
-    Descubre qué gestiona la sección Finanzas: cuentas financieras, extractos, conciliación, pagos y cobros, y activos y amortización.
+    Descubre qué gestiona la sección Finanzas: cuentas, extractos, conciliación, pagos y cobros, y activos y amortización.
 
     [:octicons-arrow-right-24: Leer más](que-es-finanzas/que-es-finanzas.md)
 
@@ -32,7 +32,7 @@ Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cu
 
 </div>
 
-## Gestión de cuentas financieras
+## Gestión de cuentas
 
 <div class="grid cards" markdown>
 
@@ -40,7 +40,7 @@ Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cu
 
     ---
 
-    Da de alta una cuenta financiera (banco, tarjeta o caja) con o sin conexión automática, y completa su configuración.
+    Da de alta una cuenta (banco, tarjeta o caja) con o sin conexión automática, y completa su configuración.
 
     [:octicons-arrow-right-24: Leer más](como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja.md)
 

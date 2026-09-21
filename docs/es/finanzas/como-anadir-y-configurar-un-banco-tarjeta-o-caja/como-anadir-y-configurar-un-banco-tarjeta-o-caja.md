@@ -2,14 +2,13 @@
 tags:
     - Cuentas
     - Finanzas
-    - Cuentas financieras
     - Bancos
     - Etendo Go
 ---
 
 # Añadir y configurar un banco, tarjeta o caja
 
-Antes de registrar movimientos, extractos o pagos en Cuentas, necesitas dar de alta al menos una cuenta financiera. Etendo Go admite tres tipos: banco, tarjeta y caja.
+Antes de registrar movimientos, extractos o pagos en Cuentas, necesitas dar de alta al menos una cuenta. Etendo Go admite tres tipos: banco, tarjeta y caja.
 
 ## Elegir el tipo de cuenta
 

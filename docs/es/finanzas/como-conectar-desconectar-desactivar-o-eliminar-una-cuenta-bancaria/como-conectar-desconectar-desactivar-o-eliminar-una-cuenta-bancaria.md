@@ -2,17 +2,16 @@
 tags:
     - Cuentas
     - Finanzas
-    - Cuentas financieras
     - Etendo Go
 ---
 
-# Conectar, desconectar, desactivar o reactivar una cuenta
+# Conectar, desconectar, archivar, desarchivar o eliminar una cuenta
 
 Una vez que tienes una cuenta creada en Cuentas, puedes cambiar su estado de conexión con el banco o dejar de usarla sin borrar su historial.
 
 Todas las acciones de esta página se disparan desde el mismo menú: en el listado de **Cuentas**, pasa el cursor sobre la fila de la cuenta y haz clic en el icono ⋮ de la derecha.
 
-![Menú de acciones de una cuenta financiera con saldo, mostrando las opciones Abrir cuenta, Editar cuenta, Nuevo movimiento, Transferir fondos, Conectar banco y Archivar cuenta](assets/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria-1.png)
+![Menú de acciones de una cuenta con saldo, mostrando las opciones Abrir cuenta, Editar cuenta, Nuevo movimiento, Transferir fondos, Conectar banco y Archivar cuenta](assets/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria-1.png)
 
 ## Conectar una cuenta bancaria
 
@@ -46,6 +45,15 @@ En Etendo Go, "desactivar" una cuenta corresponde a la acción **Archivar cuenta
 1. En el listado de **Cuentas**, cambia el filtro a **Inactivas**.
 2. Sobre la cuenta que quieras reactivar, abre **Acciones de la fila** (o **Editar cuenta**) y selecciona **Desarchivar cuenta**.
 3. Confirma en el diálogo correspondiente. La cuenta vuelve a aparecer en el listado de **Todas las cuentas**, con su saldo e historial intactos.
+
+## Eliminar una cuenta
+
+!!! warning "Acción irreversible"
+    A diferencia de **Archivar cuenta**, **Eliminar cuenta** no se puede deshacer. Si no estás seguro, usa Archivar en su lugar.
+
+1. En el listado de **Cuentas**, abre **Acciones de la fila** sobre la cuenta.
+2. Selecciona **Eliminar cuenta**.
+3. Confirma en el diálogo **Eliminar cuenta**: *"¿Seguro que quieres eliminar esta cuenta? Esta acción no se puede deshacer."*
 
 ---
 

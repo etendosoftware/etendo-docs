@@ -2,17 +2,18 @@
 tags:
     - Cuentas
     - Finanzas
-    - Extracto bancario
+    - Extracto Bancario
     - Etendo Go
 ---
 
-# Borrar transacciones del extracto bancario
+# Borrar movimientos del extracto bancario
 
 Si una importación generó movimientos duplicados o incorrectos, o cargaste algo a mano por error, puedes borrarlos directamente desde la pestaña **Movimientos** de la cuenta. Esta acción elimina el movimiento dentro de Etendo Go; no modifica el archivo de extracto original de tu banco.
 
-> Si el movimiento que borras ya estaba **Conciliado**, la conciliación se revierte junto con él: el documento que tenía vinculado (una factura, un cobro o un pago) vuelve a quedar pendiente de conciliar. Revisa el estado de la columna **Conciliación** antes de borrar para evitar sorpresas.
+!!! warning "Revertir una conciliación"
+    Si el movimiento que borras ya estaba **Conciliado**, la conciliación se revierte junto con él: el documento que tenía vinculado (una factura, un cobro o un pago) vuelve a quedar pendiente de conciliar. Revisa el estado de la columna **Conciliación** antes de borrar para evitar sorpresas.
 
-## Borrar una transacción individual
+## Borrar un movimiento individual
 
 1. Abre la cuenta desde **[Finanzas > Cuentas](https://go.etendo.cloud/financial-account){target="_blank"}** y ve a la pestaña **Movimientos**.
 2. Marca la casilla de la fila que quieres borrar. Al seleccionar al menos un movimiento aparece la barra **X Seleccionados** con el botón **Eliminar seleccionados (X)**.
@@ -24,7 +25,7 @@ Si una importación generó movimientos duplicados o incorrectos, o cargaste alg
 
 ![Diálogo de confirmación Eliminar registros, con el aviso de que la acción no se puede deshacer](assets/como-borrar-transacciones-del-extracto-bancario-2.png)
 
-## Borrar varias transacciones a la vez
+## Borrar varios movimientos a la vez
 
 1. En la pestaña **Movimientos**, marca la casilla de cada fila que quieras borrar, o usa la casilla del encabezado de la tabla para seleccionar todas las visibles.
 2. Haz clic en **Eliminar seleccionados (X)** y confirma en el mismo diálogo.

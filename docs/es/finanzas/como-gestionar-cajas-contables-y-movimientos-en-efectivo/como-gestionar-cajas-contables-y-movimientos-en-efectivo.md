@@ -9,11 +9,11 @@ tags:
 
 # Gestionar cajas contables y movimientos en efectivo
 
-Una caja es un tipo de cuenta financiera para el efectivo que manejas fuera del banco: la caja chica de la oficina, la caja de un punto de venta, etc.
+Una caja es un tipo de cuenta para el efectivo que manejas fuera del banco: la caja chica de la oficina, la caja de un punto de venta, etc.
 
 ## Qué es una caja contable
 
-Dentro de Cuentas, **Caja** es uno de los tres tipos de cuenta financiera (junto a Banco y Tarjeta). A diferencia de un banco, una caja no se conecta ni importa extractos de una entidad externa: todos sus movimientos se registran a mano, directamente en Etendo Go. Aun así, la ficha de una caja tiene las mismas pestañas que una cuenta de banco (**Movimientos**, **Conciliación**, **Extractos importados**), aunque en la práctica una caja no suele tener extractos para importar.
+Dentro de Cuentas, **Caja** es uno de los tres tipos de cuenta (junto a Banco y Tarjeta). A diferencia de un banco, una caja no se conecta ni importa extractos de una entidad externa: todos sus movimientos se registran a mano, directamente en Etendo Go. Aun así, la ficha de una caja tiene las mismas pestañas que una cuenta de banco (**Movimientos**, **Conciliación**, **Extractos importados**), aunque en la práctica una caja no suele tener extractos para importar.
 
 ## Registrar un movimiento en efectivo
 

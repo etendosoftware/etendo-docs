@@ -18,7 +18,7 @@ Un cobro registra el dinero que recibes de un cliente por una factura de venta; 
       - **Importe** — se autocompleta con el pendiente de la factura.
       - **Fecha**.
       - **Método de pago** — Efectivo, Transferencia bancaria, Cheque, Tarjeta o Transferencia. **Transferencia bancaria** y **Transferencia** son opciones independientes: usa la que tengas configurada en tus cuentas.
-      - **Cuenta** — la cuenta financiera donde se registra el ingreso. Las opciones dependen del método elegido (por ejemplo, con Efectivo solo aparecen cajas). Si el campo no muestra ninguna cuenta para el método seleccionado, prueba con otro método de pago.
+      - **Cuenta** — la cuenta donde se registra el ingreso. Las opciones dependen del método elegido (por ejemplo, con Efectivo solo aparecen cajas). Si el campo no muestra ninguna cuenta para el método seleccionado, prueba con otro método de pago.
 3. Si el cliente tiene **Saldo a favor** o **Crédito** disponible de otras facturas, puedes marcarlo para aplicarlo total o parcialmente en lugar de (o además de) un cobro nuevo.
 4. Haz clic en **Guardar** para dejarlo en borrador, o en **Confirmar** para registrarlo.
 
@@ -51,8 +51,8 @@ Esto aplica sin importar el método de pago: tanto con **Efectivo** como con **T
 
 ## Artículos Relacionados
 
-- [Factura de venta](../../comercial/ventas/factura-de-venta/factura-de-venta.md)
-- [Factura de compra](../../operaciones/compras/factura-de-compra/factura-de-compra.md)
+- [Gestionar tus facturas de venta](../../comercial/ventas/gestionar-tus-facturas-de-venta/gestionar-tus-facturas-de-venta.md)
+- [Gestionar tus facturas de compra](../../operaciones/compras/gestionar-tus-facturas-de-compra/gestionar-tus-facturas-de-compra.md)
 - [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-cajas-contables-y-movimientos-en-efectivo/como-gestionar-cajas-contables-y-movimientos-en-efectivo.md)
 
 ---

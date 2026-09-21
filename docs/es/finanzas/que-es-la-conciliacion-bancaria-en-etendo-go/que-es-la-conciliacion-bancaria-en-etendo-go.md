@@ -2,7 +2,7 @@
 tags:
     - Cuentas
     - Finanzas
-    - Conciliación bancaria
+    - Conciliación Bancaria
     - Etendo Go
 ---
 
@@ -25,14 +25,14 @@ Para cada línea pendiente del extracto, Etendo Go busca coincidencias entre cua
 
 ## Qué incluye esta sección
 
-- **Conciliación por cuenta** — dentro de cada cuenta financiera, la pestaña **Conciliación** muestra las líneas pendientes y te deja elegir el documento con el que hacen match.
+- **Conciliación por cuenta** — dentro de cada cuenta, la pestaña **Conciliación** muestra las líneas pendientes y te deja elegir el documento con el que hacen match.
 - **Automatch** — sugerencias automáticas de conciliación para toda la cuenta, basadas en fecha e importe.
 - **Reglas de matcheo** — reglas configurables para automatizar coincidencias recurrentes (por ejemplo, comisiones bancarias).
 - **Tolerancia de conciliación** — configurada por cuenta en **Editar cuenta** (tolerancia de fecha en días y de importe en %), usada por Automatch y por las reglas.
 
-Así se ve la pestaña **Conciliación** filtrada por **Sugerido**, con una línea de extracto pendiente y, a la derecha, la sugerencia de Automatch ya seleccionada:
+Así se ve la pestaña **Conciliación** filtrada por **Con sugerencia**, con una línea de extracto pendiente y, a la derecha, la sugerencia de Automatch ya seleccionada:
 
-![Pestaña Conciliación con el filtro Sugerido mostrando una línea de extracto pendiente y, a la derecha, el cobro sugerido ya seleccionado con el importe totalmente cubierto](assets/que-es-la-conciliacion-bancaria-en-etendo-go-1.png)
+![Pestaña Conciliación con el filtro Con sugerencia mostrando una línea de extracto pendiente y, a la derecha, el cobro sugerido ya seleccionado con el importe totalmente cubierto](assets/que-es-la-conciliacion-bancaria-en-etendo-go-1.png)
 
 ## Recursos y próximos pasos
 

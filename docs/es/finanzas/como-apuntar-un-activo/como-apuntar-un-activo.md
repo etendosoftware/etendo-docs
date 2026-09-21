@@ -31,7 +31,7 @@ Este artículo cubre cómo crear un activo y completar su formulario. Para el de
 4. Pulsa **Crear amortización** para generar el plan de amortización — este paso se explica en detalle en [Crear y ejecutar un plan de amortización](../como-crear-y-ejecutar-un-plan-de-amortizacion/como-crear-y-ejecutar-un-plan-de-amortizacion.md).
 
 <figure markdown="span">
-  ![Formulario de Activo](assets/apuntar-un-activo-2.png)
+  ![Formulario de Activo](assets/como-apuntar-un-activo-2.png)
   <figcaption>Formulario de Activo con los campos de identificación del bien y su valor de adquisición.</figcaption>
 </figure>
 

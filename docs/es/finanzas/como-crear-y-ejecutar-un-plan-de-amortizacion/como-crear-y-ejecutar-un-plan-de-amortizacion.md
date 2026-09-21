@@ -32,14 +32,14 @@ Este artículo cubre ambos pasos: generar el plan de amortización desde un acti
 5. Pulsa **Crear amortización**.
 
     <figure markdown="span">
-    ![Formulario de Activo con el botón Crear amortización disponible](assets/crear-un-plan-de-amortizacion-3.png)
+    ![Formulario de Activo con el botón Crear amortización disponible](assets/como-crear-y-ejecutar-un-plan-de-amortizacion-3.png)
     <figcaption>El botón Crear amortización aparece en la barra de acciones una vez que Amortizar está activado y Fecha inicio está completa.</figcaption>
     </figure>
 
 6. El sistema genera las líneas del plan en la pestaña **Plan de amortización**, una por período, y las agrupa en su registro de Amortización correspondiente.
 
     <figure markdown="span">
-    ![Plan de amortización generado en el activo](assets/crear-un-plan-de-amortizacion-4.png)
+    ![Plan de amortización generado en el activo](assets/como-crear-y-ejecutar-un-plan-de-amortizacion-4.png)
     <figcaption>Pestaña Plan de amortización del activo, con una línea por período.</figcaption>
     </figure>
 
@@ -51,14 +51,14 @@ Este artículo cubre ambos pasos: generar el plan de amortización desde un acti
 Abre el registro desde el período correspondiente en el **Plan de amortización** del activo, o búscalo en **[Finanzas > Amortización](https://go.etendo.cloud/amortization){target="_blank"}**.
 
 <figure markdown="span">
-  ![Vista lista de Amortización](assets/crear-un-plan-de-amortizacion-1.png)
+  ![Vista lista de Amortización](assets/como-crear-y-ejecutar-un-plan-de-amortizacion-1.png)
   <figcaption>Vista lista de Amortización, con un registro por período. Nombre en formato MM-YYYY o YYYY según periodicidad.</figcaption>
 </figure>
 
 El filtro **Todos los estados** distingue **Procesado** de **Borrador**; **Contabilizado** es una columna aparte, independiente de ese estado. Usa **Filtros** para acotar la lista por cualquier campo.
 
 <figure markdown="span">
-  ![Registro de Amortización en Borrador, con el botón Confirmar disponible](assets/crear-un-plan-de-amortizacion-2.png)
+  ![Registro de Amortización en Borrador, con el botón Confirmar disponible](assets/como-crear-y-ejecutar-un-plan-de-amortizacion-2.png)
   <figcaption>Registro de Amortización en Borrador. Nombre, Fecha contable y Moneda los completa el sistema.</figcaption>
 </figure>
 
@@ -68,6 +68,8 @@ El filtro **Todos los estados** distingue **Procesado** de **Borrador**; **Conta
 4. **Corrige si hace falta**: **Reactivar** (⋮) devuelve el registro a Borrador y Sin contabilizar en un solo paso.
 
 Consulta el [Glosario de Finanzas](../glosario-de-finanzas/glosario-de-finanzas.md) para el detalle de cada estado.
+
+---
 
 ## Artículos Relacionados
 

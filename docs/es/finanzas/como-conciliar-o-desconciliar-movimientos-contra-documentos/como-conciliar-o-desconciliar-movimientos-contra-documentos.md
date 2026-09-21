@@ -2,7 +2,7 @@
 tags:
     - Cuentas
     - Finanzas
-    - Conciliación bancaria
+    - Conciliación Bancaria
     - Etendo Go
 ---
 
@@ -12,7 +12,7 @@ Conciliar vincula una línea de tu extracto con el documento de Etendo Go que le
 
 ## Estados de una línea de conciliación
 
-En la pestaña **Conciliación** de una cuenta, cada línea puede filtrarse por estado: **Todos**, **Pendiente**, **Sugerido** (Automatch encontró una coincidencia), **Por regla** (coincide con una [regla de matcheo](../como-configurar-reglas-para-automatizar-la-conciliacion-bancaria/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria.md)), **Diferencias** y **Conciliadas**.
+En la pestaña **Conciliación** de una cuenta, cada línea puede filtrarse por estado: **Todos**, **Pendientes**, **Con sugerencia** (Automatch encontró una coincidencia), **Por regla** (coincide con una [regla de matcheo](../como-configurar-reglas-para-automatizar-la-conciliacion-bancaria/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria.md)), **Con diferencia** y **Conciliadas**.
 
 ## Conciliar un movimiento contra un documento
 

@@ -110,15 +110,15 @@ plugins:
                 - finanzas/index.md
                 - ¿Qué es la sección Finanzas?: finanzas/que-es-finanzas/que-es-finanzas.md
                 - Glosario de Finanzas: finanzas/glosario-de-finanzas/glosario-de-finanzas.md
-                - Cuentas financieras:
+                - Cuentas:
                     - Añadir y configurar un banco, tarjeta o caja: finanzas/como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja.md
-                    - Conectar, desconectar, desactivar o reactivar una cuenta: finanzas/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md
+                    - Conectar, desconectar, archivar, desarchivar o eliminar una cuenta: finanzas/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md
                     - Gestionar cajas contables y movimientos en efectivo: finanzas/como-gestionar-cajas-contables-y-movimientos-en-efectivo/como-gestionar-cajas-contables-y-movimientos-en-efectivo.md
                 - Pagos y cobros:
                     - Gestionar pagos y cobros: finanzas/como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros.md
                 - Extracto bancario:
                     - Importar o descargar el extracto bancario: finanzas/como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario.md
-                    - Borrar transacciones del extracto bancario: finanzas/como-borrar-transacciones-del-extracto-bancario/como-borrar-transacciones-del-extracto-bancario.md
+                    - Borrar movimientos del extracto bancario: finanzas/como-borrar-transacciones-del-extracto-bancario/como-borrar-transacciones-del-extracto-bancario.md
                 - Conciliación bancaria:
                     - ¿Qué es la conciliación bancaria en Etendo Go?: finanzas/que-es-la-conciliacion-bancaria-en-etendo-go/que-es-la-conciliacion-bancaria-en-etendo-go.md
                     - Conciliar o desconciliar movimientos contra documentos: finanzas/como-conciliar-o-desconciliar-movimientos-contra-documentos/como-conciliar-o-desconciliar-movimientos-contra-documentos.md

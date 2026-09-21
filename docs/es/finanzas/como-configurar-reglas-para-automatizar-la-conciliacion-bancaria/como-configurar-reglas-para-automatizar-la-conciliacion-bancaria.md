@@ -2,7 +2,7 @@
 tags:
     - Cuentas
     - Finanzas
-    - Conciliación bancaria
+    - Conciliación Bancaria
     - Automatización
     - Etendo Go
 ---
@@ -11,7 +11,8 @@ tags:
 
 Cuando un movimiento se repite con el mismo texto pero no tiene una factura asociada (por ejemplo, una comisión bancaria mensual), una regla de matcheo lo concilia sola, sin que tengas que buscarlo a mano cada vez.
 
-> Las reglas solo se aplican a líneas de extracto **sin factura asociada** que el algoritmo estándar de conciliación (Automatch) no haya podido conciliar. Se evalúan en orden de **prioridad ascendente**: la de menor número se prueba primero.
+!!! info "Cuándo se aplican"
+    Las reglas solo se aplican a líneas de extracto **sin factura asociada** que el algoritmo estándar de conciliación (Automatch) no haya podido conciliar. Se evalúan en orden de **prioridad ascendente**: la de menor número se prueba primero.
 
 ## Crear una regla de matcheo
 
@@ -20,9 +21,9 @@ Cuando un movimiento se repite con el mismo texto pero no tiene una factura asoc
 3. Completa los campos obligatorios:
       - **Nombre** (por ejemplo, "Comisiones bancarias").
       - **Patrón a buscar** (por ejemplo, "comisión").
-      - **Concepto contable** — la cuenta contable que se asigna al movimiento cuando la regla aplica.
+      - **Cuenta contable** — la cuenta contable que se asigna al movimiento cuando la regla aplica.
       - **Condición sobre el concepto** — cómo se compara el patrón contra la descripción del movimiento: **Contiene**, **Empieza con** o **Regex**.
-      - **Prioridad** — numérica, por defecto `40`. A menor número, mayor prioridad.
+      - **Prioridad** — numérica, por defecto *20*. A menor número, mayor prioridad.
 4. Opcionalmente, define:
       - **Afecta a** — una cuenta específica o **Todas las cuentas** (valor por defecto).
       - **Tipo de transacción** (por ejemplo, Comisión, Transferencia).

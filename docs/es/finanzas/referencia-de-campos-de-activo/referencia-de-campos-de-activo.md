@@ -24,7 +24,7 @@ Los campos de identificación aparecen siempre en la parte superior del formular
 ## Configuración de amortización
 
 <figure markdown="span">
-  ![Configuración de amortización](assets/apuntar-un-activo-3.png)
+  ![Configuración de amortización](assets/referencia-de-campos-de-activo-3.png)
   <figcaption>Sección de configuración de amortización con el interruptor Amortizar y sus opciones.</figcaption>
 </figure>
 
@@ -36,7 +36,7 @@ Esta sección controla si el activo se amortiza y qué método se usa.
 ## Información financiera
 
 <figure markdown="span">
-  ![Información financiera](assets/apuntar-un-activo-4.png)
+  ![Información financiera](assets/referencia-de-campos-de-activo-4.png)
   <figcaption>Sección de información financiera con los valores del activo y el método de amortización.</figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ Según el **Tipo de cálculo** seleccionado, aparecen campos adicionales:
 ## Fechas
 
 <figure markdown="span">
-  ![Fechas](assets/apuntar-un-activo-5.png)
+  ![Fechas](assets/referencia-de-campos-de-activo-5.png)
   <figcaption>Sección de fechas con los campos de compra, inicio, cancelación y fin del activo.</figcaption>
 </figure>
 
@@ -69,7 +69,7 @@ Según el **Tipo de cálculo** seleccionado, aparecen campos adicionales:
 ## Dimensiones contables
 
 <figure markdown="span">
-  ![Dimensiones contables](assets/apuntar-un-activo-10.png)
+  ![Dimensiones contables](assets/referencia-de-campos-de-activo-10.png)
   <figcaption>Sección de dimensiones contables, sin completar.</figcaption>
 </figure>
 
@@ -87,41 +87,43 @@ Al pulsar **Crear amortización**, el formulario se completa con información qu
 **Resumen de amortización** — panel lateral que muestra el estado del activo de forma permanente mientras trabajas en el formulario:
 
 <figure markdown="span">
-  ![Resumen de Amortización](assets/apuntar-un-activo-7.png)
+  ![Resumen de Amortización](assets/referencia-de-campos-de-activo-7.png)
   <figcaption>Panel lateral de Resumen de amortización con el estado actual del activo.</figcaption>
 </figure>
 
 - **Valor actual** — Valor contable del activo a la fecha (euros).
 - **Valor residual del activo** — Valor estimado al final de la vida útil.
 - **Amortización planificada** — Monto total programado en el plan vigente.
-- **Amortizado** — Porcentaje ya amortizado, calculado solo sobre los períodos en estado **Confirmado** del plan (no se cuentan los períodos **Pendientes**, aunque su fecha ya haya pasado). Subtítulo *En progreso* mientras hay períodos pendientes; cambia a *Totalmente amortizado* al llegar al 100 %. En la **Vista lista** de Activos, este mismo valor se muestra en euros en la columna **Amortizado real**, junto a una barra con el porcentaje.
+- **Amortizado** — Porcentaje ya amortizado, calculado solo sobre los períodos en estado **Confirmado** del plan (no se cuentan los períodos **Pendientes**, aunque su fecha ya haya pasado). Subtítulo *En progreso* mientras hay períodos pendientes; cambia a *Totalmente amortizado* al llegar al 100 %. En la **Vista Lista** de Activos, este mismo valor se muestra en euros en la columna **Amortizado real**, junto a una barra con el porcentaje.
 
 **Plan de amortización y Contabilidad** — dos pestañas adicionales en el activo ya creado:
 
 - **Plan de amortización** — muestra las líneas por período que produce **Crear amortización**. Consulta [Crear y ejecutar un plan de amortización](../como-crear-y-ejecutar-un-plan-de-amortizacion/como-crear-y-ejecutar-un-plan-de-amortizacion.md) para ver cómo generarlas y procesarlas.
 
 <figure markdown="span">
-  ![Pestaña Plan de amortización con las líneas generadas](assets/apuntar-un-activo-8.png)
+  ![Pestaña Plan de amortización con las líneas generadas](assets/referencia-de-campos-de-activo-8.png)
   <figcaption>Pestaña Plan de amortización con las líneas generadas por período.</figcaption>
 </figure>
 
 - **Contabilidad** — muestra las cuentas de **Amortización acumulada** y **Amortización** usadas al generar los asientos de este activo. Usa **Añadir Contabilidad** para asociar un esquema adicional.
 
 <figure markdown="span">
-  ![Pestaña Contabilidad con las cuentas de amortización](assets/apuntar-un-activo-9.png)
+  ![Pestaña Contabilidad con las cuentas de amortización](assets/referencia-de-campos-de-activo-9.png)
   <figcaption>Pestaña Contabilidad con las cuentas de amortización acumulada y amortización por esquema contable.</figcaption>
 </figure>
 
-## Vista lista
+## Vista Lista
 
 <figure markdown="span">
-  ![Vista lista de Activos filtrada por Grupo activo](assets/apuntar-un-activo-1.png)
+  ![Vista lista de Activos filtrada por Grupo activo](assets/referencia-de-campos-de-activo-1.png)
   <figcaption>Vista lista de Activos filtrada por Grupo activo "Equipos Informáticos", con columnas de identificador, grupo, fechas, valores y estado de amortización.</figcaption>
 </figure>
 
 Desde **[Finanzas > Activos](https://go.etendo.cloud/assets){target="_blank"}** encuentras todos los activos ya registrados, con columnas de identificador, grupo, fechas y valores, además de **Amortizado real** (el importe ya amortizado, ver más arriba) y **Estado de amortización** (el mismo porcentaje, como barra de progreso). Usa **Filtros** para acotar la lista (por ejemplo, por **Grupo activo**, como en la captura) o **+ Nuevo activo** para crear uno.
 
 *[EUR]: Euro — moneda oficial de la zona euro
+
+---
 
 ## Artículos Relacionados
 

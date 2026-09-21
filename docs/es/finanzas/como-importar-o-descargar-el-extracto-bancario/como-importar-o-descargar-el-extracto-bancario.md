@@ -2,7 +2,7 @@
 tags:
     - Cuentas
     - Finanzas
-    - Extracto bancario
+    - Extracto Bancario
     - Etendo Go
 ---
 
@@ -26,7 +26,8 @@ Si tu cuenta no está conectada por Open Banking, puedes importar el extracto de
 
 El extracto importado queda listado con su **N.º de documento**, **Fecha de importación**, **Fecha de transacción**, cantidad de **Líneas**, importes de **Salida**/**Entrada**, y su **Estado** (por ejemplo, **Conciliado** o **Parcial** si solo una parte de las líneas fue conciliada).
 
-> Si necesitas cargar movimientos que no vienen en un archivo del banco, usa **Importar extracto > Nuevo extracto** para crear un extracto vacío y completarlo a mano.
+!!! tip "Movimientos sin archivo de extracto"
+    Si necesitas cargar movimientos que no vienen en un archivo del banco, usa **Importar extracto > Nuevo extracto** para crear un extracto vacío y completarlo a mano.
 
 ## Descargar el extracto bancario
 

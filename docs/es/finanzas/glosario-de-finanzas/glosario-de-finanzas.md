@@ -23,7 +23,7 @@ Porcentaje o importe ya amortizado de un activo, calculado solo sobre los perío
 
 ## Archivar
 
-Acción que deja de mostrar una cuenta financiera en el listado de **Todas las cuentas** sin borrar su saldo ni su historial: la cuenta pasa al filtro **Inactivas**. Su opuesto es **Desarchivar**. No implica eliminar la cuenta: en Etendo Go no existe una acción para borrar una cuenta financiera de forma permanente. Ver [Conectar, desconectar, desactivar o reactivar una cuenta](../como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md).
+Acción que deja de mostrar una cuenta en el listado de **Todas las cuentas** sin borrar su saldo ni su historial: la cuenta pasa al filtro **Inactivas**. Su opuesto es **Desarchivar**. No debe confundirse con **Eliminar cuenta**, una acción independiente que borra la cuenta de forma permanente y no se puede deshacer — a diferencia de Archivar, que es reversible. Ver [Conectar, desconectar, archivar, desarchivar o eliminar una cuenta](../como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md).
 
 ## Asiento contable
 
@@ -39,7 +39,7 @@ Estado inicial y editable de una Amortización. En Borrador se pueden añadir, m
 
 ## Caja
 
-Tipo de cuenta financiera para el efectivo que se maneja fuera del banco (por ejemplo, la caja chica de una oficina o la caja de un punto de venta). A diferencia de un Banco o una Tarjeta, una Caja no se conecta ni importa extractos de una entidad externa: todos sus movimientos se registran a mano. Ver [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-cajas-contables-y-movimientos-en-efectivo/como-gestionar-cajas-contables-y-movimientos-en-efectivo.md).
+Tipo de cuenta para el efectivo que se maneja fuera del banco (por ejemplo, la caja chica de una oficina o la caja de un punto de venta). A diferencia de un Banco o una Tarjeta, una Caja no se conecta ni importa extractos de una entidad externa: todos sus movimientos se registran a mano. Ver [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-cajas-contables-y-movimientos-en-efectivo/como-gestionar-cajas-contables-y-movimientos-en-efectivo.md).
 
 ## Cobro
 
@@ -69,13 +69,13 @@ Indicador independiente de otros estados (como Borrador/Procesado en una Amortiz
 
 Acción que genera los asientos contables de una Amortización ya Procesada y la pasa a **Contabilizado**.
 
-## Cuenta financiera
+## Cuenta
 
 Cuenta de banco, tarjeta o caja que registras en Etendo Go para llevar el control de tu dinero. Mantiene su propio saldo y su propio historial de movimientos, y puede conectarse por Open Banking o gestionarse sin conexión. Ver [Añadir y configurar un banco, tarjeta o caja](../como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja.md).
 
 ## Cuenta transitoria
 
-Cuenta contable opcional que puedes asociar a una cuenta financiera desde **Editar cuenta > Contabilidad**. Sirve para registrar de forma temporal operaciones cuyo concepto contable definitivo todavía no está claro, sin afectar directamente a la cuenta contable principal.
+Cuenta contable opcional que puedes asociar a una cuenta desde **Editar cuenta > Contabilidad**. Sirve para registrar de forma temporal operaciones cuyo concepto contable definitivo todavía no está claro, sin afectar directamente a la cuenta contable principal.
 
 ## Dimensiones contables
 
@@ -91,7 +91,7 @@ Categoría contable de un activo. Determina las cuentas contables usadas en sus 
 
 ## Movimiento
 
-Cada entrada o salida de dinero dentro de una cuenta financiera (transferencias, pagos, cobros, retiradas de efectivo). Tiene dos estados independientes: uno de conciliación (Sin conciliar / Conciliado) y uno de contabilización (Sin contabilizar / Contabilizado).
+Cada entrada o salida de dinero dentro de una cuenta (transferencias, pagos, cobros, retiradas de efectivo). Tiene dos estados independientes: uno de conciliación (Sin conciliar / Conciliado) y uno de contabilización (Sin contabilizar / Contabilizado).
 
 ## Pago
 
@@ -107,7 +107,7 @@ Estado de una Amortización ya confirmada. Ya no se pueden editar sus líneas ni
 
 ## Reactivar
 
-Acción que revierte el estado de un registro ya confirmado. Su efecto exacto depende del tipo de registro: en una **Amortización**, devuelve el registro a Borrador y Sin contabilizar en un solo paso, deshaciendo tanto Confirmar como Contabilizar; en un **Cobro** o **Pago**, revierte su confirmación (ver [Gestionar pagos y cobros](../como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros.md)). No debe confundirse con **Desarchivar**, la acción que reactiva una cuenta financiera archivada (ver [Conectar, desconectar, desactivar o reactivar una cuenta](../como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md)).
+Acción que revierte el estado de un registro ya confirmado. Su efecto exacto depende del tipo de registro: en una **Amortización**, devuelve el registro a Borrador y Sin contabilizar en un solo paso, deshaciendo tanto Confirmar como Contabilizar; en un **Cobro** o **Pago**, revierte su confirmación (ver [Gestionar pagos y cobros](../como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros.md)). No debe confundirse con **Desarchivar**, la acción que reactiva una cuenta archivada (ver [Conectar, desconectar, desactivar o reactivar una cuenta](../como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md)).
 
 ## Regla de matcheo
 
@@ -124,6 +124,8 @@ Resultado de restar el valor residual al valor del activo. Es la base sobre la q
 ## Valor residual
 
 Valor estimado de un activo al final de su vida útil. Debe ser menor o igual al valor del activo.
+
+---
 
 ## Artículos Relacionados
 
