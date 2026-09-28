@@ -57,6 +57,9 @@ Tras confirmar, la pantalla se llama **Configuración Fiscal** (con el sufijo de
 - **Autorizaciones especiales AEAT** — número de registro de la autorización, si tu organización cuenta con alguna.
 - **Certificado digital** — el certificado necesario para autenticar los envíos con Hacienda; muestra su fecha de vigencia y un botón **Reemplazar** para actualizarlo. Es el mismo certificado que usa la opción **Presentación telemática AEAT** al presentar el [Modelo 303](../modelo-303/modelo-303.md), fuera de su modo de prueba.
 
+!!! info "El certificado solo se puede cargar en cuentas productivas"
+    En una cuenta de demostración puedes abrir la pestaña **SII** de Configuración Fiscal con normalidad, pero no puedes subir un certificado digital: esa carga requiere una cuenta productiva. Sin certificado cargado, los envíos al [SIF](../glosario-de-impuestos/glosario-de-impuestos.md#sif) no se pueden completar (ver [Monitor Fiscal](../monitor-fiscal/monitor-fiscal.md)).
+
 ## Artículos Relacionados
 
 - [Cómo Activar un Modelo Tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md)

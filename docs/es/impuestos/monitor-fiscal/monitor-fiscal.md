@@ -67,7 +67,7 @@ Para el detalle completo, la factura tiene su propia pestaña **[SIF](../glosari
 Desde ahí también puedes forzar el envío: el botón **Enviar a SIF** del detalle de la factura reenvía sus registros a todos los sistemas fiscales activos a la vez (por ejemplo, a SII y a TicketBAI si ambos están activos; solo a SII si es el único activo). Es la forma de reintentar una factura en estado Pendiente o Error, por ejemplo tras corregir el problema indicado en Motivo error.
 
 !!! warning "Sin certificado digital, el envío falla"
-    Si tu organización todavía no cargó un certificado digital válido en **Configuración Fiscal** (ver [SII](../sii/sii.md)), **Enviar a SIF** muestra el error *"No se ha encontrado ningún certificado válido. Añada el certificado a la organización legal configurada mediante el proceso 'Añadir Certificado Digital'."* y no llega a enviar nada.
+    Si tu organización todavía no cargó un certificado digital válido en **Configuración Fiscal** (ver [SII](../sii/sii.md)), **Enviar a SIF** muestra el error *"No se ha encontrado ningún certificado válido. Añada el certificado a la organización legal configurada mediante el proceso 'Añadir Certificado Digital'."* y no llega a enviar nada. En una cuenta de demostración este error es permanente: el certificado solo se puede cargar en una cuenta productiva.
 
 !!! tip "Cada sistema fiscal tiene su propia configuración"
     Los campos operativos de cada sistema (autorizaciones especiales AEAT y certificado digital para SII; territorio y envío automático para TicketBAI) se gestionan desde Configuración Fiscal. Ver [SII](../sii/sii.md) y [TicketBAI](../ticketbai/ticketbai.md).
