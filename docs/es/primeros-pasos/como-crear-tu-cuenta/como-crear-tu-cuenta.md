@@ -9,158 +9,157 @@ tags:
 
 # Cómo crear tu cuenta
 
-Etendo permite crear una cuenta gratuita en menos de un minuto, sin necesidad de tarjeta de crédito. Vas a completar cuatro pasos: registro de usuario, confirmación de correo, perfil y datos de empresa. Una vez finalizados, Etendo prepara tu espacio de trabajo automáticamente y te lleva a **Primeros pasos**, una lista de tareas recomendadas para terminar de configurar tu cuenta.
+Crear tu cuenta es gratis y no necesitas tarjeta de crédito. El recorrido tiene cinco fases: creas tu cuenta, pruebas Etendo en un entorno de demo, creas tu entorno productivo, completas las tareas del panel **Primeros pasos** y emites tu primera factura. La demo es gratuita y te sirve para probar; el entorno productivo es un plan de pago y lo necesitas para facturar con validez ante Hacienda.
 
-## Registro de usuario
+## 1. Crea tu cuenta
+
+### Regístrate
 
 1. Accede a la página de registro de Etendo. Verás el formulario **Crea tu cuenta gratis**.
 
-    ![Formulario de registro de Etendo](assets/registro.png)
-
-    !!! tip "Registrarte con Google"
-        También puedes crear la cuenta con un clic usando la opción **Sign in as...** con tu cuenta de Google, en lugar de completar el formulario manualmente.
-
-2. Completa los siguientes campos obligatorios:
-    - **Nombre** — tu nombre completo como administrador de la cuenta.
-    - **Correo electrónico** — dirección de email que usarás para iniciar sesión.
-    - **Contraseña** — debe cumplir todos los requisitos mostrados en pantalla.
-
-    !!! info "Requisitos de la contraseña"
-        Debe tener al menos 8 caracteres, e incluir una letra mayúscula, una letra minúscula, un número y un carácter especial (`!@#$%...`).
+    ![Formulario de registro de Etendo, con los campos Nombre, Correo electrónico y Contraseña](assets/registro.png)
 
     !!! tip "Idioma"
-        Puedes cambiar el idioma de la interfaz desde el selector **IDIOMA** en la parte superior del formulario antes de continuar.
+        Antes de empezar, puedes cambiar el idioma de la interfaz desde el selector **IDIOMA**, en la parte superior del formulario.
+
+    !!! tip "Registrarte con Google"
+        También puedes crear la cuenta con un clic usando la opción **Sign in as...** con tu cuenta de Google, en lugar de completar el formulario.
+
+2. Completa los campos obligatorios:
+    - **Nombre** — tu nombre completo como administrador de la cuenta.
+    - **Correo electrónico** — la dirección que usarás para iniciar sesión.
+    - **Contraseña** — debe cumplir todos los requisitos que aparecen en pantalla.
+
+    !!! info "Requisitos de la contraseña"
+        Debe tener al menos 8 caracteres e incluir una letra mayúscula, una minúscula, un número y un carácter especial (`!@#$%...`).
 
 3. Haz clic en **Crear cuenta**.
 
-## Confirma tu correo
+### Confirma tu correo
 
-Antes de continuar, Etendo te pide que confirmes tu dirección de email.
+Antes de continuar, Etendo te pide que confirmes tu dirección de correo.
 
-1. Abre la casilla de entrada del correo con el que te registraste.
+1. Abre la bandeja de entrada del correo con el que te registraste.
 
-    ![Pantalla de confirmación de correo](assets/confirma-correo.png)
+    ![Pantalla de confirmación de correo, con la opción Reenviar enlace](assets/confirma-correo.png)
 
-2. Haz clic en el enlace que te enviamos para confirmar tu cuenta.
+2. Haz clic en el enlace que Etendo te envía. Al confirmarlo, Etendo te lleva automáticamente al paso de perfil.
 
-!!! tip "¿No llegó el correo?"
+!!! tip "¿No te ha llegado el correo?"
     Revisa tu carpeta de spam o haz clic en **Reenviar enlace** desde esta misma pantalla.
 
-Al confirmar tu correo, Etendo te lleva automáticamente al paso de perfil.
+### Completa tu perfil
 
-## Perfil y tipo de negocio
+1. Revisa el **Nombre completo**. Se rellena automáticamente con el nombre del paso anterior.
 
-Tras crear la cuenta, Etendo te redirige al paso de perfil.
+    ![Formulario de perfil de usuario, con los campos Nombre completo, País y Tipo de negocio](assets/perfil.png)
 
-1. Revisa o edita el **Nombre completo** (se pre-rellena con el nombre del paso anterior).
-
-    ![Formulario de perfil de usuario](assets/perfil.png)
-
-2. Selecciona tu **País**. Para empresas españolas, el selector aparece por defecto en *España*.
-3. Elige el **Tipo de negocio** que corresponda:
+2. Selecciona tu **País**. Para empresas españolas, aparece *España* por defecto.
+3. Elige el **Tipo de negocio**:
     - **Empresa** — sociedades como S.L. o S.A., o cooperativas.
     - **Autónomo** — trabajador por cuenta propia.
-4. Haz clic en **Continuar** para avanzar al siguiente paso.
+4. Haz clic en **Continuar**.
 
-## Datos de la empresa
+### Introduce los datos de tu empresa
 
-Este paso recoge los datos fiscales que Etendo usará en tus facturas y documentos comerciales.
+Etendo usa estos datos en tus facturas y documentos comerciales.
 
-1. Completa los siguientes campos:
+1. Completa los campos:
 
-    ![Formulario de datos de empresa](assets/empresa.png)
+    ![Formulario de datos de empresa, con los campos Nombre de la empresa, NIF, Dirección y Sector](assets/empresa.png)
 
-    - **Nombre de la empresa** — razón social completa (ej: *MG Services*). Campo obligatorio.
-    - **Identificación fiscal (NIF)** — El NIF de una empresa empieza por letra (ej: *B12345678*). Para autónomos, introduce el DNI o NIE. Campo opcional.
-    - **Dirección** — dirección fiscal. Campo opcional.
-    - **Sector** — actividad principal de la empresa. Por defecto: *Tecnología*. Campo opcional.
+    - **Nombre de la empresa** — razón social completa (ej. *MG Services S.L.*). Obligatorio.
+    - **Identificación fiscal (NIF)** — el NIF de una empresa empieza por letra (ej. *B12345678*); si eres autónomo, introduce tu DNI o NIE. Es opcional en este paso, pero lo necesitas antes de emitir facturas y conectar con Hacienda.
+    - **Dirección** — dirección fiscal. Opcional.
+    - **Sector** — actividad principal de la empresa. Por defecto, *Tecnología*. Opcional.
 
     !!! info "Edición posterior"
-        Todos estos datos se pueden modificar después desde [**Configuración**](https://app.etendo.ai/organization){target="_blank"}.
+        Puedes modificar todos estos datos cuando quieras desde [**Configuración > Organización**](https://app.etendo.ai/organization){target="_blank"}.
 
 2. Haz clic en **Empezar**.
 
-## Preparando tu espacio
+Etendo prepara el espacio de trabajo de tu empresa. El proceso tarda unos segundos.
 
-Etendo crea el espacio de trabajo de tu empresa. Este proceso tarda unos segundos.
+![Pantalla de carga «Preparando tu espacio»](assets/cargando.png)
 
-![Pantalla de carga — preparando el espacio de trabajo](assets/cargando.png)
-
-## Período de prueba (demo)
+## 2. Conoce tu entorno de pruebas (demo)
 
 ![Barra superior de la demo, con los días restantes y el botón Ir al pago](assets/demo-barra.png)
 
-Apenas termina de prepararse tu espacio, tu cuenta queda activa como un **entorno de pruebas (demo)** por 15 días. Etendo te lo recuerda en dos lugares fijos de la interfaz:
+!!! tip "Para qué sirve la demo"
+    La demo es un entorno funcional para hacer todo tipo de pruebas en el sistema. No se conecta con Hacienda ni emite facturas con validez legal. Cuando termines de probar, creas tu entorno productivo con toda tu información real, y desde ahí envías facturas legales. Al pasar a productivo, puedes transferir los **contactos** y **productos** que añadiste en la demo.
 
-- La etiqueta **Demo**, junto al nombre de tu empresa en la esquina superior izquierda.
-- Una barra en la parte superior de la pantalla con los días restantes y el botón [**Ir al pago**](https://app.etendo.ai/upgrade){target="_blank"}.
+En cuanto tu espacio está listo, tu cuenta funciona como un **entorno de pruebas (demo)** durante 15 días. Etendo te lo recuerda en dos lugares:
 
-!!! info "Qué no incluye el entorno de pruebas"
-    Mientras estés en la demo, Etendo no establece conexiones con Hacienda — para eso necesitas crear un entorno productivo, como se explica a continuación. Además, si más adelante creas uno, solo se migran los **contactos** y **productos** que cargaste en la demo; el resto de los datos no se transfiere automáticamente.
+- La etiqueta **Demo**, junto al nombre de tu empresa, en la esquina superior izquierda.
+- Una barra en la parte superior de la pantalla, con los días restantes y el botón [**Ir al pago**](https://app.etendo.ai/upgrade){target="_blank"}.
 
-## Crea un entorno productivo
+## 3. Crea tu entorno productivo
 
-![Asistente de 3 pasos para crear un entorno productivo, con el plan Productivo seleccionado](assets/entorno-productivo-plan.png)
+El entorno productivo es tu cuenta real, la que se conecta con Hacienda. Es independiente de la demo: la demo se mantiene tal como está, no se elimina.
 
-Haz clic en [**Ir al pago**](https://app.etendo.ai/upgrade){target="_blank"} para abrir el asistente de 3 pasos:
+Haz clic en [**Ir al pago**](https://app.etendo.ai/upgrade){target="_blank"} para abrir el asistente de 3 pasos.
 
-1. **Plan** — elige el plan **Productivo** (49,00 €/mes). Es un entorno totalmente separado de tu demo: la demo se mantiene tal como está, no se elimina.
-2. **Complementos** — decide si quieres traer automáticamente los **productos** y **contactos** que cargaste en la demo (ambas casillas vienen marcadas por defecto). Etendo hace la transferencia sola en cuanto el entorno productivo está listo, sin que tengas que exportar ni importar nada.
+### Elige el plan
 
-    ![Paso Complementos del asistente, con las casillas Productos y Contactos marcadas para transferir los datos de la demo](assets/entorno-productivo-complementos.png)
+![Asistente para crear un entorno productivo, con el plan Productivo seleccionado](assets/entorno-productivo-plan.png)
 
-3. **Pago** — completa los datos de facturación para activar el entorno productivo.
+Selecciona el plan **Productivo**.
 
-## Primeros pasos
+### Transfiere tus datos de la demo
 
-Al finalizar, Etendo te lleva directo a la sección **Primeros pasos**, con un mensaje como *"Vamos a preparar tu cuenta. Sigue estos pasos y en menos de 10 minutos tendrás todo listo para empezar"* y tu progreso (por ejemplo, *1/5 Completados*).
+![Paso Complementos del asistente, con las casillas Productos y Contactos marcadas](assets/entorno-productivo-complementos.png)
 
-![Primeros pasos — panel de tareas iniciales](assets/primeros-pasos.png)
+Decide si quieres traer los **Productos** y **Contactos** que añadiste en la demo. Ambas casillas vienen marcadas por defecto. Son los únicos datos que puedes transferir: el resto de la información de la demo no pasa al entorno productivo.
 
-Cada tarea muestra una breve descripción y el tiempo estimado para completarla. Todas tienen un botón propio (**Importar** o **Configurar**) que te lleva directo a la pantalla correspondiente, y una casilla **Marcar como completado** para confirmarla manualmente:
+Etendo hace la transferencia automáticamente en cuanto el entorno productivo está listo, sin que tengas que exportar ni importar nada.
 
-- **Crear cuenta** — se marca como completada automáticamente apenas terminas el registro.
-- **Datos de tu empresa** — esta tarea requiere que confirmes manualmente la casilla **Marcar como completado**, por eso sigue apareciendo como pendiente aunque ya hayas cargado esos datos en el paso anterior. Se muestra un resumen de lo que cargaste (nombre de la empresa, nombre comercial, NIF y dirección). El botón **Configurar** (2 min) te lleva a [**Configuración > Organización**](https://app.etendo.ai/organization){target="_blank"}, donde puedes revisar esos datos y subir el logo de tu empresa.
-- **Carga masiva de productos** — el botón **Importar** (3 min) abre una ventana para arrastrar un archivo CSV, TXT o XLSX, con plantillas descargables listas para completar.
+### Completa el pago
 
-    ![Ventana de importación de productos o contactos](assets/primeros-pasos-importar.png)
+Introduce los datos de facturación para activar el entorno productivo. Al activarlo, Etendo te lleva al panel **Primeros pasos** de tu entorno productivo. Lo reconoces por la etiqueta **Productivo**, junto al nombre de tu empresa, en la esquina superior izquierda.
 
-- **Carga masiva de contactos** — el botón **Importar** (3 min) abre la misma ventana de importación, para cargar tus clientes y proveedores.
-- **Invita a tu equipo** — el botón **Configurar** (2 min) te lleva a [**Configuración > Roles**](https://app.etendo.ai/roles){target="_blank"}, desde donde puedes invitar usuarios:
-    1. Elige uno de los roles disponibles (Administrador, Ventas, Compras, Finanzas o Inventario) para ver sus permisos y la lista de usuarios de ese rol.
-    2. Haz clic en [**Nuevo usuario**](https://app.etendo.ai/user/new){target="_blank"} para abrir el formulario de invitación:
+La demo sigue disponible: puedes cambiar entre la demo y el entorno productivo desde el [Selector de empresa](../navegar-en-etendo/navegar-en-etendo.md#selector-de-empresa) (menú **Cambiar empresa**, junto al logo).
 
-        ![Formulario para invitar un nuevo usuario](assets/primeros-pasos-invitar.png)
+## 4. Completa las tareas del panel Primeros pasos
 
-        - **Nombre** y **Correo electrónico** — campos obligatorios para enviar la invitación.
-        - **Roles asignados** — se configuran después de guardar el usuario.
+![Panel Primeros pasos con las 8 tareas, 2 de ellas completadas y Datos de tu empresa desplegada](assets/primeros-pasos.png)
 
-El panel queda disponible en cualquier momento desde el menú [**General > Primeros pasos**](https://app.etendo.ai/first-steps){target="_blank"}. Cuando completas las cinco tareas, el mensaje cambia a *"Ya lo tienes todo listo"* y Etendo te invita a crear tu primera factura.
+El panel **Primeros pasos** te guía por la configuración básica de tu cuenta. Se abre con el título *"Vamos a preparar tu cuenta"* y un contador de progreso (ej. *2/8 Completados*). Cada tarea se despliega al pulsarla; las que no se completan solas tienen la casilla **Marcar como completado**.
 
-## Inicio
+- **Crear cuenta** — se completa sola al terminar el registro.
+- **Datos de tu empresa** — muestra un resumen de los datos que introdujiste al registrarte (nombre de la empresa, nombre comercial, NIF y dirección). Revísalos y, si alguno es incorrecto o falta, corrígelo: **Configurar** te lleva a [**Configuración > Organización**](https://app.etendo.ai/organization){target="_blank"}. Cuando estén bien, márcala como completada.
+- **Configuración fiscal** — pregunta *"¿Debe informar las facturas a algún Sistema de Facturación (SIF), como SII, Verifactu o TicketBai?"*. Si respondes **Sí**, **Configurar** te lleva a elegir tu territorio fiscal y el sistema que te corresponde (SII, TicketBAI o VERI\*FACTU). Si no sabes cuál te corresponde, consúltalo con tu asesoría. Más información en [Configuración fiscal](../../sistema/configuracion/configuracion-fiscal/configuracion-fiscal.md).
+- **Transferir datos de su demo** — muestra el estado de la transferencia de productos y contactos que elegiste al crear el entorno productivo. Se completa sola.
+- **Carga masiva de productos** — importa tu catálogo desde una hoja de cálculo. **Importar** abre una ventana para arrastrar o seleccionar un archivo CSV, TXT o XLSX, con plantillas descargables listas para completar.
 
-Desde el menú **General**, también accedes a [**Inicio**](https://app.etendo.ai/dashboard){target="_blank"}, el panel principal de tu empresa. La primera vez aparece vacío, listo para registrar tu actividad.
+    ![Ventana de importación, con la zona para arrastrar el archivo y las plantillas descargables](assets/primeros-pasos-importar.png)
 
-![Inicio de Etendo — vista inicial](assets/dashboard.png)
+- **Carga masiva de contactos** — importa tus clientes y proveedores para empezar a facturar cuanto antes. **Importar** abre la misma ventana de importación.
+- **Personaliza tus facturas** — define el prefijo y el número inicial de tus facturas; conviene hacerlo antes de emitir la primera. **Configurar** te lleva a [**Configuración > Secuencias de documentos**](https://app.etendo.ai/document-sequence){target="_blank"}. Más información en [Secuencias de documentos](../../sistema/configuracion/secuencias-de-documentos/secuencias-de-documentos.md).
+- **Invita a tu equipo** — invita a las personas que trabajarán contigo y decide qué puede hacer cada una. **Configurar** te lleva a [**Configuración > Usuarios**](https://app.etendo.ai/user){target="_blank"}:
+    1. Haz clic en [**Nuevo usuario**](https://app.etendo.ai/user/new){target="_blank"}.
 
-Desde aquí puedes consultar, entre otros, los siguientes paneles de información:
+        ![Formulario de nuevo usuario en Configuración > Usuarios, con los campos Nombre y Correo electrónico](assets/primeros-pasos-invitar.png)
 
-- **Tareas pendientes**
-- **Accesos rápidos**
-- **Clientes destacados**
-- **Resumen financiero**
-- **Ventas recientes**
-- **Cobros y pagos**
-- **Evolución financiera**
-- **Productos más vendidos**
+    2. Completa **Nombre** y **Correo electrónico** (obligatorios) y guarda el usuario.
+    3. Añade los **Roles asignados** después de guardar.
 
-Tu cuenta ya está lista para usarse. A partir de ahora, cada operación que registres irá dando forma a tu Inicio.
+    Para el detalle, consulta [Cómo invitar a un usuario](../../sistema/configuracion/como-invitar-a-un-usuario/como-invitar-a-un-usuario.md).
+
+## 5. Crea tu primera factura
+
+![Panel Primeros pasos completado, con el mensaje Ya lo tienes todo listo y los botones Crear una factura y Finalizar configuración inicial](assets/primeros-pasos-completado.png)
+
+Cuando completas las 8 tareas, el panel muestra *"Ya lo tienes todo listo"*, el texto *"Tu cuenta está configurada. Crea tu primera factura y empieza a trabajar."* y el contador *8/8 Completados*. Aparecen dos botones:
+
+- **Crear una factura** — abre directamente una nueva factura de venta. Para completarla, sigue [Crear una factura de venta](../../comercial/ventas/crear-una-factura-de-venta/crear-una-factura-de-venta.md).
+- **Finalizar configuración inicial** — oculta **Primeros pasos** del menú. A partir de ahí, cualquier ajuste lo haces desde la ventana correspondiente en **Configuración**.
 
 ## Artículos Relacionados
 
+- [Crear una factura de venta](../../comercial/ventas/crear-una-factura-de-venta/crear-una-factura-de-venta.md)
+- [Cómo gestionar tu organización](../../sistema/configuracion/como-gestionar-tu-organizacion/como-gestionar-tu-organizacion.md)
 - [¿Qué es Etendo?](../que-es-etendo/que-es-etendo.md)
-- [Cómo gestionar tu organización](../../sistema/configuracion/como-gestionar-tu-organizacion/como-gestionar-tu-organizacion.md) — revisa y ajusta estos mismos datos cuando quieras, desde Configuración.
-- [Contactos](../../comercial/contactos/que-es-la-seccion-contactos/que-es-la-seccion-contactos.md)
 
 ---
 Esta obra está bajo la licencia :material-creative-commons: :fontawesome-brands-creative-commons-by: :fontawesome-brands-creative-commons-sa: [CC BY-SA 2.5 ES](https://creativecommons.org/licenses/by-sa/2.5/es/){target="_blank"} de [Futit Services S.L](https://etendo.software){target="_blank"}.
