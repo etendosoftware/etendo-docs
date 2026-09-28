@@ -11,6 +11,11 @@ tags:
 
 Si necesitas cargar varios contactos a la vez, en vez de crearlos uno por uno desde el formulario, puedes importarlos masivamente desde un archivo CSV, TXT o Excel.
 
+## Antes de empezar
+
+- **Solo se crean contactos nuevos, con una persona de contacto y una dirección cada uno.** Si el contacto ya existe, la fila se omite. Si repites el mismo NIF en varias filas, solo se importa la primera. Las personas y direcciones adicionales se añaden después desde las solapas **Persona** y **Dirección** del contacto.
+- **Todos los contactos se importan con el rol Cliente.** Si alguno es proveedor, activa ese rol después desde la solapa **Financiero**, como se explica en [Cómo crear un contacto](../como-crear-un-contacto/como-crear-un-contacto.md).
+
 ## Abre la ventana de importación
 
 1. Ve a **[Contactos](https://app.etendo.software/contacts){target="_blank"}**.
@@ -21,77 +26,70 @@ Si necesitas cargar varios contactos a la vez, en vez de crearlos uno por uno de
       <figcaption>Ícono Importar en la barra de herramientas de la ventana Contactos.</figcaption>
     </figure>
 
-## Descarga la plantilla
+## Descarga y completa la plantilla
 
-En la ventana **Importar**, descarga la plantilla en el formato que prefieras (**CSV** o **Excel**) antes de preparar tu archivo.
+1. En la ventana **Importar**, descarga la plantilla en **CSV** o **Excel**.
 
-<figure markdown="span">
-  ![Ventana Importar, con la zona para soltar el archivo y los enlaces de plantilla](assets/importar-contactos-2.jpg)
-  <figcaption>Ventana Importar: zona de carga de archivo y enlaces de descarga de plantilla.</figcaption>
-</figure>
+    <figure markdown="span">
+      ![Ventana Importar, con la zona para soltar el archivo y los enlaces de plantilla](assets/importar-contactos-2.jpg)
+      <figcaption>Ventana Importar: zona de carga de archivo y enlaces de descarga de plantilla.</figcaption>
+    </figure>
 
-La plantilla trae las siguientes columnas:
+2. Completa una fila por contacto. Consulta qué va en cada columna en [Columnas de la plantilla](#columnas-de-la-plantilla).
+3. Vuelve a la ventana **Importar** y arrastra tu archivo a la zona indicada, o haz clic para seleccionarlo desde tu ordenador.
 
-- **Razón Social** *(obligatorio para Empresa)* — Nombre o razón social del contacto.
-- **Tipo** *(opcional)* — Persona o Empresa.
-- **Categoría de contacto** *(opcional)* — Ej. Clientes, Proveedores.
-- **Nombre** y **Apellidos** *(obligatorios para Persona)*.
-- **Correo electrónico**, **Teléfono** y **Página web** *(opcionales)*.
-- **Clave NIF País Residencia** *(opcional)* — Tipo de identificador fiscal (NIF, CIF, VAT, etc.).
-- **NIF** *(obligatorio)*.
-- **Correo electrónico (Contacto)**, **Nombre (Contacto)**, **Apellido (Contacto)**, **Teléfono (Contacto)**, **Posición (Contacto)** *(opcionales)* — Datos de una persona de contacto vinculada, equivalentes a la solapa **Persona** del alta manual.
-- **Dirección**, **Ciudad (Dirección)**, **Código Postal (Dirección)**, **País (Dirección)**, **Región (Dirección)** *(opcionales)* — Equivalentes a la solapa **Dirección** del alta manual.
+## Columnas de la plantilla
 
-!!! info "Razón Social, o Nombre y Apellidos, según el tipo"
-    Si el **Tipo** es **Persona**, no hace falta completar Razón Social: alcanza con **Nombre** y **Apellidos**. Si es **Empresa**, es al revés: Razón Social es obligatorio y Nombre/Apellidos no se usan.
+| Columna | Obligatoria | Qué poner |
+|---|---|---|
+| **Tipo** | No | **Persona** o **Empresa**. Cualquier otro valor (por ejemplo, *Proveedor*) marca la fila como error. |
+| **Razón Social** | Sí, si es Empresa | Nombre o razón social. En una Persona se forma con el nombre y los apellidos. |
+| **Nombre de pila** y **Apellidos** | Sí, si es Persona | No se usan en una Empresa. |
+| **NIF** | Sí | Etendo comprueba que el dígito de control sea correcto. |
+| **Clave NIF País Residencia** | No | Tipo de identificador fiscal (NIF, CIF, VAT, etc.). Si la dejas vacía, se asigna **NIF**. |
+| **Categoría de contacto** | No | Ej. *Cliente*, *Proveedor*. Si la dejas vacía, se asigna **Cliente**. Si no existe, se crea automáticamente. |
+| **Correo electrónico**, **Teléfono**, **Página web** | No | Datos de contacto generales. |
+| Columnas **(Contacto)**: correo, nombre, apellido, teléfono y posición | No | Una persona de contacto vinculada (solapa **Persona**). |
+| Columnas **(Dirección)**: dirección, ciudad, código postal, país y región | No | Una dirección, que queda marcada como dirección de envíos y de facturación (solapa **Dirección**). |
 
-!!! warning "El NIF/CIF debe tener el dígito de control correcto"
-    La pestaña **Correctas** valida que los campos obligatorios estén completos, pero no verifica que el dígito de control del NIF/CIF sea válido. Si el número tiene el dígito de control mal calculado, la fila puede figurar como "Correcta" en la revisión previa y aun así fallar al confirmar la importación. Si eso pasa, lo vas a ver reflejado en la pestaña **Errores** con el motivo exacto: corrige el NIF y usa **Reintentar** para esa fila, u **Omitir** si preferís cargarla más adelante.
+## Revisa la correspondencia de columnas
 
-## Completa y carga tu archivo
-
-1. Completa la plantilla con tus contactos, respetando al menos las columnas obligatorias: **NIF**, y **Razón Social** o **Nombre**/**Apellidos** según el tipo de contacto.
-2. Vuelve a la ventana **Importar** y arrastra tu archivo a la zona indicada, o haz clic para seleccionarlo desde tu computadora.
-
-## Revisa el mapeo de columnas
-
-Al cargar el archivo, Etendo intenta emparejar automáticamente cada columna de tu archivo con el campo correspondiente del contacto (por ejemplo, **Razón Social** → **Commercial Name**, **NIF** → **NIF**). Si alguna columna no se asignó correctamente, haz clic en **Editar correspondencia** para corregirla manualmente antes de continuar.
+1. Comprueba que cada columna de tu archivo esté emparejada con su campo (por ejemplo, la columna **NIF** con el campo **NIF**). Encima de la lista aparece cuántos campos se asignaron, por ejemplo "20/20 campos asignados".
+2. Si alguna columna no se asignó bien, haz clic en **Editar correspondencia** y corrígela.
 
 ## Revisa las filas correctas y con errores
 
-Debajo del mapeo, Etendo separa las filas de tu archivo en dos pestañas:
-
-- **Correctas** — filas listas para importarse.
-- **Errores** — filas con datos faltantes o inválidos, con el motivo indicado en rojo (por ejemplo, "Falta un campo obligatorio").
+Etendo separa las filas de tu archivo en tres pestañas: **Todas**, **Correctas** (listas para importarse) y **Errores** (con el motivo en rojo junto al campo, por ejemplo "Falta un campo obligatorio.").
 
 <figure markdown="span">
-  ![Ventana Importar con una fila correcta lista para importar](assets/importar-contactos-3.jpg)
-  <figcaption>Pestaña Correctas: fila validada, lista para importar.</figcaption>
+  ![Ventana Importar con la pestaña Correctas y cuatro filas listas para importar](assets/importar-contactos-3.jpg)
+  <figcaption>Pestaña Correctas: filas validadas, listas para importar.</figcaption>
 </figure>
 
 <figure markdown="span">
-  ![Ventana Importar con una fila en la pestaña Errores, con el campo obligatorio faltante resaltado](assets/importar-contactos-4.jpg)
-  <figcaption>Pestaña Errores: fila con un campo obligatorio faltante, editable en la misma tabla.</figcaption>
+  ![Ventana Importar con una fila en la pestaña Errores y el campo NIF vacío resaltado](assets/importar-contactos-4.jpg)
+  <figcaption>Pestaña Errores: fila sin NIF, editable en la misma tabla.</figcaption>
 </figure>
 
-Puedes corregir un error directamente en la celda resaltada de la tabla, o hacer clic en **Descargar errores** para exportar solo las filas con problemas, corregirlas en tu archivo original y volver a importarlas después.
+Para cada fila de la pestaña **Errores**, elige una opción:
+
+- **Corregirla en la tabla:** escribe el dato en la celda resaltada. Al salir de la celda, la fila pasa a **Correctas**.
+- **Corregirla en tu archivo:** haz clic en **Descargar errores**, corrige esas filas y vuelve a importarlas después.
+- **Dejarla fuera:** haz clic en el icono **Omitir** (⊘) de la fila.
 
 !!! info "Importar solo lo que está correcto"
-    No hace falta que corrijas los errores para avanzar: el botón **Importar** solo carga las filas de la pestaña **Correctas**. Las filas con errores quedan afuera hasta que las corrijas y las vuelvas a importar.
+    No hace falta que corrijas los errores para avanzar: el botón **Importar** solo carga las filas de la pestaña **Correctas**.
 
 ## Importa los contactos
 
-Haz clic en **Importar [cantidad]**, y confirma en el diálogo que se abre a continuación. Los contactos importados quedan disponibles en la vista lista de Contactos, igual que si los hubieras creado manualmente, y un mensaje de confirmación indica cuántos registros se importaron.
+1. Haz clic en **Importar [cantidad]**.
+2. En el diálogo **Confirmar importación**, revisa cuántos registros se importan y cuántas filas se omiten. Luego haz clic en **Confirmar importación**.
+3. Espera a que termine la barra de progreso. El mensaje "[cantidad] registros importados correctamente" confirma la carga, y los contactos ya aparecen en la vista lista.
 
-<figure markdown="span">
-  ![Vista lista de Contactos con los contactos ya importados](assets/importar-contactos-5.jpg)
-  <figcaption>Vista lista de Contactos después de una importación exitosa.</figcaption>
-</figure>
-
-!!! tip "Espera a que termine antes de revisar el resultado"
-    Para lotes de varias filas, espera unos segundos después de confirmar antes de salir de la ventana o revisar la vista lista de Contactos. Si alguna fila falla (por ejemplo, por un NIF con el dígito de control incorrecto), la vas a ver en la pestaña **Errores**, con el motivo exacto y las opciones **Reintentar** u **Omitir**.
-
----
+    <figure markdown="span">
+      ![Vista lista de Contactos con los contactos importados y el mensaje de confirmación](assets/importar-contactos-5.jpg)
+      <figcaption>Vista lista de Contactos después de una importación exitosa.</figcaption>
+    </figure>
 
 ## Artículos Relacionados
 
