@@ -5,12 +5,12 @@ tags:
   - Comercial
   - Clientes
   - Proveedores
-  - Etendo Go
+  - Etendo
 ---
 
 # ¿Qué es la sección Contactos?
 
-Para poder empezar a trabajar con Etendo Go, una de las primeras cosas que deberás hacer es registrar tus **contactos**, ya que son indispensables para crear documentos tanto de ventas como de compras. Un mismo contacto puede representar a un cliente, un proveedor, o ambos a la vez, sin necesidad de duplicar sus datos.
+Para poder empezar a trabajar con Etendo, una de las primeras cosas que deberás hacer es registrar tus **contactos**, ya que son indispensables para crear documentos tanto de ventas como de compras. Un mismo contacto puede representar a un cliente, un proveedor, o ambos a la vez, sin necesidad de duplicar sus datos.
 
 ## Un solo registro, dos roles
 
@@ -30,6 +30,8 @@ Con tus contactos cargados, ya puedes avanzar a crear tu primer pedido de venta 
 
 ## Artículos Relacionados
 
+- [Cómo crear un contacto](../como-crear-un-contacto/como-crear-un-contacto.md)
+- [Importar contactos](../importar-contactos/importar-contactos.md)
 - [¿Qué es la sección Ventas?](../../ventas/que-es-la-seccion-ventas/que-es-la-seccion-ventas.md)
 - [Crear y gestionar pedidos](../../ventas/crear-y-gestionar-pedidos/crear-y-gestionar-pedidos.md)
 - [Compras](../../../operaciones/compras/que-es-la-seccion-compras/que-es-la-seccion-compras.md)

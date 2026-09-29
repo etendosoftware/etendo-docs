@@ -4,7 +4,7 @@ tags:
     - Amortización
     - Finanzas
     - Referencia
-    - Etendo Go
+    - Etendo
 ---
 
 # Activos: referencia de campos
@@ -43,7 +43,7 @@ Esta sección controla si el activo se amortiza y qué método se usa.
 - **Moneda** — Valor fijo, no editable: *EUR*.
 - **Valor residual** — Valor estimado al final de la vida útil. Debe ser menor o igual al valor del activo.
 - **Valor a amortizar** — Se autocompleta restando el valor residual al valor del activo, pero es un campo editable: puedes sobrescribirlo si lo necesitas. Requerido.
-- **Amortizado anterior** — Importe ya amortizado antes de registrar el activo en Etendo Go. Útil al migrar activos con amortización acumulada en otro sistema. Por defecto: *0*.
+- **Amortizado anterior** — Importe ya amortizado antes de registrar el activo en Etendo. Útil al migrar activos con amortización acumulada en otro sistema. Por defecto: *0*.
 - **Tipo de amortización** — Método de cálculo. Opción disponible: *Lineal*. Requerido.
 - **Tipo de cálculo** — Define cómo se expresa la vida útil del activo. Opciones: *Porcentaje* o *Tiempo*. Requerido.
 
@@ -119,7 +119,7 @@ Al pulsar **Crear amortización**, el formulario se completa con información qu
   <figcaption>Vista lista de Activos filtrada por Grupo activo "Equipos Informáticos", con columnas de identificador, grupo, fechas, valores y estado de amortización.</figcaption>
 </figure>
 
-Desde **[Finanzas > Activos](https://go.etendo.cloud/assets){target="_blank"}** encuentras todos los activos ya registrados, con columnas de identificador, grupo, fechas y valores, además de **Amortizado real** (el importe ya amortizado, ver más arriba) y **Estado de amortización** (el mismo porcentaje, como barra de progreso). Usa **Filtros** para acotar la lista (por ejemplo, por **Grupo activo**, como en la captura) o **+ Nuevo activo** para crear uno.
+Desde **[Finanzas > Activos](https://app.etendo.ai/assets){target="_blank"}** encuentras todos los activos ya registrados, con columnas de identificador, grupo, fechas y valores, además de **Amortizado real** (el importe ya amortizado, ver más arriba) y **Estado de amortización** (el mismo porcentaje, como barra de progreso). Usa **Filtros** para acotar la lista (por ejemplo, por **Grupo activo**, como en la captura) o **+ Nuevo activo** para crear uno.
 
 *[EUR]: Euro — moneda oficial de la zona euro
 

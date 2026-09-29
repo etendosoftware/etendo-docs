@@ -8,7 +8,7 @@ tags:
 
 # Crear y ejecutar un plan de amortización
 
-Al pulsar **Crear amortización** en un activo, Etendo Go genera su **plan de amortización**: una línea por período. Cada línea, a su vez, queda agrupada en un registro de **Amortización** junto con las de los demás activos que comparten esa misma fecha — por mes si la periodicidad es *Mensual*, por año si es *Anual* o *Porcentaje* (que siempre amortiza por año). Por eso **[Finanzas > Amortización](https://go.etendo.cloud/amortization){target="_blank"}** lista un registro por período, no uno por activo, y estos registros no se crean a mano: solo se generan desde el activo.
+Al pulsar **Crear amortización** en un activo, Etendo genera su **plan de amortización**: una línea por período. Cada línea, a su vez, queda agrupada en un registro de **Amortización** junto con las de los demás activos que comparten esa misma fecha — por mes si la periodicidad es *Mensual*, por año si es *Anual* o *Porcentaje* (que siempre amortiza por año). Por eso **[Finanzas > Amortización](https://app.etendo.ai/amortization){target="_blank"}** lista un registro por período, no uno por activo, y estos registros no se crean a mano: solo se generan desde el activo.
 
 Este artículo cubre ambos pasos: generar el plan de amortización desde un activo, y ejecutar, confirmar y contabilizar el registro de Amortización que agrupa sus períodos.
 
@@ -23,7 +23,7 @@ Este artículo cubre ambos pasos: generar el plan de amortización desde un acti
 
     Consulta [Apuntar un activo](../como-apuntar-un-activo/como-apuntar-un-activo.md) para el detalle de estos campos o si todavía no registraste el activo.
 
-1. Ve a **[Finanzas > Activos](https://go.etendo.cloud/assets){target="_blank"}** y abre el activo para el que quieres generar el plan.
+1. Ve a **[Finanzas > Activos](https://app.etendo.ai/assets){target="_blank"}** y abre el activo para el que quieres generar el plan.
 2. Verifica que el interruptor **Amortizar** esté activado y que **Fecha inicio** esté completa.
 3. Confirma el **Tipo de cálculo**:
     - Si es *Porcentaje*, revisa el **% Amortización anual**.
@@ -48,7 +48,7 @@ Este artículo cubre ambos pasos: generar el plan de amortización desde un acti
 
 ## Ejecutar una amortización
 
-Abre el registro desde el período correspondiente en el **Plan de amortización** del activo, o búscalo en **[Finanzas > Amortización](https://go.etendo.cloud/amortization){target="_blank"}**.
+Abre el registro desde el período correspondiente en el **Plan de amortización** del activo, o búscalo en **[Finanzas > Amortización](https://app.etendo.ai/amortization){target="_blank"}**.
 
 <figure markdown="span">
   ![Vista lista de Amortización](assets/como-crear-y-ejecutar-un-plan-de-amortizacion-1.png)

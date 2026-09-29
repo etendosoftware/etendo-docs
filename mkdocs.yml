@@ -1,4 +1,4 @@
-site_name: Etendo Go Academy
+site_name: Etendo Academy
 docs_dir: docs
 site_url: https://etendosoftware.github.io/etendo-go-docs/
 repo_url: https://github.com/etendosoftware/etendo-go-docs
@@ -61,14 +61,15 @@ plugins:
             - Inicio: index.md
             - Primeros pasos:
                 - primeros-pasos/index.md
-                - ¿Qué es Etendo Go?: primeros-pasos/que-es-etendo-go/que-es-etendo-go.md
+                - ¿Qué es Etendo?: primeros-pasos/que-es-etendo/que-es-etendo.md
                 - Cómo crear tu cuenta: primeros-pasos/como-crear-tu-cuenta/como-crear-tu-cuenta.md
-                - Navegar en Etendo Go: primeros-pasos/navegar-en-etendo-go/navegar-en-etendo-go.md
+                - Navegar en Etendo: primeros-pasos/navegar-en-etendo/navegar-en-etendo.md
             - Comercial:
                 - comercial/index.md
                 - Contactos:
                     - ¿Qué es la sección Contactos?: comercial/contactos/que-es-la-seccion-contactos/que-es-la-seccion-contactos.md
                     - Cómo crear un contacto: comercial/contactos/como-crear-un-contacto/como-crear-un-contacto.md
+                    - Importar contactos: comercial/contactos/importar-contactos/importar-contactos.md
                     - Gestionar tus contactos: comercial/contactos/gestionar-tus-contactos/gestionar-tus-contactos.md
                 - Ventas:
                     - Introducción:
@@ -100,6 +101,7 @@ plugins:
                     - Productos:
                         - operaciones/inventario/productos/index.md
                         - Crear un producto: operaciones/inventario/productos/crear-un-producto/crear-un-producto.md
+                        - Importar productos: operaciones/inventario/productos/importar-productos/importar-productos.md
                         - Crear y configurar una categoría de producto: operaciones/inventario/productos/crear-una-categoria-de-producto/crear-una-categoria-de-producto.md
                         - Editar o eliminar un producto: operaciones/inventario/productos/editar-o-eliminar-un-producto/editar-o-eliminar-un-producto.md
                         - Gestionar tarifas de producto: operaciones/inventario/productos/gestionar-tarifas-de-producto/gestionar-tarifas-de-producto.md
@@ -131,6 +133,10 @@ plugins:
                 - sistema/index.md
                 - Configuración:
                     - Cómo gestionar tu organización: sistema/configuracion/como-gestionar-tu-organizacion/como-gestionar-tu-organizacion.md
+                    - ¿Qué es la sección Roles y usuarios?: sistema/configuracion/que-es-roles-y-usuarios/que-es-roles-y-usuarios.md
+                    - Cómo invitar a un usuario: sistema/configuracion/como-invitar-a-un-usuario/como-invitar-a-un-usuario.md
+                    - Gestionar tus usuarios: sistema/configuracion/gestionar-tus-usuarios/gestionar-tus-usuarios.md
+                    - Glosario de Roles y usuarios: sistema/configuracion/glosario-de-roles-y-usuarios/glosario-de-roles-y-usuarios.md
 
   - glightbox
   - tags

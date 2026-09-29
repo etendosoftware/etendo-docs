@@ -3,7 +3,7 @@ tags:
     - Producto
     - Tarifas
     - Inventario
-    - Etendo Go
+    - Etendo
 ---
 
 # Gestionar tarifas de producto
@@ -12,7 +12,7 @@ Este artículo cubre cómo administrar los precios de un producto en las distint
 
 ## Ve a la pestaña Precio
 
-Abre el producto desde **[Inventario > Producto](https://go.etendo.cloud/product){target="_blank"}** y ve a la pestaña **Precio**. Un selector a la izquierda te permite alternar entre **Venta** y **Compra** para ver las tarifas de cada tipo por separado.
+Abre el producto desde **[Inventario > Producto](https://app.etendo.ai/product){target="_blank"}** y ve a la pestaña **Precio**. Un selector a la izquierda te permite alternar entre **Venta** y **Compra** para ver las tarifas de cada tipo por separado.
 
 <figure markdown="span">
   ![Pestaña Precio, listas de precios de venta](assets/como-gestionar-tarifas-de-producto-1.png)
@@ -37,6 +37,7 @@ Para editar, modifica el **Precio unitario** o el **Precio de lista** de una fil
 ## Artículos Relacionados
 
 - [Crear un producto](../crear-un-producto/crear-un-producto.md)
+- [Importar productos](../importar-productos/importar-productos.md)
 - [Editar o eliminar un producto](../editar-o-eliminar-un-producto/editar-o-eliminar-un-producto.md)
 - [¿Qué es la sección de Productos?](../index.md)
 
