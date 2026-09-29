@@ -58,7 +58,7 @@ Un filtro de período te permite enfocarte en el rango de fechas que te interesa
 
 ## Artículos Relacionados
 
-- [Cómo crear tu cuenta](../como-crear-tu-cuenta/como-crear-tu-cuenta.md) — regístrate y configura tu cuenta en cuatro pasos: registro, confirmación de correo, perfil y datos de la empresa.
+- [Cómo crear tu cuenta](../como-crear-tu-cuenta/como-crear-tu-cuenta.md) — regístrate, prueba la demo, crea tu entorno productivo y completa las tareas del panel Primeros pasos hasta emitir tu primera factura.
 - [Contactos](../../comercial/contactos/que-es-la-seccion-contactos/que-es-la-seccion-contactos.md) — carga tus primeros contactos antes de emitir tu primer documento de venta o compra.
 
 Con la cuenta lista, puedes empezar a facturar, registrar gastos y consultar reportes en cuestión de minutos. Prueba Etendo, sin necesidad de tarjeta de crédito ni configuración adicional.

@@ -24,7 +24,7 @@ Todo lo que necesitas para dar tus primeros pasos en Etendo: qué es la platafor
 
     ---
 
-    Regístrate, confirma tu correo y completa tu perfil y los datos de tu empresa en cuatro pasos para empezar a trabajar.
+    Regístrate, prueba la demo, crea tu entorno productivo y completa las tareas del panel Primeros pasos hasta emitir tu primera factura.
 
     [:octicons-arrow-right-24: Leer más](como-crear-tu-cuenta/como-crear-tu-cuenta.md)
 
