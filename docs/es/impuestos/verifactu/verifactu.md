@@ -32,7 +32,7 @@ Si tu organización **no está obligada al SII** (no es Gran Empresa, no pertene
 
 ## Cómo Activarlo
 
-1. Ve a **[Configuración > Configuración Fiscal](https://app.etendo.software/fiscal-config){target="_blank"}**.
+1. Ve a **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}**.
 2. Selecciona tu territorio: **España/Baleares**, **Canarias** o **Ceuta/Melilla**.
 3. Para España/Baleares o Canarias, cuando el asistente pregunte si estás obligada al SII, responde que **no** y elige **VERI\*FACTU** entre las dos opciones ofrecidas. Para Ceuta/Melilla, el asistente no pregunta nada: pasa directo a confirmar VERI\*FACTU.
 4. Revisa el resumen y pulsa **Confirmar**.

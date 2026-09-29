@@ -9,7 +9,7 @@ tags:
 
 # Monitor Fiscal
 
-El **Monitor Fiscal**, en **[Finanzas > Monitor Fiscal](https://app.etendo.software/fiscal-monitor){target="_blank"}**, es el panel donde revisas el estado del envío de tus facturas al sistema fiscal activo de tu organización (SII, TicketBAI o VERI\*FACTU) y sus incidencias.
+El **Monitor Fiscal**, en **[Finanzas > Monitor Fiscal](https://app.etendo.ai/fiscal-monitor){target="_blank"}**, es el panel donde revisas el estado del envío de tus facturas al sistema fiscal activo de tu organización (SII, TicketBAI o VERI\*FACTU) y sus incidencias.
 
 ## Antes de Activar un Sistema Fiscal
 

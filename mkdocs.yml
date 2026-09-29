@@ -125,6 +125,10 @@ plugins:
                     - ¿Qué es la conciliación bancaria en Etendo?: finanzas/que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo.md
                     - Conciliar o desconciliar movimientos contra documentos: finanzas/como-conciliar-o-desconciliar-movimientos-contra-documentos/como-conciliar-o-desconciliar-movimientos-contra-documentos.md
                     - Configurar reglas para automatizar la conciliación: finanzas/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria.md
+                - Activos y amortización:
+                    - Apuntar un activo: finanzas/como-apuntar-un-activo/como-apuntar-un-activo.md
+                    - "Activos: referencia de campos": finanzas/referencia-de-campos-de-activo/referencia-de-campos-de-activo.md
+                    - Crear y ejecutar un plan de amortización: finanzas/como-crear-y-ejecutar-un-plan-de-amortizacion/como-crear-y-ejecutar-un-plan-de-amortizacion.md
             - Impuestos:
                 - impuestos/index.md
                 - ¿Qué puedes hacer en Impuestos?: impuestos/que-puedes-hacer-en-impuestos/que-puedes-hacer-en-impuestos.md
@@ -137,10 +141,6 @@ plugins:
                 - Monitor Fiscal: impuestos/monitor-fiscal/monitor-fiscal.md
                 - Modelo 303: impuestos/modelo-303/modelo-303.md
                 - Modelo 349: impuestos/modelo-349/modelo-349.md
-                - Activos y amortización:
-                    - Apuntar un activo: finanzas/como-apuntar-un-activo/como-apuntar-un-activo.md
-                    - "Activos: referencia de campos": finanzas/referencia-de-campos-de-activo/referencia-de-campos-de-activo.md
-                    - Crear y ejecutar un plan de amortización: finanzas/como-crear-y-ejecutar-un-plan-de-amortizacion/como-crear-y-ejecutar-un-plan-de-amortizacion.md
             - Sistema:
                 - sistema/index.md
                 - Configuración:

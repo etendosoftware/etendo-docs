@@ -26,7 +26,7 @@ Dentro de TicketBAI, esos mismos supuestos sí se evalúan para decidir si adem�
 
 ## Cómo Activarlo
 
-1. Ve a **[Configuración > Configuración Fiscal](https://app.etendo.software/fiscal-config){target="_blank"}**.
+1. Ve a **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}**.
 2. Selecciona tu territorio: **Álava**, **Bizkaia** o **Guipúzcoa**.
 
     <figure markdown="span">
@@ -50,7 +50,7 @@ Dentro de TicketBAI, esos mismos supuestos sí se evalúan para decidir si adem�
 
 ## Detalles Operativos
 
-Tras confirmar, la pantalla **[Configuración > Configuración Fiscal](https://app.etendo.software/fiscal-config){target="_blank"}** incluye una pestaña **TicketBAI** con sus detalles operativos:
+Tras confirmar, la pantalla **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}** incluye una pestaña **TicketBAI** con sus detalles operativos:
 
 <figure markdown="span">
   ![Pestaña TicketBAI de Configuración Fiscal con el territorio y el envío automático](assets/ticketbai-4.jpg)

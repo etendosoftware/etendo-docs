@@ -35,7 +35,7 @@ Si no estás en ninguno de estos supuestos, puedes acogerte al SII de forma **vo
 
 ## Cómo Activarlo
 
-1. Ve a **[Configuración > Configuración Fiscal](https://app.etendo.software/fiscal-config){target="_blank"}**.
+1. Ve a **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}**.
 2. Selecciona tu territorio fiscal.
 3. Si tu territorio ofrece varias opciones (España/Baleares o Canarias), responde que **sí estás obligado al SII**, o elige **SII voluntario** si no lo estás pero prefieres este sistema frente a VERI\*FACTU. Si tu territorio es **Navarra**, el asistente te lleva directo a confirmar. Ceuta/Melilla no ofrece SII como opción.
 4. Revisa el resumen y pulsa **Confirmar**.
@@ -47,10 +47,10 @@ Si no estás en ninguno de estos supuestos, puedes acogerte al SII de forma **vo
 
 ## Detalles Operativos
 
-Tras confirmar, la pantalla se llama **Configuración Fiscal** (con el sufijo del sistema activo, por ejemplo *"Configuración Fiscal SII + TBAI"* si además activaste TicketBAI) y queda disponible en **[Configuración > Configuración Fiscal](https://app.etendo.software/fiscal-config){target="_blank"}**, con una pestaña **SII** para completar sus detalles operativos:
+Tras confirmar, la pantalla se llama **Configuración Fiscal** (con el sufijo del sistema activo, por ejemplo *"Configuración Fiscal SII + TBAI"* si además activaste TicketBAI) y queda disponible en **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}**, con una pestaña **SII** para completar sus detalles operativos:
 
 <figure markdown="span">
-  ![Pestaña SII de Configuración Fiscal con Autorizaciones AEAT y Certificado digital](assets/sii-3.jpg)
+  ![Pestaña SII de Configuración Fiscal con Autorizaciones AEAT y Certificado digital](assets/sii-3.png)
   <figcaption>Pestaña SII: Autorizaciones especiales AEAT y el certificado digital para autenticar con Hacienda.</figcaption>
 </figure>
 

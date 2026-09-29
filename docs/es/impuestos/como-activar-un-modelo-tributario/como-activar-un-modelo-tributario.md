@@ -14,7 +14,7 @@ Antes de poder facturar, cada organización debe activar su **modelo tributario*
 
 ## Cómo Activar el Sistema Fiscal (Asistente Guiado)
 
-1. Ve a **[Configuración > Configuración Fiscal](https://app.etendo.software/fiscal-config){target="_blank"}**.
+1. Ve a **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}**.
 2. **Paso 1 — Territorio:** selecciona el territorio fiscal en el que opera tu organización.
 
     <figure markdown="span">
@@ -63,7 +63,7 @@ Si prefieres elegir el sistema fiscal tú mismo, sin responder a las preguntas d
 4. Pulsa **Continuar** y confirma.
 
 !!! info "Puedes cambiarlo más adelante"
-    Tanto si usas el asistente guiado como la configuración manual, podrás editar cualquier campo después desde la misma pantalla, que una vez configurada pasa a llamarse **Configuración Fiscal** con el sufijo de tu sistema activo (por ejemplo, *"Configuración Fiscal SII + TBAI"*) y se ubica en **[Configuración > Configuración Fiscal](https://app.etendo.software/fiscal-config){target="_blank"}**.
+    Tanto si usas el asistente guiado como la configuración manual, podrás editar cualquier campo después desde la misma pantalla, que una vez configurada pasa a llamarse **Configuración Fiscal** con el sufijo de tu sistema activo (por ejemplo, *"Configuración Fiscal SII + TBAI"*) y se ubica en **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}**.
 
 ## Artículos Relacionados
 

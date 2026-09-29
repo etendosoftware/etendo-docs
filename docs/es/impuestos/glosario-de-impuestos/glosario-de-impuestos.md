@@ -79,11 +79,11 @@ Dos regímenes especiales de IVA que se reflejan con un **Índice** negativo en 
 
 ## Catálogo de modelos
 
-Panel en **[Finanzas > Modelos Fiscales](https://app.etendo.software/fiscal-models){target="_blank"}** donde activas los modelos fiscales que vas a gestionar (Modelo 303, Modelo 349). Un modelo tiene que estar activo antes de poder crear declaraciones para él. Mientras no tengas ninguno activo, Modelos Fiscales muestra el aviso "No hay modelos activos. Configúralos desde el Catálogo de modelos." Para activar uno: pulsa **Catálogo de modelos** y activa su interruptor (por ejemplo, "Modelo 303 - Autoliquidación IVA"); con el modelo activo, el botón **+ Nueva declaración** queda disponible.
+Panel en **[Finanzas > Modelos Fiscales](https://app.etendo.ai/fiscal-models){target="_blank"}** donde activas los modelos fiscales que vas a gestionar (Modelo 303, Modelo 349). Un modelo tiene que estar activo antes de poder crear declaraciones para él. Mientras no tengas ninguno activo, Modelos Fiscales muestra el aviso "No hay modelos activos. Configúralos desde el Catálogo de modelos." Para activar uno: pulsa **Catálogo de modelos** y activa su interruptor (por ejemplo, "Modelo 303 - Autoliquidación IVA"); con el modelo activo, el botón **+ Nueva declaración** queda disponible.
 
 ## Declaración
 
-Documento periódico que resume la información fiscal de un período para presentarlo ante Hacienda, por ejemplo el Modelo 303 o el Modelo 349. Se crea desde **[Finanzas > Modelos Fiscales](https://app.etendo.software/fiscal-models){target="_blank"}**, una vez activado el modelo correspondiente en el Catálogo de modelos.
+Documento periódico que resume la información fiscal de un período para presentarlo ante Hacienda, por ejemplo el Modelo 303 o el Modelo 349. Se crea desde **[Finanzas > Modelos Fiscales](https://app.etendo.ai/fiscal-models){target="_blank"}**, una vez activado el modelo correspondiente en el Catálogo de modelos.
 
 ## Período
 

@@ -9,7 +9,7 @@ tags:
 
 # Tipos de Impuestos y sus Porcentajes
 
-Etendo incluye un catálogo predefinido de impuestos en **[Finanzas > Impuesto](https://app.etendo.software/tax){target="_blank"}**, clasificados por **Categoría de Impuesto** en **[Finanzas > Categoría de Impuesto](https://app.etendo.software/tax-category){target="_blank"}**. Este artículo explica cómo se organiza ese catálogo y qué porcentajes aplica cada tipo.
+Etendo incluye un catálogo predefinido de impuestos en **[Finanzas > Impuesto](https://app.etendo.ai/tax){target="_blank"}**, clasificados por **Categoría de Impuesto** en **[Finanzas > Categoría de Impuesto](https://app.etendo.ai/tax-category){target="_blank"}**. Este artículo explica cómo se organiza ese catálogo y qué porcentajes aplica cada tipo.
 
 ## Tipo de Impuesto (Régimen)
 
