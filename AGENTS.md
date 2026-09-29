@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This file provides instructions for AI agents working on the `etendo-go-docs` repository.
+This file provides instructions for AI agents working on the `etendo-docs` repository.
 
 ## Purpose
 

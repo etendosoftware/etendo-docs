@@ -3,7 +3,7 @@
 Documentation for **Etendo**, split into two parts:
 
 - **`docs/`** — the human-facing [MkDocs](https://www.mkdocs.org/) site, published at
-  [etendosoftware.github.io/etendo-go-docs](https://etendosoftware.github.io/etendo-go-docs/).
+  [etendosoftware.github.io/etendo-docs](https://etendosoftware.github.io/etendo-docs/).
 - **`agentic/`** — machine-readable guides written for AI agents (see [`AGENTS.md`](./AGENTS.md)).
   This is the content indexed by [Context7](https://context7.com).
 
@@ -14,7 +14,7 @@ version-specific documentation straight into your LLM / coding assistant. This
 repository is published as a Context7 library so any MCP-capable agent can pull
 the Etendo agentic docs on demand.
 
-- **Library ID:** `/etendosoftware/etendo-go-docs`
+- **Library ID:** `/etendosoftware/etendo-docs`
 - **Indexed content:** the `agentic/` folder only (configured in
   [`context7.json`](./context7.json)).
 - **Auto-refresh:** every push to `main` triggers a re-index via the
@@ -57,7 +57,7 @@ Once the MCP server is connected, reference this library in any prompt. Two ways
 
    ```text
    How do I configure the MCP treasury tools in Etendo?
-   use library /etendosoftware/etendo-go-docs
+   use library /etendosoftware/etendo-docs
    ```
 
 2. **Let Context7 resolve it** — mention "Etendo" and add `use context7`:
