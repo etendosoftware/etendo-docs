@@ -109,22 +109,88 @@
         <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/"/>
     </url>
     <url>
-        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/apuntar-un-activo/apuntar-un-activo/</loc>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja/</loc>
         <lastmod>2026-09-29</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/apuntar-un-activo/apuntar-un-activo/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja/"/>
     </url>
     <url>
-        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/crear-un-plan-de-amortizacion/crear-un-plan-de-amortizacion/</loc>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/como-apuntar-un-activo/como-apuntar-un-activo/</loc>
         <lastmod>2026-09-29</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/crear-un-plan-de-amortizacion/crear-un-plan-de-amortizacion/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/como-apuntar-un-activo/como-apuntar-un-activo/"/>
     </url>
     <url>
-        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/glosario-de-contabilidad/glosario-de-contabilidad/</loc>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/como-borrar-transacciones-del-extracto-bancario/como-borrar-transacciones-del-extracto-bancario/</loc>
         <lastmod>2026-09-29</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/glosario-de-contabilidad/glosario-de-contabilidad/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/como-borrar-transacciones-del-extracto-bancario/como-borrar-transacciones-del-extracto-bancario/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/como-conciliar-o-desconciliar-movimientos-contra-documentos/como-conciliar-o-desconciliar-movimientos-contra-documentos/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/como-conciliar-o-desconciliar-movimientos-contra-documentos/como-conciliar-o-desconciliar-movimientos-contra-documentos/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/como-crear-y-ejecutar-un-plan-de-amortizacion/como-crear-y-ejecutar-un-plan-de-amortizacion/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/como-crear-y-ejecutar-un-plan-de-amortizacion/como-crear-y-ejecutar-un-plan-de-amortizacion/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/glosario-de-finanzas/glosario-de-finanzas/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/glosario-de-finanzas/glosario-de-finanzas/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/que-es-finanzas/que-es-finanzas/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/que-es-finanzas/que-es-finanzas/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo/"/>
+    </url>
+    <url>
+        <loc>https://etendosoftware.github.io/etendo-docs/finanzas/referencia-de-campos-de-activo/referencia-de-campos-de-activo/</loc>
+        <lastmod>2026-09-29</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/finanzas/referencia-de-campos-de-activo/referencia-de-campos-de-activo/"/>
     </url>
     <url>
         <loc>https://etendosoftware.github.io/etendo-docs/operaciones/</loc>
