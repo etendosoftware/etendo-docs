@@ -4,7 +4,7 @@ tags:
     - Finanzas
     - Conciliación Bancaria
     - Automatización
-    - Etendo Go
+    - Etendo
 ---
 
 # Configurar reglas para automatizar la conciliación
@@ -16,7 +16,7 @@ Cuando un movimiento se repite con el mismo texto pero no tiene una factura asoc
 
 ## Crear una regla de matcheo
 
-1. Ve a **[Finanzas > Cuentas](https://go.etendo.cloud/financial-account){target="_blank"}** y haz clic en **[Reglas de matcheo](https://go.etendo.cloud/match-rule){target="_blank"}**.
+1. Ve a **[Finanzas > Cuentas](https://app.etendo.ai/financial-account){target="_blank"}** y haz clic en **[Reglas de matcheo](https://app.etendo.ai/match-rule){target="_blank"}**.
 2. Haz clic en **Nueva regla**.
 3. Completa los campos obligatorios:
       - **Nombre** (por ejemplo, "Comisiones bancarias").
@@ -47,7 +47,7 @@ La columna **Conciliaciones** muestra cuántas veces conciliaciones reales usaro
 
 ## Artículos Relacionados
 
-- [¿Qué es la conciliación bancaria en Etendo Go?](../que-es-la-conciliacion-bancaria-en-etendo-go/que-es-la-conciliacion-bancaria-en-etendo-go.md)
+- [¿Qué es la conciliación bancaria en Etendo?](../que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo.md)
 - [Conciliar o desconciliar movimientos contra documentos](../como-conciliar-o-desconciliar-movimientos-contra-documentos/como-conciliar-o-desconciliar-movimientos-contra-documentos.md)
 
 ---

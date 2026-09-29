@@ -3,12 +3,12 @@ tags:
     - Cuentas
     - Finanzas
     - Conciliación Bancaria
-    - Etendo Go
+    - Etendo
 ---
 
-# ¿Qué es la conciliación bancaria en Etendo Go?
+# ¿Qué es la conciliación bancaria en Etendo?
 
-Conciliar es confirmar que cada línea de tu extracto bancario tiene su documento correspondiente en Etendo Go (una factura, un cobro o un pago), para que el saldo de tu cuenta coincida siempre con el saldo real de tu banco.
+Conciliar es confirmar que cada línea de tu extracto bancario tiene su documento correspondiente en Etendo (una factura, un cobro o un pago), para que el saldo de tu cuenta coincida siempre con el saldo real de tu banco.
 
 ## Cómo funciona el proceso de conciliación
 
@@ -21,7 +21,7 @@ flowchart LR
   E --> D
 ```
 
-Para cada línea pendiente del extracto, Etendo Go busca coincidencias entre cuatro tipos de documento: **Facturas de venta**, **Facturas de compra**, **Cobros** y **Pagos**. Puedes dejar que el sistema proponga la coincidencia con **Automatch**, o elegir el documento manualmente filtrando por tipo, fecha e importe. Una vez que el importe de los documentos seleccionados cubre el importe de la línea, la conciliación queda registrada.
+Para cada línea pendiente del extracto, Etendo busca coincidencias entre cuatro tipos de documento: **Facturas de venta**, **Facturas de compra**, **Cobros** y **Pagos**. Puedes dejar que el sistema proponga la coincidencia con **Automatch**, o elegir el documento manualmente filtrando por tipo, fecha e importe. Una vez que el importe de los documentos seleccionados cubre el importe de la línea, la conciliación queda registrada.
 
 ## Qué incluye esta sección
 
@@ -32,7 +32,7 @@ Para cada línea pendiente del extracto, Etendo Go busca coincidencias entre cua
 
 Así se ve la pestaña **Conciliación** filtrada por **Con sugerencia**, con una línea de extracto pendiente y, a la derecha, la sugerencia de Automatch ya seleccionada:
 
-![Pestaña Conciliación con el filtro Con sugerencia mostrando una línea de extracto pendiente y, a la derecha, el cobro sugerido ya seleccionado con el importe totalmente cubierto](assets/que-es-la-conciliacion-bancaria-en-etendo-go-1.png)
+![Pestaña Conciliación con el filtro Con sugerencia mostrando una línea de extracto pendiente y, a la derecha, el cobro sugerido ya seleccionado con el importe totalmente cubierto](assets/que-es-la-conciliacion-bancaria-en-etendo-1.png)
 
 ## Recursos y próximos pasos
 

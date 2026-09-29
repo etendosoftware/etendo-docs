@@ -3,19 +3,19 @@ tags:
     - Cuentas
     - Finanzas
     - Extracto Bancario
-    - Etendo Go
+    - Etendo
 ---
 
 # Borrar movimientos del extracto bancario
 
-Si una importación generó movimientos duplicados o incorrectos, o cargaste algo a mano por error, puedes borrarlos directamente desde la pestaña **Movimientos** de la cuenta. Esta acción elimina el movimiento dentro de Etendo Go; no modifica el archivo de extracto original de tu banco.
+Si una importación generó movimientos duplicados o incorrectos, o cargaste algo a mano por error, puedes borrarlos directamente desde la pestaña **Movimientos** de la cuenta. Esta acción elimina el movimiento dentro de Etendo; no modifica el archivo de extracto original de tu banco.
 
 !!! warning "Revertir una conciliación"
     Si el movimiento que borras ya estaba **Conciliado**, la conciliación se revierte junto con él: el documento que tenía vinculado (una factura, un cobro o un pago) vuelve a quedar pendiente de conciliar. Revisa el estado de la columna **Conciliación** antes de borrar para evitar sorpresas.
 
 ## Borrar un movimiento individual
 
-1. Abre la cuenta desde **[Finanzas > Cuentas](https://go.etendo.cloud/financial-account){target="_blank"}** y ve a la pestaña **Movimientos**.
+1. Abre la cuenta desde **[Finanzas > Cuentas](https://app.etendo.ai/financial-account){target="_blank"}** y ve a la pestaña **Movimientos**.
 2. Marca la casilla de la fila que quieres borrar. Al seleccionar al menos un movimiento aparece la barra **X Seleccionados** con el botón **Eliminar seleccionados (X)**.
 
 ![Movimiento seleccionado en la pestaña Movimientos, con la barra 1 Seleccionados y el botón Eliminar seleccionados (1)](assets/como-borrar-transacciones-del-extracto-bancario-1.png)
@@ -41,7 +41,7 @@ Borrar los movimientos no elimina el registro del extracto importado en la pesta
 ## Artículos Relacionados
 
 - [Importar o descargar el extracto bancario](../como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario.md)
-- [¿Qué es la conciliación bancaria en Etendo Go?](../que-es-la-conciliacion-bancaria-en-etendo-go/que-es-la-conciliacion-bancaria-en-etendo-go.md)
+- [¿Qué es la conciliación bancaria en Etendo?](../que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo.md)
 
 ---
 Esta obra está bajo la licencia :material-creative-commons: :fontawesome-brands-creative-commons-by: :fontawesome-brands-creative-commons-sa: [CC BY-SA 2.5 ES](https://creativecommons.org/licenses/by-sa/2.5/es/){target="_blank"} de [Futit Services S.L](https://etendo.software){target="_blank"}.

@@ -3,12 +3,12 @@ tags:
     - Finanzas
     - Cuentas
     - Activos
-    - Etendo Go
+    - Etendo
 ---
 
 # ¿Qué es la sección Finanzas?
 
-La sección **Finanzas** es donde Etendo Go centraliza el dinero de tu empresa: tus cuentas de banco, tarjeta y caja, todo lo que entra y sale de ellas, la conciliación contra tu banco, el seguimiento global de cobros y pagos, y el registro contable de tus activos fijos y su amortización.
+La sección **Finanzas** es donde Etendo centraliza el dinero de tu empresa: tus cuentas de banco, tarjeta y caja, todo lo que entra y sale de ellas, la conciliación contra tu banco, el seguimiento global de cobros y pagos, y el registro contable de tus activos fijos y su amortización.
 
 ```mermaid
 flowchart LR
@@ -27,7 +27,7 @@ flowchart LR
   S1 ~~~ S2
 ```
 
-Cada cuenta mantiene su propio saldo y su propio historial. Cuando conectas un banco o importas su extracto, Etendo Go compara esas líneas contra tus movimientos, pagos y cobros, y te permite conciliarlos —a mano o de forma automática— para que el saldo de la cuenta siempre coincida con el del banco. En paralelo, tus activos fijos (vehículos, equipos, maquinaria) se amortizan por su cuenta, generando los asientos contables correspondientes cuando confirmas cada período.
+Cada cuenta mantiene su propio saldo y su propio historial. Cuando conectas un banco o importas su extracto, Etendo compara esas líneas contra tus movimientos, pagos y cobros, y te permite conciliarlos —a mano o de forma automática— para que el saldo de la cuenta siempre coincida con el del banco. En paralelo, tus activos fijos (vehículos, equipos, maquinaria) se amortizan por su cuenta, generando los asientos contables correspondientes cuando confirmas cada período.
 
 ## Qué incluye esta sección
 
@@ -47,7 +47,7 @@ Para empezar a operar, da de alta tu primera cuenta desde [Añadir y configurar 
 
 - [Añadir y configurar un banco, tarjeta o caja](../como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja.md)
 - [Gestionar pagos y cobros](../como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros.md)
-- [¿Qué es la conciliación bancaria en Etendo Go?](../que-es-la-conciliacion-bancaria-en-etendo-go/que-es-la-conciliacion-bancaria-en-etendo-go.md)
+- [¿Qué es la conciliación bancaria en Etendo?](../que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo.md)
 
 ---
 Esta obra está bajo la licencia :material-creative-commons: :fontawesome-brands-creative-commons-by: :fontawesome-brands-creative-commons-sa: [CC BY-SA 2.5 ES](https://creativecommons.org/licenses/by-sa/2.5/es/){target="_blank"} de [Futit Services S.L](https://etendo.software){target="_blank"}.

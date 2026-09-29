@@ -3,22 +3,22 @@ tags:
     - Cuentas
     - Finanzas
     - Extracto Bancario
-    - Etendo Go
+    - Etendo
 ---
 
 # Importar o descargar el extracto bancario
 
-Si tu cuenta no está conectada por Open Banking, puedes importar el extracto de tu banco como archivo para que Etendo Go genere los movimientos automáticamente.
+Si tu cuenta no está conectada por Open Banking, puedes importar el extracto de tu banco como archivo para que Etendo genere los movimientos automáticamente.
 
 ## Importar el extracto bancario
 
-1. Abre la cuenta desde **[Finanzas > Cuentas](https://go.etendo.cloud/financial-account){target="_blank"}** y ve a la pestaña **Extractos importados**.
+1. Abre la cuenta desde **[Finanzas > Cuentas](https://app.etendo.ai/financial-account){target="_blank"}** y ve a la pestaña **Extractos importados**.
 2. Haz clic en **Importar extracto**.
-3. En el paso **1. Subir archivo**, arrastra el archivo o selecciónalo desde tu equipo. Formatos compatibles: **Cuaderno 43**, **CSV** o **Excel** (máximo 10 MB). Etendo Go detecta el formato automáticamente.
+3. En el paso **1. Subir archivo**, arrastra el archivo o selecciónalo desde tu equipo. Formatos compatibles: **CSV** o **Excel** (máximo 10 MB). Etendo detecta el formato automáticamente.
 
     ![Paso 1 Subir archivo del asistente de importación de extracto bancario](assets/como-importar-o-descargar-el-extracto-bancario-1.png)
 
-4. En el paso **2. Revisar líneas**, comprueba las líneas detectadas antes de continuar: Etendo Go muestra el total de **Líneas**, **Abonos**, **Cargos** y el **Periodo** cubierto, junto con el detalle de cada línea (Fecha, Concepto y su importe como Cargo o Abono).
+4. En el paso **2. Revisar líneas**, comprueba las líneas detectadas antes de continuar: Etendo muestra el total de **Líneas**, **Abonos**, **Cargos** y el **Periodo** cubierto, junto con el detalle de cada línea (Fecha, Concepto y su importe como Cargo o Abono).
 
     ![Paso 2 Revisar líneas del asistente de importación de extracto bancario, con el resumen de líneas, abonos, cargos y periodo, y el detalle de cada línea](assets/como-importar-o-descargar-el-extracto-bancario-2.png)
 
@@ -43,7 +43,7 @@ La exportación se genera y descarga de inmediato (confirmado con el aviso **Exp
 ## Artículos Relacionados
 
 - [Borrar transacciones del extracto bancario](../como-borrar-transacciones-del-extracto-bancario/como-borrar-transacciones-del-extracto-bancario.md)
-- [¿Qué es la conciliación bancaria en Etendo Go?](../que-es-la-conciliacion-bancaria-en-etendo-go/que-es-la-conciliacion-bancaria-en-etendo-go.md)
+- [¿Qué es la conciliación bancaria en Etendo?](../que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo.md)
 - [Conciliar o desconciliar movimientos contra documentos](../como-conciliar-o-desconciliar-movimientos-contra-documentos/como-conciliar-o-desconciliar-movimientos-contra-documentos.md)
 
 ---

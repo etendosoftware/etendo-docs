@@ -4,7 +4,7 @@ tags:
     - Finanzas
     - Activos
     - Glosario
-    - Etendo Go
+    - Etendo
 ---
 
 # Glosario de Finanzas
@@ -19,7 +19,7 @@ Distribución del valor de un activo a lo largo de su vida útil, calculada seg�
 
 ## Amortizado
 
-Porcentaje o importe ya amortizado de un activo, calculado solo sobre los períodos de su plan que están en estado **Confirmado** (los **Pendientes** no cuentan, aunque su fecha ya haya pasado). Se muestra como porcentaje en el panel **Resumen de amortización** del activo, y como importe en euros en la columna **Amortizado real** de la vista de lista de **[Finanzas > Activos](https://go.etendo.cloud/assets){target="_blank"}**. Ver [Activos: referencia de campos](../referencia-de-campos-de-activo/referencia-de-campos-de-activo.md).
+Porcentaje o importe ya amortizado de un activo, calculado solo sobre los períodos de su plan que están en estado **Confirmado** (los **Pendientes** no cuentan, aunque su fecha ya haya pasado). Se muestra como porcentaje en el panel **Resumen de amortización** del activo, y como importe en euros en la columna **Amortizado real** de la vista de lista de **[Finanzas > Activos](https://app.etendo.ai/assets){target="_blank"}**. Ver [Activos: referencia de campos](../referencia-de-campos-de-activo/referencia-de-campos-de-activo.md).
 
 ## Archivar
 
@@ -31,7 +31,7 @@ Registro en la contabilidad que refleja el gasto de amortización de un período
 
 ## Automatch
 
-El motor de sugerencias automáticas de conciliación de Etendo Go. Compara las líneas pendientes de tu extracto bancario contra tus facturas, cobros y pagos por fecha e importe, y te propone las coincidencias para que las confirmes con un clic.
+El motor de sugerencias automáticas de conciliación de Etendo. Compara las líneas pendientes de tu extracto bancario contra tus facturas, cobros y pagos por fecha e importe, y te propone las coincidencias para que las confirmes con un clic.
 
 ## Borrador
 
@@ -39,11 +39,11 @@ Estado inicial y editable de una Amortización. En Borrador se pueden añadir, m
 
 ## Caja
 
-Tipo de cuenta para el efectivo que se maneja fuera del banco (por ejemplo, la caja chica de una oficina o la caja de un punto de venta). A diferencia de un Banco o una Tarjeta, una Caja no se conecta ni importa extractos de una entidad externa: todos sus movimientos se registran a mano. Ver [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-cajas-contables-y-movimientos-en-efectivo/como-gestionar-cajas-contables-y-movimientos-en-efectivo.md).
+Tipo de cuenta para el efectivo que se maneja fuera del banco (por ejemplo, la caja chica de una oficina o la caja de un punto de venta). A diferencia de un Banco o una Tarjeta, una Caja no se conecta ni importa extractos de una entidad externa: todos sus movimientos se registran a mano. Ver [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo.md).
 
 ## Cobro
 
-Registro del dinero que recibes de un cliente. Normalmente se crea desde una factura de venta, pero también puede originarse en una Entrada registrada a mano en una caja. En ambos casos queda disponible en la vista global **Finanzas > Cobro**. Ver [Gestionar pagos y cobros](../como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros.md) y [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-cajas-contables-y-movimientos-en-efectivo/como-gestionar-cajas-contables-y-movimientos-en-efectivo.md).
+Registro del dinero que recibes de un cliente. Normalmente se crea desde una factura de venta, pero también puede originarse en una Entrada registrada a mano en una caja. En ambos casos queda disponible en la vista global **Finanzas > Cobro**. Ver [Gestionar pagos y cobros](../como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros.md) y [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo.md).
 
 ## Concepto contable
 
@@ -71,7 +71,7 @@ Acción que genera los asientos contables de una Amortización ya Procesada y la
 
 ## Cuenta
 
-Cuenta de banco, tarjeta o caja que registras en Etendo Go para llevar el control de tu dinero. Mantiene su propio saldo y su propio historial de movimientos, y puede conectarse por Open Banking o gestionarse sin conexión. Ver [Añadir y configurar un banco, tarjeta o caja](../como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja.md).
+Cuenta de banco, tarjeta o caja que registras en Etendo para llevar el control de tu dinero. Mantiene su propio saldo y su propio historial de movimientos, y puede conectarse por Open Banking o gestionarse sin conexión. Ver [Añadir y configurar un banco, tarjeta o caja](../como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja.md).
 
 ## Cuenta transitoria
 
@@ -83,7 +83,7 @@ Campos opcionales para asociar un registro a un eje de análisis: **Proyecto**, 
 
 ## Extracto bancario
 
-Archivo con el detalle de los movimientos de una cuenta bancaria en un período. Se importa a Etendo Go (en formato Cuaderno 43, CSV o Excel) para generar sus movimientos automáticamente, o se descarga para tu propio registro. Ver [Importar o descargar el extracto bancario](../como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario.md).
+Archivo con el detalle de los movimientos de una cuenta bancaria en un período. Se importa a Etendo (en formato, CSV o Excel) para generar sus movimientos automáticamente, o se descarga para tu propio registro. Ver [Importar o descargar el extracto bancario](../como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario.md).
 
 ## Grupo activo
 
@@ -95,7 +95,7 @@ Cada entrada o salida de dinero dentro de una cuenta (transferencias, pagos, cob
 
 ## Pago
 
-Registro del dinero que entregas a un proveedor. Normalmente se crea desde una factura de compra, pero también puede originarse en una Salida registrada a mano en una caja. En ambos casos queda disponible en la vista global **Finanzas > Pago**. Ver [Gestionar pagos y cobros](../como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros.md) y [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-cajas-contables-y-movimientos-en-efectivo/como-gestionar-cajas-contables-y-movimientos-en-efectivo.md).
+Registro del dinero que entregas a un proveedor. Normalmente se crea desde una factura de compra, pero también puede originarse en una Salida registrada a mano en una caja. En ambos casos queda disponible en la vista global **Finanzas > Pago**. Ver [Gestionar pagos y cobros](../como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros.md) y [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo.md).
 
 ## Plan de amortización
 

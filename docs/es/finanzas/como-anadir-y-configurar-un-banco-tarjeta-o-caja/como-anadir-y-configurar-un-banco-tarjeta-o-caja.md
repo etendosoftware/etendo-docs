@@ -3,16 +3,16 @@ tags:
     - Cuentas
     - Finanzas
     - Bancos
-    - Etendo Go
+    - Etendo
 ---
 
 # Añadir y configurar un banco, tarjeta o caja
 
-Antes de registrar movimientos, extractos o pagos en Cuentas, necesitas dar de alta al menos una cuenta. Etendo Go admite tres tipos: banco, tarjeta y caja.
+Antes de registrar movimientos, extractos o pagos en Cuentas, necesitas dar de alta al menos una cuenta. Etendo admite tres tipos: banco, tarjeta y caja.
 
 ## Elegir el tipo de cuenta
 
-1. Ve a **[Finanzas > Cuentas](https://go.etendo.cloud/financial-account){target="_blank"}**.
+1. Ve a **[Finanzas > Cuentas](https://app.etendo.ai/financial-account){target="_blank"}**.
 2. Haz clic en **Nueva cuenta**.
 3. Elige uno de los tres tipos disponibles:
       - **Banco** — cuentas corrientes, depósitos, préstamos y líneas de crédito.
@@ -21,7 +21,7 @@ Antes de registrar movimientos, extractos o pagos en Cuentas, necesitas dar de a
 
 ![Modal Nueva cuenta con las tres opciones de tipo: Banco, Caja y Tarjeta](assets/como-anadir-y-configurar-un-banco-tarjeta-o-caja-1.png)
 
-Si elegiste **Banco** o **Tarjeta**, Etendo Go te pregunta a continuación si quieres crear la cuenta **Con conexión** o **Sin conexión**. **Caja** no ofrece esta opción: pasa directamente al formulario manual, porque no existe una entidad bancaria que sincronizar.
+Si elegiste **Banco** o **Tarjeta**, Etendo te pregunta a continuación si quieres crear la cuenta **Con conexión** o **Sin conexión**. **Caja** no ofrece esta opción: pasa directamente al formulario manual, porque no existe una entidad bancaria que sincronizar.
 
 ## Añadir una cuenta sin conexión
 
@@ -42,11 +42,11 @@ Para **Caja**, el formulario se reduce a **Nombre de la cuenta** y **Moneda**, s
 
 ## Añadir una cuenta con conexión
 
-Usa esta opción para que Etendo Go sincronice los movimientos automáticamente con tu banco (Open Banking), sin introducir datos a mano.
+Usa esta opción para que Etendo sincronice los movimientos automáticamente con tu banco (Open Banking), sin introducir datos a mano.
 
 1. Elige **Con conexión**.
 2. Busca tu banco en el buscador o selecciónalo del listado (Revolut, ING, BBVA, CaixaBank, y otros).
-3. Completa la autenticación en la ventana que abre tu banco. La ventana se cierra sola al finalizar y Etendo Go sincroniza los movimientos existentes.
+3. Completa la autenticación en la ventana que abre tu banco. La ventana se cierra sola al finalizar y Etendo sincroniza los movimientos existentes.
 
 ## Configurar la cuenta después de crearla
 
@@ -61,7 +61,7 @@ Desde el listado de **Cuentas**, usa **Editar cuenta** (icono de lápiz) para co
 
 - [¿Qué es la sección Finanzas?](../que-es-finanzas/que-es-finanzas.md)
 - [Conectar, desconectar, desactivar o reactivar una cuenta](../como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md)
-- [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-cajas-contables-y-movimientos-en-efectivo/como-gestionar-cajas-contables-y-movimientos-en-efectivo.md)
+- [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo.md)
 
 ---
 Esta obra está bajo la licencia :material-creative-commons: :fontawesome-brands-creative-commons-by: :fontawesome-brands-creative-commons-sa: [CC BY-SA 2.5 ES](https://creativecommons.org/licenses/by-sa/2.5/es/){target="_blank"} de [Futit Services S.L](https://etendo.software){target="_blank"}.

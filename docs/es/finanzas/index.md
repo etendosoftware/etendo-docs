@@ -8,7 +8,7 @@ hide:
 
 # Finanzas
 
-Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cuentas, extractos bancarios, conciliación, pagos y cobros, y la contabilidad de tus activos y su amortización.
+Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo: cuentas, extractos bancarios, conciliación, pagos y cobros, y la contabilidad de tus activos y su amortización.
 
 ## Introducción
 
@@ -48,17 +48,17 @@ Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cu
 
     ---
 
-    Gestiona el ciclo de vida completo de una cuenta bancaria dentro de Etendo Go.
+    Gestiona el ciclo de vida completo de una cuenta bancaria dentro de Etendo.
 
     [:octicons-arrow-right-24: Leer más](como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md)
 
--   :material-cash-register:{ .lg .middle } **Gestionar cajas contables y movimientos en efectivo**
+-   :material-cash-register:{ .lg .middle } **Gestionar caja y movimientos en efectivo**
 
     ---
 
-    Registra y consulta los movimientos en efectivo asociados a tus cajas contables.
+    Registra y consulta los movimientos en efectivo asociados a tus cajas.
 
-    [:octicons-arrow-right-24: Leer más](como-gestionar-cajas-contables-y-movimientos-en-efectivo/como-gestionar-cajas-contables-y-movimientos-en-efectivo.md)
+    [:octicons-arrow-right-24: Leer más](como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo.md)
 
 </div>
 
@@ -84,7 +84,7 @@ Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cu
 
     ---
 
-    Incorpora el extracto de tu banco a Etendo Go o descárgalo para tu propio registro.
+    Incorpora el extracto de tu banco a Etendo o descárgalo para tu propio registro.
 
     [:octicons-arrow-right-24: Leer más](como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario.md)
 
@@ -102,13 +102,13 @@ Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cu
 
 <div class="grid cards" markdown>
 
--   :material-swap-horizontal:{ .lg .middle } **¿Qué es la conciliación bancaria en Etendo Go?**
+-   :material-swap-horizontal:{ .lg .middle } **¿Qué es la conciliación bancaria en Etendo ?**
 
     ---
 
     Entiende para qué sirve conciliar tus cuentas y qué documentos intervienen en el proceso.
 
-    [:octicons-arrow-right-24: Leer más](que-es-la-conciliacion-bancaria-en-etendo-go/que-es-la-conciliacion-bancaria-en-etendo-go.md)
+    [:octicons-arrow-right-24: Leer más](que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo.md)
 
 -   :material-check-decagram-outline:{ .lg .middle } **Conciliar o desconciliar movimientos contra documentos**
 
@@ -122,7 +122,7 @@ Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cu
 
     ---
 
-    Define reglas de coincidencia para que Etendo Go proponga conciliaciones automáticamente.
+    Define reglas de coincidencia para que Etendo proponga conciliaciones automáticamente.
 
     [:octicons-arrow-right-24: Leer más](como-configurar-reglas-para-automatizar-la-conciliacion-bancaria/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria.md)
 
@@ -136,7 +136,7 @@ Todo lo que necesitas para gestionar las finanzas de tu empresa en Etendo Go: cu
 
     ---
 
-    Descubre qué es un activo en Etendo Go y aprende a registrarlo y configurar su amortización.
+    Descubre qué es un activo en Etendo y aprende a registrarlo y configurar su amortización.
 
     [:octicons-arrow-right-24: Leer más](como-apuntar-un-activo/como-apuntar-un-activo.md)
 

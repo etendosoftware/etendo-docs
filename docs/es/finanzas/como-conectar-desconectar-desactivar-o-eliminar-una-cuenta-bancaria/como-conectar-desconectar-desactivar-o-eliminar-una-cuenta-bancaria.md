@@ -2,7 +2,7 @@
 tags:
     - Cuentas
     - Finanzas
-    - Etendo Go
+    - Etendo
 ---
 
 # Conectar, desconectar, archivar, desarchivar o eliminar una cuenta
@@ -17,7 +17,7 @@ Todas las acciones de esta página se disparan desde el mismo menú: en el lista
 
 Aplica a cuentas de tipo Banco o Tarjeta creadas como **Sin conexión**.
 
-1. Ve a **[Finanzas > Cuentas](https://go.etendo.cloud/financial-account){target="_blank"}**.
+1. Ve a **[Finanzas > Cuentas](https://app.etendo.ai/financial-account){target="_blank"}**.
 2. En la fila de la cuenta, haz clic en **Conectar banco** (o abre **Acciones de la fila > Conectar banco**).
 3. Busca y selecciona tu banco en el listado.
 4. Completa la autenticación en la ventana que abre el banco. Se cierra sola al finalizar y la cuenta pasa a mostrar el estado **Sincronizado**.
@@ -34,7 +34,7 @@ La cuenta vuelve a mostrarse como **Sin conexión** en el listado, con el enlace
 
 ## Archivar una cuenta
 
-En Etendo Go, "desactivar" una cuenta corresponde a la acción **Archivar cuenta**.
+En Etendo, "desactivar" una cuenta corresponde a la acción **Archivar cuenta**.
 
 1. En el listado de **Cuentas**, abre **Acciones de la fila** (o **Editar cuenta**) sobre la cuenta.
 2. Selecciona **Archivar cuenta**.
@@ -61,7 +61,7 @@ En Etendo Go, "desactivar" una cuenta corresponde a la acción **Archivar cuenta
 
 - [Añadir y configurar un banco, tarjeta o caja](../como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja.md)
 - [Importar o descargar el extracto bancario](../como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario.md)
-- [¿Qué es la conciliación bancaria en Etendo Go?](../que-es-la-conciliacion-bancaria-en-etendo-go/que-es-la-conciliacion-bancaria-en-etendo-go.md)
+- [¿Qué es la conciliación bancaria en Etendo?](../que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo.md)
 
 ---
 Esta obra está bajo la licencia :material-creative-commons: :fontawesome-brands-creative-commons-by: :fontawesome-brands-creative-commons-sa: [CC BY-SA 2.5 ES](https://creativecommons.org/licenses/by-sa/2.5/es/){target="_blank"} de [Futit Services S.L](https://etendo.software){target="_blank"}.

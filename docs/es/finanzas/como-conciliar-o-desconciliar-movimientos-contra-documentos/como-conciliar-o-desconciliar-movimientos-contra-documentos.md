@@ -3,12 +3,12 @@ tags:
     - Cuentas
     - Finanzas
     - Conciliación Bancaria
-    - Etendo Go
+    - Etendo
 ---
 
 # Conciliar o desconciliar movimientos contra documentos
 
-Conciliar vincula una línea de tu extracto con el documento de Etendo Go que le corresponde (una factura, un cobro o un pago). Puedes hacerlo a mano, línea por línea, o dejar que Etendo Go proponga las coincidencias con Automatch.
+Conciliar vincula una línea de tu extracto con el documento de Etendo que le corresponde (una factura, un cobro o un pago). Puedes hacerlo a mano, línea por línea, o dejar que Etendo proponga las coincidencias con Automatch.
 
 ## Estados de una línea de conciliación
 
@@ -16,13 +16,13 @@ En la pestaña **Conciliación** de una cuenta, cada línea puede filtrarse por 
 
 ## Conciliar un movimiento contra un documento
 
-1. Abre la cuenta desde **[Finanzas > Cuentas](https://go.etendo.cloud/financial-account){target="_blank"}** y ve a la pestaña **Conciliación**.
+1. Abre la cuenta desde **[Finanzas > Cuentas](https://app.etendo.ai/financial-account){target="_blank"}** y ve a la pestaña **Conciliación**.
 2. Selecciona una línea con estado **Pendiente** en el panel izquierdo.
 3. En el panel derecho, elige el tipo de documento a buscar: **Facturas de venta**, **Facturas de compra**, **Cobros** o **Pagos**.
 4. Marca la casilla del documento (o documentos) que corresponden a la línea. Abajo se actualizan **Documentos seleccionados** y **Restante por conciliar**.
 5. Cuando el restante llega a 0, haz clic en **Conciliar**.
 
-Para conciliar varias líneas a la vez, usa **Automatch** (arriba a la derecha): Etendo Go agrupa las líneas del extracto con sus operaciones correspondientes y muestra cuántos **Grupos encontrados** y **Operaciones a vincular** detectó. Revisa los pares propuestos y confirma con **Conciliar [N] grupo(s)**.
+Para conciliar varias líneas a la vez, usa **Automatch** (arriba a la derecha): Etendo agrupa las líneas del extracto con sus operaciones correspondientes y muestra cuántos **Grupos encontrados** y **Operaciones a vincular** detectó. Revisa los pares propuestos y confirma con **Conciliar [N] grupo(s)**.
 
 ![Modal de Conciliación automática sugerida con 1 grupo encontrado, mostrando la línea del extracto y la operación del sistema listas para vincular](assets/como-conciliar-o-desconciliar-movimientos-contra-documentos-1.png)
 
@@ -40,7 +40,7 @@ Para conciliar varias líneas a la vez, usa **Automatch** (arriba a la derecha):
 
 ## Artículos Relacionados
 
-- [¿Qué es la conciliación bancaria en Etendo Go?](../que-es-la-conciliacion-bancaria-en-etendo-go/que-es-la-conciliacion-bancaria-en-etendo-go.md)
+- [¿Qué es la conciliación bancaria en Etendo?](../que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo.md)
 - [Configurar reglas para automatizar la conciliación](../como-configurar-reglas-para-automatizar-la-conciliacion-bancaria/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria.md)
 - [Gestionar pagos y cobros](../como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros.md)
 

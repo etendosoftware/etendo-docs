@@ -18,7 +18,7 @@ Si necesitas dar de alta varios productos a la vez, en vez de crearlos uno por u
 
 ## Abre la ventana de importación
 
-1. Ve a **[Inventario > Producto](https://app.etendo.software/product){target="_blank"}**.
+1. Ve a **[Inventario > Producto](https://app.etendo.ai/product){target="_blank"}**.
 2. En la vista lista, haz clic en el ícono **Importar** de la barra de herramientas superior.
 
     <figure markdown="span">

@@ -3,12 +3,12 @@ tags:
     - Activos
     - Amortización
     - Finanzas
-    - Etendo Go
+    - Etendo
 ---
 
 # Apuntar un activo
 
-Un **activo** es un bien fijo de la empresa (vehículo, equipo informático, maquinaria) que se amortiza a lo largo de su vida útil. **Apuntar** un activo es el proceso de registrarlo en Etendo Go para que el sistema pueda calcular y gestionar su amortización: se hace cada vez que la empresa adquiere un bien fijo o cuando se migran activos existentes desde otro sistema.
+Un **activo** es un bien fijo de la empresa (vehículo, equipo informático, maquinaria) que se amortiza a lo largo de su vida útil. **Apuntar** un activo es el proceso de registrarlo en Etendo para que el sistema pueda calcular y gestionar su amortización: se hace cada vez que la empresa adquiere un bien fijo o cuando se migran activos existentes desde otro sistema.
 
 ```mermaid
 flowchart LR
@@ -22,7 +22,7 @@ Este artículo cubre cómo crear un activo y completar su formulario. Para el de
 
 ## Cómo apuntar un activo
 
-1. Ve a **[Finanzas > Activos](https://go.etendo.cloud/assets){target="_blank"}** y pulsa **+ Nuevo activo**.
+1. Ve a **[Finanzas > Activos](https://app.etendo.ai/assets){target="_blank"}** y pulsa **+ Nuevo activo**.
 2. Completa el formulario:
     1. **Datos del activo** — identificación del bien y su valor de adquisición (usa el número de inventario interno como **Identificador**).
     2. **Configuración de amortización** e **Información financiera** — activa el interruptor **Amortizar** y define el método de cálculo.
@@ -41,7 +41,7 @@ Este artículo cubre cómo crear un activo y completar su formulario. Para el de
 !!! warning "Paso obligatorio"
     Sin pulsar **Crear amortización**, el activo queda registrado pero sin plan de amortización. Consulta [Crear y ejecutar un plan de amortización](../como-crear-y-ejecutar-un-plan-de-amortizacion/como-crear-y-ejecutar-un-plan-de-amortizacion.md) para ver cómo generar y procesar los períodos.
 
-El formulario se abre al crear un activo nuevo o al hacer clic sobre un registro existente en el listado de **[Finanzas > Activos](https://go.etendo.cloud/assets){target="_blank"}**.
+El formulario se abre al crear un activo nuevo o al hacer clic sobre un registro existente en el listado de **[Finanzas > Activos](https://app.etendo.ai/assets){target="_blank"}**.
 
 ---
 

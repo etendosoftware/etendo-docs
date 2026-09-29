@@ -3,7 +3,7 @@ tags:
     - Activos
     - Amortización
     - Finanzas
-    - Etendo Go
+    - Etendo
 ---
 
 # Crear y ejecutar un plan de amortización

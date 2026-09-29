@@ -4,7 +4,7 @@ tags:
     - Finanzas
     - Pagos
     - Cobros
-    - Etendo Go
+    - Etendo
 ---
 
 # Gestionar pagos y cobros
@@ -38,7 +38,7 @@ El flujo es igual al de un cobro, pero desde una factura de compra:
 
 ## Conciliar pagos y cobros
 
-Un cobro o pago recién confirmado queda registrado con su actividad (por ejemplo, *"Cobro creado"* → *"Cobro confirmado · depositado"*), visible en el detalle del documento. Desde las vistas globales **[Finanzas > Cobro](https://go.etendo.cloud/payment-in){target="_blank"}** y **[Finanzas > Pago](https://go.etendo.cloud/payment-out){target="_blank"}** puedes:
+Un cobro o pago recién confirmado queda registrado con su actividad (por ejemplo, *"Cobro creado"* → *"Cobro confirmado · depositado"*), visible en el detalle del documento. Desde las vistas globales **[Finanzas > Cobro](https://app.etendo.ai/payment-in){target="_blank"}** y **[Finanzas > Pago](https://app.etendo.ai/payment-out){target="_blank"}** puedes:
 
 - Ver el estado de cada uno (por ejemplo, **Cobro depositado**, **Pago depositado**) y el total del mes agrupado **Por método de pago**.
 - Abrir cualquier cobro o pago para **Reactivar** (revertir su confirmación) o eliminarlo, si todavía no fue conciliado.
@@ -53,7 +53,7 @@ Esto aplica sin importar el método de pago: tanto con **Efectivo** como con **T
 
 - [Gestionar tus facturas de venta](../../comercial/ventas/gestionar-tus-facturas-de-venta/gestionar-tus-facturas-de-venta.md)
 - [Gestionar tus facturas de compra](../../operaciones/compras/gestionar-tus-facturas-de-compra/gestionar-tus-facturas-de-compra.md)
-- [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-cajas-contables-y-movimientos-en-efectivo/como-gestionar-cajas-contables-y-movimientos-en-efectivo.md)
+- [Gestionar cajas contables y movimientos en efectivo](../como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo.md)
 
 ---
 Esta obra está bajo la licencia :material-creative-commons: :fontawesome-brands-creative-commons-by: :fontawesome-brands-creative-commons-sa: [CC BY-SA 2.5 ES](https://creativecommons.org/licenses/by-sa/2.5/es/){target="_blank"} de [Futit Services S.L](https://etendo.software){target="_blank"}.
