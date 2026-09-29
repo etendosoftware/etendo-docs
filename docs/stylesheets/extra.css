@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   Etendo Go — MkDocs Material theme
+   Etendo — MkDocs Material theme
    Alineado con el Etendo Design System (source of truth: SaaS Etendo.fig).
 
    Sistema de color:
@@ -857,6 +857,23 @@ body { background-color: var(--etendo-bg-page); }
 }
 @media (max-width: 480px) {
   .etendo-home__grid { grid-template-columns: 1fr; }
+}
+
+/* ════════════════════════════════════════
+   DIAGRAMAS MERMAID — texto más grande
+════════════════════════════════════════ */
+
+:root,
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-mermaid-font-size: 1rem;
+}
+
+/* Respaldo por si el tema no toma la variable en algún diagrama */
+.md-typeset .mermaid svg .nodeLabel,
+.md-typeset .mermaid svg .edgeLabel,
+.md-typeset .mermaid svg text {
+  font-size: 1rem !important;
 }
 
 /* ════════════════════════════════════════

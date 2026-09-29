@@ -1,8 +1,8 @@
-site_name: Etendo Go Academy
+site_name: Etendo Academy
 docs_dir: docs
-site_url: https://etendosoftware.github.io/etendo-go-docs/
-repo_url: https://github.com/etendosoftware/etendo-go-docs
-repo_name: etendosoftware/etendo-go-docs
+site_url: https://etendosoftware.github.io/etendo-docs/
+repo_url: https://github.com/etendosoftware/etendo-docs
+repo_name: etendosoftware/etendo-docs
 watch:
   - overrides
 theme:
@@ -61,14 +61,15 @@ plugins:
             - Inicio: index.md
             - Primeros pasos:
                 - primeros-pasos/index.md
-                - ¿Qué es Etendo Go?: primeros-pasos/que-es-etendo-go/que-es-etendo-go.md
+                - ¿Qué es Etendo?: primeros-pasos/que-es-etendo/que-es-etendo.md
                 - Cómo crear tu cuenta: primeros-pasos/como-crear-tu-cuenta/como-crear-tu-cuenta.md
-                - Navegar en Etendo Go: primeros-pasos/navegar-en-etendo-go/navegar-en-etendo-go.md
+                - Navegar en Etendo: primeros-pasos/navegar-en-etendo/navegar-en-etendo.md
             - Comercial:
                 - comercial/index.md
                 - Contactos:
                     - ¿Qué es la sección Contactos?: comercial/contactos/que-es-la-seccion-contactos/que-es-la-seccion-contactos.md
                     - Cómo crear un contacto: comercial/contactos/como-crear-un-contacto/como-crear-un-contacto.md
+                    - Importar contactos: comercial/contactos/importar-contactos/importar-contactos.md
                     - Gestionar tus contactos: comercial/contactos/gestionar-tus-contactos/gestionar-tus-contactos.md
                 - Ventas:
                     - Introducción:
@@ -100,6 +101,7 @@ plugins:
                     - Productos:
                         - operaciones/inventario/productos/index.md
                         - Crear un producto: operaciones/inventario/productos/crear-un-producto/crear-un-producto.md
+                        - Importar productos: operaciones/inventario/productos/importar-productos/importar-productos.md
                         - Crear y configurar una categoría de producto: operaciones/inventario/productos/crear-una-categoria-de-producto/crear-una-categoria-de-producto.md
                         - Editar o eliminar un producto: operaciones/inventario/productos/editar-o-eliminar-un-producto/editar-o-eliminar-un-producto.md
                         - Gestionar tarifas de producto: operaciones/inventario/productos/gestionar-tarifas-de-producto/gestionar-tarifas-de-producto.md
@@ -108,9 +110,21 @@ plugins:
                         - Crear un almacén: operaciones/inventario/almacenes/crear-un-almacen/crear-un-almacen.md
             - Finanzas:
                 - finanzas/index.md
-                - Glosario de Contabilidad: finanzas/glosario-de-contabilidad/glosario-de-contabilidad.md
-                - Apuntar un Activo: finanzas/apuntar-un-activo/apuntar-un-activo.md
-                - Crear y Ejecutar un Plan de Amortización: finanzas/crear-un-plan-de-amortizacion/crear-un-plan-de-amortizacion.md
+                - ¿Qué es la sección Finanzas?: finanzas/que-es-finanzas/que-es-finanzas.md
+                - Glosario de Finanzas: finanzas/glosario-de-finanzas/glosario-de-finanzas.md
+                - Cuentas:
+                    - Añadir y configurar un banco, tarjeta o caja: finanzas/como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja.md
+                    - Conectar, desconectar, archivar, desarchivar o eliminar una cuenta: finanzas/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md
+                    - Gestionar caja y movimientos en efectivo: finanzas/como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo.md
+                - Pagos y cobros:
+                    - Gestionar pagos y cobros: finanzas/como-gestionar-pagos-y-cobros/como-gestionar-pagos-y-cobros.md
+                - Extracto bancario:
+                    - Importar o descargar el extracto bancario: finanzas/como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario.md
+                    - Borrar movimientos del extracto bancario: finanzas/como-borrar-transacciones-del-extracto-bancario/como-borrar-transacciones-del-extracto-bancario.md
+                - Conciliación bancaria:
+                    - ¿Qué es la conciliación bancaria en Etendo?: finanzas/que-es-la-conciliacion-bancaria-en-etendo/que-es-la-conciliacion-bancaria-en-etendo.md
+                    - Conciliar o desconciliar movimientos contra documentos: finanzas/como-conciliar-o-desconciliar-movimientos-contra-documentos/como-conciliar-o-desconciliar-movimientos-contra-documentos.md
+                    - Configurar reglas para automatizar la conciliación: finanzas/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria/como-configurar-reglas-para-automatizar-la-conciliacion-bancaria.md
             - Impuestos:
                 - impuestos/index.md
                 - ¿Qué puedes hacer en Impuestos?: impuestos/que-puedes-hacer-en-impuestos/que-puedes-hacer-en-impuestos.md
@@ -123,15 +137,23 @@ plugins:
                 - Monitor Fiscal: impuestos/monitor-fiscal/monitor-fiscal.md
                 - Modelo 303: impuestos/modelo-303/modelo-303.md
                 - Modelo 349: impuestos/modelo-349/modelo-349.md
+                - Activos y amortización:
+                    - Apuntar un activo: finanzas/como-apuntar-un-activo/como-apuntar-un-activo.md
+                    - "Activos: referencia de campos": finanzas/referencia-de-campos-de-activo/referencia-de-campos-de-activo.md
+                    - Crear y ejecutar un plan de amortización: finanzas/como-crear-y-ejecutar-un-plan-de-amortizacion/como-crear-y-ejecutar-un-plan-de-amortizacion.md
             - Sistema:
                 - sistema/index.md
                 - Configuración:
                     - Cómo gestionar tu organización: sistema/configuracion/como-gestionar-tu-organizacion/como-gestionar-tu-organizacion.md
+                    - ¿Qué es la sección Roles y usuarios?: sistema/configuracion/que-es-roles-y-usuarios/que-es-roles-y-usuarios.md
+                    - Cómo invitar a un usuario: sistema/configuracion/como-invitar-a-un-usuario/como-invitar-a-un-usuario.md
+                    - Gestionar tus usuarios: sistema/configuracion/gestionar-tus-usuarios/gestionar-tus-usuarios.md
+                    - Glosario de Roles y usuarios: sistema/configuracion/glosario-de-roles-y-usuarios/glosario-de-roles-y-usuarios.md
 
   - glightbox
   - tags
   - git-committers:
-      repository: etendosoftware/etendo-go-docs
+      repository: etendosoftware/etendo-docs
       branch: develop
   - git-revision-date-localized:
       enable_creation_date: true

@@ -8,7 +8,7 @@ hide:
 
 # Operaciones
 
-Todo lo que necesitas para gestionar tus compras a proveedores y el control de stock en Etendo Go: desde solicitar pedidos y registrar facturas de compra, hasta administrar tus productos y almacenes.
+Todo lo que necesitas para gestionar tus compras a proveedores y el control de stock en Etendo: desde solicitar pedidos y registrar facturas de compra, hasta administrar tus productos y almacenes.
 
 ## Compras
 
@@ -113,6 +113,14 @@ Todo lo que necesitas para gestionar tus compras a proveedores y el control de s
     Da de alta un producto nuevo, ya sea un artículo con stock o un servicio.
 
     [:octicons-arrow-right-24: Leer más](inventario/productos/crear-un-producto/crear-un-producto.md)
+
+-   :material-file-import-outline:{ .lg .middle } **Importar productos**
+
+    ---
+
+    Carga varios productos a la vez desde un archivo CSV, TXT o Excel, en vez de crearlos uno por uno.
+
+    [:octicons-arrow-right-24: Leer más](inventario/productos/importar-productos/importar-productos.md)
 
 -   :material-shape-outline:{ .lg .middle } **Crear y configurar una categoría de producto**
 
