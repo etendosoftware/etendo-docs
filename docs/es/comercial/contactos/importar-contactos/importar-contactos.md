@@ -18,7 +18,7 @@ Si necesitas cargar varios contactos a la vez, en vez de crearlos uno por uno de
 
 ## Abre la ventana de importación
 
-1. Ve a **[Contactos](https://app.etendo.software/contacts){target="_blank"}**.
+1. Ve a **[Contactos](https://app.etendo.ai/contacts){target="_blank"}**.
 2. En la vista lista, haz clic en el ícono **Importar** de la barra de herramientas superior.
 
     <figure markdown="span">
