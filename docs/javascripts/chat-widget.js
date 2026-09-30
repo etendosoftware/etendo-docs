@@ -1,5 +1,6 @@
 /* Asistente de IA de Etendo Academy.
-   Chat flotante que habla con un agente de Algolia Agent Studio (formato ai-sdk v5).
+   Botón flotante que abre una vista de conversación a pantalla completa (sustituye al contenido de la página)
+   y habla con un agente de Algolia Agent Studio (formato ai-sdk v5).
    La search-only key es pública por diseño; el agente responde solo con el índice de la wiki. */
 (function () {
   var APP_ID = 'XMLZ1ZZEY7';
@@ -94,26 +95,29 @@
     var root = document.createElement('div');
     root.id = 'etendo-chat';
     root.innerHTML =
-      '<button type="button" class="etendo-chat__fab" aria-label="Abrir el asistente de IA" aria-expanded="false">' + ICON_CHAT + '</button>' +
-      '<section class="etendo-chat__panel" role="dialog" aria-label="Asistente de Etendo Academy" hidden>' +
+      '<button type="button" class="etendo-chat__fab" aria-label="Abrir el asistente de IA" aria-expanded="false">' + ICON_CHAT + '<span>Pregunta al asistente</span></button>' +
+      '<section class="etendo-chat__panel" role="dialog" aria-label="Asistente de Etendo Academy" aria-hidden="true">' +
         '<header class="etendo-chat__header">' +
           '<div class="etendo-chat__title"><strong>etendo</strong> Academy<span>Asistente de IA</span></div>' +
           '<button type="button" class="etendo-chat__icon-btn" data-action="clear" aria-label="Nueva conversación" title="Nueva conversación">' + ICON_TRASH + '</button>' +
-          '<button type="button" class="etendo-chat__icon-btn" data-action="close" aria-label="Cerrar" title="Cerrar">' + ICON_CLOSE + '</button>' +
+          '<button type="button" class="etendo-chat__icon-btn" data-action="close" aria-label="Cerrar el asistente" title="Cerrar (Esc)">' + ICON_CLOSE + '</button>' +
         '</header>' +
-        '<div class="etendo-chat__messages" aria-live="polite"></div>' +
-        '<form class="etendo-chat__form">' +
-          '<textarea rows="1" placeholder="Pregunta algo sobre Etendo…" aria-label="Tu pregunta" maxlength="1000"></textarea>' +
-          '<button type="submit" class="etendo-chat__send" aria-label="Enviar">' + ICON_SEND + '</button>' +
-        '</form>' +
-        '<p class="etendo-chat__note">Las respuestas se generan con IA a partir de esta documentación y pueden contener errores.</p>' +
+        '<div class="etendo-chat__scroll" aria-live="polite"><div class="etendo-chat__thread"></div></div>' +
+        '<div class="etendo-chat__dock">' +
+          '<form class="etendo-chat__form">' +
+            '<textarea rows="1" placeholder="Pregunta algo sobre Etendo…" aria-label="Tu pregunta" maxlength="1000"></textarea>' +
+            '<button type="submit" class="etendo-chat__send" aria-label="Enviar">' + ICON_SEND + '</button>' +
+          '</form>' +
+          '<p class="etendo-chat__note">Las respuestas se generan con IA a partir de esta documentación y pueden contener errores.</p>' +
+        '</div>' +
       '</section>';
     document.body.appendChild(root);
 
     els.root = root;
     els.fab = root.querySelector('.etendo-chat__fab');
     els.panel = root.querySelector('.etendo-chat__panel');
-    els.list = root.querySelector('.etendo-chat__messages');
+    els.scroll = root.querySelector('.etendo-chat__scroll');
+    els.list = root.querySelector('.etendo-chat__thread');
     els.form = root.querySelector('.etendo-chat__form');
     els.input = root.querySelector('textarea');
     els.send = root.querySelector('.etendo-chat__send');
@@ -127,6 +131,12 @@
     });
     els.input.addEventListener('input', autosize);
     root.addEventListener('keydown', function (e) { if (e.key === 'Escape') toggle(false); });
+    // Los enlaces a la propia wiki navegan en la misma pestaña y cierran el chat; el resto se abre aparte
+    els.list.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href]');
+      if (!a) return;
+      if (a.origin === location.origin) { a.removeAttribute('target'); toggle(false); }
+    });
     return true;
   }
 
@@ -135,15 +145,27 @@
     els.input.style.height = Math.min(els.input.scrollHeight, 120) + 'px';
   }
 
-  function toggle(force) {
-    var open = typeof force === 'boolean' ? force : els.panel.hidden;
-    els.panel.hidden = !open;
-    els.fab.setAttribute('aria-expanded', String(open));
-    els.fab.innerHTML = open ? ICON_CLOSE : ICON_CHAT;
-    if (open) { els.input.focus(); scrollDown(); }
+  // La vista ocupa todo el espacio bajo la cabecera (y las pestañas, si están visibles)
+  function measureTop() {
+    var top = 0;
+    var header = document.querySelector('.md-header');
+    if (header) top = header.getBoundingClientRect().bottom;
+    var tabs = document.querySelector('.md-tabs');
+    if (tabs && !tabs.hasAttribute('hidden')) top = Math.max(top, tabs.getBoundingClientRect().bottom);
+    els.root.style.setProperty('--etendo-chat-top', Math.max(top, 0) + 'px');
   }
 
-  function scrollDown() { els.list.scrollTop = els.list.scrollHeight; }
+  function toggle(force) {
+    var open = typeof force === 'boolean' ? force : !els.root.classList.contains('is-open');
+    if (open) measureTop();
+    els.root.classList.toggle('is-open', open);
+    document.body.classList.toggle('etendo-chat-open', open);
+    els.panel.setAttribute('aria-hidden', String(!open));
+    els.fab.setAttribute('aria-expanded', String(open));
+    if (open) { setTimeout(function () { els.input.focus(); scrollDown(); }, 180); }
+  }
+
+  function scrollDown() { els.scroll.scrollTop = els.scroll.scrollHeight; }
 
   function setBusy(busy) {
     streaming = busy;
@@ -164,7 +186,9 @@
   function renderAll() {
     els.list.innerHTML = '';
     if (!messages.length) {
-      bubble('assistant', '<p>Hola, soy el asistente de Etendo Academy. Te ayudo a encontrar cómo hacer las cosas en Etendo.</p>');
+      var hero = document.createElement('div');
+      hero.className = 'etendo-chat__hero';
+      hero.innerHTML = '<h2>¿En qué podemos ayudarte?</h2><p>Pregúntame cómo hacer las cosas en Etendo. Respondo con lo que dice esta documentación.</p>';
       var chips = document.createElement('div');
       chips.className = 'etendo-chat__chips';
       SUGGESTIONS.forEach(function (text) {
@@ -174,7 +198,8 @@
         b.addEventListener('click', function () { submit(text); });
         chips.appendChild(b);
       });
-      els.list.appendChild(chips);
+      hero.appendChild(chips);
+      els.list.appendChild(hero);
       return;
     }
     messages.forEach(function (m) {
