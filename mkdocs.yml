@@ -40,10 +40,14 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/chat-widget.css
 
 extra_javascript:
   - https://unpkg.com/mermaid@11/dist/mermaid.min.js
+  - https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js
   - javascripts/home.js
+  - javascripts/algolia-search.js
+  - javascripts/chat-widget.js
 
 plugins:
   - search:

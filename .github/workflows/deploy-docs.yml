@@ -27,3 +27,14 @@ jobs:
 
       - name: Deploy docs
         run: mkdocs gh-deploy --force
+
+      - name: Index docs in Algolia
+        env:
+          ALGOLIA_WRITE_INDEX_KEY: ${{ secrets.ALGOLIA_WRITE_INDEX_KEY }}
+        run: >
+          python algolia.py
+          --app-id=XMLZ1ZZEY7
+          --index-name=etendo_go_docs_index_es
+          --docs-dir=docs/es
+          --site-url=https://help.etendo.ai
+          --locale=es

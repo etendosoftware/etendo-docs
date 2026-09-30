@@ -273,6 +273,22 @@ body { background-color: var(--etendo-bg-page); }
 .md-search-result__teaser { color: var(--etendo-text); }
 .md-search-result__teaser { color: var(--etendo-text-2); }
 
+/* Resultados de Algolia: sustituyen a los de lunr de Material */
+.md-search-result:not(.etendo-search-result) { display: none; }
+.etendo-search-result[hidden] { display: none; }
+.etendo-search-result__section {
+  margin: 0.1rem 0 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--etendo-text-muted);
+}
+.etendo-search-result mark {
+  background: transparent;
+  color: var(--etendo-accent);
+  font-weight: 700;
+}
+.etendo-search-result .md-search-result__title { color: var(--etendo-text); }
+
 /* Pestañas de navegación superior: parte de la cabecera noche */
 .md-tabs {
   background-color: var(--brand-night);
