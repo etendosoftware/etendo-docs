@@ -900,20 +900,20 @@ body { background-color: var(--etendo-bg-page); }
 .etendo-home__sections {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 2.5rem 2rem 4rem;
+  padding: 2rem 2rem 3rem;
 }
 
 .etendo-home__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 /* Card — edged, no shadow en reposo (DS) */
 .etendo-home__card {
   display: flex;
   flex-direction: column;
-  padding: 1.25rem 1.5rem 1.5rem;
+  padding: 1rem 1.25rem 1.1rem;
   background-color: var(--etendo-bg-content);
   border: 1px solid var(--etendo-border);
   border-radius: var(--etendo-radius-lg);
@@ -930,15 +930,15 @@ body { background-color: var(--etendo-bg-page); }
 .etendo-home__card-top {
   display: flex;
   align-items: flex-start;
-  gap: 0.875rem;
-  margin-bottom: 0.75rem;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 .etendo-home__card:hover h3 { color: var(--etendo-accent); }
 
 /* Icono: tile lavanda suave con glifo azul */
 .etendo-home__card-icon {
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: var(--etendo-radius-md);
   background-color: rgba(179,161,255,0.22);
   color: var(--etendo-accent);
@@ -946,7 +946,7 @@ body { background-color: var(--etendo-bg-page); }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.4rem;
+  padding: 0.35rem;
 }
 .etendo-home__card-icon svg,
 .etendo-home__search-icon svg {
@@ -962,24 +962,24 @@ body { background-color: var(--etendo-bg-page); }
 
 .etendo-home__card h3,
 .etendo-home__card-meta h3 {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--etendo-text);
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.15rem;
 }
 .etendo-home__card p,
 .etendo-home__card-meta p {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--etendo-text-muted);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .etendo-home__card-count {
   margin-top: auto;
-  padding-top: 0.75rem;
+  padding-top: 0.6rem;
   border-top: 1px solid var(--etendo-border);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--etendo-text-muted);
 }
