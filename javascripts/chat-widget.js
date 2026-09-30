@@ -1,11 +1,15 @@
 /* Asistente de IA de Etendo Academy.
-   Chat flotante que habla con un agente de Algolia Agent Studio (formato ai-sdk v5).
+   Botón flotante que abre una vista de conversación a pantalla completa (sustituye al contenido de la página)
+   y habla con un agente de Algolia Agent Studio (formato ai-sdk v5).
    La search-only key es pública por diseño; el agente responde solo con el índice de la wiki. */
 (function () {
   var APP_ID = 'XMLZ1ZZEY7';
   var SEARCH_KEY = 'de992ae25d65509474690fe8761e2a21';
   var AGENT_ID = '315444ad-41d9-442c-b4f9-7cea08eaa4b7';
   var ENDPOINT = 'https://' + APP_ID.toLowerCase() + '.algolia.net/agent-studio/1/agents/' + AGENT_ID + '/completions?compatibilityMode=ai-sdk-5';
+  var SUGGEST_INDEX = 'etendo_go_docs_index_es_prompt_suggestions';   // generado por el agente de sugerencias de Algolia
+  var SUGGEST_MIN_CHARS = 2;
+  var SUGGEST_DEBOUNCE_MS = 200;
   var STORAGE_KEY = 'etendo-chat-history';
   var MAX_STORED = 30;
 
@@ -24,6 +28,11 @@
   // ---------- Markdown mínimo y seguro ----------
   function escapeHtml(text) {
     return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Escapa todo el HTML salvo las marcas <mark> que añade Algolia al resaltar
+  function safeHighlight(value) {
+    return escapeHtml(value).replace(/&lt;(\/?)mark&gt;/g, '<$1mark>');
   }
 
   function inline(text) {
@@ -94,27 +103,32 @@
     var root = document.createElement('div');
     root.id = 'etendo-chat';
     root.innerHTML =
-      '<button type="button" class="etendo-chat__fab" aria-label="Abrir el asistente de IA" aria-expanded="false">' + ICON_CHAT + '</button>' +
-      '<section class="etendo-chat__panel" role="dialog" aria-label="Asistente de Etendo Academy" hidden>' +
+      '<button type="button" class="etendo-chat__fab" aria-label="Abrir el asistente de IA" aria-expanded="false">' + ICON_CHAT + '<span>Pregunta al asistente</span></button>' +
+      '<section class="etendo-chat__panel" role="dialog" aria-label="Asistente de Etendo Academy" aria-hidden="true">' +
         '<header class="etendo-chat__header">' +
           '<div class="etendo-chat__title"><strong>etendo</strong> Academy<span>Asistente de IA</span></div>' +
           '<button type="button" class="etendo-chat__icon-btn" data-action="clear" aria-label="Nueva conversación" title="Nueva conversación">' + ICON_TRASH + '</button>' +
-          '<button type="button" class="etendo-chat__icon-btn" data-action="close" aria-label="Cerrar" title="Cerrar">' + ICON_CLOSE + '</button>' +
+          '<button type="button" class="etendo-chat__icon-btn" data-action="close" aria-label="Cerrar el asistente" title="Cerrar (Esc)">' + ICON_CLOSE + '</button>' +
         '</header>' +
-        '<div class="etendo-chat__messages" aria-live="polite"></div>' +
-        '<form class="etendo-chat__form">' +
-          '<textarea rows="1" placeholder="Pregunta algo sobre Etendo…" aria-label="Tu pregunta" maxlength="1000"></textarea>' +
-          '<button type="submit" class="etendo-chat__send" aria-label="Enviar">' + ICON_SEND + '</button>' +
-        '</form>' +
-        '<p class="etendo-chat__note">Las respuestas se generan con IA a partir de esta documentación y pueden contener errores.</p>' +
+        '<div class="etendo-chat__scroll" aria-live="polite"><div class="etendo-chat__thread"></div></div>' +
+        '<div class="etendo-chat__dock">' +
+          '<ul class="etendo-chat__suggest" role="listbox" aria-label="Sugerencias" hidden></ul>' +
+          '<form class="etendo-chat__form">' +
+            '<textarea rows="1" placeholder="Pregunta algo sobre Etendo…" aria-label="Tu pregunta" maxlength="1000"></textarea>' +
+            '<button type="submit" class="etendo-chat__send" aria-label="Enviar">' + ICON_SEND + '</button>' +
+          '</form>' +
+          '<p class="etendo-chat__note">Las respuestas se generan con IA a partir de esta documentación y pueden contener errores.</p>' +
+        '</div>' +
       '</section>';
     document.body.appendChild(root);
 
     els.root = root;
     els.fab = root.querySelector('.etendo-chat__fab');
     els.panel = root.querySelector('.etendo-chat__panel');
-    els.list = root.querySelector('.etendo-chat__messages');
+    els.scroll = root.querySelector('.etendo-chat__scroll');
+    els.list = root.querySelector('.etendo-chat__thread');
     els.form = root.querySelector('.etendo-chat__form');
+    els.suggest = root.querySelector('.etendo-chat__suggest');
     els.input = root.querySelector('textarea');
     els.send = root.querySelector('.etendo-chat__send');
 
@@ -123,10 +137,28 @@
     root.querySelector('[data-action="clear"]').addEventListener('click', clearConversation);
     els.form.addEventListener('submit', function (e) { e.preventDefault(); submit(); });
     els.input.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); }
+      var open = !els.suggest.hidden;
+      if (open && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+        e.preventDefault();
+        moveSuggestion(e.key === 'ArrowDown' ? 1 : -1);
+      } else if (open && e.key === 'Escape') {
+        e.stopPropagation();   // el primer Esc cierra las sugerencias, no el chat
+        hideSuggest();
+      } else if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        var active = els.suggest.querySelector('.is-active');
+        submit(open && active ? active.dataset.prompt : undefined);
+      }
     });
-    els.input.addEventListener('input', autosize);
+    els.input.addEventListener('input', function () { autosize(); suggest(els.input.value.trim()); });
+    els.input.addEventListener('blur', function () { setTimeout(hideSuggest, 120); });
     root.addEventListener('keydown', function (e) { if (e.key === 'Escape') toggle(false); });
+    // Los enlaces a la propia wiki navegan en la misma pestaña y cierran el chat; el resto se abre aparte
+    els.list.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href]');
+      if (!a) return;
+      if (a.origin === location.origin) { a.removeAttribute('target'); toggle(false, { restoreScroll: false }); }
+    });
     return true;
   }
 
@@ -135,15 +167,52 @@
     els.input.style.height = Math.min(els.input.scrollHeight, 120) + 'px';
   }
 
-  function toggle(force) {
-    var open = typeof force === 'boolean' ? force : els.panel.hidden;
-    els.panel.hidden = !open;
-    els.fab.setAttribute('aria-expanded', String(open));
-    els.fab.innerHTML = open ? ICON_CLOSE : ICON_CHAT;
-    if (open) { els.input.focus(); scrollDown(); }
+  // La conversación ocupa el lugar del contenido de la página: la cabecera y las pestañas se mantienen
+  // y el scroll es el de la propia página (un único scroll, sin capas superpuestas).
+  var savedScroll = 0;
+
+  function measureLayout() {
+    var header = document.querySelector('.md-header');
+    var stick = header ? header.getBoundingClientRect().height : 0;
+    var top = header ? header.getBoundingClientRect().bottom : 0;
+    var tabs = document.querySelector('.md-tabs');
+    if (tabs && !tabs.hasAttribute('hidden')) top = Math.max(top, tabs.getBoundingClientRect().bottom);
+    els.root.style.setProperty('--etendo-chat-stick', Math.max(stick, 0) + 'px');
+    els.root.style.setProperty('--etendo-chat-top', Math.max(top, 0) + 'px');
   }
 
-  function scrollDown() { els.list.scrollTop = els.list.scrollHeight; }
+  function toggle(force, options) {
+    var open = typeof force === 'boolean' ? force : !els.root.classList.contains('is-open');
+    if (open === els.root.classList.contains('is-open')) return;
+    if (open) { savedScroll = window.scrollY; measureLayout(); }
+    els.root.classList.toggle('is-open', open);
+    document.documentElement.classList.toggle('etendo-chat-open', open);   // oculta el contenido de la página
+    els.panel.setAttribute('aria-hidden', String(!open));
+    els.fab.setAttribute('aria-expanded', String(open));
+    if (open) {
+      window.scrollTo(0, 0);
+      setTimeout(function () { els.input.focus({ preventScroll: true }); scrollToLastQuestion(); }, 60);
+    } else if (!options || options.restoreScroll !== false) {
+      window.scrollTo(0, savedScroll);   // vuelves a donde estabas en la página
+    }
+  }
+
+  // Coloca el mensaje justo bajo las barras fijas. Nunca se sigue el streaming: la respuesta se lee desde su comienzo.
+  function stickyOffset() {
+    var bar = els.panel.querySelector('.etendo-chat__header');
+    var header = document.querySelector('.md-header');
+    return (header ? header.getBoundingClientRect().height : 0) + (bar ? bar.offsetHeight : 0);
+  }
+
+  function scrollToNode(node) {
+    var offset = node.getBoundingClientRect().top - stickyOffset() - 16;
+    window.scrollBy(0, offset);
+  }
+
+  function scrollToLastQuestion() {
+    var users = els.list.querySelectorAll('.etendo-chat__msg--user');
+    if (users.length) scrollToNode(users[users.length - 1]);
+  }
 
   function setBusy(busy) {
     streaming = busy;
@@ -157,14 +226,15 @@
     div.className = 'etendo-chat__msg etendo-chat__msg--' + role + (extra ? ' ' + extra : '');
     div.innerHTML = html;
     els.list.appendChild(div);
-    scrollDown();
     return div;
   }
 
   function renderAll() {
     els.list.innerHTML = '';
     if (!messages.length) {
-      bubble('assistant', '<p>Hola, soy el asistente de Etendo Academy. Te ayudo a encontrar cómo hacer las cosas en Etendo.</p>');
+      var hero = document.createElement('div');
+      hero.className = 'etendo-chat__hero';
+      hero.innerHTML = '<h2>¿En qué podemos ayudarte?</h2><p>Pregúntame cómo hacer las cosas en Etendo. Respondo con lo que dice esta documentación.</p>';
       var chips = document.createElement('div');
       chips.className = 'etendo-chat__chips';
       SUGGESTIONS.forEach(function (text) {
@@ -174,7 +244,8 @@
         b.addEventListener('click', function () { submit(text); });
         chips.appendChild(b);
       });
-      els.list.appendChild(chips);
+      hero.appendChild(chips);
+      els.list.appendChild(hero);
       return;
     }
     messages.forEach(function (m) {
@@ -191,6 +262,64 @@
     els.input.focus();
   }
 
+  // ---------- Sugerencias al escribir ----------
+  var suggestClient = null;
+  var suggestTimer = null;
+  var suggestRequest = 0;
+
+  function hideSuggest() {
+    els.suggest.hidden = true;
+    els.suggest.innerHTML = '';
+  }
+
+  function moveSuggestion(step) {
+    var items = els.suggest.querySelectorAll('li[role="option"]');
+    if (!items.length) return;
+    var current = els.suggest.querySelector('.is-active');
+    var index = current ? Array.prototype.indexOf.call(items, current) + step : (step > 0 ? 0 : items.length - 1);
+    index = (index + items.length) % items.length;
+    if (current) current.classList.remove('is-active');
+    items[index].classList.add('is-active');
+    items[index].setAttribute('aria-selected', 'true');
+    items[index].scrollIntoView({ block: 'nearest' });
+  }
+
+  function highlightedHit(hit, attribute) {
+    var res = hit._highlightResult && hit._highlightResult[attribute];
+    return res && res.value ? safeHighlight(res.value) : escapeHtml(hit[attribute] || '');
+  }
+
+  // Preguntas sugeridas para el asistente mientras escribes. Las páginas de la wiki las da el buscador del header.
+  function suggest(query) {
+    clearTimeout(suggestTimer);
+    suggestRequest++;
+    if (streaming || query.length < SUGGEST_MIN_CHARS || typeof algoliasearch === 'undefined') { hideSuggest(); return; }
+    if (!suggestClient) suggestClient = algoliasearch(APP_ID, SEARCH_KEY);
+    var current = suggestRequest;
+    suggestTimer = setTimeout(function () {
+      suggestClient.initIndex(SUGGEST_INDEX).search(query, {
+        hitsPerPage: 4,
+        attributesToRetrieve: ['prompt'],
+        attributesToHighlight: ['prompt'],
+        highlightPreTag: '<mark>',
+        highlightPostTag: '</mark>'
+      }).then(function (res) {
+        if (current !== suggestRequest) return;   // llegó una búsqueda más nueva
+        els.suggest.innerHTML = '';
+        res.hits.forEach(function (hit) {
+          var li = document.createElement('li');
+          li.setAttribute('role', 'option');
+          li.dataset.prompt = hit.prompt;
+          li.innerHTML = highlightedHit(hit, 'prompt');
+          li.addEventListener('mousedown', function (e) { e.preventDefault(); });   // conserva el foco del campo
+          li.addEventListener('click', function () { submit(hit.prompt); });
+          els.suggest.appendChild(li);
+        });
+        els.suggest.hidden = res.hits.length === 0;
+      }).catch(function () { hideSuggest(); });   // sin sugerencias, el chat sigue funcionando
+    }, SUGGEST_DEBOUNCE_MS);
+  }
+
   // ---------- Conexión con el agente ----------
   var GENERIC_ERROR = 'Ahora mismo no puedo responder. Inténtalo de nuevo en unos minutos o usa el buscador de la wiki.';
 
@@ -200,13 +329,18 @@
     if (!text) return;
     els.input.value = '';
     autosize();
+    hideSuggest();
 
     messages.push({ id: uid(), role: 'user', text: text });
     if (messages.length === 1) els.list.innerHTML = '';
-    bubble('user', '<p>' + escapeHtml(text) + '</p>');
+    var question = bubble('user', '<p>' + escapeHtml(text) + '</p>');
 
     var reply = { id: uid(), role: 'assistant', text: '' };
     var node = bubble('assistant', '<span class="etendo-chat__typing" aria-label="Escribiendo"><i></i><i></i><i></i></span>');
+    // Espacio suficiente bajo la pregunta para poder dejarla arriba y leer la respuesta desde el principio
+    var dock = els.panel.querySelector('.etendo-chat__dock');
+    node.style.minHeight = Math.max(0, window.innerHeight - stickyOffset() - (dock ? dock.offsetHeight : 0) - question.offsetHeight - 60) + 'px';
+    scrollToNode(question);
     stream(reply, node);
   }
 
@@ -230,7 +364,6 @@
       }
       if (reply.text) { messages.push(reply); save(); }
       else { node.remove(); save(); }
-      scrollDown();
     }
 
     fetch(ENDPOINT, {
@@ -253,7 +386,6 @@
         if (event.type === 'text-delta' && typeof event.delta === 'string') {
           reply.text += event.delta;
           node.innerHTML = markdown(reply.text);
-          scrollDown();
         } else if (event.type === 'error') {
           console.error('Error del agente:', event.errorText);
           failed = true;
@@ -285,6 +417,16 @@
     });
   }
 
+  // API pública: el buscador del header abre el asistente con una pregunta
+  window.etendoChat = {
+    open: function () { init(); toggle(true); },
+    ask: function (text) {
+      init();
+      toggle(true);
+      if (text && !streaming) submit(text);
+    }
+  };
+
   // ---------- Arranque ----------
   function init() {
     if (!build()) return;
@@ -292,9 +434,16 @@
     renderAll();
   }
 
-  // document$ corre en la carga inicial y en cada navegación instantánea
+  // document$ corre en la carga inicial y en cada navegación instantánea.
+  // Tras navegar (p. ej. al elegir un resultado del buscador) el chat se cierra para no tapar la página nueva.
+  var firstLoad = true;
+  function onPage() {
+    init();
+    if (!firstLoad && els.root && els.root.classList.contains('is-open')) toggle(false, { restoreScroll: false });
+    firstLoad = false;
+  }
   if (typeof document$ !== 'undefined') {
-    document$.subscribe(init);
+    document$.subscribe(onPage);
   } else {
     document.addEventListener('DOMContentLoaded', init);
   }
