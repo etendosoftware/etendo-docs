@@ -29,7 +29,34 @@
     update();
   }
 
-  // Runs on full load and on MkDocs instant navigation
-  document.addEventListener('DOMContentLoaded', initHeroBg);
-  document.addEventListener('DOMSwitch', initHeroBg);
+  // Buscador del hero: abre el buscador de Material con el foco en su input
+  function initHeroSearch() {
+    var input = document.getElementById('etendo-hero-search');
+    if (!input || input.dataset.bound) return;
+    input.dataset.bound = '1';
+    input.addEventListener('focus', function () {
+      var toggle = document.getElementById('__search');
+      if (toggle) {
+        toggle.checked = true;
+        toggle.dispatchEvent(new Event('change'));
+      }
+      setTimeout(function () {
+        var mdInput = document.querySelector('.md-search__input');
+        if (mdInput) mdInput.focus();
+        input.value = '';
+      }, 50);
+    });
+  }
+
+  function initHome() {
+    initHeroBg();
+    initHeroSearch();
+  }
+
+  // document$ corre en la carga inicial y en cada navegación instantánea
+  if (typeof document$ !== 'undefined') {
+    document$.subscribe(initHome);
+  } else {
+    document.addEventListener('DOMContentLoaded', initHome);
+  }
 })();

@@ -97,12 +97,6 @@
         <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/comercial/ventas/que-es-la-seccion-ventas/que-es-la-seccion-ventas/"/>
     </url>
     <url>
-        <loc>https://etendosoftware.github.io/etendo-docs/dashboard/</loc>
-        <lastmod>2026-09-30</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/dashboard/"/>
-    </url>
-    <url>
         <loc>https://etendosoftware.github.io/etendo-docs/finanzas/</loc>
         <lastmod>2026-09-30</lastmod>
         <changefreq>daily</changefreq>
@@ -403,22 +397,10 @@
         <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/primeros-pasos/navegar-en-etendo/navegar-en-etendo/"/>
     </url>
     <url>
-        <loc>https://etendosoftware.github.io/etendo-docs/primeros-pasos/navegar-en-etendo-go/navegar-en-etendo-go/</loc>
-        <lastmod>2026-09-30</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/primeros-pasos/navegar-en-etendo-go/navegar-en-etendo-go/"/>
-    </url>
-    <url>
         <loc>https://etendosoftware.github.io/etendo-docs/primeros-pasos/que-es-etendo/que-es-etendo/</loc>
         <lastmod>2026-09-30</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/primeros-pasos/que-es-etendo/que-es-etendo/"/>
-    </url>
-    <url>
-        <loc>https://etendosoftware.github.io/etendo-docs/primeros-pasos/que-es-etendo-go/que-es-etendo-go/</loc>
-        <lastmod>2026-09-30</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="es" href="https://etendosoftware.github.io/etendo-docs/primeros-pasos/que-es-etendo-go/que-es-etendo-go/"/>
     </url>
     <url>
         <loc>https://etendosoftware.github.io/etendo-docs/sistema/</loc>
