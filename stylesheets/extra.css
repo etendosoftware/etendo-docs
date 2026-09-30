@@ -233,14 +233,14 @@ body { background-color: var(--etendo-bg-page); }
 }
 .md-header__title .md-header__topic:first-child .md-ellipsis::before {
   content: "etendo";
-  font-size: 1.05rem;
+  font-size: var(--etendo-wordmark);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #FFFFFF;
 }
 .md-header__title .md-header__topic:first-child .md-ellipsis::after {
   content: "Academy";
-  font-size: 0.95rem;
+  font-size: calc(var(--etendo-wordmark) * 0.9);
   font-weight: 500;
   color: #A9A9BC;
 }
@@ -566,9 +566,26 @@ body { background-color: var(--etendo-bg-page); }
    LOGO
 ════════════════════════════════════════ */
 
+/* Lockup del manual de marca (p. 3): el isotipo mide la altura de las letras altas del wordmark × 1,15
+   y la separación entre ambos es 1/3 del ancho del isotipo (proporción 1,2 : 1).
+   Las letras altas de Plus Jakarta Sans ExtraBold («d», «t») miden 0,757 em. */
+.md-header, .etendo-home__brand {
+  --etendo-wordmark: 1.35rem;
+  --etendo-icon-h: calc(var(--etendo-wordmark) * 0.757 * 1.15);
+  --etendo-icon-gap: calc(var(--etendo-icon-h) * 1.2 / 3);
+}
 .md-header__button.md-logo img {
-  height: 1.6rem;
+  height: var(--etendo-icon-h);
   width: auto;
+}
+@media (max-width: 76.1875em) {
+  /* En móvil la cabecera no muestra el isotipo y el espacio es justo: el wordmark vuelve a 21 px */
+  .md-header { --etendo-wordmark: 1.05rem; }
+}
+@media (min-width: 76.25em) {
+  /* sin los márgenes de Material entre el logo y el título: la separación la fija el manual */
+  [dir=ltr] .md-header__button.md-logo { padding-right: 0; margin-right: 0; }
+  [dir=ltr] .md-header__title { margin-left: var(--etendo-icon-gap); }
 }
 
 /* ════════════════════════════════════════
@@ -824,9 +841,9 @@ body { background-color: var(--etendo-bg-page); }
   display: block;
 }
 
-.etendo-home__title {
-  font-size: 1.875rem;
-  font-weight: 700;
+.etendo-home .etendo-home__title {   /* más específico que .md-typeset h1, que le ponía 40 px de margen inferior */
+  font-size: 1.6rem;
+  font-weight: 800;
   color: var(--etendo-text);
   margin: 0 0 0.5rem;
   line-height: 1.2;
@@ -836,9 +853,10 @@ body { background-color: var(--etendo-bg-page); }
 .etendo-home__subtitle {
   font-size: 0.95rem;
   color: var(--etendo-text-muted);
-  max-width: 480px;
+  max-width: none;   /* una sola línea en pantallas anchas; en móvil se parte en líneas equilibradas */
   margin: 0 auto 1.5rem;
   line-height: 1.5;
+  text-wrap: balance;
 }
 
 .etendo-home__search {
@@ -983,12 +1001,13 @@ body { background-color: var(--etendo-bg-page); }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  --etendo-wordmark: 1.6rem;
+  gap: var(--etendo-icon-gap);
   margin: 0 auto 1.25rem;
 }
-.etendo-home__brand .etendo-home__logo { margin: 0; height: 2rem !important; }
+.etendo-home__brand .etendo-home__logo { margin: 0; height: var(--etendo-icon-h) !important; }
 .etendo-brand__name {
-  font-size: 1.6rem;
+  font-size: var(--etendo-wordmark);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--etendo-text);
@@ -1040,21 +1059,67 @@ body { background-color: var(--etendo-bg-page); }
 .md-footer .md-social__link:hover { color: var(--brand-lime); }
 
 /* Buscador con IA: sugerencias del asistente y botón «Modo IA» */
-.etendo-ask__item .md-search-result__link { display: flex; align-items: center; gap: .7rem; padding: .55rem 1rem; }
-.etendo-ask__icon { flex-shrink: 0; width: 1.1rem; height: 1.1rem; color: var(--etendo-accent); }
+.etendo-ask__item .md-search-result__link { display: flex; align-items: center; gap: .75rem; padding: .5rem 1rem; }
+/* Mismo estilo que los iconos del home: recuadro lavanda suave, icono azul (lima en modo oscuro) */
+.etendo-ask__icon {
+  flex-shrink: 0; box-sizing: border-box;
+  width: 1.75rem; height: 1.75rem; padding: .3rem;
+  border-radius: var(--etendo-radius-md);
+  background-color: rgba(179,161,255,0.22);
+  color: var(--etendo-accent);
+}
+[data-md-color-scheme="slate"] .etendo-ask__icon { color: var(--brand-lime); }
 .etendo-ask__icon svg { width: 100%; height: 100%; }
 .etendo-ask__text { font-size: .72rem; line-height: 1.4; color: var(--etendo-text); }
 .etendo-ask__text strong { font-weight: 700; }
 
 .etendo-search__ai { display: none; }
 [data-md-toggle="search"]:checked ~ .md-header .etendo-search__ai {
-  display: flex; align-items: center; gap: .35rem;
+  display: flex; align-items: center; gap: .3rem;
   position: absolute; top: 50%; right: 3.3rem; transform: translateY(-50%);
-  height: 1.6rem; padding: 0 .6rem;
+  height: 1.3rem; padding: 0 .45rem;
   border: 1px solid var(--etendo-border-2); border-radius: var(--etendo-radius-sm);
   background: var(--etendo-bg-content); color: var(--etendo-text);
-  font: inherit; font-size: .65rem; font-weight: 600; cursor: pointer;
+  font: inherit; font-size: .6rem; font-weight: 600; cursor: pointer;
 }
-[data-md-toggle="search"]:checked ~ .md-header .etendo-search__ai svg { width: .9rem; height: .9rem; color: var(--etendo-accent); }
+[data-md-toggle="search"]:checked ~ .md-header .etendo-search__ai svg { width: .75rem; height: .75rem; color: var(--etendo-accent); }
+[data-md-color-scheme="slate"] [data-md-toggle="search"]:checked ~ .md-header .etendo-search__ai svg { color: var(--brand-lime); }
 [data-md-toggle="search"]:checked ~ .md-header .etendo-search__ai:hover { border-color: var(--etendo-accent); }
-[data-md-toggle="search"]:checked ~ .md-header .md-search__input { padding-right: 9rem; }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__input { padding-right: 7.5rem; }
+
+/* ════════════════════════════════════════
+   MÓVIL
+════════════════════════════════════════ */
+
+/* El botón del chat no tapa el buscador abierto */
+body:has([data-md-toggle="search"]:checked) .etendo-chat__fab { display: none; }
+
+/* El texto del campo del hero se recorta con puntos suspensivos en vez de cortarse */
+.etendo-home__search-input { text-overflow: ellipsis; }
+
+@media (max-width: 600px) {
+  /* Artículos: menos margen lateral para aprovechar el ancho */
+  .md-content__inner { padding: 1rem 1rem 3rem; }
+}
+
+/* El botón del chat tampoco tapa el menú lateral abierto */
+body:has([data-md-toggle="drawer"]:checked) .etendo-chat__fab { display: none; }
+
+/* Menú lateral en móvil: la barra del título vuelve a ser noche con texto blanco (las reglas de título de escritorio la dejaban sin fondo) */
+@media (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title {
+    position: relative !important;
+    height: 5.2rem !important;
+    padding: 2.8rem .8rem .2rem 1rem !important;
+    background-color: var(--brand-night) !important;
+    color: #FFFFFF !important;
+    font-family: var(--md-text-font);
+    font-size: .8rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    line-height: 1.4 !important;
+  }
+  .md-nav--primary .md-nav__title .md-nav__icon { color: #FFFFFF; }
+  .md-nav--primary .md-nav__title[for="__drawer"] .md-logo img { height: 1.4rem; }
+}

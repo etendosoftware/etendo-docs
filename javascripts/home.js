@@ -29,12 +29,18 @@
     update();
   }
 
-  // Buscador del hero: abre el buscador de Material con el foco en su input
+  // Campo del hero: es la entrada al asistente de IA (abre la conversación). Si el asistente no está disponible,
+  // abre el buscador de Material como antes.
   function initHeroSearch() {
     var input = document.getElementById('etendo-hero-search');
     if (!input || input.dataset.bound) return;
     input.dataset.bound = '1';
-    input.addEventListener('focus', function () {
+    function open() {
+      input.blur();
+      if (window.etendoChat && typeof window.etendoChat.open === 'function') {
+        window.etendoChat.open();
+        return;
+      }
       var toggle = document.getElementById('__search');
       if (toggle) {
         toggle.checked = true;
@@ -43,9 +49,10 @@
       setTimeout(function () {
         var mdInput = document.querySelector('.md-search__input');
         if (mdInput) mdInput.focus();
-        input.value = '';
       }, 50);
-    });
+    }
+    input.addEventListener('click', open);
+    input.addEventListener('focus', open);   // también al llegar con el teclado (Tab)
   }
 
   function initHome() {
