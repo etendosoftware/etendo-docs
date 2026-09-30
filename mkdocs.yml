@@ -8,16 +8,14 @@ watch:
 theme:
   name: material
   custom_dir: overrides
-  logo: assets/logo.png
+  logo: assets/logo.svg
   favicon: assets/favicon.png
   icon:
     repo: fontawesome/brands/github
-  font:
-    text: Inter
-    code: JetBrains Mono
+  font: false   # Plus Jakarta Sans y Space Mono se cargan en local (stylesheets/extra.css)
   palette:
     - scheme: default
-      primary: white
+      primary: custom
       accent: custom
       toggle:
         icon: material/brightness-7
@@ -171,18 +169,18 @@ extra:
       link: https://github.com/etendosoftware
       name: GitHub
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/etendo-software/
+      link: https://www.linkedin.com/company/81801932
       name: LinkedIn
     - icon: fontawesome/brands/instagram
-      link: https://www.instagram.com/etendo.software/
+      link: https://www.instagram.com/etendo.ai/
       name: Instagram
   consent:
     title: Valoramos tu privacidad
     description: >-
       Utilizamos cookies y otras tecnologías de seguimiento para mejorar tu experiencia de navegación,
       mostrarte contenido personalizado, analizar el tráfico del sitio y entender de dónde provienen
-      nuestros visitantes. Al hacer clic en "Aceptar", aceptás el uso de cookies.
-      <a href="https://etendo.software/en/cookie-policy-2/" target="_blank">Política de cookies</a>
+      nuestros visitantes. Al hacer clic en "Aceptar", aceptas el uso de cookies.
+      <a href="https://etendo.software/politica-de-cookies-2/" target="_blank">Política de cookies</a>
     actions:
       - accept
       - manage

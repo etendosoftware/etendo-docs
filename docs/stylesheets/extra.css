@@ -1,13 +1,36 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   Etendo — MkDocs Material theme
-   Alineado con el Etendo Design System (source of truth: SaaS Etendo.fig).
+   etendo.ai — MkDocs Material theme
+   Alineado con el Manual de marca etendo.ai v1.1 (Paleta 1).
 
    Sistema de color:
-   · Púrpura #7047EB  → PRIMARIO: enlaces, foco, acentos de acción
-   · Amarillo #FFE356 → ESTADO: nav activo, logo, fila/pestaña seleccionada
-   · Ramp de grises Etendo (50→900), semánticos en pares bg/border/fg
-   Reemplaza al esquema anterior (amarillo de acento + enlaces azules).
+   · Azul  #325CFF → PRIMARIO: enlaces, botones, foco (lavanda en modo oscuro)
+   · Noche #1B1A1F → cabecera y texto principal
+   · Lima  #B8FA50 → acento, solo sobre fondo noche (logo, pestaña activa)
+   · Lavanda #B3A1FF → apoyo: texto sobre noche, tiles suaves
+   Nunca amarillo: pertenece a Classic.
    ══════════════════════════════════════════════════════════════════════════ */
+
+/* Marca etendo.ai v1.1 — tipografía (Plus Jakarta Sans + Space Mono, en local) */
+@font-face { font-family: "Plus Jakarta Sans"; font-weight: 400; font-style: normal; font-display: swap; src: url("../assets/fonts/PlusJakartaSans-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Plus Jakarta Sans"; font-weight: 400; font-style: italic; font-display: swap; src: url("../assets/fonts/PlusJakartaSans-Italic.woff2") format("woff2"); }
+@font-face { font-family: "Plus Jakarta Sans"; font-weight: 500; font-style: normal; font-display: swap; src: url("../assets/fonts/PlusJakartaSans-Medium.woff2") format("woff2"); }
+@font-face { font-family: "Plus Jakarta Sans"; font-weight: 600; font-style: normal; font-display: swap; src: url("../assets/fonts/PlusJakartaSans-SemiBold.woff2") format("woff2"); }
+@font-face { font-family: "Plus Jakarta Sans"; font-weight: 700; font-style: normal; font-display: swap; src: url("../assets/fonts/PlusJakartaSans-Bold.woff2") format("woff2"); }
+@font-face { font-family: "Plus Jakarta Sans"; font-weight: 800; font-style: normal; font-display: swap; src: url("../assets/fonts/PlusJakartaSans-ExtraBold.woff2") format("woff2"); }
+@font-face { font-family: "Space Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url("../assets/fonts/SpaceMono-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Space Mono"; font-weight: 700; font-style: normal; font-display: swap; src: url("../assets/fonts/SpaceMono-Bold.woff2") format("woff2"); }
+
+:root {
+  --md-text-font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --md-code-font: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --etendo-font-label: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Paleta 1 del manual de marca */
+  --brand-blue:     #325CFF;   /* enlaces, botones, interfaz */
+  --brand-night:    #1B1A1F;   /* texto principal y fondos oscuros */
+  --brand-lime:     #B8FA50;   /* acento, solo sobre noche */
+  --brand-lavender: #B3A1FF;   /* apoyo, texto sobre noche */
+}
 
 /* ════════════════════════════════════════
    VARIABLES — MODO CLARO
@@ -16,15 +39,15 @@
 :root,
 [data-md-color-scheme="default"] {
   /* Marca */
-  --etendo-purple:        #7047EB;   /* primary (purple-500) */
-  --etendo-purple-hover:  #5423E7;   /* purple-600 */
-  --etendo-purple-soft:   #F4F1FD;   /* purple-50 — hover/selección */
-  --etendo-yellow:        #FFE356;   /* logo / nav activo / fila seleccionada */
-  --etendo-yellow-hi:     #F8D414;   /* highlight del tile del logo */
-  --etendo-yellow-subtle: rgba(248, 212, 20, 0.14);
+  --etendo-accent:        #325CFF;   /* azul de marca: enlaces, botones, foco */
+  --etendo-accent-hover:  #325CFF;   /* sin tono derivado: el hover se marca con subrayado */
+  --etendo-accent-soft:   #EEF2FF;   /* azul muy suave — hover/selección */
+  --etendo-active:        #E3EAFF;   /* estado activo (nav lateral): azul suave */
+  --etendo-active-indicator: #325CFF;   /* indicador activo (TOC) */
+  --etendo-active-subtle: rgba(50, 92, 255, 0.10);
 
   /* Contenido — ramp de grises Etendo */
-  --etendo-text:        #121217;   /* gray-900 (ink) */
+  --etendo-text:        #1B1A1F;   /* noche */
   --etendo-text-2:      #3F3F50;   /* gray-700 */
   --etendo-text-muted:  #6C6C89;   /* gray-500 */
   --etendo-text-faint:  #A9A9BC;   /* gray-300 */
@@ -34,8 +57,8 @@
   --etendo-bg-page:     #F5F7F9;   /* chrome / app background */
   --etendo-bg-surface:  #F7F7F8;   /* gray-50 */
   --etendo-bg-search:   #F5F7F9;
-  --etendo-link:        var(--etendo-purple);
-  --etendo-link-hover:  var(--etendo-purple-hover);
+  --etendo-link:        var(--etendo-accent);
+  --etendo-link-hover:  var(--etendo-accent-hover);
 
   /* Sidebar — chrome gris frío como el producto */
   --etendo-sidebar-bg:        #F5F7F9;
@@ -46,9 +69,10 @@
   --etendo-sidebar-scrollbar: #D1D1DB;
 
   /* Semánticos (bg50 / border200 / fg700) */
-  --etendo-info-bg:    #F0FAFF; --etendo-info-border:    #ADE4FF; --etendo-info-fg:    #0075AD;
-  --etendo-warn-bg:    #FFF9EB; --etendo-warn-border:    #FFE7AD; --etendo-warn-fg:    #8A6100;
-  --etendo-success-bg: #EEFBF4; --etendo-success-border: #B2EECC; --etendo-success-fg: #17663A;
+  /* info = azul · consejo = lima claro #EDFED3 · aviso = naranja #FFF2EE (nunca amarillo) */
+  --etendo-info-bg:    #F0F4FF; --etendo-info-border:    #C3D0FF; --etendo-info-fg:    #1F3FC4;
+  --etendo-warn-bg:    #FFF2EE; --etendo-warn-border:    #FFCFBF; --etendo-warn-fg:    #A63A12;
+  --etendo-success-bg: #EDFED3; --etendo-success-border: #CDF58F; --etendo-success-fg: #3A5A00;
   --etendo-danger-bg:  #FEF0F4; --etendo-danger-border:  #FBB1C4; --etendo-danger-fg:  #D50B3E;
 
   /* Radios (DS) */
@@ -59,15 +83,17 @@
   /* Sombras (DS) */
   --etendo-shadow-sm: 0 1px 2px rgba(18,18,23,.04), 0 0 0 1px rgba(18,18,23,.03);
   --etendo-shadow-md: 0 4px 12px rgba(18,18,23,.05), 0 1px 2px rgba(18,18,23,.04);
-  --etendo-shadow-focus: 0 0 0 3px rgba(112,71,235,.25);
+  --etendo-shadow-focus: 0 0 0 3px rgba(50,92,255,.25);
 
   /* Overrides Material */
-  --md-primary-fg-color:              var(--etendo-purple);
-  --md-primary-fg-color--light:       var(--etendo-purple);
-  --md-primary-fg-color--dark:        var(--etendo-purple-hover);
-  --md-accent-fg-color:               var(--etendo-purple);
-  --md-accent-fg-color--transparent:  var(--etendo-purple-soft);
-  --md-typeset-a-color:               var(--etendo-purple);
+  --md-primary-fg-color:              var(--brand-night);
+  --md-primary-fg-color--light:       var(--brand-night);
+  --md-primary-fg-color--dark:        var(--brand-night);
+  --md-primary-bg-color:              #FFFFFF;
+  --md-primary-bg-color--light:       rgba(255,255,255,0.7);
+  --md-accent-fg-color:               var(--etendo-accent);
+  --md-accent-fg-color--transparent:  var(--etendo-accent-soft);
+  --md-typeset-a-color:               var(--etendo-accent);
 }
 
 /* ════════════════════════════════════════
@@ -75,12 +101,12 @@
 ════════════════════════════════════════ */
 
 [data-md-color-scheme="slate"] {
-  --etendo-purple:        #A991F3;   /* purple-300 — más luminoso para contraste */
-  --etendo-purple-hover:  #C6B6F7;   /* purple-200 */
-  --etendo-purple-soft:   rgba(112,71,235,0.16);
-  --etendo-yellow:        #FFE356;
-  --etendo-yellow-hi:     #F8D414;
-  --etendo-yellow-subtle: rgba(255, 227, 86, 0.12);
+  --etendo-accent:        #B3A1FF;   /* lavanda: texto/enlaces sobre noche (7,8:1) */
+  --etendo-accent-hover:  #B3A1FF;
+  --etendo-accent-soft:   rgba(179,161,255,0.14);
+  --etendo-active:        rgba(184,250,80,0.16);   /* estado activo: lima tenue sobre noche */
+  --etendo-active-indicator: #B8FA50;   /* indicador activo: lima sobre noche */
+  --etendo-active-subtle: rgba(184,250,80,0.12);
 
   --etendo-text:        #F7F7F8;
   --etendo-text-2:      #D1D1DB;
@@ -92,8 +118,8 @@
   --etendo-bg-page:     #0E0E13;
   --etendo-bg-surface:  #1E1E28;
   --etendo-bg-search:   rgba(255,255,255,0.06);
-  --etendo-link:        var(--etendo-purple);
-  --etendo-link-hover:  var(--etendo-purple-hover);
+  --etendo-link:        var(--etendo-accent);
+  --etendo-link-hover:  var(--etendo-accent-hover);
 
   --etendo-sidebar-bg:        #121217;
   --etendo-sidebar-text:      #D1D1DB;
@@ -102,20 +128,23 @@
   --etendo-sidebar-border:    rgba(255,255,255,0.06);
   --etendo-sidebar-scrollbar: rgba(255,255,255,0.14);
 
-  --etendo-info-bg:    rgba(0,172,255,0.08);  --etendo-info-border:    rgba(0,172,255,0.28);  --etendo-info-fg:    #70D1FF;
-  --etendo-warn-bg:    rgba(255,227,86,0.08); --etendo-warn-border:    rgba(255,227,86,0.28); --etendo-warn-fg:    #FFDA85;
-  --etendo-success-bg: rgba(45,202,114,0.08); --etendo-success-border: rgba(45,202,114,0.28); --etendo-success-fg: #84E4AE;
+  --etendo-info-bg:    rgba(50,92,255,0.12);  --etendo-info-border:    rgba(50,92,255,0.40);  --etendo-info-fg:    #9DB2FF;
+  --etendo-warn-bg:    rgba(255,122,77,0.10); --etendo-warn-border:    rgba(255,122,77,0.32); --etendo-warn-fg:    #FFA98A;
+  --etendo-success-bg: rgba(184,250,80,0.08); --etendo-success-border: rgba(184,250,80,0.30); --etendo-success-fg: #B8FA50;
   --etendo-danger-bg:  rgba(245,61,107,0.08); --etendo-danger-border:  rgba(245,61,107,0.28); --etendo-danger-fg:  #F98BA6;
 
   --etendo-shadow-sm: 0 1px 2px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.04);
   --etendo-shadow-md: 0 4px 12px rgba(0,0,0,.5), 0 1px 2px rgba(0,0,0,.4);
-  --etendo-shadow-focus: 0 0 0 3px rgba(169,145,243,.30);
+  --etendo-shadow-focus: 0 0 0 3px rgba(179,161,255,.30);
 
-  --md-primary-fg-color:              #17171E;
-  --md-primary-bg-color:              #F7F7F8;
-  --md-accent-fg-color:               var(--etendo-purple);
-  --md-accent-fg-color--transparent:  var(--etendo-purple-soft);
-  --md-typeset-a-color:               var(--etendo-purple);
+  --md-primary-fg-color:              var(--brand-night);
+  --md-primary-fg-color--light:       var(--brand-night);
+  --md-primary-fg-color--dark:        var(--brand-night);
+  --md-primary-bg-color:              #FFFFFF;
+  --md-primary-bg-color--light:       rgba(255,255,255,0.7);
+  --md-accent-fg-color:               var(--etendo-accent);
+  --md-accent-fg-color--transparent:  var(--etendo-accent-soft);
+  --md-typeset-a-color:               var(--etendo-accent);
 
   --md-default-bg-color:            var(--etendo-bg-content);
   --md-default-fg-color:            var(--etendo-text);
@@ -185,30 +214,78 @@ body { background-color: var(--etendo-bg-page); }
    HEADER
 ════════════════════════════════════════ */
 
+/* Cabecera noche (#1B1A1F), texto blanco, en ambos modos */
 .md-header {
   box-shadow: none;
-  border-bottom: 1px solid var(--etendo-border);
-  background-color: var(--etendo-bg-content) !important;
+  background-color: var(--brand-night) !important;
+  color: #FFFFFF;
+}
+
+.md-header__title { color: #FFFFFF; }
+.md-header__button { color: #FFFFFF; }
+
+/* Logo: isotipo lima + «etendo» en minúsculas + «Academy» en gris */
+.md-header__title .md-header__topic:first-child .md-ellipsis {
+  font-size: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.md-header__title .md-header__topic:first-child .md-ellipsis::before {
+  content: "etendo";
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+.md-header__title .md-header__topic:first-child .md-ellipsis::after {
+  content: "Academy";
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #A9A9BC;
+}
+
+/* Búsqueda sobre la cabecera noche */
+.md-header .md-search__form {
+  background-color: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.14);
+  color: #FFFFFF;
+}
+.md-header .md-search__form:hover { background-color: rgba(255,255,255,0.14); }
+.md-header .md-search__input { color: #FFFFFF; }
+.md-header .md-search__input::placeholder { color: rgba(255,255,255,0.65); }
+.md-header .md-search__icon { color: rgba(255,255,255,0.75); }
+.md-header .md-search__form:focus-within { box-shadow: 0 0 0 3px rgba(184,250,80,0.30); }
+
+/* Buscador abierto: el formulario pasa a fondo de contenido, el texto vuelve a ser legible */
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+  background-color: var(--etendo-bg-content);
+  border-color: var(--etendo-border-2);
   color: var(--etendo-text);
 }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__input { color: var(--etendo-text); }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__input::placeholder { color: var(--etendo-text-muted); }
+[data-md-toggle="search"]:checked ~ .md-header .md-search__icon { color: var(--etendo-text-muted); }
 
-.md-header__title { color: var(--etendo-text); }
+/* Resultados */
+.md-search-result__meta { color: var(--etendo-text-muted); background-color: var(--etendo-bg-surface); }
+.md-search-result__title,
+.md-search-result__teaser { color: var(--etendo-text); }
+.md-search-result__teaser { color: var(--etendo-text-2); }
 
-[data-md-color-scheme="default"] .md-header__button { color: var(--etendo-text-muted); }
-
-/* Pestañas de navegación superior */
+/* Pestañas de navegación superior: parte de la cabecera noche */
 .md-tabs {
-  background-color: var(--etendo-bg-content);
-  color: var(--etendo-text-2);
-  border-bottom: 1px solid var(--etendo-border);
+  background-color: var(--brand-night);
+  color: rgba(255,255,255,0.72);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-.md-tabs__link { color: var(--etendo-text-2); opacity: 1; }
-.md-tabs__link:hover { color: var(--etendo-text); }
+.md-tabs__link { color: rgba(255,255,255,0.72); opacity: 1; }
+.md-tabs__link:hover { color: #FFFFFF; }
 .md-tabs__link--active,
 .md-tabs__item--active .md-tabs__link {
-  color: var(--etendo-text);
+  color: #FFFFFF;
   font-weight: 600;
-  box-shadow: inset 0 -2px 0 var(--etendo-yellow-hi);
+  box-shadow: inset 0 -2px 0 var(--brand-lime);
 }
 
 /* ════════════════════════════════════════
@@ -317,20 +394,20 @@ body { background-color: var(--etendo-bg-page); }
   box-shadow: none;
 }
 
-/* Item activo: pill amarillo — solo la página exacta */
+/* Item activo: pill azul suave (claro) / lima tenue (oscuro) — solo la página exacta */
 .md-sidebar--primary .md-nav__item:not(.md-nav__item--section) > .md-nav__link--active {
-  color: #121217 !important;
+  color: var(--etendo-text) !important;
   font-weight: 600;
-  background-color: var(--etendo-yellow) !important;
+  background-color: var(--etendo-active) !important;
   border-radius: var(--etendo-radius-sm) !important;
   border: none !important;
 }
 .md-sidebar--primary .md-nav__item:not(.md-nav__item--section) > .md-nav__container:has(> a.md-nav__link--active) {
-  background-color: var(--etendo-yellow) !important;
+  background-color: var(--etendo-active) !important;
   border-radius: var(--etendo-radius-sm) !important;
 }
 .md-sidebar--primary .md-nav__item:not(.md-nav__item--section) > .md-nav__container:has(> a.md-nav__link--active) > .md-nav__link {
-  color: #121217 !important;
+  color: var(--etendo-text) !important;
   font-weight: 600;
   background-color: transparent !important;
 }
@@ -372,10 +449,10 @@ body { background-color: var(--etendo-bg-page); }
 .md-search-result { background-color: var(--etendo-bg-content); }
 .md-search-result__link:hover,
 .md-search-result__link[data-md-state="active"] {
-  background-color: var(--etendo-purple-soft);
+  background-color: var(--etendo-accent-soft);
 }
 .md-search-result__article--document .md-search-result__title { color: var(--etendo-text); }
-.md-search-result mark { color: var(--etendo-purple); }
+.md-search-result mark { color: var(--etendo-accent); }
 
 /* ════════════════════════════════════════
    TOC DERECHO
@@ -408,11 +485,23 @@ body { background-color: var(--etendo-bg-page); }
 
 .md-nav--secondary .md-nav__link--active {
   color: var(--etendo-text) !important;
-  border-left: 2px solid var(--etendo-yellow-hi);
+  border-left: 2px solid var(--etendo-active-indicator);
   padding-left: calc(1rem - 2px);
   background-color: transparent !important;
   font-weight: 600;
 }
+
+/* Subtítulos y etiquetas: Space Mono, mayúsculas, espaciado +8 % */
+.md-sidebar--primary .md-nav__title,
+.md-nav--primary .md-nav__title,
+.md-sidebar--secondary .md-nav__title,
+.etendo-home__card-count {
+  font-family: var(--etendo-font-label);
+  letter-spacing: 0.08em;
+}
+.md-sidebar--primary .md-nav__title,
+.md-nav--primary .md-nav__title,
+.md-sidebar--secondary .md-nav__title { font-weight: 700; }
 
 /* ════════════════════════════════════════
    BREADCRUMB (navigation.path)
@@ -420,43 +509,49 @@ body { background-color: var(--etendo-bg-page); }
 
 .md-path { color: var(--etendo-text-muted); font-size: 0.72rem; }
 .md-path__item::after { color: var(--etendo-border-2); }
-.md-path__link:hover { color: var(--etendo-purple); }
+.md-path__link:hover { color: var(--etendo-accent); }
 
 /* ════════════════════════════════════════
    TIPOGRAFÍA
 ════════════════════════════════════════ */
 
+.md-typeset {
+  font-size: 0.8rem;       /* 16 px */
+  line-height: 1.6;
+}
+
 .md-typeset h1 {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--etendo-text);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .md-typeset h2 {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--etendo-text);
-  letter-spacing: -0.005em;
+  letter-spacing: -0.02em;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--etendo-border);
 }
 
 .md-typeset h3 {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--etendo-text);
+  letter-spacing: -0.02em;
 }
 
 .md-typeset a {
   color: var(--etendo-link);
   transition: color 0.14s ease-out;
 }
-.md-typeset a:hover { color: var(--etendo-link-hover); }
+.md-typeset a:hover { color: var(--etendo-link-hover); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ════════════════════════════════════════
    LOGO
 ════════════════════════════════════════ */
 
 .md-header__button.md-logo img {
-  height: 1.8rem;
+  height: 1.6rem;
   width: auto;
 }
 
@@ -468,14 +563,14 @@ body { background-color: var(--etendo-bg-page); }
   border-radius: var(--etendo-radius-sm);
 }
 .md-typeset :not(pre) > code {
-  color: var(--etendo-purple-hover);
+  color: var(--etendo-accent-hover);
   background-color: var(--etendo-bg-surface);
 }
 .md-typeset pre > code { border-radius: var(--etendo-radius-md); }
 
 [data-md-color-scheme="slate"] .md-typeset :not(pre) > code {
   background-color: #1E1E28;
-  color: #C6B6F7;
+  color: var(--brand-lavender);
 }
 [data-md-color-scheme="slate"] .md-typeset code {
   background-color: #1E1E28;
@@ -483,7 +578,7 @@ body { background-color: var(--etendo-bg-page); }
 }
 
 /* Botón copiar */
-.md-clipboard:hover { color: var(--etendo-purple); }
+.md-clipboard:hover { color: var(--etendo-accent); }
 
 /* ════════════════════════════════════════
    ADMONITIONS — pares semánticos Etendo
@@ -630,18 +725,19 @@ body { background-color: var(--etendo-bg-page); }
   background-color: var(--etendo-bg-page);
 }
 
-/* Primario = ink negro (DS: el botón primario NO es amarillo) */
+/* Primario = azul de marca #325CFF */
 .md-typeset .md-button--primary {
-  background-color: var(--etendo-text);
-  border-color: var(--etendo-text);
+  background-color: var(--brand-blue);
+  border-color: var(--brand-blue);
   color: #FFFFFF;
   border-radius: var(--etendo-radius-md);
 }
 .md-typeset .md-button--primary:hover,
 .md-typeset .md-button--primary:focus {
-  background-color: #2A2A30;
-  border-color: #2A2A30;
+  background-color: var(--brand-blue);
+  border-color: var(--brand-blue);
   color: #FFFFFF;
+  opacity: 0.88;
 }
 
 [data-md-color-scheme="slate"] .md-typeset .md-button {
@@ -653,14 +749,15 @@ body { background-color: var(--etendo-bg-page); }
   color: var(--etendo-text);
 }
 [data-md-color-scheme="slate"] .md-typeset .md-button--primary {
-  background-color: #F7F7F8;
-  border-color: #F7F7F8;
-  color: #121217;
+  background-color: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #FFFFFF;
 }
 [data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover {
-  background-color: #E8E8ED;
-  border-color: #E8E8ED;
-  color: #121217;
+  background-color: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #FFFFFF;
+  opacity: 0.88;
 }
 
 /* ════════════════════════════════════════
@@ -751,7 +848,7 @@ body { background-color: var(--etendo-bg-page); }
 }
 .etendo-home__search-input:hover,
 .etendo-home__search-input:focus {
-  border-color: var(--etendo-purple);
+  border-color: var(--etendo-accent);
   box-shadow: var(--etendo-shadow-focus);
 }
 
@@ -765,7 +862,6 @@ body { background-color: var(--etendo-bg-page); }
   color: var(--etendo-text-muted);
   pointer-events: none;
 }
-.etendo-home__search-icon svg { width: 100%; height: 100%; fill: currentColor; }
 
 .etendo-home__sections {
   max-width: 1100px;
@@ -803,22 +899,30 @@ body { background-color: var(--etendo-bg-page); }
   gap: 0.875rem;
   margin-bottom: 0.75rem;
 }
-.etendo-home__card:hover h3 { color: var(--etendo-purple); }
+.etendo-home__card:hover h3 { color: var(--etendo-accent); }
 
-/* Icono: tile suave amarillo con glifo (rol de logo/estado) */
+/* Icono: tile lavanda suave con glifo azul */
 .etendo-home__card-icon {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: var(--etendo-radius-md);
-  background-color: var(--etendo-warn-bg);
-  color: var(--etendo-warn-fg);
+  background-color: rgba(179,161,255,0.22);
+  color: var(--etendo-accent);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.4rem;
 }
-.etendo-home__card-icon svg { width: 100%; height: 100%; fill: currentColor; }
+.etendo-home__card-icon svg,
+.etendo-home__search-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;   /* estilo Lucide del manual: línea, 24 px, trazo 1,75 */
+}
+[data-md-color-scheme="slate"] .etendo-home__card-icon { color: var(--brand-lime); }
 
 .etendo-home__card-meta { flex: 1; }
 
@@ -859,6 +963,32 @@ body { background-color: var(--etendo-bg-page); }
   .etendo-home__grid { grid-template-columns: 1fr; }
 }
 
+.etendo-home__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 auto 1.25rem;
+}
+.etendo-home__brand .etendo-home__logo { margin: 0; height: 2rem !important; }
+.etendo-brand__name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--etendo-text);
+  line-height: 1;
+}
+.etendo-brand__sub {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--etendo-text-muted);
+  line-height: 1;
+}
+.etendo-home__logo--dark { display: none; }
+[data-md-color-scheme="slate"] .etendo-home__logo--light { display: none; }
+[data-md-color-scheme="slate"] .etendo-home__logo--dark { display: block; }
+[data-md-color-scheme="slate"] .etendo-home__hero-bg { filter: invert(1); }
+
 /* ════════════════════════════════════════
    DIAGRAMAS MERMAID — texto más grande
 ════════════════════════════════════════ */
@@ -880,6 +1010,15 @@ body { background-color: var(--etendo-bg-page); }
    FOOTER
 ════════════════════════════════════════ */
 
-.md-footer { background-color: var(--etendo-sidebar-bg); color: var(--etendo-sidebar-text); }
-[data-md-color-scheme="default"] .md-footer { color: var(--etendo-text-muted); }
+.md-footer {
+  --md-footer-bg-color:            var(--brand-night);
+  --md-footer-bg-color--dark:      var(--brand-night);
+  --md-footer-fg-color:            #FFFFFF;
+  --md-footer-fg-color--light:     rgba(255,255,255,0.72);
+  --md-footer-fg-color--lighter:   rgba(255,255,255,0.56);
+  background-color: var(--brand-night);
+  color: #FFFFFF;
+}
 .md-footer-meta { background-color: transparent; }
+.md-footer a:hover,
+.md-footer .md-social__link:hover { color: var(--brand-lime); }
