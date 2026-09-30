@@ -107,9 +107,9 @@ plugins:
                         - operaciones/inventario/almacenes/index.md
                         - Crear un almacén: operaciones/inventario/almacenes/crear-un-almacen/crear-un-almacen.md
                     - Movimientos de stock:
-                        - ¿Qué es la sección Inventario físico?: operaciones/inventario/inventario-fisico/index.md
-                        - ¿Qué es la sección Consumo interno?: operaciones/inventario/consumo-interno/index.md
-                        - ¿Qué es la sección Movimiento entre almacenes?: operaciones/inventario/movimiento-de-almacenes/index.md
+                        - ¿Qué es la sección Inventario físico?: operaciones/inventario/inventario-fisico/inventario-fisico.md
+                        - ¿Qué es la sección Consumo interno?: operaciones/inventario/consumo-interno/consumo-interno.md
+                        - ¿Qué es la sección Movimiento entre almacenes?: operaciones/inventario/movimiento-de-almacenes/movimiento-de-almacenes.md
             - Finanzas:
                 - finanzas/index.md
                 - Glosario de Contabilidad: finanzas/glosario-de-contabilidad/glosario-de-contabilidad.md
@@ -127,7 +127,7 @@ plugins:
   - glightbox
   - tags
   - git-committers:
-      repository: etendosoftware/etendo-go-docs
+      repository: etendosoftware/etendo-docs
       branch: develop
   - git-revision-date-localized:
       enable_creation_date: true

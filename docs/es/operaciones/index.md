@@ -172,7 +172,7 @@ Todo lo que necesitas para gestionar tus compras a proveedores y el control de s
 
     Concilia el stock que el sistema tiene registrado con el que cuentas realmente en un almacén.
 
-    [:octicons-arrow-right-24: Leer más](inventario/inventario-fisico/index.md)
+    [:octicons-arrow-right-24: Leer más](inventario/inventario-fisico/inventario-fisico.md)
 
 -   :material-package-down:{ .lg .middle } **¿Qué es la sección Consumo interno?**
 
@@ -180,7 +180,7 @@ Todo lo que necesitas para gestionar tus compras a proveedores y el control de s
 
     Registra salidas de stock que no son una venta, como mercadería dañada o uso interno.
 
-    [:octicons-arrow-right-24: Leer más](inventario/consumo-interno/index.md)
+    [:octicons-arrow-right-24: Leer más](inventario/consumo-interno/consumo-interno.md)
 
 -   :material-swap-horizontal:{ .lg .middle } **¿Qué es la sección Movimiento entre almacenes?**
 
@@ -188,6 +188,6 @@ Todo lo que necesitas para gestionar tus compras a proveedores y el control de s
 
     Transfiere stock de un almacén a otro sin que sea una venta ni una compra.
 
-    [:octicons-arrow-right-24: Leer más](inventario/movimiento-de-almacenes/index.md)
+    [:octicons-arrow-right-24: Leer más](inventario/movimiento-de-almacenes/movimiento-de-almacenes.md)
 
 </div>
