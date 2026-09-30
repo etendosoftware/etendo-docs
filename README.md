@@ -3,7 +3,7 @@
 Documentation for **Etendo**, split into two parts:
 
 - **`docs/`** — the human-facing [MkDocs](https://www.mkdocs.org/) site, published at
-  [etendosoftware.github.io/etendo-docs](https://etendosoftware.github.io/etendo-docs/).
+  [help.etendo.ai](https://help.etendo.ai/).
 - **`agentic/`** — machine-readable guides written for AI agents (see [`AGENTS.md`](./AGENTS.md)).
   This is the content indexed by [Context7](https://context7.com).
 
