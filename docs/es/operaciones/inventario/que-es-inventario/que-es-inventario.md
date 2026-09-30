@@ -36,6 +36,9 @@ El stock se gestiona **por almacén**: cada almacén mantiene su propio stock de
 - **Producto** — el maestro central de todo lo que vendes o compras: su tipo (con o sin stock), su categoría, su unidad de medida y sus tarifas de precio.
 - **Categoría del producto** — agrupa tus productos bajo una configuración contable común, para que no tengas que definirla producto por producto.
 - **Almacén** — tus ubicaciones físicas de stock, cada una con su propia valoración y su historial de movimientos.
+- **Inventario físico** — concilia el stock que el sistema tiene registrado con el que cuentas realmente en un almacén.
+- **Consumo interno** — registra salidas de stock que no son una venta, como mercadería dañada o uso interno.
+- **Movimiento entre almacenes** — transfiere stock de un almacén a otro sin que sea una venta ni una compra.
 
 ## Acceso y roles
 
@@ -51,6 +54,9 @@ Para empezar a operar, define primero tus [categorías de producto](../productos
 
 - [¿Qué es la sección de Productos?](../productos/index.md)
 - [¿Qué es la sección Almacén?](../almacenes/index.md)
+- [¿Qué es la sección Inventario físico?](../inventario-fisico/inventario-fisico.md)
+- [¿Qué es la sección Consumo interno?](../consumo-interno/consumo-interno.md)
+- [¿Qué es la sección Movimiento entre almacenes?](../movimiento-de-almacenes/movimiento-de-almacenes.md)
 - [¿Qué es la sección Compras?](../../compras/que-es-la-seccion-compras/que-es-la-seccion-compras.md)
 
 ---
