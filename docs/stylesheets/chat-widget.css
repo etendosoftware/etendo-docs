@@ -23,24 +23,27 @@
 .is-open .etendo-chat__fab { opacity: 0; pointer-events: none; transform: scale(.9); }
 
 /* ---------- Vista de conversación ---------- */
+/* Sustituye al contenido de la página: se oculta el contenido y el chat ocupa su lugar, con el scroll de la página */
+html.etendo-chat-open .md-main,
+html.etendo-chat-open .md-footer,
+html.etendo-chat-open .md-top { display: none !important; }
+/* El navegador no reajusta el scroll solo cuando crece la respuesta: la posición la decide el widget */
+html.etendo-chat-open { overflow-anchor: none; }
+
 .etendo-chat__panel {
-  position: fixed; left: 0; right: 0; bottom: 0; top: var(--etendo-chat-top); z-index: 50;
-  display: flex; flex-direction: column;
+  display: none; flex-direction: column;
+  min-height: calc(100vh - var(--etendo-chat-top));
   background: var(--etendo-bg-content); color: var(--etendo-text);
-  opacity: 0; visibility: hidden; transform: translateY(18px);
-  transition: opacity .22s ease-out, transform .22s ease-out, visibility 0s linear .22s;
 }
-.is-open .etendo-chat__panel {
-  opacity: 1; visibility: visible; transform: none;
-  transition: opacity .22s ease-out, transform .22s ease-out, visibility 0s;
-}
-body.etendo-chat-open { overflow: hidden; }
+.is-open .etendo-chat__panel { display: flex; animation: etendo-chat-open .24s ease-out both; }
+@keyframes etendo-chat-open { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
 .etendo-chat__header {
   display: flex; align-items: center; gap: .25rem;
   padding: .7rem 1.25rem;
   border-bottom: 1px solid var(--etendo-border);
   background: var(--etendo-bg-content);
+  position: sticky; top: var(--etendo-chat-stick, 0px); z-index: 2;   /* queda bajo la cabecera de Material */
 }
 .etendo-chat__title { flex: 1; font-size: .8rem; font-weight: 500; line-height: 1.2; color: var(--etendo-text-muted); }
 .etendo-chat__title strong { font-weight: 800; letter-spacing: -.02em; font-size: .8rem; color: var(--etendo-text); }
@@ -50,14 +53,14 @@ body.etendo-chat-open { overflow: hidden; }
   text-transform: uppercase; color: var(--etendo-accent);
 }
 .etendo-chat__icon-btn {
-  width: 2.1rem; height: 2.1rem; padding: .4rem;
+  width: 1.7rem; height: 1.7rem; padding: .4rem;   /* icono de 18 px */
   border: 0; border-radius: var(--etendo-radius-sm);
   background: transparent; color: var(--etendo-text-muted); cursor: pointer;
 }
 .etendo-chat__icon-btn:hover { background: var(--etendo-bg-surface); color: var(--etendo-text); }
 .etendo-chat__icon-btn svg { width: 100%; height: 100%; }
 
-.etendo-chat__scroll { flex: 1; overflow-y: auto; background: var(--etendo-bg-page); }
+.etendo-chat__scroll { flex: 1; background: var(--etendo-bg-page); }
 .etendo-chat__thread {
   max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.25rem;
   min-height: 100%; display: flex; flex-direction: column; gap: 1rem;
@@ -115,8 +118,27 @@ body.etendo-chat-open { overflow: hidden; }
 .etendo-chat__typing i:nth-child(3) { animation-delay: .3s; }
 @keyframes etendo-chat-dot { 0%, 80%, 100% { opacity: .3; transform: scale(.8); } 40% { opacity: 1; transform: scale(1); } }
 
+/* ---------- Sugerencias al escribir ---------- */
+.etendo-chat__suggest {
+  position: absolute; left: 0; right: 0; bottom: 100%;
+  width: min(46rem, calc(100% - 2.5rem)); margin: 0 auto .4rem; padding: .3rem; list-style: none;
+  background: var(--etendo-bg-content);
+  border: 1px solid var(--etendo-border-2); border-radius: var(--etendo-radius-lg);
+  box-shadow: var(--etendo-shadow-md);
+  animation: etendo-chat-in .14s ease-out both;
+}
+.etendo-chat__suggest[hidden] { display: none; }
+.etendo-chat__suggest li {
+  margin: 0; padding: .5rem .75rem;
+  border-radius: var(--etendo-radius-md);
+  font-size: .7rem; line-height: 1.4; color: var(--etendo-text-2); cursor: pointer;
+}
+.etendo-chat__suggest li:hover, .etendo-chat__suggest li.is-active { background: var(--etendo-accent-soft); color: var(--etendo-text); }
+.etendo-chat__suggest mark { background: transparent; color: var(--etendo-accent); font-weight: 700; }
+
 /* ---------- Campo de entrada ---------- */
 .etendo-chat__dock {
+  position: sticky; bottom: 0; z-index: 3;
   padding: .75rem 1.25rem .6rem; border-top: 1px solid var(--etendo-border);
   background: var(--etendo-bg-content);
 }
