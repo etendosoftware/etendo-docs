@@ -33,6 +33,7 @@ html.etendo-chat-open { overflow-anchor: none; }
 .etendo-chat__panel {
   display: none; flex-direction: column;
   min-height: calc(100vh - var(--etendo-chat-top));
+  min-height: calc(100dvh - var(--etendo-chat-top));   /* Safari iOS: la barra de direcciones cambia la altura útil */
   background: var(--etendo-bg-content); color: var(--etendo-text);
 }
 .is-open .etendo-chat__panel { display: flex; animation: etendo-chat-open .24s ease-out both; }
@@ -153,7 +154,8 @@ html.etendo-chat-open { overflow-anchor: none; }
 .etendo-chat__form textarea {
   flex: 1; resize: none; max-height: 140px; padding: .35rem 0;
   border: 0; background: transparent; color: var(--etendo-text);
-  font: inherit; font-size: .75rem; line-height: 1.5;
+  font: inherit; font-size: .75rem; line-height: 1.5;   /* 15 px */
+  -webkit-appearance: none; appearance: none; border-radius: 0;   /* sin el estilo propio de iOS */
 }
 .etendo-chat__form textarea:focus { outline: none; }
 .etendo-chat__send {
@@ -170,6 +172,9 @@ html.etendo-chat-open { overflow-anchor: none; }
 }
 
 @media (max-width: 600px) {
+  /* iOS hace zoom al enfocar campos de menos de 16 px: en móvil el campo del chat es de 16 px */
+  .etendo-chat__form textarea { font-size: 16px; }
+  .etendo-chat__suggest li { padding: .65rem .8rem; }   /* zona táctil más cómoda */
   .etendo-chat__fab { right: .9rem; bottom: .9rem; height: 3rem; }
   .etendo-chat__fab span { display: none; }
   .etendo-chat__fab { width: 3rem; padding: 0; justify-content: center; }

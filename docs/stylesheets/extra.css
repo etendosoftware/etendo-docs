@@ -1058,3 +1058,40 @@ body { background-color: var(--etendo-bg-page); }
 [data-md-toggle="search"]:checked ~ .md-header .etendo-search__ai svg { width: .9rem; height: .9rem; color: var(--etendo-accent); }
 [data-md-toggle="search"]:checked ~ .md-header .etendo-search__ai:hover { border-color: var(--etendo-accent); }
 [data-md-toggle="search"]:checked ~ .md-header .md-search__input { padding-right: 9rem; }
+
+/* ════════════════════════════════════════
+   MÓVIL
+════════════════════════════════════════ */
+
+/* El botón del chat no tapa el buscador abierto */
+body:has([data-md-toggle="search"]:checked) .etendo-chat__fab { display: none; }
+
+/* El texto del campo del hero se recorta con puntos suspensivos en vez de cortarse */
+.etendo-home__search-input { text-overflow: ellipsis; }
+
+@media (max-width: 600px) {
+  /* Artículos: menos margen lateral para aprovechar el ancho */
+  .md-content__inner { padding: 1rem 1rem 3rem; }
+}
+
+/* El botón del chat tampoco tapa el menú lateral abierto */
+body:has([data-md-toggle="drawer"]:checked) .etendo-chat__fab { display: none; }
+
+/* Menú lateral en móvil: la barra del título vuelve a ser noche con texto blanco (las reglas de título de escritorio la dejaban sin fondo) */
+@media (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title {
+    position: relative !important;
+    height: 5.2rem !important;
+    padding: 2.8rem .8rem .2rem 1rem !important;
+    background-color: var(--brand-night) !important;
+    color: #FFFFFF !important;
+    font-family: var(--md-text-font);
+    font-size: .8rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    line-height: 1.4 !important;
+  }
+  .md-nav--primary .md-nav__title .md-nav__icon { color: #FFFFFF; }
+  .md-nav--primary .md-nav__title[for="__drawer"] .md-logo img { height: 1.4rem; }
+}
