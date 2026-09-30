@@ -50,7 +50,7 @@ Al hacer clic en **Confirmar**, el sistema genera un movimiento de stock por cad
 
 ## Recursos y próximos pasos
 
-Es habitual usar un ajuste de inventario físico para cargar el stock inicial de un [almacén](../almacenes/index.md) recién creado, antes de empezar a operar con [compras](../../compras/que-es-la-seccion-compras/que-es-la-seccion-compras.md) y [ventas](../../../comercial/ventas/que-es-la-seccion-ventas/que-es-la-seccion-ventas.md).
+Es habitual usar un ajuste de inventario físico para cargar el stock inicial de un [almacén](../almacenes/index.md) recién creado, antes de empezar a operar con [compras](../../compras/que-es-la-seccion-compras/que-es-la-seccion-compras.md) y [ventas](../../../comercial/ventas/que-es-la-seccion-ventas/que-es-la-seccion-ventas.md). Si en cambio necesitas registrar una salida puntual de stock, usa [Consumo interno](../consumo-interno/index.md); si necesitas transferir mercadería a otro almacén, usa [Movimiento entre almacenes](../movimiento-de-almacenes/index.md).
 
 ---
 
@@ -59,8 +59,6 @@ Es habitual usar un ajuste de inventario físico para cargar el stock inicial de
 - [¿Qué es la sección Inventario?](../que-es-inventario/que-es-inventario.md)
 - [¿Qué es la sección de Productos?](../productos/index.md)
 - [¿Qué es la sección Almacén?](../almacenes/index.md)
-- [¿Qué es la sección Consumo interno?](../consumo-interno/index.md)
-- [¿Qué es la sección Movimiento entre almacenes?](../movimiento-de-almacenes/index.md)
 
 ---
 Esta obra está bajo la licencia :material-creative-commons: :fontawesome-brands-creative-commons-by: :fontawesome-brands-creative-commons-sa: [CC BY-SA 2.5 ES](https://creativecommons.org/licenses/by-sa/2.5/es/){target="_blank"} de [Futit Services S.L](https://etendo.software){target="_blank"}.

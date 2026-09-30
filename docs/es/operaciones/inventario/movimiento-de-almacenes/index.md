@@ -46,7 +46,7 @@ Además de las líneas, cada movimiento tiene una pestaña **Adjuntos** para sum
 
 Al hacer clic en **Procesar**, el sistema resta la cantidad transferida del stock del almacén origen y la suma al stock del almacén destino, y el documento queda con estado **Procesado** y bloqueado para edición: si te equivocaste, se corrige con un nuevo movimiento. El stock total de la empresa no cambia — solo se redistribuye entre almacenes.
 
-A diferencia de Inventario físico y Consumo interno, un Movimiento entre almacenes no intenta contabilizarse: la columna Contabilizado siempre muestra **Documento deshabilitado**, porque transferir stock entre tus propios almacenes no genera ningún asiento contable.
+A diferencia de [Inventario físico](../inventario-fisico/index.md) y [Consumo interno](../consumo-interno/index.md), un Movimiento entre almacenes no intenta contabilizarse: la columna Contabilizado siempre muestra **Documento deshabilitado**, porque transferir stock entre tus propios almacenes no genera ningún asiento contable.
 
 ## Recursos y próximos pasos
 
@@ -59,8 +59,6 @@ Antes de transferir stock entre dos almacenes, ambos deben existir: revisa cómo
 - [¿Qué es la sección Inventario?](../que-es-inventario/que-es-inventario.md)
 - [¿Qué es la sección de Productos?](../productos/index.md)
 - [¿Qué es la sección Almacén?](../almacenes/index.md)
-- [¿Qué es la sección Inventario físico?](../inventario-fisico/index.md)
-- [¿Qué es la sección Consumo interno?](../consumo-interno/index.md)
 
 ---
 Esta obra está bajo la licencia :material-creative-commons: :fontawesome-brands-creative-commons-by: :fontawesome-brands-creative-commons-sa: [CC BY-SA 2.5 ES](https://creativecommons.org/licenses/by-sa/2.5/es/){target="_blank"} de [Futit Services S.L](https://etendo.software){target="_blank"}.

@@ -161,3 +161,33 @@ Todo lo que necesitas para gestionar tus compras a proveedores y el control de s
     [:octicons-arrow-right-24: Leer más](inventario/almacenes/crear-un-almacen/crear-un-almacen.md)
 
 </div>
+
+### Movimientos de stock
+
+<div class="grid cards" markdown>
+
+-   :material-format-list-checks:{ .lg .middle } **¿Qué es la sección Inventario físico?**
+
+    ---
+
+    Concilia el stock que el sistema tiene registrado con el que cuentas realmente en un almacén.
+
+    [:octicons-arrow-right-24: Leer más](inventario/inventario-fisico/index.md)
+
+-   :material-package-down:{ .lg .middle } **¿Qué es la sección Consumo interno?**
+
+    ---
+
+    Registra salidas de stock que no son una venta, como mercadería dañada o uso interno.
+
+    [:octicons-arrow-right-24: Leer más](inventario/consumo-interno/index.md)
+
+-   :material-swap-horizontal:{ .lg .middle } **¿Qué es la sección Movimiento entre almacenes?**
+
+    ---
+
+    Transfiere stock de un almacén a otro sin que sea una venta ni una compra.
+
+    [:octicons-arrow-right-24: Leer más](inventario/movimiento-de-almacenes/index.md)
+
+</div>

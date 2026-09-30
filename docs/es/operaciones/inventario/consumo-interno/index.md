@@ -26,7 +26,7 @@ El encabezado del documento incluye:
 - **Fecha del movimiento** *(obligatorio)*.
 - **Nombre** *(obligatorio)* — se autocompleta con la fecha, pero puede editarse.
 
-A diferencia de otros documentos de Inventario, acá **no eliges un almacén en el encabezado**: cada línea define su propio almacén, junto con el producto. En las líneas agregas un renglón por producto:
+A diferencia de un ajuste de [Inventario físico](../inventario-fisico/index.md), acá **no eliges un almacén en el encabezado**: cada línea define su propio almacén, junto con el producto. En las líneas agregas un renglón por producto:
 
 - **Producto** — se busca de forma conjunta con el almacén (solo aparecen productos con stock disponible en algún almacén).
 - **Cant. movida** *(obligatorio)* — la cantidad que sale del almacén.
@@ -46,16 +46,14 @@ Al hacer clic en **Confirmar**, el sistema resta el stock del almacén elegido e
 
 ## Recursos y próximos pasos
 
-Si en cambio la salida de stock corresponde a una venta a un cliente, usa la [sección Ventas](../../../comercial/ventas/que-es-la-seccion-ventas/que-es-la-seccion-ventas.md) en lugar de un consumo interno.
+Si en cambio la salida de stock corresponde a una venta a un cliente, usa la [sección Ventas](../../../comercial/ventas/que-es-la-seccion-ventas/que-es-la-seccion-ventas.md) en lugar de un consumo interno. Y si lo que necesitas es corregir el stock registrado tras un conteo físico, usa [Inventario físico](../inventario-fisico/index.md).
 
 ---
 
 ## Artículos Relacionados
 
 - [¿Qué es la sección Inventario?](../que-es-inventario/que-es-inventario.md)
-- [¿Qué es la sección de Productos?](../productos/index.md)
 - [¿Qué es la sección Almacén?](../almacenes/index.md)
-- [¿Qué es la sección Inventario físico?](../inventario-fisico/index.md)
 - [¿Qué es la sección Movimiento entre almacenes?](../movimiento-de-almacenes/index.md)
 
 ---
