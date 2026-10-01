@@ -7,6 +7,7 @@ This guide documents the MCP operations that cover day-to-day treasury work in E
 - **Collect a sales invoice** and **pay a purchase invoice** — in full, partially, as a draft to confirm later, with existing credit, in another currency, or writing off a small difference.
 - Read and manage the resulting **payments** (`payment-in` collections, `payment-out` payments).
 - Maintain **financial accounts** (`financial-account/account`).
+- Record **manual movements** of an account — a deposit or a withdrawal booked against a G/L item — and edit, process, reactivate or delete them.
 - Read **account movements**, **payment terms** and **conversion rates**.
 
 The MCP surface equals the Etendo GO UI surface, both ways: what the UI offers, an agent can do; what the UI does not offer is hidden from agents and refused. The section [Not available to agents](#not-available-to-agents) lists the routes that are refused and what to use instead.
@@ -85,11 +86,36 @@ To delete a **draft** and give back the credit it consumed, use the invoice's `d
 
 Spec `financial-account`, entity `account` (`FIN_Financial_Account`): `neo_list`, `neo_get`, `neo_create`, `neo_update`, `neo_delete`. Read the writable fields with `neo_schema(spec: "financial-account", entity: "account", view: "create")` before writing. `name`, `currency`, `type` (Bank `B`, Cash `C`, Card `CA`) and `country` are required; `country` is never derived from the IBAN. None of the account's Core buttons is invokable (see [Not available to agents](#not-available-to-agents)).
 
+### Account movements
+
+A **movement** is the account's own record of money in (deposit) or out (withdrawal), booked against a G/L item (concept). It is what the account's Movements tab records with *New movement*, and once processed it changes the account balance. It is **not a bank-statement line**: a statement line is what the bank reports, imported or entered by hand and then matched to movements in a reconciliation ([Bank reconciliation](./bank-reconciliation.md)). When the user asks to "record a deposit", record a movement.
+
+Movements of invoices are created by their payments (`registerPayment`); the actions below are for the movements a person records by hand. Call each with `neo_action(spec: "financial-account", entity: "account", id: <financialAccountId>, action: <name>, parameters: {...})`. In every action, `id` is the **financial account** id.
+
+| Action | Kind | Parameters (required in **bold**) | Returns |
+|--------|------|-----------------------------------|---------|
+| `listMovements` | read | — | `transactions[]` (newest first): `id`, `date`, `trxType`, `amount`, `depositAmount`, `withdrawalAmount`, `description`, `processed` (`false` = draft), `posted`, `paymentId` (set when it belongs to a payment), `transferTxnId` (set on a funds-transfer leg), `glItemId`, `bpartnerId`; and the account `totals` |
+| `movementGlItems` | read | `search` | G/L items a movement can be booked against: `id`, `name` |
+| `createMovement` | write | **`trxType`** (`BPD` deposit \| `BPW` withdrawal), **`amount`** (> 0, account currency), **`date`** (`yyyy-MM-dd`, also the accounting date), **`glItemId`**, `description` (≤ 255 characters), `bpartnerId`, `projectId`, `costcenterId`, `productId`, `process` | the movement |
+| `updateMovement` | write | **`movementId`** and only what changes | the movement |
+| `processMovement` | write | **`movementId`** | the movement |
+| `reactivateMovement` | write | **`movementId`** | the movement |
+| `deleteMovement` | write | **`movementId`** | `{deleted:{...}}` |
+
+- `process: true` on `createMovement` processes the movement at once (the form's *Confirmar*). Without it the movement stays a **draft** (*Guardar*): editable, deletable, and confirmed later with `processMovement`. A draft does not change the balance.
+- `updateMovement` keeps every field you do not send. A draft accepts every field (and `process: true` to confirm it after saving). A processed movement accepts only `description`, `glItemId`, `bpartnerId` and the dimensions; reactivate it first to change its type, amount or date. A posted movement cannot be edited until it is reactivated.
+- `reactivateMovement` takes a processed movement back to draft, undoing its posting and its reconciliation first.
+- `deleteMovement` removes a draft, or reactivates and removes a processed movement.
+- A movement that belongs to a payment or a collection is edited, processed, reactivated and deleted with that payment, never here. A leg of a funds transfer cannot be deleted.
+- The answer of every write is the movement as it now is: `{id, accountId, trxType, amount, depositAmount, paymentAmount, date, description, glItemId, bpartnerId, status, processed, posted}`.
+
+Funds transfers between accounts are not available to agents yet.
+
 ### Read-only finance data
 
 | Spec / entity | What it is |
 |---------------|------------|
-| `financial-account/transaction` | Movements of an account (`FIN_Finacc_Transaction`). Posting is the one action available: `neo_action(spec: "financial-account", entity: "transaction", id: <transactionId>, action: "post" \| "unpost", parameters: {})` — not listed by `view: "actions"` |
+| `financial-account/transaction` | Movements of an account (`FIN_Finacc_Transaction`). Write them with the [account movement actions](#account-movements). Posting is the one action available here: `neo_action(spec: "financial-account", entity: "transaction", id: <transactionId>, action: "post" \| "unpost", parameters: {})` — not listed by `view: "actions"` |
 | `financial-account/reconciliations`, `financial-account/clearedItems` | Reconciliations and their matched items |
 | `financial-account/importedBankStatements`, `financial-account/bankStatementLines` | Bank statements (write them through the `bank-statements` actions — see [Bank reconciliation](./bank-reconciliation.md)) |
 | `sales-invoice/paymentPlan`, `purchase-invoice/paymentPlan` | The invoice's installments; an id here is a valid `scheduleId` |
@@ -224,6 +250,46 @@ When the account currency differs from the invoice currency, `conversionRate` is
 
 Send `"writeoffDifference": true` with an `actual_payment` below the outstanding. The installment is closed and the difference is stored as a write-off (`writeoffAmount` in the answer). Check `writeoffLimit` in `invoiceAccounts` first: a larger difference is refused.
 
+### Example 6 — Record a deposit in an account
+
+1. Find the account and a G/L item:
+
+   ```json
+   { "tool": "neo_list", "arguments": { "spec": "financial-account", "entity": "account", "filters": { "name": "Banco Paridad" } } }
+   ```
+
+   ```json
+   {
+     "tool": "neo_action",
+     "arguments": {
+       "spec": "financial-account", "entity": "account", "id": "<accountId>",
+       "action": "movementGlItems", "parameters": { "search": "ingreso" }
+     }
+   }
+   ```
+
+2. Record and book the deposit:
+
+   ```json
+   {
+     "tool": "neo_action",
+     "arguments": {
+       "spec": "financial-account", "entity": "account", "id": "<accountId>",
+       "action": "createMovement",
+       "parameters": {
+         "trxType": "BPD",
+         "amount": 100,
+         "date": "2026-09-30",
+         "glItemId": "<glItemId>",
+         "description": "Cash deposit",
+         "process": true
+       }
+     }
+   }
+   ```
+
+3. Read the answer: `processed` is `true`, `amount` is `100`, `date` is `2026-09-30`. To undo it, `deleteMovement` with `parameters: { "movementId": "<id>" }`.
+
 ## The answer
 
 `registerPayment` and `confirmPayment` answer `response.data`:
@@ -278,7 +344,8 @@ These routes are refused through MCP because the UI does not offer them, or — 
 | `aPRMProcessPayment` with a value other than `P` | 422 `allowedValues: ["P"]` | `parameters: {}` |
 | Classic *Add Payment* (`aPRMAddpayment`) on the invoice | 405, hint `registerPayment` | `registerPayment` |
 | Financial-account buttons `aPRMImportBankFile`, `aPRMMatchTransactions`, `aPRMMatchTransactionsForce`, `aPRMReconcile`, `aprmAddMultiplePayments`, `aprmFundsTrans`, `pSD2GetBankstatement`, `pSD2GetConsent`, `psd2ReconnectFa`, `psd2GetConnections`, `psd2RefreshConnections` | 405 | statements and reconciliation: [Bank reconciliation](./bank-reconciliation.md) |
-| Recording a deposit, withdrawal or funds transfer; editing, processing, reactivating or deleting a movement (writes on `financial-account/transaction`, its buttons `etprReactivateTransaction`, `etprRemoveTransaction`, `posted`, `etblkpBulkposting`) | 405 | not available through MCP; done from the financial account's movements in the UI. `post` / `unpost` stay |
+| Writes on `financial-account/transaction`, and its buttons `etprReactivateTransaction`, `etprRemoveTransaction`, `posted`, `etblkpBulkposting` | 405, hint naming the account movement actions | the [account movement actions](#account-movements) (`createMovement`, `updateMovement`, `processMovement`, `reactivateMovement`, `deleteMovement`). `post` / `unpost` stay |
+| A funds transfer between two accounts | not offered | — (not available to agents yet) |
 | Writes on `financial-account/reconciliations` | 405 | the `bank-reconciliation` actions |
 
 ## Error handling
@@ -301,5 +368,10 @@ These routes are refused through MCP because the UI does not offer them, or — 
 | 422 | *This payment is void (RPVOID) and cannot be deleted…* | `eTPRRemovePayment` on a voided payment | Do not retry; a void payment is not deleted |
 | 422 | *This payment belongs to a live bank transfer (pisLocked)…* | `eTPRRemovePayment` on a payment whose bank transfer is in progress or executed | Do not retry; a person handles it in the UI |
 | 400 | *This payment was generated from a processed Payment Proposal…* | `eTPRRemovePayment` on a payment of a processed proposal | Reverse the Payment Proposal instead |
+| 404 | *Movement not found in this financial account* | `movementId` unknown, of another account, or not visible to your role | Take the id from `listMovements` of the same account |
+| 409 | *This movement belongs to a payment; it is edited with the payment, not here.* (or *receipt*) | Editing or processing a payment's movement | Work on the payment instead |
+| 409 | *The movement is already processed.* / *The movement is a draft; there is nothing to reactivate.* / *A posted movement cannot be edited…* | The movement's state does not allow the action | Read it with `listMovements`; reactivate first to edit a posted movement |
+| 409 | *Movements generated by a funds transfer cannot be deleted.* | `deleteMovement` on a transfer leg | Do not retry |
+| 422 | `field` + message (e.g. *glItemId is required…*, *'amount' cannot change on a processed movement…*, *bpartnerId 'X' was not found.*) | A movement parameter the form would refuse | Fix that field; nothing was run |
 | 405 | `method_not_allowed` + hint | A route in [Not available to agents](#not-available-to-agents) | Do not retry; follow the hint |
 | 500 | *The payment was not saved; nothing was registered — it is safe to retry* (or *The draft was not deleted; nothing changed — it is safe to retry*) | The transaction was rolled back | Retry the same call |

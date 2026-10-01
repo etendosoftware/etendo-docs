@@ -13,6 +13,8 @@ Everything runs through `neo_action` on two specs that serve named actions (`neo
 
 Do **not** use the financial account's Core buttons (*Import Statement*, *Match Statement*, *Reconcile*, *Add Multiple Payments*, *Funds Transfer*, the PSD2 buttons): they are hidden from agents and refused. Do not write `importedBankStatements`, `bankStatementLines`, `reconciliations` or `transaction` through `neo_create` / `neo_update` / `neo_delete`: those entities are read-only through MCP.
 
+**A statement line is not a movement.** A bank-statement line is what the bank *reports*: it changes nothing in the account until it is reconciled against a movement or an invoice. A **movement** is the account's own record of money in or out, booked against a G/L item, and it changes the balance once processed. To record a deposit or a withdrawal the user made — "record a 100 € deposit in the bank account" — create a movement with the financial account's movement actions (`neo_action(spec: "financial-account", entity: "account", id: <accountId>, action: "createMovement", ...)`, see [Treasury → Account movements](./treasury.md#account-movements)), not a statement. A movement recorded that way is one of the "existing movements" a statement line can later be reconciled against (`candidates` with `kind: "transactions"`).
+
 ## Prerequisites
 
 - The Etendo MCP server is reachable and authenticated (see [MCP setup](../mcp/index.md)).
