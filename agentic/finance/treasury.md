@@ -63,7 +63,7 @@ Call each with `neo_action(spec: "sales-invoice" | "purchase-invoice", entity: "
 | `fin_paymentmethod_id` | string | Must be one of the chosen account's `paymentMethodIds`. Omit it to use the account's `defaultMethodId`. |
 | `paymentId` | string | Id of a **draft** payment of this invoice to edit in place (same id and document number). |
 | `creditSources` | array | Credit to consume: `{"kind":"credit","paymentId":<id>,"use":<amount>}` or `{"kind":"abono","psdId":<id>,"use":<amount>}`. Take the ids and the available amount (`avail`) from `invoiceCreditSources`. |
-| `overpaymentAction` | `leave-credit` \| `refund` | Required when `actual_payment` plus the `use` of every credit source exceeds the installment's outstanding amount. `leave-credit` keeps the excess as credit of the business partner; `refund` returns it as a separate refund payment. The UI offers both only for a **collection** whose invoice is in the organization currency: do not overpay a purchase invoice or a foreign-currency invoice — lower `actual_payment` instead. |
+| `overpaymentAction` | `leave-credit` \| `refund` | Only for a **collection** (sales invoice) whose invoice is in the organization's currency: required there when `actual_payment` plus the `use` of every credit source exceeds the installment's outstanding amount. `leave-credit` keeps the excess as credit of the business partner; `refund` returns it as a separate refund payment. A payment (purchase invoice), or a collection in another currency, cannot be overpaid at all: any excess is refused, with or without this key — lower `actual_payment`. |
 | `conversionRate` | number | Rate from the invoice currency to the account currency. Required when they differ. Find it with `currencyOptions`. |
 | `writeoffDifference` | boolean | `true` writes off the difference between the amount and the outstanding and closes the installment. Refused when the difference exceeds the account's `writeoffLimit` (`invoiceAccounts`); a limit of 0 or empty means no limit. Not applied when editing a draft. |
 
@@ -71,15 +71,14 @@ Any key not listed here is refused (`unknownParameters`).
 
 ### Payment records
 
-Collections (`payment-in/finPayment`) and payments (`payment-out/header`) are **read-only** through MCP: use `neo_list` / `neo_get` to read them. Three buttons are available on them, through `neo_action(spec: "payment-in" | "payment-out", entity: "finPayment" | "header", id: <paymentId>, action: <name>)`:
+Collections (`payment-in/finPayment`) and payments (`payment-out/header`) are **read-only** through MCP: use `neo_list` / `neo_get` to read them. Two buttons are available on them, through `neo_action(spec: "payment-in" | "payment-out", entity: "finPayment" | "header", id: <paymentId>, action: <name>, parameters: {})`:
 
 | Action | UI label | Effect |
 |--------|----------|--------|
-| `aPRMProcessPayment` | Confirmar | Processes the payment. Only the value `P` is offered: send `parameters: {}` (the default) or `{"docAction":"P"}`. |
-| `eTPRRemovePayment` | Eliminar | Removes the payment. |
-| `etprReactivatePayment` | Reactivar | Reactivates a processed payment back to draft, removing its account movement. |
+| `aPRMProcessPayment` | Confirmar | Processes a draft payment. Send `parameters: {}`. |
+| `etprReactivatePayment` | Reactivar | Reactivates a processed payment back to draft, removing its account movement. Send `parameters: {}`. |
 
-For a draft created from an invoice, prefer the invoice's `confirmPayment` and `deletePayment`: they answer with the invoice's new state.
+To delete a draft, use the invoice's `deletePayment`: it gives back any credit the draft consumed and answers what it deleted. A processed payment cannot be deleted by an agent. For a draft created from an invoice, also prefer the invoice's `confirmPayment`: it answers with the invoice's new state.
 
 ### Financial accounts
 
@@ -89,7 +88,7 @@ Spec `financial-account`, entity `account` (`FIN_Financial_Account`): `neo_list`
 
 | Spec / entity | What it is |
 |---------------|------------|
-| `financial-account/transaction` | Movements of an account (`FIN_Finacc_Transaction`) |
+| `financial-account/transaction` | Movements of an account (`FIN_Finacc_Transaction`). Posting is the one action available: `neo_action(spec: "financial-account", entity: "transaction", id: <transactionId>, action: "post" \| "unpost", parameters: {})` — not listed by `view: "actions"` |
 | `financial-account/reconciliations`, `financial-account/clearedItems` | Reconciliations and their matched items |
 | `financial-account/importedBankStatements`, `financial-account/bankStatementLines` | Bank statements (write them through the `bank-statements` actions — see [Bank reconciliation](./bank-reconciliation.md)) |
 | `sales-invoice/paymentPlan`, `purchase-invoice/paymentPlan` | The invoice's installments; an id here is a valid `scheduleId` |
@@ -272,11 +271,12 @@ These routes are refused through MCP because the UI does not offer them. Use the
 | An advance payment or collection without an invoice | not offered | — (the UI does not offer it) |
 | One payment applied to several invoices | not offered | one `registerPayment` per invoice |
 | Bank-initiated payments (PIS / PSD2): `pisSupplierAccounts`, `pisTemplates`, `pisPaymentStatus`, `cancelPisPayment`, `retryPisPayment`, the `psd2GenerateBankPayment` button, writes on `payment-out/bankPayments`, the `pis` key of `registerPayment` | 405 (422 for `pis`) | a manual transfer with `registerPayment`. A bank-initiated payment needs a person to authorize it at the bank (SCA) |
-| Payment buttons `aPRMAddScheduledpayments`, `aprmExecutepayment`, `aPRMReversePayment`, `aPRMReconcilePayment`, `aeatsiiSend`, `etblkpBulkposting`, `posted` | 405 | `registerPayment`; `etprReactivatePayment` to undo a processed payment |
+| Payment buttons `eTPRRemovePayment`, `aPRMAddScheduledpayments`, `aprmExecutepayment`, `aPRMReversePayment`, `aPRMReconcilePayment`, `aeatsiiSend`, `etblkpBulkposting`, `posted`, `retryPisPayment`, `pisPaymentStatus` | 405 | `registerPayment`; `deletePayment` on the invoice for a draft; `etprReactivatePayment` to undo a processed payment |
+| Overpaying a purchase invoice, or a collection in a currency other than the organization's | 422 (`outstandingAmount`, `excess`) | lower `actual_payment` to at most the outstanding |
 | `aPRMProcessPayment` with a value other than `P` | 422 `allowedValues: ["P"]` | `parameters: {}` |
 | Classic *Add Payment* (`aPRMAddpayment`) on the invoice | 405, hint `registerPayment` | `registerPayment` |
 | Financial-account buttons `aPRMImportBankFile`, `aPRMMatchTransactions`, `aPRMMatchTransactionsForce`, `aPRMReconcile`, `aprmAddMultiplePayments`, `aprmFundsTrans`, `pSD2GetBankstatement`, `pSD2GetConsent`, `psd2ReconnectFa`, `psd2GetConnections`, `psd2RefreshConnections` | 405 | statements and reconciliation: [Bank reconciliation](./bank-reconciliation.md) |
-| Writes on `financial-account/transaction` (deposits, withdrawals, transfers by hand) | 405 | not available to agents |
+| Recording a deposit, withdrawal or funds transfer; editing, processing, reactivating or deleting a movement (writes on `financial-account/transaction`, its buttons `etprReactivateTransaction`, `etprRemoveTransaction`, `posted`, `etblkpBulkposting`) | 405 | not available through MCP; done from the financial account's movements in the UI. `post` / `unpost` stay |
 | Writes on `financial-account/reconciliations` | 405 | the `bank-reconciliation` actions |
 
 ## Error handling
@@ -287,7 +287,8 @@ These routes are refused through MCP because the UI does not offer them. Use the
 |--------|---------------------|-------|------------|
 | 422 | *This invoice has N pending installments; send scheduleId…* + `installments[{id, outstandingAmount, dueDate}]` | `scheduleId` omitted and several installments are pending | Re-send with the `scheduleId` of the installment being paid (usually the earliest `dueDate`) |
 | 422 | *No pending payment schedule details found for this installment* | Nothing left to pay on the invoice | Check `invoicePayments`; a draft may already hold the installment |
-| 422 | *The X funding this payment … exceeds the installment's outstanding Y by Z…* + `outstandingAmount`, `excess`, `allowedValues` | Overpayment without `overpaymentAction` | Lower `actual_payment`, or ask the user and re-send with `overpaymentAction` |
+| 422 | *The X funding this payment … exceeds the installment's outstanding Y by Z. Send overpaymentAction…* + `outstandingAmount`, `excess`, `allowedValues` | Overpayment of a collection in the organization currency without `overpaymentAction` | Lower `actual_payment`, or ask the user and re-send with `overpaymentAction` |
+| 422 | *… An overpayment is only possible on a collection whose invoice is in the organization's currency; lower actual_payment…* + `outstandingAmount`, `excess` | Excess on a payment, or on a foreign-currency collection | Lower `actual_payment` (plus credit) to at most `outstandingAmount` |
 | 422 | *The financial account '…' does not accept the payment method…* + `validMethods[{id, name}]` | Method not enabled on the account | Re-send with one of `validMethods`, or omit `fin_paymentmethod_id` |
 | 422 | `missingParameters`, `unknownParameters` + `acceptedParameters`, `field` + `expectedType` / `allowedValues` | The parameters do not match the action's contract (e.g. `process` missing) | Fix the parameters; nothing was run |
 | 400 | *A conversion rate is required when the invoice and account currencies differ* | Foreign-currency account without `conversionRate` | Add `conversionRate` (see `currencyOptions`) |

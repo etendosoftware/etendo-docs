@@ -29,7 +29,7 @@ No additional configuration is needed beyond the base MCP server. The finance sp
 | Spec | Main entities | Through MCP | Sub-guide |
 |------|---------------|-------------|-----------|
 | `sales-invoice`, `purchase-invoice` | `header`, `paymentPlan`, `paymentDetails` | The invoice header carries the payment actions (`invoiceAccounts`, `invoicePaymentMethods`, `invoiceCreditSources`, `invoicePayments`, `currencyOptions`, `registerPayment`, `confirmPayment`, `deletePayment`). `paymentPlan` and `paymentDetails` are read-only | [Treasury](./treasury.md) |
-| `payment-in` | `finPayment`, `finPaymentScheduleDetail` | Read-only. Buttons on `finPayment`: `aPRMProcessPayment` (value `P`), `eTPRRemovePayment`, `etprReactivatePayment` | [Treasury](./treasury.md) |
+| `payment-in` | `finPayment`, `finPaymentScheduleDetail` | Read-only. Buttons on `finPayment`: `aPRMProcessPayment` (Confirmar), `etprReactivatePayment` (Reactivar). Drafts are deleted with the invoice's `deletePayment` | [Treasury](./treasury.md) |
 | `payment-out` | `header`, `lines`, `bankPayments` | Read-only. Buttons on `header`: same as `payment-in`. Bank-initiated (PIS) payments are not available | [Treasury](./treasury.md) |
 | `financial-account` | `account`, `transaction`, `importedBankStatements`, `bankStatementLines`, `reconciliations`, `clearedItems` | `account` is writable (no invokable buttons); the other entities are read-only | [Treasury](./treasury.md) · [Bank reconciliation](./bank-reconciliation.md) |
 | `payment-term` | `header` | Writable | [Treasury](./treasury.md) |
