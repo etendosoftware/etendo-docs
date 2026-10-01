@@ -71,14 +71,15 @@ Any key not listed here is refused (`unknownParameters`).
 
 ### Payment records
 
-Collections (`payment-in/finPayment`) and payments (`payment-out/header`) are **read-only** through MCP: use `neo_list` / `neo_get` to read them. Two buttons are available on them, through `neo_action(spec: "payment-in" | "payment-out", entity: "finPayment" | "header", id: <paymentId>, action: <name>, parameters: {})`:
+Collections (`payment-in/finPayment`) and payments (`payment-out/header`) cannot be created or edited through MCP: use `neo_list` / `neo_get` to read them. Three buttons are available on them, the same the payment window offers, through `neo_action(spec: "payment-in" | "payment-out", entity: "finPayment" | "header", id: <paymentId>, action: <name>, parameters: {})`:
 
 | Action | UI label | Effect |
 |--------|----------|--------|
 | `aPRMProcessPayment` | Confirmar | Processes a draft payment. Send `parameters: {}`. |
 | `etprReactivatePayment` | Reactivar | Reactivates a processed payment back to draft, removing its account movement. Send `parameters: {}`. |
+| `eTPRRemovePayment` | Eliminar | Deletes the payment at any status except void (`RPVOID`) and except while it is locked by its bank transfer (`pisLocked`); in those two cases it answers 422 and nothing changes. A processed payment is reactivated first and then deleted. It gives back **no** credit the payment consumed. Send `parameters: {}`. |
 
-To delete a draft, use the invoice's `deletePayment`: it gives back any credit the draft consumed and answers what it deleted. A processed payment cannot be deleted by an agent. For a draft created from an invoice, also prefer the invoice's `confirmPayment`: it answers with the invoice's new state.
+To delete a **draft** and give back the credit it consumed, use the invoice's `deletePayment` instead: it also answers what it deleted. Use `eTPRRemovePayment` for a processed payment, or when the user deletes it from the payment record. For a draft created from an invoice, also prefer the invoice's `confirmPayment`: it answers with the invoice's new state.
 
 ### Financial accounts
 
@@ -261,17 +262,18 @@ Send `"writeoffDifference": true` with an `actual_payment` below the outstanding
 
 ## Not available to agents
 
-These routes are refused through MCP because the UI does not offer them. Use the replacement.
+These routes are refused through MCP because the UI does not offer them, or — for bank and fiscal integrations (PIS / PSD2, SII, TicketBAI, Verifactu, AFIP, Hacienda) — because those integrations stay limited for agents even where the UI offers them. Use the replacement.
 
 | Route | Answer | Use instead |
 |-------|--------|-------------|
-| `neo_create` / `neo_update` / `neo_delete` / `neo_batch` on `payment-in/finPayment`, `payment-out/header` | 405 `method_not_allowed` | `registerPayment` (with `paymentId` to edit a draft), `deletePayment` |
+| `neo_create` / `neo_update` / `neo_delete` / `neo_batch` on `payment-in/finPayment`, `payment-out/header` | 405 `method_not_allowed` | `registerPayment` (with `paymentId` to edit a draft), `deletePayment` for a draft, `eTPRRemovePayment` on the payment |
 | Any write on `payment-in/finPaymentScheduleDetail`, `payment-out/lines`, `sales-invoice/paymentDetails`, `purchase-invoice/paymentDetails`, `sales-invoice/paymentPlan`, `purchase-invoice/paymentPlan` | 405 | `registerPayment` |
 | `neo_defaults` on the payment headers | 405 | `invoiceAccounts`, `invoicePaymentMethods` |
 | An advance payment or collection without an invoice | not offered | — (the UI does not offer it) |
 | One payment applied to several invoices | not offered | one `registerPayment` per invoice |
 | Bank-initiated payments (PIS / PSD2): `pisSupplierAccounts`, `pisTemplates`, `pisPaymentStatus`, `cancelPisPayment`, `retryPisPayment`, the `psd2GenerateBankPayment` button, writes on `payment-out/bankPayments`, the `pis` key of `registerPayment` | 405 (422 for `pis`) | a manual transfer with `registerPayment`. A bank-initiated payment needs a person to authorize it at the bank (SCA) |
-| Payment buttons `eTPRRemovePayment`, `aPRMAddScheduledpayments`, `aprmExecutepayment`, `aPRMReversePayment`, `aPRMReconcilePayment`, `aeatsiiSend`, `etblkpBulkposting`, `posted`, `retryPisPayment`, `pisPaymentStatus` | 405 | `registerPayment`; `deletePayment` on the invoice for a draft; `etprReactivatePayment` to undo a processed payment |
+| Payment buttons `aPRMAddScheduledpayments`, `aprmExecutepayment`, `aPRMReversePayment`, `aPRMReconcilePayment`, `aeatsiiSend`, `etblkpBulkposting`, `posted`, `retryPisPayment`, `pisPaymentStatus` | 405 | `registerPayment`; `etprReactivatePayment` to undo a processed payment; `eTPRRemovePayment` to delete it |
+| `eTPRRemovePayment` on a void (`RPVOID`) payment, or on one locked by its bank transfer (`pisLocked`) | 422 | — (the UI does not offer Eliminar there either) |
 | Overpaying a purchase invoice, or a collection in a currency other than the organization's | 422 (`outstandingAmount`, `excess`) | lower `actual_payment` to at most the outstanding |
 | `aPRMProcessPayment` with a value other than `P` | 422 `allowedValues: ["P"]` | `parameters: {}` |
 | Classic *Add Payment* (`aPRMAddpayment`) on the invoice | 405, hint `registerPayment` | `registerPayment` |
@@ -295,6 +297,9 @@ These routes are refused through MCP because the UI does not offer them. Use the
 | 400 | *The difference to write off (X) exceeds the write-off limit configured for this financial account (Y).* | `writeoffDifference` above the account's limit | Raise the amount or drop `writeoffDifference` |
 | 404 | *Payment not found* | `paymentId` unknown, not a payment of this invoice, or not visible to your role | Take the id from `invoicePayments` of the same invoice |
 | 404 | *Payment schedule not found* / *Invoice not found* | Wrong `scheduleId` or invoice id | Take `scheduleId` from `paymentPlan` of the same invoice |
-| 400 | *Cannot delete a processed payment* | `deletePayment` on a confirmed payment | Reactivate it first (`etprReactivatePayment` on the payment) if the user wants it undone |
+| 400 | *Cannot delete a processed payment* | `deletePayment` on a confirmed payment | Use `eTPRRemovePayment` on the payment (reactivates and deletes it, no credit given back), or `etprReactivatePayment` then `deletePayment` to also give the credit back |
+| 422 | *This payment is void (RPVOID) and cannot be deleted…* | `eTPRRemovePayment` on a voided payment | Do not retry; a void payment is not deleted |
+| 422 | *This payment belongs to a live bank transfer (pisLocked)…* | `eTPRRemovePayment` on a payment whose bank transfer is in progress or executed | Do not retry; a person handles it in the UI |
+| 400 | *This payment was generated from a processed Payment Proposal…* | `eTPRRemovePayment` on a payment of a processed proposal | Reverse the Payment Proposal instead |
 | 405 | `method_not_allowed` + hint | A route in [Not available to agents](#not-available-to-agents) | Do not retry; follow the hint |
 | 500 | *The payment was not saved; nothing was registered — it is safe to retry* (or *The draft was not deleted; nothing changed — it is safe to retry*) | The transaction was rolled back | Retry the same call |

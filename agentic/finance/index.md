@@ -7,7 +7,7 @@ This topic covers the Etendo GO finance domain as exposed through the MCP server
 - **[Treasury](./treasury.md)** — collect sales invoices and pay purchase invoices through the invoice payment actions (`registerPayment`, `confirmPayment`, `deletePayment` and their read helpers), manage the resulting payments, maintain financial accounts, and what is not available to agents.
 - **[Bank reconciliation](./bank-reconciliation.md)** — load, process and edit bank statements with the `bank-statements` actions, and reconcile their lines with the `bank-reconciliation` actions.
 
-The MCP surface equals the Etendo GO UI surface, both ways: what the UI offers, an agent can do; what it does not offer is hidden and refused (`405 method_not_allowed` with a hint naming the route to use). Payments are never created by hand: they are registered from the invoice.
+The MCP surface equals the Etendo GO UI surface, both ways: what the UI offers, an agent can do; what it does not offer is hidden and refused (`405 method_not_allowed` with a hint naming the route to use). The one deliberate exception is bank and fiscal integrations (PIS / PSD2, SII, TicketBAI, Verifactu, AFIP, Hacienda), which stay limited for agents even where the UI offers them. Payments are never created by hand: they are registered from the invoice.
 
 The set of specs and entities the **current user** can see is role-dependent — always run `neo_discover` in your own environment before hard-coding anything.
 
@@ -29,8 +29,8 @@ No additional configuration is needed beyond the base MCP server. The finance sp
 | Spec | Main entities | Through MCP | Sub-guide |
 |------|---------------|-------------|-----------|
 | `sales-invoice`, `purchase-invoice` | `header`, `paymentPlan`, `paymentDetails` | The invoice header carries the payment actions (`invoiceAccounts`, `invoicePaymentMethods`, `invoiceCreditSources`, `invoicePayments`, `currencyOptions`, `registerPayment`, `confirmPayment`, `deletePayment`). `paymentPlan` and `paymentDetails` are read-only | [Treasury](./treasury.md) |
-| `payment-in` | `finPayment`, `finPaymentScheduleDetail` | Read-only. Buttons on `finPayment`: `aPRMProcessPayment` (Confirmar), `etprReactivatePayment` (Reactivar). Drafts are deleted with the invoice's `deletePayment` | [Treasury](./treasury.md) |
-| `payment-out` | `header`, `lines`, `bankPayments` | Read-only. Buttons on `header`: same as `payment-in`. Bank-initiated (PIS) payments are not available | [Treasury](./treasury.md) |
+| `payment-in` | `finPayment`, `finPaymentScheduleDetail` | No create or edit. Buttons on `finPayment`: `aPRMProcessPayment` (Confirmar), `etprReactivatePayment` (Reactivar), `eTPRRemovePayment` (Eliminar: any status but `RPVOID` / `pisLocked`, reactivates a processed payment first, gives back no consumed credit). The invoice's `deletePayment` deletes a draft and gives its credit back | [Treasury](./treasury.md) |
+| `payment-out` | `header`, `lines`, `bankPayments` | No create or edit. Buttons on `header`: same as `payment-in`. Bank-initiated (PIS) payments are not available: bank and fiscal integrations stay limited for agents | [Treasury](./treasury.md) |
 | `financial-account` | `account`, `transaction`, `importedBankStatements`, `bankStatementLines`, `reconciliations`, `clearedItems` | `account` is writable (no invokable buttons); the other entities are read-only | [Treasury](./treasury.md) · [Bank reconciliation](./bank-reconciliation.md) |
 | `payment-term` | `header` | Writable | [Treasury](./treasury.md) |
 | `conversion-rates` | `conversionRate` | Read-only | [Treasury](./treasury.md) |
