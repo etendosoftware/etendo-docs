@@ -8,6 +8,7 @@ This guide documents the MCP operations that cover day-to-day treasury work in E
 - Read and manage the resulting **payments** (`payment-in` collections, `payment-out` payments).
 - Maintain **financial accounts** (`financial-account/account`).
 - Record **manual movements** of an account — a deposit or a withdrawal booked against a G/L item — and edit, process, reactivate or delete them.
+- **Transfer funds** between two of the company's accounts.
 - Read **account movements**, **payment terms** and **conversion rates**.
 
 The MCP surface equals the Etendo GO UI surface, both ways: what the UI offers, an agent can do; what the UI does not offer is hidden from agents and refused. The section [Not available to agents](#not-available-to-agents) lists the routes that are refused and what to use instead.
@@ -109,7 +110,22 @@ Movements of invoices are created by their payments (`registerPayment`); the act
 - A movement that belongs to a payment or a collection is edited, processed, reactivated and deleted with that payment, never here. A leg of a funds transfer cannot be deleted.
 - The answer of every write is the movement as it now is: `{id, accountId, trxType, amount, depositAmount, paymentAmount, date, description, glItemId, bpartnerId, status, processed, posted}`.
 
-Funds transfers between accounts are not available to agents yet.
+### Funds transfers
+
+A transfer moves money between two of the company's accounts, as the Movements tab's *Transfer* form does: it books a processed withdrawal in the source and a processed deposit in the destination, plus optional bank fees. Call `neo_action(spec: "financial-account", entity: "account", id: <sourceAccountId>, action: <name>, parameters: {...})` — here `id` is the account the money **leaves**.
+
+| Action | Kind | Parameters (required in **bold**) | Returns |
+|--------|------|-----------------------------------|---------|
+| `transferDestinations` | read | — | `items[]` of accounts the money can go to: `id`, `name`, `currency`, `sameCurrency` and, between two currencies, today's `conversionRate` (`null` when the system has none) |
+| `transferFunds` | write | **`destinationAccountId`**, **`amount`** (> 0, in the source currency), **`glItemId`**, `conversionRate`, `description` (≤ 255 characters), `bankFeeFrom`, `bankFeeTo` | `{transferred, sourceAccountId, destinationAccountId, amount, date, conversionRate, amountReceived, hint}` |
+
+- The transfer is dated **today**, as in the UI; there is no date parameter.
+- Between two currencies, `conversionRate` defaults to today's system rate. If the system has none, send one; without it the transfer is refused.
+- A transfer **cannot be deleted** afterwards, in the UI or here. To undo it, transfer the money back.
+- The G/L item comes from `movementGlItems`.
+- Classic's *Funds Transfer* button (`aprmFundsTrans`) is not run; its refusal names `transferFunds`.
+
+Adding a payment or a collection from the account (without an invoice) is not offered: register payments from the invoice with `registerPayment`.
 
 ### Read-only finance data
 
@@ -290,6 +306,40 @@ Send `"writeoffDifference": true` with an `actual_payment` below the outstanding
 
 3. Read the answer: `processed` is `true`, `amount` is `100`, `date` is `2026-09-30`. To undo it, `deleteMovement` with `parameters: { "movementId": "<id>" }`.
 
+### Example 7 — Transfer 10 € to another account
+
+1. List the destinations from the source account:
+
+   ```json
+   {
+     "tool": "neo_action",
+     "arguments": {
+       "spec": "financial-account", "entity": "account", "id": "<sourceAccountId>",
+       "action": "transferDestinations", "parameters": {}
+     }
+   }
+   ```
+
+2. Transfer. Between two currencies the rate shown in step 1 is used unless you send `conversionRate`:
+
+   ```json
+   {
+     "tool": "neo_action",
+     "arguments": {
+       "spec": "financial-account", "entity": "account", "id": "<sourceAccountId>",
+       "action": "transferFunds",
+       "parameters": {
+         "destinationAccountId": "<destinationAccountId>",
+         "amount": 10,
+         "glItemId": "<glItemId>",
+         "description": "Cash to the USD account"
+       }
+     }
+   }
+   ```
+
+3. Read the answer: `amountReceived` is what arrives in the destination, in its currency. `listMovements` on either account shows the two movements, linked by `transferTxnId`.
+
 ## The answer
 
 `registerPayment` and `confirmPayment` answer `response.data`:
@@ -343,9 +393,10 @@ These routes are refused through MCP because the UI does not offer them, or — 
 | Overpaying a purchase invoice, or a collection in a currency other than the organization's | 422 (`outstandingAmount`, `excess`) | lower `actual_payment` to at most the outstanding |
 | `aPRMProcessPayment` with a value other than `P` | 422 `allowedValues: ["P"]` | `parameters: {}` |
 | Classic *Add Payment* (`aPRMAddpayment`) on the invoice | 405, hint `registerPayment` | `registerPayment` |
-| Financial-account buttons `aPRMImportBankFile`, `aPRMMatchTransactions`, `aPRMMatchTransactionsForce`, `aPRMReconcile`, `aprmAddMultiplePayments`, `aprmFundsTrans`, `pSD2GetBankstatement`, `pSD2GetConsent`, `psd2ReconnectFa`, `psd2GetConnections`, `psd2RefreshConnections` | 405 | statements and reconciliation: [Bank reconciliation](./bank-reconciliation.md) |
+| Financial-account buttons `aPRMImportBankFile`, `aPRMMatchTransactions`, `aPRMMatchTransactionsForce`, `aPRMReconcile`, `aprmAddMultiplePayments`, `pSD2GetBankstatement`, `pSD2GetConsent`, `psd2ReconnectFa`, `psd2GetConnections`, `psd2RefreshConnections` | 405 | statements and reconciliation: [Bank reconciliation](./bank-reconciliation.md) |
 | Writes on `financial-account/transaction`, and its buttons `etprReactivateTransaction`, `etprRemoveTransaction`, `posted`, `etblkpBulkposting` | 405, hint naming the account movement actions | the [account movement actions](#account-movements) (`createMovement`, `updateMovement`, `processMovement`, `reactivateMovement`, `deleteMovement`). `post` / `unpost` stay |
-| A funds transfer between two accounts | not offered | — (not available to agents yet) |
+| Deleting a leg of a funds transfer | 409 | a transfer back with `transferFunds` |
+| Adding a payment or collection from the financial account (no invoice) | not offered | `registerPayment` on the invoice |
 | Writes on `financial-account/reconciliations` | 405 | the `bank-reconciliation` actions |
 
 ## Error handling
@@ -372,6 +423,10 @@ These routes are refused through MCP because the UI does not offer them, or — 
 | 409 | *This movement belongs to a payment; it is edited with the payment, not here.* (or *receipt*) | Editing or processing a payment's movement | Work on the payment instead |
 | 409 | *The movement is already processed.* / *The movement is a draft; there is nothing to reactivate.* / *A posted movement cannot be edited…* | The movement's state does not allow the action | Read it with `listMovements`; reactivate first to edit a posted movement |
 | 409 | *Movements generated by a funds transfer cannot be deleted.* | `deleteMovement` on a transfer leg | Do not retry |
+| 404 | *Destination account not found* | `destinationAccountId` unknown or not visible to your role | Take it from `transferDestinations` |
+| 409 | *The destination account is archived…* | Transfer to an archived account | Pick another destination |
+| 422 | `field: conversionRate` — *There is no conversion rate from X to Y for <date>; send conversionRate.* | Between two currencies with no system rate | Ask the user for the rate and send it |
+| 400 | *PeriodNotAvailable* (or another Classic message) | The transfer is processed today and today's period is not open | Ask the user to open the period; do not back-date |
 | 422 | `field` + message (e.g. *glItemId is required…*, *'amount' cannot change on a processed movement…*, *bpartnerId 'X' was not found.*) | A movement parameter the form would refuse | Fix that field; nothing was run |
 | 405 | `method_not_allowed` + hint | A route in [Not available to agents](#not-available-to-agents) | Do not retry; follow the hint |
 | 500 | *The payment was not saved; nothing was registered — it is safe to retry* (or *The draft was not deleted; nothing changed — it is safe to retry*) | The transaction was rolled back | Retry the same call |
