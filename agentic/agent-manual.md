@@ -59,7 +59,7 @@ Map the user goal to one of the tools from `agentic/mcp/index.md` using this dec
 | Delete one record by ID | `etendo_delete` |
 | Fire a process / document action on a record (confirm, post, copy lines, generate template, etc.) | `etendo_action` |
 | Create a header and its children in one call across one or more specs | `etendo_batch` |
-| Render a pre-built report | `generate_aging_receivable`, `generate_bank_statements`, `generate_financial_account_transactions`, `generate_financial_accounts_page`, `generate_inventory_stock_report`, `generate_tax_report` |
+| Render a pre-built report | `generate_*` — e.g. `generate_aging_receivable`, `generate_aging_payable`, `generate_tax_report`; `etendo_discover` gives each report spec's `reportTool` |
 
 ## Resolving foreign-key fields
 

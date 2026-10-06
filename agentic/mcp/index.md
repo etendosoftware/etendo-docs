@@ -224,12 +224,17 @@ Report tools render a pre-built Etendo report and return it in the requested for
 
 | Tool | Report |
 |------|--------|
+| `generate_aging_payable` | Aging of Payables |
 | `generate_aging_receivable` | Aging of Receivables |
-| `generate_bank_statements` | Bank statement list, import (C43), and lines view for a financial account |
-| `generate_financial_account_transactions` | Transactions list for a single financial account |
-| `generate_financial_accounts_page` | Financial Accounts Page |
+| `generate_balance_sheet` | Balance Sheet |
 | `generate_inventory_stock_report` | Inventory Stock Report |
+| `generate_profit_loss` | Profit and Loss |
+| `generate_report_general_ledger` | General Ledger |
+| `generate_report_journal_entries` | Journal Entries |
+| `generate_report_trial_balance` | Trial Balance |
 | `generate_tax_report` | Tax Report |
+
+The set of report tools depends on the role; `neo_discover` gives each report spec's `reportTool`. Specs it reports with `status: "actions_only"` (`bank-statements`, `bank-reconciliation`) are not report generators: they serve named actions through `neo_action` (see [Finance — Bank reconciliation](../finance/bank-reconciliation.md)). Specs reported as `not_configured_for_report_generation` (for example `financial-accounts-page`, `financial-account-transactions`) cannot be generated through MCP.
 
 All report tools accept an optional `format` argument (`pdf`, `xlsx`, `csv`; default `pdf`).
 
@@ -254,13 +259,13 @@ Specs of type `W` (write/CRUD windows) expose one or more entities through `eten
 | `aging-receivable` | R | (report) |
 | `amortization` | W | `header`, `lines`, `accounting` |
 | `assets` | W | `assets`, `amortizationLine`, `assetAcct` |
-| `bank-statements` | R | (report) |
+| `bank-statements` | R | (actions only — `neo_action`, entity `bank-statements`) |
 | `contacts` | W | `businessPartner`, `customer`, `vendorCreditor`, `employee`, `contact`, `bankAccount`, `locationAddress`, `documentType`, `basicDiscount`, `customerAccounting`, `vendorAccounting`, `employeeAccounting`, `costSalaryCategory`, `intrastatShipments`, `intrastatAdquisitions`, `bp-stats`, `bp-trend` |
 | `conversion-rates` | W | `conversionRate` |
 | `dashboard` | W | `kpis`, `trends`, `pending-tasks`, `activity`, `recent-invoices`, `best-products`, `best-sellers`, `pending-amounts`, `top-clients` |
-| `financial-account` | W | `account`, `transaction`, `accounting`, `accountingHistory`, `accountingConfiguration`, `paymentMethod`, `importedBankStatements`, `bankStatementLines`, `reconciliations`, `clearedItems`, `bankConnections`, `exchangeRates` |
-| `financial-account-transactions` | R | (report) |
-| `financial-accounts-page` | R | (report) |
+| `financial-account` | W | `account`, `transaction`, `accounting`, `accountingHistory`, `accountingConfiguration`, `paymentMethod`, `importedBankStatements`, `bankStatementLines`, `reconciliations`, `clearedItems`, `bankConnections`, `exchangeRates` — `transaction`, statements and reconciliations are read-only (see [Bank reconciliation](../finance/bank-reconciliation.md)) |
+| `financial-account-transactions` | R | (not generatable through MCP) |
+| `financial-accounts-page` | R | (not generatable through MCP) |
 | `goods-movements` | W | `movement`, `movementLine`, `accounting` |
 | `goods-receipt` | W | `goodsReceipt`, `goodsReceiptLine`, `intrastat`, `accounting`, `landedCost` |
 | `goods-shipment` | W | `goodsShipment`, `goodsShipmentLine`, `intrastat`, `accounting` |
@@ -268,8 +273,8 @@ Specs of type `W` (write/CRUD windows) expose one or more entities through `eten
 | `inventory-stock-report` | R | (report) |
 | `match-rule` | W | `etgoMatchRuleHeader` |
 | `monitor-verifactu` | W | `cabeceraDeEmisor`, `facturasAceptadas`, `facturasParcialmenteAceptadas`, `facturasRechazadas`, `facturasInválidas` |
-| `payment-in` | W | `finPayment`, `finPaymentScheduleDetail`, `executionHistory`, `exchangeRates`, `usedCreditSource`, `accounting` |
-| `payment-out` | W | `header`, `lines`, `executionHistory`, `exchangeRates`, `usedCreditSource`, `accounting`, `bankPayments` |
+| `payment-in` | W | `finPayment`, `finPaymentScheduleDetail`, `executionHistory`, `exchangeRates`, `usedCreditSource`, `accounting` — read-only; collections are registered from the sales invoice (`registerPayment`, see [Treasury](../finance/treasury.md)) |
+| `payment-out` | W | `header`, `lines`, `executionHistory`, `exchangeRates`, `usedCreditSource`, `accounting`, `bankPayments` — read-only; payments are registered from the purchase invoice (`registerPayment`, see [Treasury](../finance/treasury.md)) |
 | `payment-term` | W | `header`, `lines`, `translation` |
 | `physical-inventory` | W | `inventory`, `inventoryLine`, `accounting` |
 | `price-list` | W | `priceList`, `priceListVersion`, `productPrice` |

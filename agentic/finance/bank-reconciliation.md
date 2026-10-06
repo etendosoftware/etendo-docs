@@ -2,303 +2,222 @@
 
 ## Overview
 
-This guide walks an MCP-only agent through the full bank-reconciliation flow on a single financial account in Etendo:
+This guide walks an MCP-only agent through the bank-reconciliation flow of one financial account in Etendo GO, the same flow the UI runs:
 
-1. **Import** a bank file (e.g. a Spanish C43 statement) — creates an `importedBankStatements` record and its `bankStatementLines`.
-2. **Process** the imported statement — generates the underlying `transaction` rows and marks the statement as processed.
-3. **Match** statement lines against existing payments / transactions.
-4. **Reconcile** the financial account — creates a `reconciliations` record and links the matched items as `clearedItems`.
+1. **Load a bank statement** — import a Cuaderno 43 / CSV file, or type the statement by hand — with the `bank-statements` actions.
+2. **Process** it, so its lines become reconcilable.
+3. **Reconcile** each line against existing movements or unpaid invoices — one by one, or by confirming the automatch proposal — with the `bank-reconciliation` actions.
+4. **Undo** a reconciliation when it was wrong.
 
-All spec, entity, column and action names below were verified through `etendo_schema`. Process-specific input parameters (file contents, statement file format, force flags) are **to-be-discovered at runtime**: call `etendo_action` with `parameters: {}` first and use the server's validation message to learn the required keys.
+Everything runs through `etendo_action` on two specs that serve named actions (`etendo_discover` reports them with `status: "actions_only"`): `bank-statements` (entity `bank-statements`) and `bank-reconciliation` (entity `bank-reconciliation`). They re-enter the same backend code as the UI, with the same validations.
+
+Do **not** use the financial account's Core buttons (*Import Statement*, *Match Statement*, *Reconcile*, *Add Multiple Payments*, *Funds Transfer*, the PSD2 buttons): they are refused for agents (a transfer between accounts is `transferFunds`, see [Treasury → Funds transfers](./treasury.md#funds-transfers)). Do not write `importedBankStatements`, `bankStatementLines`, `reconciliations` or `transaction` through `etendo_create` / `etendo_update` / `etendo_delete`: those entities are read-only through MCP.
+
+**A statement line is not a movement.** A bank-statement line is what the bank *reports*: it changes nothing in the account until it is reconciled against a movement or an invoice. A **movement** is the account's own record of money in or out, booked against a G/L item, and it changes the balance once processed. To record a deposit or a withdrawal the user made — "record a 100 € deposit in the bank account" — create a movement with the financial account's movement actions (`etendo_action(spec: "financial-account", entity: "account", id: <accountId>, action: "createMovement", ...)`, see [Treasury → Account movements](./treasury.md#account-movements)), not a statement. A movement recorded that way is one of the "existing movements" a statement line can later be reconciled against (`candidates` with `kind: "transactions"`).
 
 ## Prerequisites
 
-- The Etendo MCP server is reachable and authenticated.
-- The current API user can access the `financial-account` spec and its entities `account`, `importedBankStatements`, `bankStatementLines`, `reconciliations`, `clearedItems`.
-- There is at least one configured financial account with a matching algorithm assigned (`FIN_Matching_Algorithm_ID`) — otherwise `EM_APRM_MatchTransactions` cannot run.
-- Optionally a bank-statement document type is configured (`C_Doctype_ID` on `FIN_BankStatement`).
+- The Etendo MCP server is reachable and authenticated (see [MCP setup](../mcp/index.md)).
+- The token has write scope (`neo:write` or `neo:*`): `etendo_action` — including the read actions below — is only published to write-capable tokens.
+- The current role can access the financial account window and its statements and reconciliation (verify with `etendo_discover`: `bank-statements` and `bank-reconciliation` are listed).
+- The financial account exists. Its id is the `id` of every account-level action.
+- For `reconcileDifference` and within-tolerance differences: the account has a difference G/L item configured, or you pass `glItemId`.
 
-## Entity map
+## Configuration
 
-| Entity | Table | Role |
-|--------|-------|------|
-| `financial-account/account` | `FIN_Financial_Account` | The bank / cash account being reconciled. Holds the `EM_APRM_ImportBankFile`, `EM_APRM_MatchTransactions` and `EM_APRM_Reconcile` action buttons |
-| `financial-account/importedBankStatements` | `FIN_BankStatement` | One imported statement (one file) for an account. Carries `Statementdate`, `Importdate`, `EM_ETGO_*` counters and the `EM_APRM_Process_BS` button |
-| `financial-account/bankStatementLines` | `FIN_BankStatementLine` | The individual lines of an imported statement: `Datetrx`, `Cramount`, `Dramount`, `Referenceno`, `Matchingtype`, `Matched_Document`, optional FK to `financialAccountTransaction` once matched |
-| `financial-account/transaction` | `FIN_Finacc_Transaction` | The actual financial-account transactions (deposits, withdrawals, payments). After `Process Statement` runs, the bank statement lines are linked to transactions through `FIN_FinAcc_Transaction_ID` |
-| `financial-account/reconciliations` | `FIN_Reconciliation` | One reconciliation document for the account. Holds `Statementdate`, `Endingbalance`, `Startingbalance`, `Docstatus`, the counters `EM_APRM_ReconciledItemNo` / `EM_APRM_UnReconciledItemNo` and the `EM_Aprm_Process_Rec` (Reconcile) button |
-| `financial-account/clearedItems` | `FIN_ReconciliationLine_v` (view) | The cleared transactions / payments linked to a reconciliation (`FIN_Reconciliation_ID`) and optionally to a `bankStatementLine` |
-
-Every step below is anchored to one of these entities.
-
-## Step-by-step flow
-
-### Step 1 — Locate the financial account
-
-```json
-{
-  "tool": "etendo_list",
-  "arguments": {
-    "spec": "financial-account",
-    "entity": "account",
-    "filters": { "iBAN": "ES0000000000000000000000" },
-    "limit": 5
-  }
-}
-```
-
-Use any combination of `name`, `iBAN`, `accountNo` or `default: true` to find the target account. Keep its `id` for every subsequent step.
-
-### Step 2 — Discover the action parameters
-
-The `financial-account/account` entity exposes the import / match / reconcile buttons. Read the schema once to confirm the buttons exist in the current instance and capture their column names:
+No configuration beyond the base MCP server. Read both action catalogues once per session — they give every parameter schema and what `id` means for each action:
 
 ```json
 {
   "tool": "etendo_schema",
-  "arguments": { "spec": "financial-account", "entity": "account", "view": "actions" }
+  "arguments": { "spec": "bank-statements", "entity": "bank-statements", "view": "actions" }
 }
 ```
 
-The relevant buttons (verified at the time of writing):
+```json
+{
+  "tool": "etendo_schema",
+  "arguments": { "spec": "bank-reconciliation", "entity": "bank-reconciliation", "view": "actions" }
+}
+```
 
-| Column | Process name | Process ID |
-|--------|--------------|------------|
-| `EM_APRM_ImportBankFile` | Import Statement | `7AC7BE9024E448A0BB863C159DA762F9` |
-| `EM_APRM_MatchTransactions` | Match Statement | `86F0B1EBE2BC48E3ACF458768D14CC99` |
-| `EM_APRM_MatchTrans_Force` | Match Statement (forced) | `86F0B1EBE2BC48E3ACF458768D14CC99` |
-| `EM_APRM_Reconcile` | Reconcile | `EB3D56BDD37E4229B67DBAB9F9A9B167` |
+## Available capabilities
 
-### Step 3 — Import the bank file
+### `bank-statements` actions
 
-Fire `EM_APRM_ImportBankFile` on the account. The input parameters of this Classic process (file content, file format / bank format, statement date) are not part of the entity schema and must be discovered at runtime — call once with `parameters: {}` and read the validation message:
+`etendo_action(spec: "bank-statements", entity: "bank-statements", id: <see column>, action: <name>, parameters: {...})`
+
+| Action | Kind | `id` | Parameters (required in **bold**) |
+|--------|------|------|-----------------------------------|
+| `listStatements` | read | financial account | — |
+| `statementLines` | read | bank statement | — |
+| `previewStatement` | read | financial account | **`fileName`**, **`contentBase64`** — parses a file without saving it |
+| `createStatement` | write | financial account | **`name`**, **`transactionDate`**, **`importDate`** (`yyyy-MM-dd`), **`lines[]`**, `process` (default `true`), `notes`, `fileName` |
+| `importStatement` | write | financial account | **`fileName`**, **`contentBase64`** — stored processed |
+| `updateStatement` | write | bank statement | **`name`**, **`transactionDate`**, **`importDate`**, `lines[]`, `process` (default `false`), `notes`, `fileName` — drafts only |
+| `processStatement` | write | bank statement | — |
+| `reactivateStatement` | write | bank statement | — — a processed, not posted statement; does not reverse reconciliations |
+| `deleteStatement` | write | bank statement | — — drafts only |
+
+A line of `lines[]` is `{date, in, out, description, reference, bpartnerName, bpartnerId, glItemId}`: `date` (`yyyy-MM-dd`) is required, and exactly one of `in` / `out` must be above zero (the other absent or 0, none negative). Lengths are refused, not truncated: `name` / `bpartnerName` ≤ 60, `reference` ≤ 30, `fileName` / `notes` ≤ 255, `description` ≤ 2000. `reference` defaults to `**`.
+
+Upload formats: Cuaderno 43, or CSV with the header `Transaction Date, Reference No., Business Partner Name, Description, Amount OUT, Amount IN` (dates `dd/MM/yyyy`). `contentBase64` is standard base64 without line breaks, at most 1 MiB of file content.
+
+### `bank-reconciliation` actions
+
+`etendo_action(spec: "bank-reconciliation", entity: "bank-reconciliation", id: <financialAccountId>, action: <name>, parameters: {...})` — `id` is always the **financial account**.
+
+| Action | Kind | Parameters (required in **bold**) | What it does |
+|--------|------|-----------------------------------|--------------|
+| `pendingLines` | read | `dateFrom`, `dateTo`, `q` | The account's statement lines with their state and counts. Start here: every write needs a `statementLineId` from this list. Lines of a draft statement are not listed as pending |
+| `candidates` | read | **`statementLineId`**, `kind` (`transactions` \| `invoices`), `docType` (`receipts` \| `payments`), `dateFrom`, `dateTo` | What a line can be reconciled against: existing movements, or unpaid invoices. `amountBase` gives foreign-currency amounts in the account currency |
+| `autoMatch` | read | — | Automatch proposal: groups of movements for the pending lines. Changes nothing |
+| `reconcileGroup` | write | **`statementLineId`**, `operationIds[]`, `invoices[{invoiceId, scheduleId}]`, `paymentMethodId`, `writeoffDifference`, `glItemId`, `description` | Reconciles one line against movements (1:1, 1:N) and/or invoices, which are paid on the fly |
+| `applySuggestions` | write | **`groups[{statementLineId, operationIds[], createPayment?}]`** | Confirms the automatch groups you send; a group not sent is rejected |
+| `reconcileDifference` | write | **`statementLineId`**, `glItemId`, `description` | Closes a partially reconciled line by posting its remainder (within tolerance) to a G/L item |
+| `undoReconciliation` | write | **`statementLineId`** | The line returns to pending; movements and payments the reconciliation created are removed, pre-existing ones are kept |
+| `removeOperation` | write | **`statementLineId`**, **`transactionIds[]`** | Detaches movements from a reconciled line and deletes the ones the reconciliation created |
+| `reactivateSelected` | write | **`statementLineId`**, **`transactionIds[]`** | Detaches movements so the line can be re-matched |
+
+### Read-only entities
+
+To read what the actions produced, `etendo_list` / `etendo_get` on the `financial-account` spec: `importedBankStatements`, `bankStatementLines`, `transaction`, `reconciliations`, `clearedItems`.
+
+## End-to-end usage example
+
+### Step 1 — Find the account
+
+```json
+{
+  "tool": "etendo_list",
+  "arguments": { "spec": "financial-account", "entity": "account", "filters": { "name": "Main EUR Bank" }, "limit": 5 }
+}
+```
+
+Keep its `id` (`<accountId>`).
+
+### Step 2 — Load the statement
+
+From a file (optionally run `previewStatement` with the same parameters first to check what it parses):
 
 ```json
 {
   "tool": "etendo_action",
   "arguments": {
-    "spec": "financial-account",
-    "entity": "account",
-    "id": "<financial-account-id>",
-    "action": "EM_APRM_ImportBankFile",
-    "parameters": {}
+    "spec": "bank-statements", "entity": "bank-statements", "id": "<accountId>",
+    "action": "importStatement",
+    "parameters": { "fileName": "june.csv", "contentBase64": "<base64 of the file>" }
   }
 }
 ```
 
-When the call succeeds, the server creates one `FIN_BankStatement` record (entity `importedBankStatements`) plus its `FIN_BankStatementLine` records, both linked to the financial account.
-
-Verify the import:
-
-```json
-{
-  "tool": "etendo_list",
-  "arguments": {
-    "spec": "financial-account",
-    "entity": "importedBankStatements",
-    "filters": { "account": "<financial-account-id>" },
-    "orderBy": "-importdate",
-    "limit": 5
-  }
-}
-```
-
-Inspect the produced lines:
-
-```json
-{
-  "tool": "etendo_list",
-  "arguments": {
-    "spec": "financial-account",
-    "entity": "bankStatementLines",
-    "filters": { "bankStatement": "<bank-statement-id>" },
-    "orderBy": "lineNo"
-  }
-}
-```
-
-Each `bankStatementLines` record carries the verified columns: `Datetrx` (`transactionDate`), `Cramount`, `Dramount`, `Referenceno`, `Bpartnername`, optional `C_Bpartner_ID`, `Description`, `EM_C43_Description`, `Matchingtype`, `Matched_Document`, and once matched, a FK to `FIN_FinAcc_Transaction_ID` through the `financialAccountTransaction` field.
-
-### Step 4 — Process the imported statement
-
-Fire the `EM_APRM_Process_BS` button on the statement to turn the lines into financial-account transactions:
+Or by hand:
 
 ```json
 {
   "tool": "etendo_action",
   "arguments": {
-    "spec": "financial-account",
-    "entity": "importedBankStatements",
-    "id": "<bank-statement-id>",
-    "action": "EM_APRM_Process_BS",
-    "parameters": {}
-  }
-}
-```
-
-After a successful run the statement's `Processed` flag becomes `Y`, its `EM_ETGO_*` counters (`EM_ETGO_Line_Count`, `EM_ETGO_Matched_Count`, `EM_ETGO_Total_In`, `EM_ETGO_Total_Out`) are refreshed, and a `FIN_Finacc_Transaction` row exists for every statement line. Use `EM_APRM_Process_BS_Force` (`aPRMProcessBankStatementForce`) only if the standard process is blocked and you have authorisation to force-post.
-
-### Step 5 — Match statement lines to existing payments
-
-Fire `EM_APRM_MatchTransactions` on the financial account. The process is driven by the matching algorithm assigned to the account (`FIN_Matching_Algorithm_ID`) and writes the resolved FK into `FIN_BankStatementLine.FIN_FinAcc_Transaction_ID` and updates `Matchingtype` / `Matched_Document`:
-
-```json
-{
-  "tool": "etendo_action",
-  "arguments": {
-    "spec": "financial-account",
-    "entity": "account",
-    "id": "<financial-account-id>",
-    "action": "EM_APRM_MatchTransactions",
-    "parameters": {}
-  }
-}
-```
-
-To force-match (override the algorithm's confidence threshold) use the column `EM_APRM_MatchTrans_Force` instead. The exact parameter shape (line scope, confidence threshold) is to be discovered through the validation message on an empty call.
-
-Re-list `bankStatementLines` after the call to see which lines were matched:
-
-```json
-{
-  "tool": "etendo_list",
-  "arguments": {
-    "spec": "financial-account",
-    "entity": "bankStatementLines",
-    "filters": {
-      "bankStatement": "<bank-statement-id>",
-      "matchingtype": "<list-value-for-matched>"
+    "spec": "bank-statements", "entity": "bank-statements", "id": "<accountId>",
+    "action": "createStatement",
+    "parameters": {
+      "name": "June 2026",
+      "transactionDate": "2026-06-30",
+      "importDate": "2026-07-01",
+      "lines": [
+        { "date": "2026-06-02", "description": "Customer transfer", "bpartnerName": "Acme", "in": 3500, "out": 0 }
+      ]
     }
   }
 }
 ```
 
-Resolve `matchingtype` values from the field's list reference (`etendo_schema("financial-account", "bankStatementLines", view: "full")`) before filtering.
+An imported statement and a statement created with the default `process: true` are processed. A statement saved as a draft must be processed with `processStatement` (`id` = the statement) before its lines can be reconciled.
 
-### Step 6 — Find / add missing matches manually (optional)
-
-When the automatic match leaves lines unmatched, the `financial-account/account` entity exposes two complementary buttons:
-
-| Column | Process |
-|--------|---------|
-| `EM_Aprm_Findtransactionspd` | Find Transactions to Match |
-| `EM_Aprm_Addtransactionpd` | Add Transaction |
-
-Fire either with `parameters: {}` first to discover their input shape. They typically take the bank-statement line id and the candidate transaction id.
-
-### Step 7 — Reconcile
-
-Fire `EM_APRM_Reconcile` on the financial account. Etendo creates a `FIN_Reconciliation` document (entity `reconciliations`) and binds every cleared item to it:
+### Step 3 — List the pending lines
 
 ```json
 {
   "tool": "etendo_action",
   "arguments": {
-    "spec": "financial-account",
-    "entity": "account",
-    "id": "<financial-account-id>",
-    "action": "EM_APRM_Reconcile",
-    "parameters": {}
+    "spec": "bank-reconciliation", "entity": "bank-reconciliation", "id": "<accountId>",
+    "action": "pendingLines", "parameters": { "dateFrom": "2026-06-01", "dateTo": "2026-06-30" }
   }
 }
 ```
 
-Locate the resulting reconciliation:
+### Step 4a — Accept the automatch proposal
 
-```json
-{
-  "tool": "etendo_list",
-  "arguments": {
-    "spec": "financial-account",
-    "entity": "reconciliations",
-    "filters": { "account": "<financial-account-id>" },
-    "orderBy": "-transactionDate",
-    "limit": 1
-  }
-}
-```
+1. Call `autoMatch` (`parameters: {}`).
+2. Send the groups you accept to `applySuggestions`. For each group: `statementLineId` = `group.statementLine.id`, `operationIds` = the ids of the group's operations whose `isNew` is `false`, and `createPayment` = `group.createPayment` only when present:
 
-The reconciliation record carries `documentNo`, `Statementdate`, `Endingbalance`, `Startingbalance`, `Docstatus` plus the verified summary counters: `EM_APRM_ReconciledItemNo`, `EM_APRM_ReconciledItemAmount`, `EM_APRM_UnReconciledItemNo`, `EM_APRM_UnReconciledItemAmount`, `EM_APRM_OutstandingPaymentsItemNo`, `EM_APRM_OutstandingPaymentsItemsAmount`, `EM_APRM_OutstandingDepositsItemNo`, `EM_APRM_OutstandingDepositItemsAmount`.
+   ```json
+   {
+     "tool": "etendo_action",
+     "arguments": {
+       "spec": "bank-reconciliation", "entity": "bank-reconciliation", "id": "<accountId>",
+       "action": "applySuggestions",
+       "parameters": { "groups": [ { "statementLineId": "<lineId>", "operationIds": ["<transactionId>"] } ] }
+     }
+   }
+   ```
 
-### Step 8 — Inspect the cleared items
+   Read `results[]`: an invalid group is reported there without blocking the others.
 
-```json
-{
-  "tool": "etendo_list",
-  "arguments": {
-    "spec": "financial-account",
-    "entity": "clearedItems",
-    "filters": { "reconciliation": "<reconciliation-id>" },
-    "limit": 100
-  }
-}
-```
+### Step 4b — Reconcile a line manually
 
-Each row exposes the FKs needed to drill into the underlying record: `financialAccountTransaction` (`FIN_Finacc_Transaction_ID`), `payment` (`FIN_Payment_ID`), `bankStatementLine` (`FIN_Bankstatementline_ID`), plus the amounts `Paymentamt`, `Depositamt` and the dimensions (`project`, `salesCampaign`, `activity`, `costCenter`, `stDimension`, `ndDimension`).
+1. Find what it can match:
 
-### Step 9 — Post and print
+   ```json
+   {
+     "tool": "etendo_action",
+     "arguments": {
+       "spec": "bank-reconciliation", "entity": "bank-reconciliation", "id": "<accountId>",
+       "action": "candidates", "parameters": { "statementLineId": "<lineId>", "kind": "invoices" }
+     }
+   }
+   ```
 
-`reconciliations` exposes three additional buttons. Use `etendo_action` with `parameters: {}` first to discover their input keys.
+2. Reconcile it against movements (`operationIds`), invoices (`invoices`, each `{invoiceId, scheduleId}` from `candidates`), or both. The selection must add up to the line amount:
 
-| Column | Process |
-|--------|---------|
-| `Posted` | Post (book the reconciliation entries to the GL) |
-| `EM_APRM_PrintDetailed` | Reconciliation Details |
-| `EM_APRM_PrintSummary` | Reconciliation Summary |
-| `EM_Aprm_Process_Rec` | Reconcile (re-run if `Docstatus` allows it) |
-| `EM_APRM_Process_Rec_Force` | Reconciliation Process Force |
+   ```json
+   {
+     "tool": "etendo_action",
+     "arguments": {
+       "spec": "bank-reconciliation", "entity": "bank-reconciliation", "id": "<accountId>",
+       "action": "reconcileGroup",
+       "parameters": {
+         "statementLineId": "<lineId>",
+         "invoices": [ { "invoiceId": "<invoiceId>", "scheduleId": "<scheduleId>" } ]
+       }
+     }
+   }
+   ```
 
-Example — post the reconciliation:
+3. Read the 201 answer:
+   - `partial: false` — the line is closed.
+   - `partial: true` — the line is **not** complete: `pendingAmount` is still open. Continue with `remainderLineId` (another `reconcileGroup`, or `reconcileDifference` when the remainder is within the account's tolerance).
 
-```json
-{
-  "tool": "etendo_action",
-  "arguments": {
-    "spec": "financial-account",
-    "entity": "reconciliations",
-    "id": "<reconciliation-id>",
-    "action": "Posted",
-    "parameters": {}
-  }
-}
-```
+### Step 5 — Undo a wrong reconciliation
 
-## End-to-end example (compact)
+Call `undoReconciliation` with the line's `statementLineId`, or `reactivateSelected` / `removeOperation` with the `transactionIds` to detach. `removeOperation` and `reactivateSelected` report movements they could not free in `failedTransactionIds`.
 
-```json
-[
-  { "tool": "etendo_list",   "arguments": { "spec": "financial-account", "entity": "account", "filters": { "default": true }, "limit": 1 } },
-  { "tool": "etendo_action", "arguments": { "spec": "financial-account", "entity": "account", "id": "<acc>", "action": "EM_APRM_ImportBankFile", "parameters": { "/* resolved from validation message */": "" } } },
-  { "tool": "etendo_list",   "arguments": { "spec": "financial-account", "entity": "importedBankStatements", "filters": { "account": "<acc>" }, "orderBy": "-importdate", "limit": 1 } },
-  { "tool": "etendo_action", "arguments": { "spec": "financial-account", "entity": "importedBankStatements", "id": "<bs>", "action": "EM_APRM_Process_BS", "parameters": {} } },
-  { "tool": "etendo_action", "arguments": { "spec": "financial-account", "entity": "account", "id": "<acc>", "action": "EM_APRM_MatchTransactions", "parameters": {} } },
-  { "tool": "etendo_action", "arguments": { "spec": "financial-account", "entity": "account", "id": "<acc>", "action": "EM_APRM_Reconcile", "parameters": {} } },
-  { "tool": "etendo_list",   "arguments": { "spec": "financial-account", "entity": "reconciliations", "filters": { "account": "<acc>" }, "orderBy": "-transactionDate", "limit": 1 } },
-  { "tool": "etendo_list",   "arguments": { "spec": "financial-account", "entity": "clearedItems", "filters": { "reconciliation": "<rec>" } } }
-]
-```
+### Step 6 — Check the result
 
-## Reports related to bank reconciliation
-
-| Tool | Use case |
-|------|----------|
-| `generate_bank_statements` | Bank statement list, import (C43), and lines view for a financial account |
-| `generate_financial_account_transactions` | Transactions list for a single financial account |
-
-Call each with `parameters: {}` first to discover the required keys via the validation message.
+`etendo_list(spec: "financial-account", entity: "reconciliations", filters: {"account": "<accountId>"})` and `etendo_list(spec: "financial-account", entity: "clearedItems", filters: {"reconciliation": "<reconciliationId>"})`.
 
 ## Error handling
 
-| Symptom | Likely cause | Resolution |
-|---------|--------------|------------|
-| `EM_APRM_ImportBankFile` returns `processResult: "error"` | File content or format parameter missing / invalid for the configured bank format | Call once with `parameters: {}`, read the validation message, fill the required keys, retry |
-| `importedBankStatements` is created but no `bankStatementLines` | The bank format parser produced no recognised lines | Inspect the imported file's encoding and format; reconfigure `BankFormat` on the account if needed |
-| `EM_APRM_Process_BS` returns `processResult: "error"` | The statement was already processed, or transactions cannot be created due to missing `paymentMethod` / matching configuration | Read `processMessage`; if the statement is already processed, re-list to confirm `processed: true` |
-| `EM_APRM_MatchTransactions` returns `processResult: "warning"` with low match counts | The matching algorithm assigned to the account did not match enough lines | Use `EM_APRM_MatchTrans_Force`, or call `EM_Aprm_Findtransactionspd` / `EM_Aprm_Addtransactionpd` to add manual matches |
-| `EM_APRM_Reconcile` returns `processResult: "error"` | Reconciliation cannot be created — typically because there are no cleared items, or the ending balance does not balance | Inspect the unmatched lines via `bankStatementLines` and add manual matches; verify `endingBalance` on the underlying record |
-| `Posted` on a reconciliation returns a warning | The reconciliation was posted but Etendo flagged an accounting note (rounding, period closed, dimension missing) | Treat as posted and surface `processMessage` to the user |
+Refusals arrive as `{status, error, detail, ...}`. A refused write rolls back its own changes, invoice payments included.
 
-Enum values for `matchingtype`, `Matched_Document` and `Docstatus`, plus the input parameter shape of every Classic process, are intentionally not enumerated in this guide. They are **to-be-resolved at runtime**:
-
-- For `list`-typed fields, read the value list from the response of `etendo_schema` for the entity that owns the field, or sample existing records with `etendo_list`.
-- For process input parameters, fire `etendo_action` with `parameters: {}` and let the server's validation message report the required keys.
+| Status | Detail / code | Cause | Resolution |
+|--------|---------------|-------|------------|
+| 422 | `unknownParameters` + `acceptedParameters`, `missingParameters`, `field` + `expectedType` / `allowedValues`, `availableActions` | The call does not match the action's contract | Fix the parameters; nothing was run |
+| 422 | `lines[<i>]: <problem>` | A statement line breaks the UI's checks (no date, both or neither of `in`/`out`, negative amount, unknown key, too long, unknown contact / G/L item) | Fix that line and retry |
+| 400 | `NO_VALID_LINES` | The imported file has no valid line; nothing was saved | Check the format and the encoding |
+| 400 | *Only draft (unprocessed) statements can be modified* | `updateStatement` / `deleteStatement` on a processed statement | `reactivateStatement` first |
+| 400 | *The statement is posted and cannot be reactivated* | `reactivateStatement` on a posted statement | Ask the user: a posted statement cannot be reactivated |
+| 409 | — | `createStatement` / `importStatement` / `previewStatement` / `deleteStatement` on a PSD2-connected account | The account's statements come from the bank connection; ask the user |
+| 409 | *Statement line is already reconciled* | The line, or its pending remainder, is already closed | Re-read `pendingLines` |
+| 409 | *Reconciliation <documentNo> is an unconfirmed draft that already holds this line. Review it before reconciling the line again.* | A draft reconciliation holds the line's movement | Ask the user to review the draft; never discard it on your own |
+| 4xx | `GL_ITEM_REQUIRED` | A difference must be posted and the account has no difference G/L item | Pass `glItemId` |
+| 405 | `method_not_allowed` | A financial-account Core button, or a generic write on a read-only entity | Use the actions in this guide |

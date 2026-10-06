@@ -2,125 +2,117 @@
 
 ## Overview
 
-This topic covers the Etendo finance domain as exposed through the MCP server. It maps the finance specs and report tools available to an MCP-only agent, and links to focused sub-guides for the two operational scenarios:
+This topic covers the Etendo GO finance domain as exposed through the MCP server. It maps the finance specs, actions and report tools available to an MCP-only agent, and links to focused sub-guides for the two operational scenarios:
 
-- **[Treasury](./treasury.md)** — financial accounts, payments in / payments out, manual transactions, payment terms and currency conversion rates.
-- **[Bank reconciliation](./bank-reconciliation.md)** — import bank statements, process them, match transactions and reconcile a financial account.
+- **[Treasury](./treasury.md)** — collect sales invoices and pay purchase invoices through the invoice payment actions (`registerPayment`, `confirmPayment`, `deletePayment` and their read helpers), manage the resulting payments, maintain financial accounts, and what is not available to agents.
+- **[Bank reconciliation](./bank-reconciliation.md)** — load, process and edit bank statements with the `bank-statements` actions, and reconcile their lines with the `bank-reconciliation` actions.
 
-All tool, spec, entity and column names below were verified at the time of writing through `etendo_discover` and `etendo_schema`. The set of specs the **current user** can see is role-dependent — always re-run `etendo_discover` in your own environment before hard-coding anything.
+The MCP surface equals the Etendo GO UI surface, both ways: what the UI offers, an agent can do; what it does not offer is hidden and refused (`405 method_not_allowed` with a hint naming the route to use). The one deliberate exception is bank and fiscal integrations (PIS / PSD2, SII, TicketBAI, Verifactu, AFIP, Hacienda), which stay limited for agents even where the UI offers them. Payments are never created by hand: they are registered from the invoice.
+
+The set of specs and entities the **current user** can see is role-dependent — always run `etendo_discover` in your own environment before hard-coding anything.
 
 ## Prerequisites
 
 - The Etendo MCP server is configured in your client. See [MCP setup](../mcp/index.md).
-- The API user has a role that grants access to the finance windows (Financial Account, Payment In, Payment Out, Payment Term, Conversion Rates, Reconciliations).
+- The API user has a role that grants access to the finance windows (Sales / Purchase Invoice, Financial Account, Payment In, Payment Out, Payment Term, Conversion Rates).
+- The token has write scope (`neo:write` or `neo:*`) for anything that uses `etendo_action`.
 - `etendo://status` is readable and `etendo_discover` returns a non-empty `specs` array.
 
 ## Configuration
 
-No additional configuration is needed beyond the base MCP server. The finance specs are exposed through the same generic `etendo_*` tools and the same `generate_*` report tools described in the [MCP guide](../mcp/index.md).
+No additional configuration is needed beyond the base MCP server. The finance specs are exposed through the generic `neo_*` tools and the `generate_*` report tools described in the [MCP guide](../mcp/index.md).
 
 ## Available capabilities
 
-### Write specs (CRUD windows)
+### Window specs
 
-Specs of type `W` expose one or more entities through the generic CRUD and metadata tools (`etendo_list`, `etendo_get`, `etendo_create`, `etendo_update`, `etendo_delete`, `etendo_schema`, `etendo_defaults`, `etendo_selectors`, `etendo_action`, `etendo_batch`).
+| Spec | Main entities | Through MCP | Sub-guide |
+|------|---------------|-------------|-----------|
+| `sales-invoice`, `purchase-invoice` | `header`, `paymentPlan`, `paymentDetails` | The invoice header carries the payment actions (`invoiceAccounts`, `invoicePaymentMethods`, `invoiceCreditSources`, `invoicePayments`, `currencyOptions`, `registerPayment`, `confirmPayment`, `deletePayment`). `paymentPlan` and `paymentDetails` are read-only | [Treasury](./treasury.md) |
+| `payment-in` | `finPayment`, `finPaymentScheduleDetail` | No create or edit. Buttons on `finPayment`: `aPRMProcessPayment` (Confirmar), `etprReactivatePayment` (Reactivar), `eTPRRemovePayment` (Eliminar: any status but `RPVOID` / `pisLocked`, reactivates a processed payment first, gives back no consumed credit). The invoice's `deletePayment` deletes a draft and gives its credit back | [Treasury](./treasury.md) |
+| `payment-out` | `header`, `lines`, `bankPayments` | No create or edit. Buttons on `header`: same as `payment-in`. Bank-initiated (PIS) payments are not available: bank and fiscal integrations stay limited for agents | [Treasury](./treasury.md) |
+| `financial-account` | `account`, `transaction`, `importedBankStatements`, `bankStatementLines`, `reconciliations`, `clearedItems` | `account` is writable (no invokable buttons); the other entities are read-only | [Treasury](./treasury.md) · [Bank reconciliation](./bank-reconciliation.md) |
+| `payment-term` | `header` | Writable | [Treasury](./treasury.md) |
+| `conversion-rates` | `conversionRate` | Read-only | [Treasury](./treasury.md) |
 
-| Spec | Main entities | Purpose | Sub-guide |
-|------|---------------|---------|-----------|
-| `financial-account` | `account`, `transaction`, `importedBankStatements`, `bankStatementLines`, `reconciliations`, `clearedItems`, `paymentMethod`, `bankConnections`, `accountingConfiguration`, `accountingHistory`, `accounting`, `exchangeRates` | Bank and cash accounts, their transactions, imported statements, reconciliations and matched items | [Treasury](./treasury.md) · [Bank reconciliation](./bank-reconciliation.md) |
-| `payment-in` | `finPayment`, `finPaymentScheduleDetail`, `executionHistory`, `exchangeRates`, `usedCreditSource`, `accounting` | Incoming customer payments and their payment-plan details | [Treasury](./treasury.md) |
-| `payment-out` | `header`, `lines`, `executionHistory`, `exchangeRates`, `usedCreditSource`, `accounting`, `bankPayments` | Outgoing vendor payments and their payment-plan details | [Treasury](./treasury.md) |
-| `payment-term` | `header`, `lines`, `translation` | Payment terms (net days, maturity dates, split percentages) | [Treasury](./treasury.md) |
-| `conversion-rates` | `conversionRate` | Currency conversion rates between two currencies for a date range | [Treasury](./treasury.md) |
+### Action specs (`etendo_action` only)
 
-### Report specs (rendered via `generate_*`)
+`etendo_discover` reports these with `isReport: true`, `callable: false` and `status: "actions_only"`: they are not report generators. Read their catalogue with `etendo_schema(spec, entity, view: "actions")`.
 
-Specs of type `R` are rendered through their dedicated report tool. They do not expose CRUD entities. Call the report tool with `parameters: {}` first to discover its required keys via the server's validation message.
+| Spec | Entity | Actions | Sub-guide |
+|------|--------|---------|-----------|
+| `bank-statements` | `bank-statements` | `listStatements`, `statementLines`, `previewStatement`, `createStatement`, `importStatement`, `updateStatement`, `processStatement`, `reactivateStatement`, `deleteStatement` | [Bank reconciliation](./bank-reconciliation.md) |
+| `bank-reconciliation` | `bank-reconciliation` | `pendingLines`, `candidates`, `autoMatch`, `reconcileGroup`, `applySuggestions`, `reconcileDifference`, `undoReconciliation`, `removeOperation`, `reactivateSelected` | [Bank reconciliation](./bank-reconciliation.md) |
 
-| Spec | Report tool | Purpose |
-|------|-------------|---------|
-| `aging-receivable` | `generate_aging_receivable` | Aging of Receivables |
-| `bank-statements` | `generate_bank_statements` | Bank statement list, import (C43), and lines view for a financial account |
-| `financial-account-transactions` | `generate_financial_account_transactions` | Transactions list for a single financial account |
-| `financial-accounts-page` | `generate_financial_accounts_page` | Financial Accounts page |
-| `tax-report` | `generate_tax_report` | Tax Report |
+### Report tools
 
-All report tools accept an optional `format` argument (`pdf`, `xlsx`, `csv`; default `pdf`).
+| Tool | Purpose |
+|------|---------|
+| `generate_aging_receivable` | Aging of receivables |
+| `generate_aging_payable` | Aging of payables |
+| `generate_tax_report` | Tax report |
 
-### Process buttons on finance entities
-
-The finance entities expose Etendo process buttons that are fired through `etendo_action`. The full list per entity is in the entity schema (`etendo_schema(spec, entity, view: "actions")`); the buttons most relevant to finance workflows are:
-
-| Entity | Button column | Process name | Used in |
-|--------|---------------|--------------|---------|
-| `financial-account/account` | `EM_APRM_ImportBankFile` | Import Statement | [Bank reconciliation](./bank-reconciliation.md) |
-| `financial-account/account` | `EM_APRM_MatchTransactions` | Match Statement | [Bank reconciliation](./bank-reconciliation.md) |
-| `financial-account/account` | `EM_APRM_Reconcile` | Reconcile | [Bank reconciliation](./bank-reconciliation.md) |
-| `financial-account/account` | `EM_Aprm_Addtransactionpd` | Add Transaction | [Treasury](./treasury.md) |
-| `financial-account/account` | `EM_Aprm_Funds_Trans` | Funds Transfer | [Treasury](./treasury.md) |
-| `financial-account/importedBankStatements` | `EM_APRM_Process_BS` | Bank Statement Process | [Bank reconciliation](./bank-reconciliation.md) |
-| `financial-account/reconciliations` | `EM_Aprm_Process_Rec` | Reconcile | [Bank reconciliation](./bank-reconciliation.md) |
-| `financial-account/transaction` | `EM_Aprm_Processed` | Transaction Process | [Treasury](./treasury.md) |
-| `financial-account/transaction` | `Posted` | Post | [Treasury](./treasury.md) |
-| `payment-in/finPayment` | `EM_APRM_Process_Payment` | Payment Process | [Treasury](./treasury.md) |
-| `payment-in/finPayment` | `EM_Aprm_Executepayment` | Execute Payment | [Treasury](./treasury.md) |
-| `payment-in/finPayment` | `EM_APRM_ReversePayment` | Reverse Payment | [Treasury](./treasury.md) |
-| `payment-out/header` | `EM_APRM_Process_Payment` | Payment Process | [Treasury](./treasury.md) |
-| `payment-out/header` | `EM_Aprm_Executepayment` | Execute Payment | [Treasury](./treasury.md) |
-
-The exact set of buttons on each entity (including their input parameters) is authoritative only in the live schema — call `etendo_schema(spec, entity, view: "actions")` and inspect every entry with `type: "button"` and `invokeVia: "etendo_action"` before firing.
+Call a report tool with `parameters: {}` first to discover its required keys from the validation message. The other finance pages of the UI (`financial-accounts-page`, `financial-account-transactions`, `financial-account-bank-connection`) are listed by `etendo_discover` as `not_configured_for_report_generation`: they cannot be generated through MCP.
 
 ## End-to-end usage example
 
-This minimal walkthrough lists active financial accounts and renders the Financial Accounts page report.
+This walkthrough collects a sales invoice in full. The full recipe, with partial, draft, credit, foreign-currency and write-off variants, is in [Treasury](./treasury.md).
 
-### Step 1 — List financial accounts
+### Step 1 — Find the invoice
 
 ```json
 {
   "tool": "etendo_list",
   "arguments": {
-    "spec": "financial-account",
-    "entity": "account",
-    "limit": 20,
-    "orderBy": "name"
+    "spec": "sales-invoice",
+    "entity": "header",
+    "filters": { "documentNo": "FV1000002" },
+    "limit": 1
   }
 }
 ```
 
-The response is a paginated list of `FIN_Financial_Account` records with their `id`, `name`, `currency`, `type` (`B` = Bank, `C` = Cash), `currentBalance`, `creditLimit`, `iBAN` and `default` flag.
-
-### Step 2 — Inspect one account schema before any write
+### Step 2 — Pick an account
 
 ```json
 {
-  "tool": "etendo_schema",
-  "arguments": { "spec": "financial-account", "entity": "account", "view": "create" }
+  "tool": "etendo_action",
+  "arguments": { "spec": "sales-invoice", "entity": "header", "id": "<invoiceId>", "action": "invoiceAccounts", "parameters": {} }
 }
 ```
 
-`view` is required: `"create"` returns the fields you may send to a write, split into `required` / `optional`; call it again with `view: "actions"` for the list of buttons available for `etendo_action`. The schema response is the only authoritative source of field names, required flags and default expressions.
+Take an account `id` from `items[]`; its `defaultMethodId` is the method used when you omit `fin_paymentmethod_id`.
 
-### Step 3 — Render the Financial Accounts page
+### Step 3 — Register the collection
 
 ```json
 {
-  "tool": "generate_financial_accounts_page",
-  "arguments": { "parameters": {} }
+  "tool": "etendo_action",
+  "arguments": {
+    "spec": "sales-invoice", "entity": "header", "id": "<invoiceId>",
+    "action": "registerPayment",
+    "parameters": {
+      "actual_payment": 60.50,
+      "payment_date": "2026-09-30",
+      "fin_financial_account_id": "<accountId>",
+      "process": "confirm"
+    }
+  }
 }
 ```
 
-If the call fails with a validation message, read the message to discover the required keys, fill them in, and retry. The optional `format` argument selects `pdf` (default), `xlsx` or `csv`.
+The answer carries the payment (`id`, `documentNo`, `status`, `paymentMethod`, credit and write-off amounts) and the invoice's new state (`outstandingAmount`, `totalPaid`, `paymentComplete`).
 
 ## Error handling
 
-Errors from the finance specs follow the generic MCP error model described in [MCP — Error handling](../mcp/index.md#error-handling). The points specific to finance workflows are:
+Errors from the finance specs follow the generic MCP error model described in [MCP — Error handling](../mcp/index.md#error-handling): `{status, error, detail, ...}`. The points specific to finance workflows are:
 
 | Symptom | Likely cause | Resolution |
 |---------|--------------|------------|
-| `etendo_discover` returns no finance specs | API user role lacks access to the Financial Account, Payment, Payment Term or Conversion Rate windows | Assign the relevant finance role; re-run `etendo_discover` |
-| `etendo_action` on a button returns `processResult: "error"` | The underlying Etendo process raised a validation, state-machine or business-rule error | Read `processMessage` verbatim; consult the corresponding sub-guide for the prerequisites the process expects |
-| Selector for `paymentMethod`, `account`, `documentType` returns no rows | The current account / business partner / organisation does not have that FK configured | Open the parent window in the Etendo UI to verify the FK is set up before retrying |
-| `generate_*` returns a validation error on the first call with empty `parameters` | Expected — use the message to discover the required keys | Fill the keys reported by the server and retry |
+| `etendo_discover` returns no finance specs | The role lacks access to the finance windows | Assign the relevant finance role; re-run `etendo_discover` |
+| `405 method_not_allowed` on a payment, payment line, movement or reconciliation write, or on a financial-account button | The UI does not offer that route | Follow the `hint`; see [Treasury — Not available to agents](./treasury.md#not-available-to-agents) |
+| `422` from `registerPayment` with `installments`, `validMethods` or `allowedValues` | The call needs a decision the UI would have asked for (which installment, which method, what to do with an overpayment) | Re-send with one of the listed values; see [Treasury — Error handling](./treasury.md#error-handling) |
+| `422` from a `bank-statements` / `bank-reconciliation` action | Parameters do not match the action's contract | Read `etendo_schema(spec, entity, view: "actions")` and fix the parameters |
+| `generate_*` returns a validation error on the first call with empty `parameters` | Expected — the message lists the required keys | Fill the keys and retry |
 
-Enum codes for `list`-typed fields (for example `type` on a financial account, `status` on a payment, `documentStatus` on a reconciliation) are not enumerated in this guide. Resolve them at runtime by reading the field's value list from `etendo_schema` (the field metadata includes the allowed values when the underlying reference is a list reference) or by inspecting existing records via `etendo_list`.
+Enum codes for `list`-typed fields (for example `type` on a financial account or `status` on a payment) are not enumerated here. Read them from `etendo_schema(spec, entity, view: "full")` or sample existing records with `etendo_list`.
