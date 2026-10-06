@@ -234,7 +234,7 @@ Report tools render a pre-built Etendo report and return it in the requested for
 | `generate_report_trial_balance` | Trial Balance |
 | `generate_tax_report` | Tax Report |
 
-The set of report tools depends on the role; `neo_discover` gives each report spec's `reportTool`. Specs it reports with `status: "actions_only"` (`bank-statements`, `bank-reconciliation`) are not report generators: they serve named actions through `neo_action` (see [Finance — Bank reconciliation](../finance/bank-reconciliation.md)). Specs reported as `not_configured_for_report_generation` (for example `financial-accounts-page`, `financial-account-transactions`) cannot be generated through MCP.
+The set of report tools depends on the role; `etendo_discover` gives each report spec's `reportTool`. Specs it reports with `status: "actions_only"` (`bank-statements`, `bank-reconciliation`) are not report generators: they serve named actions through `etendo_action` (see [Finance — Bank reconciliation](../finance/bank-reconciliation.md)). Specs reported as `not_configured_for_report_generation` (for example `financial-accounts-page`, `financial-account-transactions`) cannot be generated through MCP.
 
 All report tools accept an optional `format` argument (`pdf`, `xlsx`, `csv`; default `pdf`).
 
@@ -259,7 +259,7 @@ Specs of type `W` (write/CRUD windows) expose one or more entities through `eten
 | `aging-receivable` | R | (report) |
 | `amortization` | W | `header`, `lines`, `accounting` |
 | `assets` | W | `assets`, `amortizationLine`, `assetAcct` |
-| `bank-statements` | R | (actions only — `neo_action`, entity `bank-statements`) |
+| `bank-statements` | R | (actions only — `etendo_action`, entity `bank-statements`) |
 | `contacts` | W | `businessPartner`, `customer`, `vendorCreditor`, `employee`, `contact`, `bankAccount`, `locationAddress`, `documentType`, `basicDiscount`, `customerAccounting`, `vendorAccounting`, `employeeAccounting`, `costSalaryCategory`, `intrastatShipments`, `intrastatAdquisitions`, `bp-stats`, `bp-trend` |
 | `conversion-rates` | W | `conversionRate` |
 | `dashboard` | W | `kpis`, `trends`, `pending-tasks`, `activity`, `recent-invoices`, `best-products`, `best-sellers`, `pending-amounts`, `top-clients` |

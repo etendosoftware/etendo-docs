@@ -18,7 +18,7 @@ Every payment goes through the **invoice**: the actions below run the same backe
 ## Prerequisites
 
 - The Etendo MCP server is reachable and authenticated (see [MCP setup](../mcp/index.md)).
-- The token has write scope (`neo:write` or `neo:*`): `etendo_action` is only published to write-capable tokens.
+- The token has write scope (`etendo:write` or `etendo:*`): `etendo_action` is only published to write-capable tokens.
 - The current role can access the `sales-invoice` and/or `purchase-invoice` windows and the `financial-account` window (verify with `etendo_discover`).
 - The invoice to collect or pay is **completed** (`documentStatus = CO`) and has an outstanding amount.
 - At least one financial account accepts a payment method for the direction you need (collections or payments). `invoiceAccounts` tells you which.

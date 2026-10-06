@@ -15,7 +15,7 @@ The set of specs and entities the **current user** can see is role-dependent —
 
 - The Etendo MCP server is configured in your client. See [MCP setup](../mcp/index.md).
 - The API user has a role that grants access to the finance windows (Sales / Purchase Invoice, Financial Account, Payment In, Payment Out, Payment Term, Conversion Rates).
-- The token has write scope (`neo:write` or `neo:*`) for anything that uses `etendo_action`.
+- The token has write scope (`etendo:write` or `etendo:*`) for anything that uses `etendo_action`.
 - `etendo://status` is readable and `etendo_discover` returns a non-empty `specs` array.
 
 ## Configuration

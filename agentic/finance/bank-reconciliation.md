@@ -18,7 +18,7 @@ Do **not** use the financial account's Core buttons (*Import Statement*, *Match 
 ## Prerequisites
 
 - The Etendo MCP server is reachable and authenticated (see [MCP setup](../mcp/index.md)).
-- The token has write scope (`neo:write` or `neo:*`): `etendo_action` — including the read actions below — is only published to write-capable tokens.
+- The token has write scope (`etendo:write` or `etendo:*`): `etendo_action` — including the read actions below — is only published to write-capable tokens.
 - The current role can access the financial account window and its statements and reconciliation (verify with `etendo_discover`: `bank-statements` and `bank-reconciliation` are listed).
 - The financial account exists. Its id is the `id` of every account-level action.
 - For `reconcileDifference` and within-tolerance differences: the account has a difference G/L item configured, or you pass `glItemId`.
