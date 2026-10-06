@@ -18,8 +18,8 @@ Every payment goes through the **invoice**: the actions below run the same backe
 ## Prerequisites
 
 - The Etendo MCP server is reachable and authenticated (see [MCP setup](../mcp/index.md)).
-- The token has write scope (`neo:write` or `neo:*`): `neo_action` is only published to write-capable tokens.
-- The current role can access the `sales-invoice` and/or `purchase-invoice` windows and the `financial-account` window (verify with `neo_discover`).
+- The token has write scope (`etendo:write` or `etendo:*`): `etendo_action` is only published to write-capable tokens.
+- The current role can access the `sales-invoice` and/or `purchase-invoice` windows and the `financial-account` window (verify with `etendo_discover`).
 - The invoice to collect or pay is **completed** (`documentStatus = CO`) and has an outstanding amount.
 - At least one financial account accepts a payment method for the direction you need (collections or payments). `invoiceAccounts` tells you which.
 
@@ -29,18 +29,18 @@ No configuration beyond the base MCP server. Discover the payment actions once p
 
 ```json
 {
-  "tool": "neo_schema",
+  "tool": "etendo_schema",
   "arguments": { "spec": "sales-invoice", "entity": "header", "view": "actions" }
 }
 ```
 
-The answer lists the invoice's AD buttons and, after them, the declared payment actions with their full parameter schema (`invokeVia: "neo_action"`). `neo_discover` also names them under the invoice header entity (`actions[]`). Use `spec: "purchase-invoice"` for supplier invoices — the action names and parameters are identical.
+The answer lists the invoice's AD buttons and, after them, the declared payment actions with their full parameter schema (`invokeVia: "etendo_action"`). `etendo_discover` also names them under the invoice header entity (`actions[]`). Use `spec: "purchase-invoice"` for supplier invoices — the action names and parameters are identical.
 
 ## Available capabilities
 
 ### Invoice payment actions
 
-Call each with `neo_action(spec: "sales-invoice" | "purchase-invoice", entity: "header", id: <invoiceId>, action: <name>, parameters: {...})`. In every action, `id` is the **invoice** id.
+Call each with `etendo_action(spec: "sales-invoice" | "purchase-invoice", entity: "header", id: <invoiceId>, action: <name>, parameters: {...})`. In every action, `id` is the **invoice** id.
 
 | Action | Kind | Parameters (required in **bold**) | Returns |
 |--------|------|-----------------------------------|---------|
@@ -73,7 +73,7 @@ Any key not listed here is refused (`unknownParameters`).
 
 ### Payment records
 
-Collections (`payment-in/finPayment`) and payments (`payment-out/header`) cannot be created or edited through MCP: use `neo_list` / `neo_get` to read them. Three buttons are available on them, the same the payment window offers, through `neo_action(spec: "payment-in" | "payment-out", entity: "finPayment" | "header", id: <paymentId>, action: <name>, parameters: {})`:
+Collections (`payment-in/finPayment`) and payments (`payment-out/header`) cannot be created or edited through MCP: use `etendo_list` / `etendo_get` to read them. Three buttons are available on them, the same the payment window offers, through `etendo_action(spec: "payment-in" | "payment-out", entity: "finPayment" | "header", id: <paymentId>, action: <name>, parameters: {})`:
 
 | Action | UI label | Effect |
 |--------|----------|--------|
@@ -85,13 +85,13 @@ To delete a **draft** and give back the credit it consumed, use the invoice's `d
 
 ### Financial accounts
 
-Spec `financial-account`, entity `account` (`FIN_Financial_Account`): `neo_list`, `neo_get`, `neo_create`, `neo_update`, `neo_delete`. Read the writable fields with `neo_schema(spec: "financial-account", entity: "account", view: "create")` before writing. `name`, `currency`, `type` (Bank `B`, Cash `C`, Card `CA`) and `country` are required; `country` is never derived from the IBAN. None of the account's Core buttons is invokable (see [Not available to agents](#not-available-to-agents)).
+Spec `financial-account`, entity `account` (`FIN_Financial_Account`): `etendo_list`, `etendo_get`, `etendo_create`, `etendo_update`, `etendo_delete`. Read the writable fields with `etendo_schema(spec: "financial-account", entity: "account", view: "create")` before writing. `name`, `currency`, `type` (Bank `B`, Cash `C`, Card `CA`) and `country` are required; `country` is never derived from the IBAN. None of the account's Core buttons is invokable (see [Not available to agents](#not-available-to-agents)).
 
 ### Account movements
 
 A **movement** is the account's own record of money in (deposit) or out (withdrawal), booked against a G/L item (concept). It is what the account's Movements tab records with *New movement*, and once processed it changes the account balance. It is **not a bank-statement line**: a statement line is what the bank reports, imported or entered by hand and then matched to movements in a reconciliation ([Bank reconciliation](./bank-reconciliation.md)). When the user asks to "record a deposit", record a movement.
 
-Movements of invoices are created by their payments (`registerPayment`); the actions below are for the movements a person records by hand. Call each with `neo_action(spec: "financial-account", entity: "account", id: <financialAccountId>, action: <name>, parameters: {...})`. In every action, `id` is the **financial account** id.
+Movements of invoices are created by their payments (`registerPayment`); the actions below are for the movements a person records by hand. Call each with `etendo_action(spec: "financial-account", entity: "account", id: <financialAccountId>, action: <name>, parameters: {...})`. In every action, `id` is the **financial account** id.
 
 | Action | Kind | Parameters (required in **bold**) | Returns |
 |--------|------|-----------------------------------|---------|
@@ -112,7 +112,7 @@ Movements of invoices are created by their payments (`registerPayment`); the act
 
 ### Funds transfers
 
-A transfer moves money between two of the company's accounts, as the Movements tab's *Transfer* form does: it books a processed withdrawal in the source and a processed deposit in the destination, plus optional bank fees. Call `neo_action(spec: "financial-account", entity: "account", id: <sourceAccountId>, action: <name>, parameters: {...})` — here `id` is the account the money **leaves**.
+A transfer moves money between two of the company's accounts, as the Movements tab's *Transfer* form does: it books a processed withdrawal in the source and a processed deposit in the destination, plus optional bank fees. Call `etendo_action(spec: "financial-account", entity: "account", id: <sourceAccountId>, action: <name>, parameters: {...})` — here `id` is the account the money **leaves**.
 
 | Action | Kind | Parameters (required in **bold**) | Returns |
 |--------|------|-----------------------------------|---------|
@@ -131,7 +131,7 @@ Adding a payment or a collection from the account (without an invoice) is not of
 
 | Spec / entity | What it is |
 |---------------|------------|
-| `financial-account/transaction` | Movements of an account (`FIN_Finacc_Transaction`). Write them with the [account movement actions](#account-movements). Posting is the one action available here: `neo_action(spec: "financial-account", entity: "transaction", id: <transactionId>, action: "post" \| "unpost", parameters: {})` — not listed by `view: "actions"` |
+| `financial-account/transaction` | Movements of an account (`FIN_Finacc_Transaction`). Write them with the [account movement actions](#account-movements). Posting is the one action available here: `etendo_action(spec: "financial-account", entity: "transaction", id: <transactionId>, action: "post" \| "unpost", parameters: {})` — not listed by `view: "actions"` |
 | `financial-account/reconciliations`, `financial-account/clearedItems` | Reconciliations and their matched items |
 | `financial-account/importedBankStatements`, `financial-account/bankStatementLines` | Bank statements (write them through the `bank-statements` actions — see [Bank reconciliation](./bank-reconciliation.md)) |
 | `sales-invoice/paymentPlan`, `purchase-invoice/paymentPlan` | The invoice's installments; an id here is a valid `scheduleId` |
@@ -139,7 +139,7 @@ Adding a payment or a collection from the account (without an invoice) is not of
 | `payment-in/*`, `payment-out/*` | Payment headers, allocation lines, credit used, execution history |
 | `conversion-rates/conversionRate` | Currency conversion rates |
 
-`payment-term/header` (payment terms) is writable: read its fields with `neo_schema(spec: "payment-term", entity: "header", view: "create")`.
+`payment-term/header` (payment terms) is writable: read its fields with `etendo_schema(spec: "payment-term", entity: "header", view: "create")`.
 
 ## End-to-end usage example
 
@@ -149,7 +149,7 @@ Adding a payment or a collection from the account (without an invoice) is not of
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "sales-invoice", "entity": "header", "id": "<invoiceId>",
        "action": "invoiceAccounts", "parameters": {}
@@ -163,7 +163,7 @@ Adding a payment or a collection from the account (without an invoice) is not of
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "sales-invoice", "entity": "header", "id": "<invoiceId>",
        "action": "registerPayment",
@@ -185,7 +185,7 @@ Adding a payment or a collection from the account (without an invoice) is not of
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "purchase-invoice", "entity": "header", "id": "<invoiceId>",
        "action": "registerPayment",
@@ -207,7 +207,7 @@ Adding a payment or a collection from the account (without an invoice) is not of
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "purchase-invoice", "entity": "header", "id": "<invoiceId>",
        "action": "confirmPayment",
@@ -226,7 +226,7 @@ Adding a payment or a collection from the account (without an invoice) is not of
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "sales-invoice", "entity": "header", "id": "<invoiceId>",
        "action": "invoiceCreditSources", "parameters": {}
@@ -238,7 +238,7 @@ Adding a payment or a collection from the account (without an invoice) is not of
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "sales-invoice", "entity": "header", "id": "<invoiceId>",
        "action": "registerPayment",
@@ -271,12 +271,12 @@ Send `"writeoffDifference": true` with an `actual_payment` below the outstanding
 1. Find the account and a G/L item:
 
    ```json
-   { "tool": "neo_list", "arguments": { "spec": "financial-account", "entity": "account", "filters": { "name": "Banco Paridad" } } }
+   { "tool": "etendo_list", "arguments": { "spec": "financial-account", "entity": "account", "filters": { "name": "Banco Paridad" } } }
    ```
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "financial-account", "entity": "account", "id": "<accountId>",
        "action": "movementGlItems", "parameters": { "search": "ingreso" }
@@ -288,7 +288,7 @@ Send `"writeoffDifference": true` with an `actual_payment` below the outstanding
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "financial-account", "entity": "account", "id": "<accountId>",
        "action": "createMovement",
@@ -312,7 +312,7 @@ Send `"writeoffDifference": true` with an `actual_payment` below the outstanding
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "financial-account", "entity": "account", "id": "<sourceAccountId>",
        "action": "transferDestinations", "parameters": {}
@@ -324,7 +324,7 @@ Send `"writeoffDifference": true` with an `actual_payment` below the outstanding
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "financial-account", "entity": "account", "id": "<sourceAccountId>",
        "action": "transferFunds",
@@ -382,9 +382,9 @@ These routes are refused through MCP because the UI does not offer them, or — 
 
 | Route | Answer | Use instead |
 |-------|--------|-------------|
-| `neo_create` / `neo_update` / `neo_delete` / `neo_batch` on `payment-in/finPayment`, `payment-out/header` | 405 `method_not_allowed` | `registerPayment` (with `paymentId` to edit a draft), `deletePayment` for a draft, `eTPRRemovePayment` on the payment |
+| `etendo_create` / `etendo_update` / `etendo_delete` / `etendo_batch` on `payment-in/finPayment`, `payment-out/header` | 405 `method_not_allowed` | `registerPayment` (with `paymentId` to edit a draft), `deletePayment` for a draft, `eTPRRemovePayment` on the payment |
 | Any write on `payment-in/finPaymentScheduleDetail`, `payment-out/lines`, `sales-invoice/paymentDetails`, `purchase-invoice/paymentDetails`, `sales-invoice/paymentPlan`, `purchase-invoice/paymentPlan` | 405 | `registerPayment` |
-| `neo_defaults` on the payment headers | 405 | `invoiceAccounts`, `invoicePaymentMethods` |
+| `etendo_defaults` on the payment headers | 405 | `invoiceAccounts`, `invoicePaymentMethods` |
 | An advance payment or collection without an invoice | not offered | — (the UI does not offer it) |
 | One payment applied to several invoices | not offered | one `registerPayment` per invoice |
 | Bank-initiated payments (PIS / PSD2): `pisSupplierAccounts`, `pisTemplates`, `pisPaymentStatus`, `cancelPisPayment`, `retryPisPayment`, the `psd2GenerateBankPayment` button, writes on `payment-out/bankPayments`, the `pis` key of `registerPayment` | 405 (422 for `pis`) | a manual transfer with `registerPayment`. A bank-initiated payment needs a person to authorize it at the bank (SCA) |
@@ -401,7 +401,7 @@ These routes are refused through MCP because the UI does not offer them, or — 
 
 ## Error handling
 
-`neo_action` errors arrive as `{status, error, detail, ...}`, where `error` is `validation_error` (4xx), `not_found` (404), `method_not_allowed` (405) or `server_error` (5xx), and `detail` is the message. Extra keys carry what you need to retry.
+`etendo_action` errors arrive as `{status, error, detail, ...}`, where `error` is `validation_error` (4xx), `not_found` (404), `method_not_allowed` (405) or `server_error` (5xx), and `detail` is the message. Extra keys carry what you need to retry.
 
 | Status | Detail / extra keys | Cause | Resolution |
 |--------|---------------------|-------|------------|

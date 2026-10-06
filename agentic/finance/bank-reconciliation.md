@@ -9,17 +9,17 @@ This guide walks an MCP-only agent through the bank-reconciliation flow of one f
 3. **Reconcile** each line against existing movements or unpaid invoices — one by one, or by confirming the automatch proposal — with the `bank-reconciliation` actions.
 4. **Undo** a reconciliation when it was wrong.
 
-Everything runs through `neo_action` on two specs that serve named actions (`neo_discover` reports them with `status: "actions_only"`): `bank-statements` (entity `bank-statements`) and `bank-reconciliation` (entity `bank-reconciliation`). They re-enter the same backend code as the UI, with the same validations.
+Everything runs through `etendo_action` on two specs that serve named actions (`etendo_discover` reports them with `status: "actions_only"`): `bank-statements` (entity `bank-statements`) and `bank-reconciliation` (entity `bank-reconciliation`). They re-enter the same backend code as the UI, with the same validations.
 
-Do **not** use the financial account's Core buttons (*Import Statement*, *Match Statement*, *Reconcile*, *Add Multiple Payments*, *Funds Transfer*, the PSD2 buttons): they are refused for agents (a transfer between accounts is `transferFunds`, see [Treasury → Funds transfers](./treasury.md#funds-transfers)). Do not write `importedBankStatements`, `bankStatementLines`, `reconciliations` or `transaction` through `neo_create` / `neo_update` / `neo_delete`: those entities are read-only through MCP.
+Do **not** use the financial account's Core buttons (*Import Statement*, *Match Statement*, *Reconcile*, *Add Multiple Payments*, *Funds Transfer*, the PSD2 buttons): they are refused for agents (a transfer between accounts is `transferFunds`, see [Treasury → Funds transfers](./treasury.md#funds-transfers)). Do not write `importedBankStatements`, `bankStatementLines`, `reconciliations` or `transaction` through `etendo_create` / `etendo_update` / `etendo_delete`: those entities are read-only through MCP.
 
-**A statement line is not a movement.** A bank-statement line is what the bank *reports*: it changes nothing in the account until it is reconciled against a movement or an invoice. A **movement** is the account's own record of money in or out, booked against a G/L item, and it changes the balance once processed. To record a deposit or a withdrawal the user made — "record a 100 € deposit in the bank account" — create a movement with the financial account's movement actions (`neo_action(spec: "financial-account", entity: "account", id: <accountId>, action: "createMovement", ...)`, see [Treasury → Account movements](./treasury.md#account-movements)), not a statement. A movement recorded that way is one of the "existing movements" a statement line can later be reconciled against (`candidates` with `kind: "transactions"`).
+**A statement line is not a movement.** A bank-statement line is what the bank *reports*: it changes nothing in the account until it is reconciled against a movement or an invoice. A **movement** is the account's own record of money in or out, booked against a G/L item, and it changes the balance once processed. To record a deposit or a withdrawal the user made — "record a 100 € deposit in the bank account" — create a movement with the financial account's movement actions (`etendo_action(spec: "financial-account", entity: "account", id: <accountId>, action: "createMovement", ...)`, see [Treasury → Account movements](./treasury.md#account-movements)), not a statement. A movement recorded that way is one of the "existing movements" a statement line can later be reconciled against (`candidates` with `kind: "transactions"`).
 
 ## Prerequisites
 
 - The Etendo MCP server is reachable and authenticated (see [MCP setup](../mcp/index.md)).
-- The token has write scope (`neo:write` or `neo:*`): `neo_action` — including the read actions below — is only published to write-capable tokens.
-- The current role can access the financial account window and its statements and reconciliation (verify with `neo_discover`: `bank-statements` and `bank-reconciliation` are listed).
+- The token has write scope (`etendo:write` or `etendo:*`): `etendo_action` — including the read actions below — is only published to write-capable tokens.
+- The current role can access the financial account window and its statements and reconciliation (verify with `etendo_discover`: `bank-statements` and `bank-reconciliation` are listed).
 - The financial account exists. Its id is the `id` of every account-level action.
 - For `reconcileDifference` and within-tolerance differences: the account has a difference G/L item configured, or you pass `glItemId`.
 
@@ -29,14 +29,14 @@ No configuration beyond the base MCP server. Read both action catalogues once pe
 
 ```json
 {
-  "tool": "neo_schema",
+  "tool": "etendo_schema",
   "arguments": { "spec": "bank-statements", "entity": "bank-statements", "view": "actions" }
 }
 ```
 
 ```json
 {
-  "tool": "neo_schema",
+  "tool": "etendo_schema",
   "arguments": { "spec": "bank-reconciliation", "entity": "bank-reconciliation", "view": "actions" }
 }
 ```
@@ -45,7 +45,7 @@ No configuration beyond the base MCP server. Read both action catalogues once pe
 
 ### `bank-statements` actions
 
-`neo_action(spec: "bank-statements", entity: "bank-statements", id: <see column>, action: <name>, parameters: {...})`
+`etendo_action(spec: "bank-statements", entity: "bank-statements", id: <see column>, action: <name>, parameters: {...})`
 
 | Action | Kind | `id` | Parameters (required in **bold**) |
 |--------|------|------|-----------------------------------|
@@ -65,7 +65,7 @@ Upload formats: Cuaderno 43, or CSV with the header `Transaction Date, Reference
 
 ### `bank-reconciliation` actions
 
-`neo_action(spec: "bank-reconciliation", entity: "bank-reconciliation", id: <financialAccountId>, action: <name>, parameters: {...})` — `id` is always the **financial account**.
+`etendo_action(spec: "bank-reconciliation", entity: "bank-reconciliation", id: <financialAccountId>, action: <name>, parameters: {...})` — `id` is always the **financial account**.
 
 | Action | Kind | Parameters (required in **bold**) | What it does |
 |--------|------|-----------------------------------|--------------|
@@ -81,7 +81,7 @@ Upload formats: Cuaderno 43, or CSV with the header `Transaction Date, Reference
 
 ### Read-only entities
 
-To read what the actions produced, `neo_list` / `neo_get` on the `financial-account` spec: `importedBankStatements`, `bankStatementLines`, `transaction`, `reconciliations`, `clearedItems`.
+To read what the actions produced, `etendo_list` / `etendo_get` on the `financial-account` spec: `importedBankStatements`, `bankStatementLines`, `transaction`, `reconciliations`, `clearedItems`.
 
 ## End-to-end usage example
 
@@ -89,7 +89,7 @@ To read what the actions produced, `neo_list` / `neo_get` on the `financial-acco
 
 ```json
 {
-  "tool": "neo_list",
+  "tool": "etendo_list",
   "arguments": { "spec": "financial-account", "entity": "account", "filters": { "name": "Main EUR Bank" }, "limit": 5 }
 }
 ```
@@ -102,7 +102,7 @@ From a file (optionally run `previewStatement` with the same parameters first to
 
 ```json
 {
-  "tool": "neo_action",
+  "tool": "etendo_action",
   "arguments": {
     "spec": "bank-statements", "entity": "bank-statements", "id": "<accountId>",
     "action": "importStatement",
@@ -115,7 +115,7 @@ Or by hand:
 
 ```json
 {
-  "tool": "neo_action",
+  "tool": "etendo_action",
   "arguments": {
     "spec": "bank-statements", "entity": "bank-statements", "id": "<accountId>",
     "action": "createStatement",
@@ -137,7 +137,7 @@ An imported statement and a statement created with the default `process: true` a
 
 ```json
 {
-  "tool": "neo_action",
+  "tool": "etendo_action",
   "arguments": {
     "spec": "bank-reconciliation", "entity": "bank-reconciliation", "id": "<accountId>",
     "action": "pendingLines", "parameters": { "dateFrom": "2026-06-01", "dateTo": "2026-06-30" }
@@ -152,7 +152,7 @@ An imported statement and a statement created with the default `process: true` a
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "bank-reconciliation", "entity": "bank-reconciliation", "id": "<accountId>",
        "action": "applySuggestions",
@@ -169,7 +169,7 @@ An imported statement and a statement created with the default `process: true` a
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "bank-reconciliation", "entity": "bank-reconciliation", "id": "<accountId>",
        "action": "candidates", "parameters": { "statementLineId": "<lineId>", "kind": "invoices" }
@@ -181,7 +181,7 @@ An imported statement and a statement created with the default `process: true` a
 
    ```json
    {
-     "tool": "neo_action",
+     "tool": "etendo_action",
      "arguments": {
        "spec": "bank-reconciliation", "entity": "bank-reconciliation", "id": "<accountId>",
        "action": "reconcileGroup",
@@ -203,7 +203,7 @@ Call `undoReconciliation` with the line's `statementLineId`, or `reactivateSelec
 
 ### Step 6 — Check the result
 
-`neo_list(spec: "financial-account", entity: "reconciliations", filters: {"account": "<accountId>"})` and `neo_list(spec: "financial-account", entity: "clearedItems", filters: {"reconciliation": "<reconciliationId>"})`.
+`etendo_list(spec: "financial-account", entity: "reconciliations", filters: {"account": "<accountId>"})` and `etendo_list(spec: "financial-account", entity: "clearedItems", filters: {"reconciliation": "<reconciliationId>"})`.
 
 ## Error handling
 

@@ -9,14 +9,14 @@ This topic covers the Etendo GO finance domain as exposed through the MCP server
 
 The MCP surface equals the Etendo GO UI surface, both ways: what the UI offers, an agent can do; what it does not offer is hidden and refused (`405 method_not_allowed` with a hint naming the route to use). The one deliberate exception is bank and fiscal integrations (PIS / PSD2, SII, TicketBAI, Verifactu, AFIP, Hacienda), which stay limited for agents even where the UI offers them. Payments are never created by hand: they are registered from the invoice.
 
-The set of specs and entities the **current user** can see is role-dependent — always run `neo_discover` in your own environment before hard-coding anything.
+The set of specs and entities the **current user** can see is role-dependent — always run `etendo_discover` in your own environment before hard-coding anything.
 
 ## Prerequisites
 
 - The Etendo MCP server is configured in your client. See [MCP setup](../mcp/index.md).
 - The API user has a role that grants access to the finance windows (Sales / Purchase Invoice, Financial Account, Payment In, Payment Out, Payment Term, Conversion Rates).
-- The token has write scope (`neo:write` or `neo:*`) for anything that uses `neo_action`.
-- `etendo://status` is readable and `neo_discover` returns a non-empty `specs` array.
+- The token has write scope (`etendo:write` or `etendo:*`) for anything that uses `etendo_action`.
+- `etendo://status` is readable and `etendo_discover` returns a non-empty `specs` array.
 
 ## Configuration
 
@@ -35,9 +35,9 @@ No additional configuration is needed beyond the base MCP server. The finance sp
 | `payment-term` | `header` | Writable | [Treasury](./treasury.md) |
 | `conversion-rates` | `conversionRate` | Read-only | [Treasury](./treasury.md) |
 
-### Action specs (`neo_action` only)
+### Action specs (`etendo_action` only)
 
-`neo_discover` reports these with `isReport: true`, `callable: false` and `status: "actions_only"`: they are not report generators. Read their catalogue with `neo_schema(spec, entity, view: "actions")`.
+`etendo_discover` reports these with `isReport: true`, `callable: false` and `status: "actions_only"`: they are not report generators. Read their catalogue with `etendo_schema(spec, entity, view: "actions")`.
 
 | Spec | Entity | Actions | Sub-guide |
 |------|--------|---------|-----------|
@@ -52,7 +52,7 @@ No additional configuration is needed beyond the base MCP server. The finance sp
 | `generate_aging_payable` | Aging of payables |
 | `generate_tax_report` | Tax report |
 
-Call a report tool with `parameters: {}` first to discover its required keys from the validation message. The other finance pages of the UI (`financial-accounts-page`, `financial-account-transactions`, `financial-account-bank-connection`) are listed by `neo_discover` as `not_configured_for_report_generation`: they cannot be generated through MCP.
+Call a report tool with `parameters: {}` first to discover its required keys from the validation message. The other finance pages of the UI (`financial-accounts-page`, `financial-account-transactions`, `financial-account-bank-connection`) are listed by `etendo_discover` as `not_configured_for_report_generation`: they cannot be generated through MCP.
 
 ## End-to-end usage example
 
@@ -62,7 +62,7 @@ This walkthrough collects a sales invoice in full. The full recipe, with partial
 
 ```json
 {
-  "tool": "neo_list",
+  "tool": "etendo_list",
   "arguments": {
     "spec": "sales-invoice",
     "entity": "header",
@@ -76,7 +76,7 @@ This walkthrough collects a sales invoice in full. The full recipe, with partial
 
 ```json
 {
-  "tool": "neo_action",
+  "tool": "etendo_action",
   "arguments": { "spec": "sales-invoice", "entity": "header", "id": "<invoiceId>", "action": "invoiceAccounts", "parameters": {} }
 }
 ```
@@ -87,7 +87,7 @@ Take an account `id` from `items[]`; its `defaultMethodId` is the method used wh
 
 ```json
 {
-  "tool": "neo_action",
+  "tool": "etendo_action",
   "arguments": {
     "spec": "sales-invoice", "entity": "header", "id": "<invoiceId>",
     "action": "registerPayment",
@@ -109,10 +109,10 @@ Errors from the finance specs follow the generic MCP error model described in [M
 
 | Symptom | Likely cause | Resolution |
 |---------|--------------|------------|
-| `neo_discover` returns no finance specs | The role lacks access to the finance windows | Assign the relevant finance role; re-run `neo_discover` |
+| `etendo_discover` returns no finance specs | The role lacks access to the finance windows | Assign the relevant finance role; re-run `etendo_discover` |
 | `405 method_not_allowed` on a payment, payment line, movement or reconciliation write, or on a financial-account button | The UI does not offer that route | Follow the `hint`; see [Treasury — Not available to agents](./treasury.md#not-available-to-agents) |
 | `422` from `registerPayment` with `installments`, `validMethods` or `allowedValues` | The call needs a decision the UI would have asked for (which installment, which method, what to do with an overpayment) | Re-send with one of the listed values; see [Treasury — Error handling](./treasury.md#error-handling) |
-| `422` from a `bank-statements` / `bank-reconciliation` action | Parameters do not match the action's contract | Read `neo_schema(spec, entity, view: "actions")` and fix the parameters |
+| `422` from a `bank-statements` / `bank-reconciliation` action | Parameters do not match the action's contract | Read `etendo_schema(spec, entity, view: "actions")` and fix the parameters |
 | `generate_*` returns a validation error on the first call with empty `parameters` | Expected — the message lists the required keys | Fill the keys and retry |
 
-Enum codes for `list`-typed fields (for example `type` on a financial account or `status` on a payment) are not enumerated here. Read them from `neo_schema(spec, entity, view: "full")` or sample existing records with `neo_list`.
+Enum codes for `list`-typed fields (for example `type` on a financial account or `status` on a payment) are not enumerated here. Read them from `etendo_schema(spec, entity, view: "full")` or sample existing records with `etendo_list`.
