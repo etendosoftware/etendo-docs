@@ -7,23 +7,23 @@ This topic covers the Etendo finance domain as exposed through the MCP server. I
 - **[Treasury](./treasury.md)** — financial accounts, payments in / payments out, manual transactions, payment terms and currency conversion rates.
 - **[Bank reconciliation](./bank-reconciliation.md)** — import bank statements, process them, match transactions and reconcile a financial account.
 
-All tool, spec, entity and column names below were verified at the time of writing through `neo_discover` and `neo_schema`. The set of specs the **current user** can see is role-dependent — always re-run `neo_discover` in your own environment before hard-coding anything.
+All tool, spec, entity and column names below were verified at the time of writing through `etendo_discover` and `etendo_schema`. The set of specs the **current user** can see is role-dependent — always re-run `etendo_discover` in your own environment before hard-coding anything.
 
 ## Prerequisites
 
 - The Etendo MCP server is configured in your client. See [MCP setup](../mcp/index.md).
 - The API user has a role that grants access to the finance windows (Financial Account, Payment In, Payment Out, Payment Term, Conversion Rates, Reconciliations).
-- `etendo://status` is readable and `neo_discover` returns a non-empty `specs` array.
+- `etendo://status` is readable and `etendo_discover` returns a non-empty `specs` array.
 
 ## Configuration
 
-No additional configuration is needed beyond the base MCP server. The finance specs are exposed through the same generic `neo_*` tools and the same `generate_*` report tools described in the [MCP guide](../mcp/index.md).
+No additional configuration is needed beyond the base MCP server. The finance specs are exposed through the same generic `etendo_*` tools and the same `generate_*` report tools described in the [MCP guide](../mcp/index.md).
 
 ## Available capabilities
 
 ### Write specs (CRUD windows)
 
-Specs of type `W` expose one or more entities through the generic CRUD and metadata tools (`neo_list`, `neo_get`, `neo_create`, `neo_update`, `neo_delete`, `neo_schema`, `neo_defaults`, `neo_selectors`, `neo_action`, `neo_batch`).
+Specs of type `W` expose one or more entities through the generic CRUD and metadata tools (`etendo_list`, `etendo_get`, `etendo_create`, `etendo_update`, `etendo_delete`, `etendo_schema`, `etendo_defaults`, `etendo_selectors`, `etendo_action`, `etendo_batch`).
 
 | Spec | Main entities | Purpose | Sub-guide |
 |------|---------------|---------|-----------|
@@ -49,7 +49,7 @@ All report tools accept an optional `format` argument (`pdf`, `xlsx`, `csv`; def
 
 ### Process buttons on finance entities
 
-The finance entities expose Etendo process buttons that are fired through `neo_action`. The full list per entity is in the entity schema (`neo_schema(spec, entity)`); the buttons most relevant to finance workflows are:
+The finance entities expose Etendo process buttons that are fired through `etendo_action`. The full list per entity is in the entity schema (`etendo_schema(spec, entity, view: "actions")`); the buttons most relevant to finance workflows are:
 
 | Entity | Button column | Process name | Used in |
 |--------|---------------|--------------|---------|
@@ -68,7 +68,7 @@ The finance entities expose Etendo process buttons that are fired through `neo_a
 | `payment-out/header` | `EM_APRM_Process_Payment` | Payment Process | [Treasury](./treasury.md) |
 | `payment-out/header` | `EM_Aprm_Executepayment` | Execute Payment | [Treasury](./treasury.md) |
 
-The exact set of buttons on each entity (including their input parameters) is authoritative only in the live schema — call `neo_schema(spec, entity)` and inspect every field with `type: "button"` and `invokeVia: "neo_action"` before firing.
+The exact set of buttons on each entity (including their input parameters) is authoritative only in the live schema — call `etendo_schema(spec, entity, view: "actions")` and inspect every entry with `type: "button"` and `invokeVia: "etendo_action"` before firing.
 
 ## End-to-end usage example
 
@@ -78,7 +78,7 @@ This minimal walkthrough lists active financial accounts and renders the Financi
 
 ```json
 {
-  "tool": "neo_list",
+  "tool": "etendo_list",
   "arguments": {
     "spec": "financial-account",
     "entity": "account",
@@ -94,12 +94,12 @@ The response is a paginated list of `FIN_Financial_Account` records with their `
 
 ```json
 {
-  "tool": "neo_schema",
-  "arguments": { "spec": "financial-account", "entity": "account" }
+  "tool": "etendo_schema",
+  "arguments": { "spec": "financial-account", "entity": "account", "view": "create" }
 }
 ```
 
-The schema response is the only authoritative source of field names, required flags, default expressions and the list of buttons available for `neo_action`.
+`view` is required: `"create"` returns the fields you may send to a write, split into `required` / `optional`; call it again with `view: "actions"` for the list of buttons available for `etendo_action`. The schema response is the only authoritative source of field names, required flags and default expressions.
 
 ### Step 3 — Render the Financial Accounts page
 
@@ -118,9 +118,9 @@ Errors from the finance specs follow the generic MCP error model described in [M
 
 | Symptom | Likely cause | Resolution |
 |---------|--------------|------------|
-| `neo_discover` returns no finance specs | API user role lacks access to the Financial Account, Payment, Payment Term or Conversion Rate windows | Assign the relevant finance role; re-run `neo_discover` |
-| `neo_action` on a button returns `processResult: "error"` | The underlying Etendo process raised a validation, state-machine or business-rule error | Read `processMessage` verbatim; consult the corresponding sub-guide for the prerequisites the process expects |
+| `etendo_discover` returns no finance specs | API user role lacks access to the Financial Account, Payment, Payment Term or Conversion Rate windows | Assign the relevant finance role; re-run `etendo_discover` |
+| `etendo_action` on a button returns `processResult: "error"` | The underlying Etendo process raised a validation, state-machine or business-rule error | Read `processMessage` verbatim; consult the corresponding sub-guide for the prerequisites the process expects |
 | Selector for `paymentMethod`, `account`, `documentType` returns no rows | The current account / business partner / organisation does not have that FK configured | Open the parent window in the Etendo UI to verify the FK is set up before retrying |
 | `generate_*` returns a validation error on the first call with empty `parameters` | Expected — use the message to discover the required keys | Fill the keys reported by the server and retry |
 
-Enum codes for `list`-typed fields (for example `type` on a financial account, `status` on a payment, `documentStatus` on a reconciliation) are not enumerated in this guide. Resolve them at runtime by reading the field's value list from `neo_schema` (the field metadata includes the allowed values when the underlying reference is a list reference) or by inspecting existing records via `neo_list`.
+Enum codes for `list`-typed fields (for example `type` on a financial account, `status` on a payment, `documentStatus` on a reconciliation) are not enumerated in this guide. Resolve them at runtime by reading the field's value list from `etendo_schema` (the field metadata includes the allowed values when the underlying reference is a list reference) or by inspecting existing records via `etendo_list`.

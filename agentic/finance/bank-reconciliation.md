@@ -9,7 +9,7 @@ This guide walks an MCP-only agent through the full bank-reconciliation flow on 
 3. **Match** statement lines against existing payments / transactions.
 4. **Reconcile** the financial account — creates a `reconciliations` record and links the matched items as `clearedItems`.
 
-All spec, entity, column and action names below were verified through `neo_schema`. Process-specific input parameters (file contents, statement file format, force flags) are **to-be-discovered at runtime**: call `neo_action` with `parameters: {}` first and use the server's validation message to learn the required keys.
+All spec, entity, column and action names below were verified through `etendo_schema`. Process-specific input parameters (file contents, statement file format, force flags) are **to-be-discovered at runtime**: call `etendo_action` with `parameters: {}` first and use the server's validation message to learn the required keys.
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ Every step below is anchored to one of these entities.
 
 ```json
 {
-  "tool": "neo_list",
+  "tool": "etendo_list",
   "arguments": {
     "spec": "financial-account",
     "entity": "account",
@@ -55,8 +55,8 @@ The `financial-account/account` entity exposes the import / match / reconcile bu
 
 ```json
 {
-  "tool": "neo_schema",
-  "arguments": { "spec": "financial-account", "entity": "account" }
+  "tool": "etendo_schema",
+  "arguments": { "spec": "financial-account", "entity": "account", "view": "actions" }
 }
 ```
 
@@ -75,7 +75,7 @@ Fire `EM_APRM_ImportBankFile` on the account. The input parameters of this Class
 
 ```json
 {
-  "tool": "neo_action",
+  "tool": "etendo_action",
   "arguments": {
     "spec": "financial-account",
     "entity": "account",
@@ -92,7 +92,7 @@ Verify the import:
 
 ```json
 {
-  "tool": "neo_list",
+  "tool": "etendo_list",
   "arguments": {
     "spec": "financial-account",
     "entity": "importedBankStatements",
@@ -107,7 +107,7 @@ Inspect the produced lines:
 
 ```json
 {
-  "tool": "neo_list",
+  "tool": "etendo_list",
   "arguments": {
     "spec": "financial-account",
     "entity": "bankStatementLines",
@@ -125,7 +125,7 @@ Fire the `EM_APRM_Process_BS` button on the statement to turn the lines into fin
 
 ```json
 {
-  "tool": "neo_action",
+  "tool": "etendo_action",
   "arguments": {
     "spec": "financial-account",
     "entity": "importedBankStatements",
@@ -144,7 +144,7 @@ Fire `EM_APRM_MatchTransactions` on the financial account. The process is driven
 
 ```json
 {
-  "tool": "neo_action",
+  "tool": "etendo_action",
   "arguments": {
     "spec": "financial-account",
     "entity": "account",
@@ -161,7 +161,7 @@ Re-list `bankStatementLines` after the call to see which lines were matched:
 
 ```json
 {
-  "tool": "neo_list",
+  "tool": "etendo_list",
   "arguments": {
     "spec": "financial-account",
     "entity": "bankStatementLines",
@@ -173,7 +173,7 @@ Re-list `bankStatementLines` after the call to see which lines were matched:
 }
 ```
 
-Resolve `matchingtype` values from the field's list reference (`neo_schema("financial-account", "bankStatementLines")`) before filtering.
+Resolve `matchingtype` values from the field's list reference (`etendo_schema("financial-account", "bankStatementLines", view: "full")`) before filtering.
 
 ### Step 6 — Find / add missing matches manually (optional)
 
@@ -192,7 +192,7 @@ Fire `EM_APRM_Reconcile` on the financial account. Etendo creates a `FIN_Reconci
 
 ```json
 {
-  "tool": "neo_action",
+  "tool": "etendo_action",
   "arguments": {
     "spec": "financial-account",
     "entity": "account",
@@ -207,7 +207,7 @@ Locate the resulting reconciliation:
 
 ```json
 {
-  "tool": "neo_list",
+  "tool": "etendo_list",
   "arguments": {
     "spec": "financial-account",
     "entity": "reconciliations",
@@ -224,7 +224,7 @@ The reconciliation record carries `documentNo`, `Statementdate`, `Endingbalance`
 
 ```json
 {
-  "tool": "neo_list",
+  "tool": "etendo_list",
   "arguments": {
     "spec": "financial-account",
     "entity": "clearedItems",
@@ -238,7 +238,7 @@ Each row exposes the FKs needed to drill into the underlying record: `financialA
 
 ### Step 9 — Post and print
 
-`reconciliations` exposes three additional buttons. Use `neo_action` with `parameters: {}` first to discover their input keys.
+`reconciliations` exposes three additional buttons. Use `etendo_action` with `parameters: {}` first to discover their input keys.
 
 | Column | Process |
 |--------|---------|
@@ -252,7 +252,7 @@ Example — post the reconciliation:
 
 ```json
 {
-  "tool": "neo_action",
+  "tool": "etendo_action",
   "arguments": {
     "spec": "financial-account",
     "entity": "reconciliations",
@@ -267,14 +267,14 @@ Example — post the reconciliation:
 
 ```json
 [
-  { "tool": "neo_list",   "arguments": { "spec": "financial-account", "entity": "account", "filters": { "default": true }, "limit": 1 } },
-  { "tool": "neo_action", "arguments": { "spec": "financial-account", "entity": "account", "id": "<acc>", "action": "EM_APRM_ImportBankFile", "parameters": { "/* resolved from validation message */": "" } } },
-  { "tool": "neo_list",   "arguments": { "spec": "financial-account", "entity": "importedBankStatements", "filters": { "account": "<acc>" }, "orderBy": "-importdate", "limit": 1 } },
-  { "tool": "neo_action", "arguments": { "spec": "financial-account", "entity": "importedBankStatements", "id": "<bs>", "action": "EM_APRM_Process_BS", "parameters": {} } },
-  { "tool": "neo_action", "arguments": { "spec": "financial-account", "entity": "account", "id": "<acc>", "action": "EM_APRM_MatchTransactions", "parameters": {} } },
-  { "tool": "neo_action", "arguments": { "spec": "financial-account", "entity": "account", "id": "<acc>", "action": "EM_APRM_Reconcile", "parameters": {} } },
-  { "tool": "neo_list",   "arguments": { "spec": "financial-account", "entity": "reconciliations", "filters": { "account": "<acc>" }, "orderBy": "-transactionDate", "limit": 1 } },
-  { "tool": "neo_list",   "arguments": { "spec": "financial-account", "entity": "clearedItems", "filters": { "reconciliation": "<rec>" } } }
+  { "tool": "etendo_list",   "arguments": { "spec": "financial-account", "entity": "account", "filters": { "default": true }, "limit": 1 } },
+  { "tool": "etendo_action", "arguments": { "spec": "financial-account", "entity": "account", "id": "<acc>", "action": "EM_APRM_ImportBankFile", "parameters": { "/* resolved from validation message */": "" } } },
+  { "tool": "etendo_list",   "arguments": { "spec": "financial-account", "entity": "importedBankStatements", "filters": { "account": "<acc>" }, "orderBy": "-importdate", "limit": 1 } },
+  { "tool": "etendo_action", "arguments": { "spec": "financial-account", "entity": "importedBankStatements", "id": "<bs>", "action": "EM_APRM_Process_BS", "parameters": {} } },
+  { "tool": "etendo_action", "arguments": { "spec": "financial-account", "entity": "account", "id": "<acc>", "action": "EM_APRM_MatchTransactions", "parameters": {} } },
+  { "tool": "etendo_action", "arguments": { "spec": "financial-account", "entity": "account", "id": "<acc>", "action": "EM_APRM_Reconcile", "parameters": {} } },
+  { "tool": "etendo_list",   "arguments": { "spec": "financial-account", "entity": "reconciliations", "filters": { "account": "<acc>" }, "orderBy": "-transactionDate", "limit": 1 } },
+  { "tool": "etendo_list",   "arguments": { "spec": "financial-account", "entity": "clearedItems", "filters": { "reconciliation": "<rec>" } } }
 ]
 ```
 
@@ -300,5 +300,5 @@ Call each with `parameters: {}` first to discover the required keys via the vali
 
 Enum values for `matchingtype`, `Matched_Document` and `Docstatus`, plus the input parameter shape of every Classic process, are intentionally not enumerated in this guide. They are **to-be-resolved at runtime**:
 
-- For `list`-typed fields, read the value list from the response of `neo_schema` for the entity that owns the field, or sample existing records with `neo_list`.
-- For process input parameters, fire `neo_action` with `parameters: {}` and let the server's validation message report the required keys.
+- For `list`-typed fields, read the value list from the response of `etendo_schema` for the entity that owns the field, or sample existing records with `etendo_list`.
+- For process input parameters, fire `etendo_action` with `parameters: {}` and let the server's validation message report the required keys.
