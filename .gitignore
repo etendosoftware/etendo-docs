@@ -5,6 +5,6 @@ site/
 __pycache__/
 *.pyc
 .env
-.claude/
+claude/
 .cache/
-.fyso/team.json
+fyso/team.json

@@ -1,0 +1,11 @@
+{
+  "enabledMcpjsonServers": ["etendo-go-local"],
+  "permissions": {
+    "additionalDirectories": [
+      "/Users/isaiasbattaglia/Documents/Etendo/docs"
+    ],
+    "allow": [
+      "mcp__Claude_in_Chrome__navigate"
+    ]
+  }
+}

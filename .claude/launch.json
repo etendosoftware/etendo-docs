@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "etendo-go",
+      "runtimeExecutable": "venv/bin/mkdocs",
+      "runtimeArgs": ["serve", "--dev-addr", "127.0.0.1:8000"],
+      "port": 8000,
+      "url": "http://localhost:8000",
+      "autoPort": false
+    }
+  ]
+}
