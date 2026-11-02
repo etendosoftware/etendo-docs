@@ -18,6 +18,7 @@ These guides provide structured, unambiguous information about Etendo integratio
 | [Agent operating manual](./agent-manual.md) | Normative manual that teaches an MCP-only agent how to plan, discover specs, read schemas, resolve selectors, chain tool calls, and react to failures end-to-end |
 | [MCP](./mcp/index.md) | Configure and use the Etendo MCP server: prerequisites, the `spec + entity` model, the generic `neo_*` tools, the `generate_*` report tools, and the single `etendo://status` resource |
 | [Finance](./finance/index.md) | Finance domain mapped to MCP specs: collecting and paying invoices through the invoice payment actions, payments in / out, financial accounts, and the bank-statement and bank-reconciliation actions |
+| [Contacts](./contacts/index.md) | Customers and vendors: where each piece of data goes (the contact's own email is `etgoEmail`, not a `contact` row), adding a customer with its address, finding one by name or tax ID, updating it |
 
 ## How to read these guides
 

@@ -2,10 +2,11 @@
 
 ## Overview
 
-This topic covers the Etendo GO finance domain as exposed through the MCP server. It maps the finance specs, actions and report tools available to an MCP-only agent, and links to focused sub-guides for the two operational scenarios:
+This topic covers the Etendo GO finance domain as exposed through the MCP server. It maps the finance specs, actions and report tools available to an MCP-only agent, and links to focused sub-guides for the operational scenarios:
 
 - **[Treasury](./treasury.md)** — collect sales invoices and pay purchase invoices through the invoice payment actions (`registerPayment`, `confirmPayment`, `deletePayment` and their read helpers), manage the resulting payments, maintain financial accounts, and what is not available to agents.
 - **[Bank reconciliation](./bank-reconciliation.md)** — load, process and edit bank statements with the `bank-statements` actions, and reconcile their lines with the `bank-reconciliation` actions.
+- **[Void or correct an issued invoice](./invoices.md)** — an issued invoice is never voided, edited or deleted: issue a credit note (factura rectificativa) with the corrective document type and `importOriginInvoiceLines`. Reactivating (`RE`) does not void it.
 
 The MCP surface equals the Etendo GO UI surface, both ways: what the UI offers, an agent can do; what it does not offer is hidden and refused (`405 method_not_allowed` with a hint naming the route to use). The one deliberate exception is bank and fiscal integrations (PIS / PSD2, SII, TicketBAI, Verifactu, AFIP, Hacienda), which stay limited for agents even where the UI offers them. Payments are never created by hand: they are registered from the invoice.
 
