@@ -125,13 +125,13 @@ Ask for `view: "create"` on each entity you will write — it returns only the f
 { "tool": "etendo_schema", "arguments": { "spec": "sales-order", "entity": "lines", "view": "create" } }
 ```
 
-Then ask for `view: "actions"` on the header to get the buttons available for `etendo_action`:
+Then ask for `view: "actions"` with the action you will run, to get its values or parameters:
 
 ```json
-{ "tool": "etendo_schema", "arguments": { "spec": "sales-order", "entity": "header", "view": "actions" } }
+{ "tool": "etendo_schema", "arguments": { "spec": "sales-order", "entity": "header", "view": "actions", "action": "documentAction" } }
 ```
 
-Identify the required, writable fields and the buttons available for `etendo_action`. The `sales-order/header` actions view declares `documentAction` as a button with `action: "DocAction"` — the agent will use it in step 6.
+Without `action`, `view: "actions"` is an index: one line per action you can run (`action`, a one-line `summary`, and when it applies), plus `notOffered` for the ones you cannot, with the reason or what to use instead. `etendo_discover` already lists the action names, so you can usually ask for the one you need directly. The agent will use `documentAction` in step 6.
 
 ### Step 3 — Resolve header foreign keys
 

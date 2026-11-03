@@ -30,11 +30,11 @@ No configuration beyond the base MCP server. Discover the payment actions once p
 ```json
 {
   "tool": "etendo_schema",
-  "arguments": { "spec": "sales-invoice", "entity": "header", "view": "actions" }
+  "arguments": { "spec": "sales-invoice", "entity": "header", "view": "actions", "action": "registerPayment" }
 }
 ```
 
-The answer lists the invoice's AD buttons and, after them, the declared payment actions with their full parameter schema (`invokeVia: "etendo_action"`). `etendo_discover` also names them under the invoice header entity (`actions[]`). Use `spec: "purchase-invoice"` for supplier invoices — the action names and parameters are identical.
+The answer is that action in full: its parameters and what it returns. Without `action` you get the index of every invoice action, one line each, and ask again for the one you need. `etendo_discover` also names them under the invoice header entity (`actions[]`). Use `spec: "purchase-invoice"` for supplier invoices — the action names and parameters are identical.
 
 ## Available capabilities
 
