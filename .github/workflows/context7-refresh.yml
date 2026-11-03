@@ -4,6 +4,14 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+# The Context7 library keeps the repository's former name. Deriving it from
+# github.repository broke when the repository was renamed (etendo-go-docs ->
+# etendo-docs): every refresh answered library_not_found, curl -s hid it, and the
+# index stayed frozen at 2026-09-29 while the MCP `docs` tool kept serving it.
+env:
+  CONTEXT7_LIBRARY: /etendosoftware/etendo-go-docs
 
 jobs:
   refresh:
@@ -11,7 +19,7 @@ jobs:
     steps:
       - name: Trigger Context7 Refresh
         run: |
-          curl -s -X POST https://context7.com/api/v1/refresh \
+          curl -sS --fail-with-body -X POST https://context7.com/api/v1/refresh \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${{ secrets.CONTEXT7_API_KEY }}" \
-            -d '{"libraryName": "/${{ github.repository }}"}'
+            -d "{\"libraryName\": \"${CONTEXT7_LIBRARY}\"}"
