@@ -6,12 +6,15 @@ on:
       - main
   workflow_dispatch:
 
-# The Context7 library keeps the repository's former name. Deriving it from
-# github.repository broke when the repository was renamed (etendo-go-docs ->
-# etendo-docs): every refresh answered library_not_found, curl -s hid it, and the
-# index stayed frozen at 2026-09-29 while the MCP `docs` tool kept serving it.
+# The Context7 library name is pinned, not derived from github.repository. The
+# repository was renamed (etendo-go-docs -> etendo-docs); for a month every refresh
+# asked for a name Context7 did not know, curl -s hid the library_not_found, and the
+# index stayed frozen at 2026-09-29. On 2026-11-03 Context7 moved the library to
+# /etendosoftware/etendo-docs (the old name now only redirects). The MCP `docs` tool
+# of com.etendoerp.go reads the same name (Context7DocsClient.DEFAULT_BASE_URL):
+# change both together.
 env:
-  CONTEXT7_LIBRARY: /etendosoftware/etendo-go-docs
+  CONTEXT7_LIBRARY: /etendosoftware/etendo-docs
 
 jobs:
   refresh:
