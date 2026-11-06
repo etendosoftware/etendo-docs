@@ -82,6 +82,8 @@ Con el proveedor elegido, tienes tres formas de añadir productos:
 - **Importar desde recibo** — trae las líneas de un [albarán de compra](../crear-y-gestionar-albaranes-de-compra/crear-y-gestionar-albaranes-de-compra.md) (recepción) que ya tengas de ese mismo proveedor.
 - **Importar desde pedido** — trae las líneas de un pedido de compra confirmado de ese mismo proveedor.
 
+Las dos opciones de importar abren un buscador con los albaranes o pedidos de ese proveedor que aún tienen algo pendiente de facturar. Puedes desplegar cada uno para elegir líneas concretas y, en cada línea, indicar cuántas unidades quieres facturar: no hace falta importar todas las unidades de la línea, por ejemplo si el proveedor te factura solo una parte. También puedes marcar varios (o usar **Seleccionar todo**) y traerlos a la vez con **Importar seleccionadas**. Así, una sola factura puede agrupar varios albaranes o pedidos del mismo proveedor, por ejemplo si te factura a fin de mes todas las entregas.
+
 Al elegir un producto, su descripción, su precio de tarifa y su impuesto se rellenan solos. Puedes cambiar los tres en cada línea.
 
 La columna **Importe bruto de línea** se calcula sola: precio × cantidad facturada, menos el descuento de la línea, más el impuesto de la línea.

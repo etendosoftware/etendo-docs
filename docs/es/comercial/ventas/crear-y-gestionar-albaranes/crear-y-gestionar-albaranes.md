@@ -55,7 +55,7 @@ El formulario se abre al crear un albarán nuevo o al hacer clic en **Editar** d
 
 **Pestaña Líneas**
 
-El botón **+ Añadir línea** agrega una línea vacía para cargar manualmente; su menú desplegable ofrece además **Añadir desde pedido** y **Añadir desde Factura**, para incorporar líneas directamente desde un pedido o una factura ya completada del mismo cliente.
+El botón **+ Añadir línea** agrega una línea vacía para cargar manualmente; su menú desplegable ofrece además **Añadir desde pedido** y **Añadir desde Factura**, para incorporar líneas directamente desde un pedido o una factura ya completada del mismo cliente. Al importar puedes indicar en cada línea cuántas unidades traer, sin tener que importar la línea completa.
 
 Las líneas muestran, por producto, la **Cant. movida** (cantidad incluida en este albarán) y la **Cant. pedido** (cantidad total del pedido de origen), a modo de referencia. Si el albarán no se generó a partir de un pedido de venta, estos campos quedan vacíos.
 

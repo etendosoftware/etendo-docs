@@ -44,6 +44,8 @@ Sigue estos pasos para registrar la rectificativa desde la factura. Sirven para 
     - Con **Importar desde devolución**, que trae las líneas de una devolución al proveedor ya confirmada, cuando la rectificativa corresponde a una devolución.
     - Con **Importar desde factura origen**, que trae las líneas de la factura que corrige. Es lo más cómodo para corregir un precio o aplicar un descuento sobre lo ya facturado.
 
+    Al importar, puedes indicar en cada línea cuántas unidades traer.
+
     No puedes importar líneas desde un pedido ni desde un albarán de compra.
 6. Revisa los importes y pulsa **Confirmar**.
 

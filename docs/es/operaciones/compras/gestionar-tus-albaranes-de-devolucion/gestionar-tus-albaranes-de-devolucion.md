@@ -86,7 +86,7 @@ La pestaña **Líneas** muestra, por cada producto:
 - **Cant. a devolver** — unidades que devuelves al proveedor.
 - **Cant. recibida orig.** — unidades que recibiste en el albarán origen, como referencia al ajustar la cantidad a devolver.
 
-En Borrador, debajo de las líneas, el botón **Añadir desde Albarán** permite incorporar líneas. La pestaña **Adjuntos** permite vincular archivos a la devolución. Debajo de las líneas, la sección **DOCUMENTOS** muestra los documentos relacionados y el campo **NOTAS** permite añadir observaciones internas.
+En Borrador, debajo de las líneas, el botón **Añadir desde Albarán** permite incorporar líneas de un albarán de compra e indicar en cada una cuántas unidades devuelves. La pestaña **Adjuntos** permite vincular archivos a la devolución. Debajo de las líneas, la sección **DOCUMENTOS** muestra los documentos relacionados y el campo **NOTAS** permite añadir observaciones internas.
 
 ## Estados del Documento
 
@@ -107,7 +107,7 @@ El progreso de facturación (**Estado de factura** en la lista, **Facturado** en
 | **Editar** | Disponible en la vista detalle. Abre el formulario de la devolución. | Borrador y Completado |
 | **Guardar** | Disponible en la barra superior del formulario. Guarda la devolución sin cambiar su estado. | Solo en Borrador |
 | **Eliminar** | Disponible en la barra superior del formulario. Elimina la devolución. | Solo en Borrador |
-| **Añadir desde Albarán** | Disponible debajo de las líneas. Permite incorporar líneas a la devolución. | Solo en Borrador |
+| **Añadir desde Albarán** | Disponible debajo de las líneas. Permite incorporar líneas a la devolución, con la cantidad de cada línea que devuelves. | Solo en Borrador |
 | **Confirmar** | Disponible en el formulario. Completa la devolución y ofrece generar la Factura Rectificativa —que se crea ya confirmada— en el mismo paso. Consulta [Confirmar la devolución](../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra.md#confirmar-la-devolucion). | Solo en Borrador |
 | **Cancelar** | Disponible en el formulario. Cierra el formulario y vuelve a la lista. | Borrador y Completado |
 | **Imprimir** | Disponible en la barra superior del formulario. Imprime la devolución. | Solo en Completado |
