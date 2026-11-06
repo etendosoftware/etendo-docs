@@ -4451,7 +4451,7 @@
 </table>
 <div class="admonition warning">
 <p class="admonition-title">El pedido no se puede editar tras confirmar</p>
-<p>Una vez confirmado, el pedido queda bloqueado. Verifica las líneas, cantidades y precios antes de confirmar.</p>
+<p>Una vez confirmado, el pedido queda bloqueado. Verifica las líneas, cantidades y precios antes de confirmar. Si todavía no tiene albaranes ni facturas, puedes devolverlo a Borrador con <strong>Reactivar</strong>, en el menú ⋮, para corregirlo y confirmarlo de nuevo. En cuanto el pedido tiene algún albarán o factura relacionados, <strong>Reactivar</strong> deja de estar disponible: usa <strong>Clonar</strong> para crear un pedido nuevo con los mismos datos.</p>
 </div>
 <p>En un pedido Completado, el formulario se abre en solo lectura y cambia un poco su diseño:</p>
 <ul>
@@ -4499,6 +4499,11 @@
 <td style="text-align: left;"><strong>Clonar</strong></td>
 <td style="text-align: left;">Crea un nuevo borrador con el mismo proveedor, líneas y condiciones.</td>
 <td style="text-align: left;">Borrador y Completado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Reactivar</strong></td>
+<td style="text-align: left;">Disponible en el menú ⋮. Devuelve el pedido a Borrador para poder corregirlo. Deja de estar disponible en cuanto el pedido tiene un albarán o una factura relacionados.</td>
+<td style="text-align: left;">Solo en Completado, sin documentos relacionados</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Imprimir</strong></td>
@@ -4572,6 +4577,10 @@
 <p class="admonition-title">Cuándo desaparece el botón</p>
 <p>Cuando los indicadores <strong>Recibido</strong> y <strong>Facturado</strong> alcanzan el 100 %, el botón desaparece porque no quedan unidades ni importes pendientes.</p>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Recepciones y facturas parciales</p>
+<p>Si el proveedor entrega solo una parte del pedido, registra en el albarán solo lo que ha llegado. El pedido queda con <strong>Recibido</strong> por debajo del 100 % y el botón principal sigue disponible: cuando llegue el resto, vuelve a usarlo y la ventana te propondrá solo las unidades que faltan por recibir. Lo mismo ocurre con la factura: siempre se genera por el importe que queda pendiente de facturar.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Datos heredados en los documentos generados</p>
 <p>El albarán y la factura creados desde el pedido heredan el contacto, la dirección, las condiciones de pago y las líneas pendientes.</p>
@@ -4607,7 +4616,7 @@
     <span class="md-icon" title="Última actualización">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="6 de noviembre de 2026 12:57:02 UTC">6 de noviembre de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="6 de noviembre de 2026 15:58:45 UTC">6 de noviembre de 2026</span>
   </span>
 
     
