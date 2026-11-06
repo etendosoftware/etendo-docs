@@ -1054,6 +1054,8 @@
       
         
       
+        
+      
     
     
     
@@ -1323,6 +1325,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../comercial/ventas/crear-una-factura-rectificativa/crear-una-factura-rectificativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crear una factura rectificativa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1554,6 +1584,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1697,7 +1735,35 @@
   <span class="md-ellipsis">
     
   
-    Crear una factura de compra
+    Registrar una factura de compra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operaciones/compras/escanear-facturas-de-compra-con-copilot/escanear-facturas-de-compra-con-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Escanear facturas de compra con Copilot
   
 
     
@@ -1782,6 +1848,90 @@
     
   
     Crear una devolución de compra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operaciones/compras/registrar-una-factura-rectificativa/registrar-una-factura-rectificativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registrar una factura rectificativa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operaciones/compras/gestionar-tus-albaranes-de-devolucion/gestionar-tus-albaranes-de-devolucion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestionar tus albaranes de devolución
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../operaciones/compras/relacion-albaran-factura/relacion-albaran-factura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relación albarán-factura
   
 
     
@@ -2766,6 +2916,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#descontabilizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descontabilizar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dimensiones-contables" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2781,6 +2942,17 @@
     <span class="md-ellipsis">
       
         Extracto bancario
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factura-rectificativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factura Rectificativa
       
     </span>
   </a>
@@ -4485,6 +4657,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#descontabilizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descontabilizar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dimensiones-contables" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4500,6 +4683,17 @@
     <span class="md-ellipsis">
       
         Extracto bancario
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factura-rectificativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Factura Rectificativa
       
     </span>
   </a>
@@ -4762,17 +4956,21 @@
 <h2 id="confirmar">Confirmar<a class="headerlink" href="#confirmar" title="Permanent link">¶</a></h2>
 <p>Acción que pasa una Amortización de Borrador a Procesado. Es independiente de Contabilizar: un registro puede quedar Procesado y Sin contabilizar a la vez.</p>
 <h2 id="contabilizado-sin-contabilizar">Contabilizado / Sin contabilizar<a class="headerlink" href="#contabilizado-sin-contabilizar" title="Permanent link">¶</a></h2>
-<p>Indicador independiente de otros estados (como Borrador/Procesado en una Amortización, o Conciliado/Sin conciliar en un movimiento) que muestra si ya se generaron los asientos contables de un registro. En una Amortización se activa con la acción <strong>Contabilizar</strong>, disponible una vez que el registro está Procesado; en un movimiento queda determinado automáticamente al confirmarlo.</p>
+<p>Indicador independiente de otros estados (como Borrador/Procesado en una Amortización, o Conciliado/Sin conciliar en un movimiento) que muestra si ya se generaron los asientos contables de un registro. En una Amortización se activa con la acción <strong>Contabilizar</strong>, disponible una vez que el registro está Procesado; en un movimiento queda determinado automáticamente al confirmarlo. Estas etiquetas también se muestran en las facturas, los albaranes y los albaranes de devolución, tanto en sus listas como en la barra superior del documento.</p>
 <h2 id="contabilizar">Contabilizar<a class="headerlink" href="#contabilizar" title="Permanent link">¶</a></h2>
-<p>Acción que genera los asientos contables de una Amortización ya Procesada y la pasa a <strong>Contabilizado</strong>.</p>
+<p>Acción que genera los asientos contables de un documento ya Procesado y lo pasa a <strong>Contabilizado</strong>.</p>
 <h2 id="cuenta">Cuenta<a class="headerlink" href="#cuenta" title="Permanent link">¶</a></h2>
 <p>Cuenta de banco, tarjeta o caja que registras en Etendo para llevar el control de tu dinero. Mantiene su propio saldo y su propio historial de movimientos, y puede conectarse por Open Banking o gestionarse sin conexión. Ver <a href="../../como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja/">Añadir y configurar un banco, tarjeta o caja</a>.</p>
 <h2 id="cuenta-transitoria">Cuenta transitoria<a class="headerlink" href="#cuenta-transitoria" title="Permanent link">¶</a></h2>
 <p>Cuenta contable opcional que puedes asociar a una cuenta desde <strong>Editar cuenta &gt; Contabilidad</strong>. Sirve para registrar de forma temporal operaciones cuyo concepto contable definitivo todavía no está claro, sin afectar directamente a la cuenta contable principal.</p>
+<h2 id="descontabilizar">Descontabilizar<a class="headerlink" href="#descontabilizar" title="Permanent link">¶</a></h2>
+<p>Acción que revierte la contabilización de un documento ya <strong>Contabilizado</strong>. Disponible en el menú ⋮ de los documentos que ya están contabilizados.</p>
 <h2 id="dimensiones-contables">Dimensiones contables<a class="headerlink" href="#dimensiones-contables" title="Permanent link">¶</a></h2>
-<p>Campos opcionales para asociar un registro a un eje de análisis: <strong>Proyecto</strong>, <strong>Centro de coste</strong>, <strong>Contacto</strong> o <strong>Producto</strong>. Se usan en activos, líneas de amortización, movimientos, pagos y cobros. No afectan el saldo ni la conciliación, solo permiten filtrar y analizar tus registros por ese eje. Qué dimensiones están disponibles depende de cada formulario.</p>
+<p>Campos opcionales para asociar un registro a un eje de análisis: <strong>Proyecto</strong>, <strong>Centro de costo</strong>, <strong>Contacto</strong> o <strong>Producto</strong>. Se usan en activos, líneas de amortización, movimientos, pagos y cobros. No afectan el saldo ni la conciliación, solo permiten filtrar y analizar tus registros por ese eje. Qué dimensiones están disponibles depende de cada formulario.</p>
 <h2 id="extracto-bancario">Extracto bancario<a class="headerlink" href="#extracto-bancario" title="Permanent link">¶</a></h2>
 <p>Archivo con el detalle de los movimientos de una cuenta bancaria en un período. Se importa a Etendo (en formato, CSV o Excel) para generar sus movimientos automáticamente, o se descarga para tu propio registro. Ver <a href="../../como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario/">Importar o descargar el extracto bancario</a>.</p>
+<h2 id="factura-rectificativa">Factura Rectificativa<a class="headerlink" href="#factura-rectificativa" title="Permanent link">¶</a></h2>
+<p>Factura que corrige el importe de otra factura ya confirmada, por ejemplo por un precio mal facturado, un descuento o bonificación, o una devolución de mercancía. Es de las llamadas «por diferencias»: no sustituye a la factura original, solo recoge la diferencia, en negativo si el importe baja o en positivo si sube. Existe tanto en ventas como en compras. Para poder confirmarla tiene que indicar, en su pestaña <strong>Rectificaciones</strong>, la factura o facturas que corrige. Ver <a href="../../../comercial/ventas/crear-una-factura-rectificativa/crear-una-factura-rectificativa/">Crear una factura rectificativa</a> para ventas y <a href="../../../operaciones/compras/registrar-una-factura-rectificativa/registrar-una-factura-rectificativa/">Registrar una factura rectificativa</a> para compras.</p>
 <h2 id="grupo-activo">Grupo activo<a class="headerlink" href="#grupo-activo" title="Permanent link">¶</a></h2>
 <p>Categoría contable de un activo. Determina las cuentas contables usadas en sus asientos.</p>
 <h2 id="movimiento">Movimiento<a class="headerlink" href="#movimiento" title="Permanent link">¶</a></h2>
@@ -4824,7 +5022,7 @@
     <span class="md-icon" title="Última actualización">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="29 de septiembre de 2026 17:35:37 UTC">29 de septiembre de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="6 de noviembre de 2026 12:57:02 UTC">6 de noviembre de 2026</span>
   </span>
 
     
@@ -4851,6 +5049,11 @@
 
     
     <nav>
+      
+        <a href="https://github.com/valeg-etendo" class="md-author" title="@valeg-etendo">
+          
+          <img src="https://avatars.githubusercontent.com/u/95085326?v=4&amp;size=72" alt="valeg-etendo">
+        </a>
       
         <a href="https://github.com/isaiasb-etendo" class="md-author" title="@isaiasb-etendo">
           

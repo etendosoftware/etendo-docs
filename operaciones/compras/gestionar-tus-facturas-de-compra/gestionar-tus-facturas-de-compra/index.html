@@ -1054,6 +1054,8 @@
       
         
       
+        
+      
     
     
     
@@ -1323,6 +1325,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../comercial/ventas/crear-una-factura-rectificativa/crear-una-factura-rectificativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crear una factura rectificativa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1566,6 +1596,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1709,7 +1747,35 @@
   <span class="md-ellipsis">
     
   
-    Crear una factura de compra
+    Registrar una factura de compra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../escanear-facturas-de-compra-con-copilot/escanear-facturas-de-compra-con-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Escanear facturas de compra con Copilot
   
 
     
@@ -1918,6 +1984,90 @@
     
   
     Crear una devolución de compra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../registrar-una-factura-rectificativa/registrar-una-factura-rectificativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registrar una factura rectificativa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gestionar-tus-albaranes-de-devolucion/gestionar-tus-albaranes-de-devolucion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestionar tus albaranes de devolución
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../relacion-albaran-factura/relacion-albaran-factura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relación albarán-factura
   
 
     
@@ -4260,27 +4410,28 @@
 
 
 <h1 id="gestionar-tus-facturas-de-compra">Gestionar tus facturas de compra<a class="headerlink" href="#gestionar-tus-facturas-de-compra" title="Permanent link">¶</a></h1>
-<p>Una vez que tienes facturas de compra cargadas, vas a necesitar consultarlas, editarlas o revisar su estado de pago. Este artículo repasa la ventana de <strong><a href="https://app.etendo.ai/purchase-invoice" target="_blank">Compras &gt; Factura</a></strong> — la vista lista, la vista detalle y la vista formulario. Si todavía no has creado ninguna, empieza por <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">Crear una factura de compra</a>.</p>
+<p>Una vez que tienes facturas de compra cargadas, vas a necesitar consultarlas, editarlas o revisar su estado de pago. Este artículo repasa la ventana de <strong><a href="https://app.etendo.ai/purchase-invoice" target="_blank">Compras &gt; Factura</a></strong> — la vista lista, la vista detalle y la vista formulario. Si todavía no has creado ninguna, empieza por <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">Registrar una factura de compra</a>.</p>
 <h2 id="vista-lista">Vista Lista<a class="headerlink" href="#vista-lista" title="Permanent link">¶</a></h2>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/gestionar-tus-facturas-de-compra-1.png" data-desc-position="bottom"><img alt="Vista lista de Factura de compra" src="../assets/gestionar-tus-facturas-de-compra-1.png"></a>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/lista-saldo-pendiente.png" data-desc-position="bottom"><img alt="Vista lista de Factura de compra con las columnas Saldo pendiente y Contabilizado, incluida una fila con Cuenta inválida" src="../assets/lista-saldo-pendiente.png"></a>
 <br>
-<figcaption>Vista lista de Factura de compra con columnas de estado, importe pendiente y estado de recepción.</figcaption>
+<figcaption>Vista lista de Factura de compra con las columnas Fecha de la factura, Nº interno, Tipo de documento, Nº documento, Vencimiento, Contacto, Estado doc., Contabilizado, Imp.total y Saldo pendiente (etiquetas ámbar, • A favor y —).</figcaption>
 </figure>
 <p>La vista lista muestra todas las facturas con las siguientes columnas:</p>
 <ul>
 <li><strong>Fecha de la factura</strong>.</li>
+<li><strong>Nº interno</strong> — la numeración propia de Etendo para la factura (por ejemplo, <code>FC1000009</code>, o <code>FCR1000002</code> para una Factura Rectificativa). Es distinta del Nº documento del proveedor.</li>
 <li><strong>Tipo de documento</strong>.</li>
-<li><strong>Nº documento</strong>.</li>
+<li><strong>Nº documento</strong> — el número que el proveedor puso en su factura.</li>
 <li><strong>Vencimiento</strong> — ver el detalle de colores más abajo.</li>
 <li><strong>Contacto</strong>.</li>
 <li><strong>Estado doc.</strong> — el estado del documento (Borrador, Completado, etc.).</li>
-<li><strong>Contabilizado</strong> — indica si el documento ya generó su asiento contable (el registro que refleja la operación en la contabilidad de la empresa).</li>
-<li><strong>Imp. total</strong> — abreviatura de "Importe total": el importe total de la factura.</li>
-<li><strong>Pendiente de pago</strong>.</li>
-<li><strong>Estado de recepción</strong> — muestra, en porcentaje de 0% a 100%, cuánto de lo facturado ya fue recibido y registrado contra un albarán (el documento que certifica la entrega física de la mercancía).</li>
+<li><strong>Contabilizado</strong> — indica si el documento ya generó su asiento contable (el registro que refleja la operación en la contabilidad de la empresa). Ver los valores posibles más abajo.</li>
+<li><strong>Imp.total</strong> — abreviatura de "Importe total": el importe total de la factura.</li>
+<li><strong>Saldo pendiente</strong> — lo que queda por pagar de la factura. Ver los valores posibles más abajo.</li>
+<li><strong>Estado de recepción</strong> — muestra, en porcentaje de 0% a 100%, cuánto de lo facturado ya fue recibido y registrado contra un albarán (el documento que certifica la entrega física de la mercancía). Si falta mercancía por recibir, puedes crear el albarán desde la propia factura con <strong>Gestionar recepción</strong>.</li>
 </ul>
-<p>La barra superior incluye tabs para filtrar por tipo de documento: <strong>Todos</strong>, <strong>Factura</strong> y <strong>Factura rectificativa</strong>. Los selectores de <strong>estado del documento</strong> y <strong>fecha</strong> permiten filtrar la lista, y <strong>Filtros</strong> habilita condiciones adicionales. Para crear una factura nueva usa <strong>+ Nueva factura</strong>.</p>
+<p>La barra superior incluye pestañas para filtrar por tipo de documento: <strong>Todos</strong>, <strong>Factura</strong> y <strong>Factura rectificativa</strong>. Los selectores de <strong>estado del documento</strong> y <strong>fecha</strong> permiten filtrar la lista, y <strong>Filtros</strong> habilita condiciones adicionales. Para crear una factura nueva usa <strong>+ Nueva factura</strong>.</p>
 <p>La columna <strong>Vencimiento</strong> muestra un punto de color junto a la fecha según el estado de pago:</p>
 <ul>
 <li><span style="background:#F0FDF4;color:#22C55E;padding:2px 10px;border-radius:12px;font-size:.85em;white-space:nowrap">Verde</span> — la factura está pagada.</li>
@@ -4288,23 +4439,44 @@
 <li><span style="background:#FFFBEB;color:#F59E0B;padding:2px 10px;border-radius:12px;font-size:.85em;white-space:nowrap">Ámbar</span> — el vencimiento está próximo.</li>
 <li><span style="background:#F3F4F6;color:#6B7280;padding:2px 10px;border-radius:12px;font-size:.85em;white-space:nowrap">Gris</span> — queda pendiente, pero el vencimiento todavía está lejos.</li>
 </ul>
+<p>La columna <strong>Saldo pendiente</strong> muestra:</p>
+<ul>
+<li><span style="background:#FFFBEB;color:#F59E0B;padding:2px 10px;border-radius:12px;font-size:.85em;white-space:nowrap">121,00 €</span> — en una etiqueta ámbar, el importe que queda por pagar de una factura pendiente.</li>
+<li><span style="background:#EFF6FF;color:#3B82F6;padding:2px 10px;border-radius:12px;font-size:.85em;white-space:nowrap">• A favor 28,40 €</span> — en una etiqueta azul, el importe a tu favor de una Factura Rectificativa (consulta <a href="#facturas-rectificativas">Facturas Rectificativas</a>).</li>
+<li><code>—</code> — en las facturas en Borrador, que todavía no generan saldo.</li>
+</ul>
+<p>La columna <strong>Contabilizado</strong> muestra uno de estos valores:</p>
+<ul>
+<li><span style="background:#F0FDF4;color:#22C55E;padding:2px 10px;border-radius:12px;font-size:.85em;white-space:nowrap">Contabilizado</span> — la factura ya está registrada en la contabilidad.</li>
+<li><span style="background:#FFFBEB;color:#F59E0B;padding:2px 10px;border-radius:12px;font-size:.85em;white-space:nowrap">Sin contabilizar</span> — la factura todavía no está registrada en la contabilidad.</li>
+<li><span style="background:#FEF2F2;color:#EF4444;padding:2px 10px;border-radius:12px;font-size:.85em;white-space:nowrap">Cuenta inválida</span> — en rojo.</li>
+</ul>
 <h2 id="vista-detalle">Vista Detalle<a class="headerlink" href="#vista-detalle" title="Permanent link">¶</a></h2>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/gestionar-tus-facturas-de-compra-2.png" data-desc-position="bottom"><img alt="Vista detalle de Factura de compra" src="../assets/gestionar-tus-facturas-de-compra-2.png"></a>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/detalle-documentos-relacionados.png" data-desc-position="bottom"><img alt="Vista detalle de Factura de compra con las secciones PAGOS y DOCUMENTOS RELACIONADOS" src="../assets/detalle-documentos-relacionados.png"></a>
 <br>
-<figcaption>Vista detalle de una factura de compra completada, con el documento del proveedor adjunto (PDF) a la izquierda y el pago ya registrado en la sección PAGOS.</figcaption>
+<figcaption>Vista detalle de una factura de compra completada, con el bloque de datos, el indicador Recibido y las secciones PAGOS y DOCUMENTOS RELACIONADOS.</figcaption>
 </figure>
 <p>Al hacer clic sobre una factura existente en la lista se abre el panel de detalle, con las acciones <strong>Añadir pago</strong> y <strong>Editar</strong> en la cabecera. El panel muestra:</p>
 <ul>
 <li>Si se adjuntó el documento original de la factura del proveedor (por ejemplo, el PDF que te envió), se previsualiza a la izquierda del panel.</li>
-<li><strong>Total</strong>, <strong>Contacto</strong>, <strong>Fecha</strong>, <strong>Fecha de vencimiento</strong> y <strong>Estado</strong>. Como comportamiento general del producto, si la factura está en una moneda distinta a la de tu empresa, el Total se muestra en la moneda de tu empresa, con el importe original en la moneda del documento justo debajo entre paréntesis.</li>
-<li>Sección <strong>PAGOS</strong> — con el indicador <strong>Pagada</strong> cuando corresponde, el historial de pagos registrados (número, método, importe y su propio estado) y el acceso directo a <strong>Añadir pago</strong>. Ver <a href="../../anadir-pagos-a-tu-factura-de-compra/anadir-pagos-a-tu-factura-de-compra/">Añadir pagos a tu factura de compra</a>.</li>
-<li>Sección <strong>DOCUMENTOS</strong> — con el pedido y/o albarán de origen, cuando la factura se generó a partir de alguno de ellos.</li>
-<li>Pestañas <strong>General</strong>, <strong>Mensajes</strong> e <strong>Historial</strong>.</li>
+<li><strong>Total</strong>, <strong>Contacto</strong>, <strong>Fecha</strong>, <strong>Fecha de vencimiento</strong>, <strong>Estado</strong> y <strong>Recibido</strong>, este último con el porcentaje de lo facturado que ya recibiste. Como comportamiento general del producto, si la factura está en una moneda distinta a la de tu empresa, el Total se muestra en la moneda de tu empresa, con el importe original en la moneda del documento justo debajo entre paréntesis.</li>
+<li>Sección <strong>PAGOS</strong> — con el indicador <strong>Pagada</strong> cuando corresponde, el historial de pagos registrados (número, método, importe y su propio estado) y el enlace <strong>Añadir pago</strong>. Si todavía no registraste ninguno, muestra "Aún no hay pagos registrados para esta factura". Ver <a href="../../anadir-pagos-a-tu-factura-de-compra/anadir-pagos-a-tu-factura-de-compra/">Añadir pagos a tu factura de compra</a>.</li>
+<li>Sección <strong>DOCUMENTOS RELACIONADOS</strong> — con el pedido y/o albarán de origen, cuando la factura se generó a partir de alguno de ellos.</li>
 </ul>
-<p>Desde el menú de opciones (⋮) de la cabecera puedes acceder a otras acciones sobre el documento (imprimir, eliminar, etc., según el estado).</p>
 <h2 id="vista-formulario">Vista Formulario<a class="headerlink" href="#vista-formulario" title="Permanent link">¶</a></h2>
-<p>Al hacer clic en <strong>Editar</strong> se abre el formulario completo. Esta sección no incluye una captura propia: para el detalle visual de cada campo, consultá las capturas paso a paso de <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">Crear una factura de compra</a>, que recorre el mismo formulario.</p>
+<figure>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/formulario-completado.png" data-desc-position="bottom"><img alt="Formulario de una factura de compra completada con las etiquetas de estado y el indicador Pendiente" src="../assets/formulario-completado.png"></a>
+<br>
+<figcaption>Formulario de una factura completada: etiquetas Completado, Sin contabilizar y Recibido 100%, indicador Pendiente con el importe y panel de adjuntos a la derecha.</figcaption>
+</figure>
+<p>Al hacer clic en <strong>Editar</strong> se abre el formulario completo. Para el detalle de cada campo de la cabecera y de las líneas, consulta <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">Registrar una factura de compra</a>, que recorre el mismo formulario.</p>
+<p>En una factura Completada, el formulario muestra:</p>
+<ul>
+<li><strong>Barra superior, a la izquierda</strong> — <strong>Cancelar</strong> y las etiquetas de estado: <strong>Completado</strong>, el estado de contabilización (por ejemplo, <strong>Sin contabilizar</strong>) y el progreso de recepción (por ejemplo, <strong>Recibido 100%</strong>).</li>
+<li><strong>Barra superior, a la derecha</strong> — los iconos <strong>Copiar enlace</strong>, <strong>Clonar</strong> y el menú ⋮ (con <strong>Reactivar</strong> y, según el caso, <strong>Contabilizar</strong> o <strong>Descontabilizar</strong>), el botón <strong>Guardar</strong> deshabilitado y el indicador de pago (por ejemplo, <strong>Pendiente · 121,00 €</strong>).</li>
+<li><strong>Panel derecho de adjuntos</strong> — si la factura no tiene archivos, muestra "Sin archivos adjuntos" y el enlace <strong>Adjuntar documento</strong>.</li>
+</ul>
 <h2 id="estados-del-documento">Estados del Documento<a class="headerlink" href="#estados-del-documento" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -4326,7 +4498,7 @@
 </table>
 <div class="admonition warning">
 <p class="admonition-title">La factura no se puede editar tras confirmar</p>
-<p>Una vez confirmada, la factura queda bloqueada. Verifica los importes, el contacto y las condiciones de pago antes de confirmar. Para corregir errores en una factura completada, emite una Factura Rectificativa — ver <a href="../../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra/">Crear una devolución de compra</a>.</p>
+<p>Una vez confirmada, la factura queda bloqueada. Verifica los importes, el contacto y las condiciones de pago antes de confirmar. Para corregir errores en una factura completada, puedes devolverla a Borrador con <strong>Reactivar</strong> si todavía cumple las condiciones (ver <a href="#acciones-disponibles">Acciones disponibles</a>); si no, registra la Factura Rectificativa que te envíe el proveedor — ver <a href="../../registrar-una-factura-rectificativa/registrar-una-factura-rectificativa/">Registrar una factura rectificativa</a>.</p>
 </div>
 <p>En estado Completado, la barra superior del formulario muestra además un indicador con el importe: <strong>Pendiente ·</strong> <em>[importe]</em> en ámbar mientras queda saldo por pagar, o <strong>Pagado ·</strong> <em>[importe]</em> en verde una vez saldada. A diferencia del punto de color de la Vista Lista, este indicador no distingue si la factura está vencida — se mantiene en ámbar tanto si el vencimiento es próximo como si ya pasó.</p>
 <h2 id="acciones-disponibles">Acciones Disponibles<a class="headerlink" href="#acciones-disponibles" title="Permanent link">¶</a></h2>
@@ -4341,12 +4513,12 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Cancelar</strong></td>
-<td style="text-align: left;">Descarta los cambios no guardados y vuelve a la lista.</td>
-<td style="text-align: left;">Solo en Borrador</td>
+<td style="text-align: left;">Cierra el formulario y vuelve a la lista; en Borrador, descarta los cambios no guardados.</td>
+<td style="text-align: left;">Borrador y Completado</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Guardar</strong></td>
-<td style="text-align: left;">Guarda el documento sin cambiar su estado.</td>
+<td style="text-align: left;">Guarda el documento sin cambiar su estado. En Completado aparece deshabilitado.</td>
 <td style="text-align: left;">Solo en Borrador</td>
 </tr>
 <tr>
@@ -4355,13 +4527,13 @@
 <td style="text-align: left;">Solo en Borrador</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Clonar</strong></td>
-<td style="text-align: left;">Crea un nuevo borrador con el mismo proveedor, líneas y condiciones.</td>
-<td style="text-align: left;">Borrador y Completado</td>
+<td style="text-align: left;"><strong>Copiar enlace</strong></td>
+<td style="text-align: left;">Copia la dirección de la factura para compartirla con otra persona de tu equipo.</td>
+<td style="text-align: left;">Completado</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Imprimir</strong></td>
-<td style="text-align: left;">Descarga o imprime el documento.</td>
+<td style="text-align: left;"><strong>Clonar</strong></td>
+<td style="text-align: left;">Crea un nuevo borrador con el mismo proveedor, líneas y condiciones.</td>
 <td style="text-align: left;">Borrador y Completado</td>
 </tr>
 <tr>
@@ -4371,21 +4543,42 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Reactivar</strong></td>
-<td style="text-align: left;">Vuelve la factura a estado Borrador para poder editarla. Solo disponible si la factura no tiene pagos asociados.</td>
+<td style="text-align: left;">Disponible en el menú ⋮. Vuelve la factura a estado Borrador para poder corregirla. Solo disponible si la factura no tiene pagos asociados, no se ha enviado a Hacienda (SII o VERI*FACTU) y, si incluye mercancía, esta aún no se ha recibido. Si ya no puedes reactivarla, corrígela con una rectificativa: consulta <a href="../../registrar-una-factura-rectificativa/registrar-una-factura-rectificativa/">Registrar una factura rectificativa</a>.</td>
 <td style="text-align: left;">Solo en Completado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Contabilizar</strong></td>
+<td style="text-align: left;">Disponible en el menú ⋮. Registra la factura en la contabilidad de la empresa.</td>
+<td style="text-align: left;">Completado y Sin contabilizar</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Descontabilizar</strong></td>
+<td style="text-align: left;">Disponible en el menú ⋮. Revierte la contabilización de la factura.</td>
+<td style="text-align: left;">Completado y Contabilizado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Añadir pago</strong></td>
+<td style="text-align: left;">Disponible en la vista detalle. Registra un pago de la factura — ver <a href="../../anadir-pagos-a-tu-factura-de-compra/anadir-pagos-a-tu-factura-de-compra/">Añadir pagos a tu factura de compra</a>.</td>
+<td style="text-align: left;">Solo en Completado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Gestionar recepción</strong></td>
+<td style="text-align: left;">Crea un <a href="../../crear-y-gestionar-albaranes-de-compra/crear-y-gestionar-albaranes-de-compra/">albarán de compra</a> en Borrador con las cantidades de la factura que faltan por recibir.</td>
+<td style="text-align: left;">Completado, con mercancía pendiente de recibir</td>
 </tr>
 </tbody>
 </table>
 <h2 id="facturas-rectificativas">Facturas Rectificativas<a class="headerlink" href="#facturas-rectificativas" title="Permanent link">¶</a></h2>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/gestionar-tus-facturas-de-compra-3.png" data-desc-position="bottom"><img alt="Vista lista filtrada por Factura Rectificativa" src="../assets/gestionar-tus-facturas-de-compra-3.png"></a>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/lista-rectificativas-a-favor.png" data-desc-position="bottom"><img alt="Vista lista filtrada por Factura Rectificativa con la etiqueta A favor en Saldo pendiente" src="../assets/lista-rectificativas-a-favor.png"></a>
 <br>
-<figcaption>Vista lista filtrada por el tab Factura rectificativa: la columna Pendiente de pago muestra Saldo a favor en vez de un importe pendiente.</figcaption>
+<figcaption>Vista lista filtrada por la pestaña Factura rectificativa: la columna Saldo pendiente muestra la etiqueta azul • A favor con el importe, en vez de un importe pendiente.</figcaption>
 </figure>
-<p>Una Factura Rectificativa se gestiona desde la misma ventana y vista lista de <strong><a href="https://app.etendo.ai/purchase-invoice" target="_blank">Compras &gt; Factura</a></strong>, filtrando por el tab <strong>Factura rectificativa</strong>. Al confirmarla, la columna <strong>Pendiente de pago</strong> muestra <strong>Saldo a favor</strong> por el importe de la factura, en vez de un importe pendiente: es un saldo a favor general del proveedor, no un descuento aplicado automáticamente a una factura puntual — se concilia por <strong>Contacto</strong>, no seleccionando una factura origen específica. En la práctica, esto significa que ese saldo queda disponible para aplicarse a cualquier factura futura de ese mismo proveedor, y no a una factura puntual.</p>
+<p>Una Factura Rectificativa se gestiona desde la misma ventana y vista lista de <strong><a href="https://app.etendo.ai/purchase-invoice" target="_blank">Compras &gt; Factura</a></strong>, filtrando por la pestaña <strong>Factura rectificativa</strong>. Se identifica con su propio <strong>Nº interno</strong> (por ejemplo, <code>FCR1000003</code>). Si la rectificativa baja el importe, al confirmarla la columna <strong>Saldo pendiente</strong> muestra la etiqueta azul <strong>• A favor</strong> <em>[importe]</em> (por ejemplo, <strong>• A favor 28,40 €</strong>) en vez de un importe pendiente; si lo sube, muestra el importe pendiente de pago, como cualquier factura. Ese saldo a favor es un importe que el proveedor te debe en general, no un descuento aplicado automáticamente a una factura puntual — se concilia por <strong>Contacto</strong>, no seleccionando una factura origen específica. En la práctica, esto significa que ese saldo queda disponible para aplicarlo al pagar cualquier factura de ese proveedor, también la original si aún no la has pagado.</p>
+<p>El saldo a tu favor puede ser menor que el importe de la Factura Rectificativa cuando una parte ya se consumió. Por ejemplo, una Factura Rectificativa de <code>-85,00 €</code> puede mostrar <strong>• A favor 16,00 €</strong>.</p>
 <h2 id="articulos-relacionados">Artículos Relacionados<a class="headerlink" href="#articulos-relacionados" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">Crear una factura de compra</a></li>
+<li><a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">Registrar una factura de compra</a></li>
 <li><a href="../../anadir-pagos-a-tu-factura-de-compra/anadir-pagos-a-tu-factura-de-compra/">Añadir pagos a tu factura de compra</a></li>
 <li><a href="../../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra/">Crear una devolución de compra</a></li>
 </ul>
@@ -4413,7 +4606,7 @@
     <span class="md-icon" title="Última actualización">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 de septiembre de 2026 14:32:30 UTC">23 de septiembre de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="6 de noviembre de 2026 12:57:02 UTC">6 de noviembre de 2026</span>
   </span>
 
     
@@ -4440,6 +4633,11 @@
 
     
     <nav>
+      
+        <a href="https://github.com/valeg-etendo" class="md-author" title="@valeg-etendo">
+          
+          <img src="https://avatars.githubusercontent.com/u/95085326?v=4&amp;size=72" alt="valeg-etendo">
+        </a>
       
         <a href="https://github.com/mapenglishservices" class="md-author" title="@mapenglishservices">
           

@@ -1058,6 +1058,8 @@
       
         
       
+        
+      
     
     
     
@@ -1327,6 +1329,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../comercial/ventas/crear-una-factura-rectificativa/crear-una-factura-rectificativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crear una factura rectificativa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1555,6 +1585,14 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1904,7 +1942,35 @@
   <span class="md-ellipsis">
     
   
-    Crear una factura de compra
+    Registrar una factura de compra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../escanear-facturas-de-compra-con-copilot/escanear-facturas-de-compra-con-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Escanear facturas de compra con Copilot
   
 
     
@@ -1989,6 +2055,90 @@
     
   
     Crear una devolución de compra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../registrar-una-factura-rectificativa/registrar-una-factura-rectificativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registrar una factura rectificativa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gestionar-tus-albaranes-de-devolucion/gestionar-tus-albaranes-de-devolucion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestionar tus albaranes de devolución
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../relacion-albaran-factura/relacion-albaran-factura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relación albarán-factura
   
 
     
@@ -4399,9 +4549,10 @@
 
 <h1 id="crear-y-gestionar-albaranes-de-compra">Crear y gestionar albaranes de compra<a class="headerlink" href="#crear-y-gestionar-albaranes-de-compra" title="Permanent link">¶</a></h1>
 <h2 id="descripcion-general">Descripción general<a class="headerlink" href="#descripcion-general" title="Permanent link">¶</a></h2>
-<p>El <strong>albarán de compra</strong> registra la recepción física de mercancía de un proveedor. Puede generarse desde un <a href="../../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra/#gestionar-recepcion-y-factura">pedido de compra</a> confirmado — marcando la opción <strong>Crear albarán de proveedor</strong> en el popup de confirmación, o más adelante con el botón <strong>Gestionar recepción y factura</strong> del pedido — o crearse directamente desde la ventana <strong><a href="https://app.etendo.ai/goods-receipt" target="_blank">Compras &gt; Albarán</a></strong> con <strong>+ Nuevo albarán</strong>. Una vez completado, habilita la generación de la <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">factura de compra</a> o de una devolución.</p>
+<p>El <strong>albarán de compra</strong> registra la recepción física de mercancía de un proveedor. Puede generarse desde un <a href="../../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra/#gestionar-los-documentos-pendientes">pedido de compra</a> confirmado — marcando la opción <strong>Crear albarán de proveedor</strong> en el popup de confirmación, o más adelante con el botón <strong>Gestionar recepción y factura</strong> del pedido —, desde una <a href="../../gestionar-tus-facturas-de-compra/gestionar-tus-facturas-de-compra/">factura de compra</a> confirmada con el botón <strong>Gestionar recepción</strong>, o crearse directamente desde la ventana <strong><a href="https://app.etendo.ai/goods-receipt" target="_blank">Compras &gt; Albarán</a></strong> con <strong>+ Nuevo albarán</strong>. Una vez completado, habilita la generación de la <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">factura de compra</a> o de una devolución.</p>
 <pre class="mermaid"><code>flowchart LR
   A[Pedido de compra] --&gt;|Gestionar recepción| B[Albarán de compra]
+  F[Factura de compra] --&gt;|Gestionar recepción| B
   N[Nuevo albarán] --&gt; B
   B --&gt;|Confirmar| C[Completado]
   C --&gt;|Crear Factura| D[Factura de compra]
@@ -4410,7 +4561,14 @@
 <hr>
 <h2 id="crear-un-albaran">Crear un albarán<a class="headerlink" href="#crear-un-albaran" title="Permanent link">¶</a></h2>
 <h3 id="1-empieza-un-albaran-nuevo">1. Empieza un albarán nuevo<a class="headerlink" href="#1-empieza-un-albaran-nuevo" title="Permanent link">¶</a></h3>
-<p>Puedes generar el albarán desde un <a href="../../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra/#gestionar-recepcion-y-factura">pedido de compra</a> confirmado — marcando <strong>Crear albarán de proveedor</strong> en el popup de confirmación del pedido, o más adelante con el botón <strong>Gestionar recepción y factura</strong> — en cuyo caso el albarán hereda el contacto y las líneas pendientes del pedido de origen. Alternativamente, puedes crearlo directamente accediendo a <strong><a href="https://app.etendo.ai/goods-receipt" target="_blank">Compras &gt; Albarán</a></strong> y usando el botón <strong>+ Nuevo albarán</strong> en la esquina superior derecha.</p>
+<p>Puedes generar el albarán desde un <a href="../../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra/#gestionar-los-documentos-pendientes">pedido de compra</a> confirmado — marcando <strong>Crear albarán de proveedor</strong> en el popup de confirmación del pedido, o más adelante con el botón <strong>Gestionar recepción y factura</strong> — en cuyo caso el albarán hereda el contacto y las líneas pendientes del pedido de origen.</p>
+<p>Si ya registraste la factura del proveedor y la mercancía llega después, puedes generar el albarán desde la <a href="../../gestionar-tus-facturas-de-compra/gestionar-tus-facturas-de-compra/">factura de compra</a> confirmada con el botón <strong>Gestionar recepción</strong>. Se abre la ventana <strong>¿Gestionar recepción?</strong>, con el resumen de la factura y la opción <strong>Crear albarán de compra</strong>. Pulsa <strong>Crear recepción</strong>: el albarán se crea en Borrador con el contacto y las cantidades que faltan por recibir de esa factura. Revísalo y confírmalo como cualquier otro.</p>
+<figure>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/gestionar-recepcion-factura.png" data-desc-position="bottom"><img alt="Ventana ¿Gestionar recepción? abierta desde una factura de compra, con la opción Crear albarán de compra" src="../assets/gestionar-recepcion-factura.png"></a>
+<br>
+<figcaption>Ventana ¿Gestionar recepción? de una factura confirmada: resumen de la factura y opción Crear albarán de compra, que se generará en Borrador con las líneas pendientes de recepción.</figcaption>
+</figure>
+<p>Alternativamente, puedes crearlo directamente accediendo a <strong><a href="https://app.etendo.ai/goods-receipt" target="_blank">Compras &gt; Albarán</a></strong> y usando el botón <strong>+ Nuevo albarán</strong> en la esquina superior derecha.</p>
 <h3 id="2-completa-el-formulario">2. Completa el formulario<a class="headerlink" href="#2-completa-el-formulario" title="Permanent link">¶</a></h3>
 <figure>
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/crear-y-gestionar-albaranes-de-compra-1.png" data-desc-position="bottom"><img alt="Vista formulario del Albarán de compra" src="../assets/crear-y-gestionar-albaranes-de-compra-1.png"></a>
@@ -4420,14 +4578,15 @@
 <p>El formulario se abre al crear un albarán nuevo o al hacer clic en <strong>Editar</strong> desde la vista detalle.</p>
 <p><strong>Cabecera</strong></p>
 <ul>
-<li><strong>Contacto</strong> <em>(obligatorio)</em> — proveedor que envía la mercancía; se prellena desde el pedido de origen si el albarán se generó desde uno.</li>
+<li><strong>Contacto</strong> <em>(requerido)</em> — proveedor que envía la mercancía; se autocompleta desde el pedido de origen si el albarán se generó desde uno.</li>
 <li><strong>Nº documento</strong> — número del albarán del proveedor. Manual; puede dejarse en blanco.</li>
-<li><strong>Fecha del movimiento</strong> <em>(obligatorio)</em> — fecha real de la recepción; por defecto la fecha actual, editable.</li>
-<li><strong>Almacén</strong> <em>(obligatorio)</em> — almacén donde se recibe la mercancía; se carga con tu almacén por defecto y es editable.</li>
-<li><strong>Moneda</strong> <em>(obligatorio)</em> — moneda del documento.</li>
+<li><strong>Fecha del movimiento</strong> <em>(requerido)</em> — fecha real de la recepción; por defecto la fecha actual, editable.</li>
+<li><strong>Almacén</strong> <em>(requerido)</em> — almacén donde se recibe la mercancía; se carga con tu almacén por defecto y es editable.</li>
+<li><strong>Moneda</strong> <em>(requerido)</em> — moneda del documento.</li>
+<li><strong>Dirección</strong> <em>(requerido)</em> — dirección del proveedor para este movimiento.</li>
 </ul>
 <p><strong>Pestaña Líneas</strong></p>
-<p>En la pestaña Líneas tienes tres formas de incorporar productos: <strong>+ Añadir líneas</strong> agrega una línea vacía para completar manualmente (producto y cantidad recibida); <strong>Importar desde pedido</strong> abre un buscador de pedidos de compra confirmados del proveedor, con cada pedido expandible para elegir qué líneas y qué cantidad importar; y <strong>Añadir desde Factura</strong> importa líneas desde una factura de compra ya existente del mismo proveedor.</p>
+<p>En un albarán de compra en borrador, la pestaña Líneas ofrece tres formas de incorporar productos: <strong>+ Añadir líneas</strong> agrega una línea vacía para completar manualmente (producto y cantidad recibida); <strong>Importar desde pedido</strong> abre un buscador de pedidos de compra confirmados del proveedor, con cada pedido expandible para elegir qué líneas y qué cantidad importar; y <strong>Añadir desde Factura</strong> importa líneas desde una factura de compra ya existente del mismo proveedor.</p>
 <figure>
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/crear-y-gestionar-albaranes-de-compra-2.png" data-desc-position="bottom"><img alt="Albarán con dos líneas de producto añadidas manualmente" src="../assets/crear-y-gestionar-albaranes-de-compra-2.png"></a>
 <br>
@@ -4435,13 +4594,20 @@
 </figure>
 <p>A diferencia de una factura o un pedido, las líneas del albarán solo registran <strong>Producto</strong>, <strong>Cant. movida</strong> (cantidad recibida) y, cuando la línea proviene de un pedido, <strong>Cant. pedido</strong> (cantidad original solicitada) — no incluyen precio ni impuesto, porque el albarán es un movimiento de stock, no un documento de cobro o pago.</p>
 <p>Debajo de las líneas, la sección <strong>DOCUMENTOS</strong> muestra el pedido de origen como enlace navegable cuando corresponde, y el campo <strong>NOTAS</strong> permite añadir observaciones internas que no se incluyen en el PDF. El formulario incluye también una pestaña <strong>Adjuntos</strong>, para vincular archivos al albarán (PDF, Word, Excel, PowerPoint o imágenes).</p>
+<p>En Borrador, la barra superior muestra <strong>Cancelar</strong>, las etiquetas <strong>Borrador</strong> y <strong>Sin contabilizar</strong>, y las acciones <strong>Eliminar</strong> (icono de papelera), <strong>Copiar enlace</strong>, <strong>Clonar</strong>, <strong>Guardar</strong> y <strong>Confirmar</strong>.</p>
 <h3 id="3-confirma-el-albaran">3. Confirma el albarán<a class="headerlink" href="#3-confirma-el-albaran" title="Permanent link">¶</a></h3>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/crear-y-gestionar-albaranes-de-compra-3.png" data-desc-position="bottom"><img alt="Popup ¿Registrar factura? al confirmar un Albarán de compra" src="../assets/crear-y-gestionar-albaranes-de-compra-3.png"></a>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/registrar-factura.png" data-desc-position="bottom"><img alt="Popup ¿Registrar factura? al confirmar un Albarán de compra" src="../assets/registrar-factura.png"></a>
 <br>
-<figcaption>Popup mostrado al confirmar el albarán, con la opción Crear Factura de Compra en borrador activada por defecto.</figcaption>
+<figcaption>Popup ¿Registrar factura? mostrado al confirmar el albarán, con el interruptor Crear Factura de Compra activado por defecto y el selector Tarifa.</figcaption>
 </figure>
-<p>Al hacer clic en <strong>Confirmar</strong>, el sistema muestra el popup <strong>¿Registrar factura?</strong> con la opción <strong>Crear Factura de Compra en borrador</strong> activada por defecto — genera una factura en Borrador prellenada con el proveedor, los productos recibidos y las cantidades del albarán. Puedes desactivarla si no quieres generarla en este paso; el botón cambia entonces de <strong>Confirmar y crear factura</strong> a <strong>Confirmar albarán</strong>.</p>
+<p>Al hacer clic en <strong>Confirmar</strong>, el sistema muestra el popup <strong>¿Registrar factura?</strong>, con el número del albarán y el proveedor. Desde ahí confirmas el albarán y, si quieres, generas la factura en el mismo paso:</p>
+<ul>
+<li>El interruptor <strong>Crear Factura de Compra</strong> viene activado por defecto: genera una <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">factura de compra</a> precompletada con el proveedor, los productos recibidos y las cantidades del albarán.</li>
+<li>El selector <strong>Tarifa</strong> define la lista de precios que se aplica a esa factura.</li>
+<li>Pulsa <strong>Confirmar y crear factura</strong> para confirmar el albarán y generar la factura en el mismo paso.</li>
+</ul>
+<p>Si no quieres generar la factura ahora, desactiva el interruptor: el selector <strong>Tarifa</strong> desaparece y el botón pasa a llamarse <strong>Confirmar albarán</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">El albarán no se puede editar tras confirmar</p>
 <p>Una vez confirmado, el albarán queda bloqueado. Verifica el contacto, el almacén y las cantidades antes de confirmar.</p>
@@ -4454,28 +4620,34 @@
 <br>
 <figcaption>Vista lista de Albarán de compra con columnas de estado y progreso de facturación.</figcaption>
 </figure>
-<p>La vista lista de <strong><a href="https://app.etendo.ai/goods-receipt" target="_blank">Compras &gt; Albarán</a></strong> muestra las columnas <strong>Fecha del movimiento</strong>, <strong>Nº documento</strong>, <strong>Contacto</strong>, <strong>Estado doc.</strong>, <strong>Contabilizado</strong>, <strong>Almacén</strong> y <strong>Estado de facturación</strong> — esta última con una barra de progreso: verde cuando está al 100 %, naranja cuando es parcial y gris cuando no ha comenzado. Al pasar el cursor sobre una fila aparecen accesos rápidos para abrir el documento y clonarlo. Los selectores de <strong>estado del documento</strong> y <strong>fecha</strong> permiten filtrar la lista, y <strong>Filtros</strong> habilita condiciones adicionales.</p>
+<p>La vista lista de <strong><a href="https://app.etendo.ai/goods-receipt" target="_blank">Compras &gt; Albarán</a></strong> muestra las columnas <strong>Fecha del movimiento</strong>, <strong>Nº documento</strong>, <strong>Contacto</strong>, <strong>Estado doc.</strong>, <strong>Contabilizado</strong>, <strong>Almacén</strong> y <strong>Estado de facturación</strong> — esta última con un indicador circular con el porcentaje. Al pasar el cursor sobre una fila aparecen accesos rápidos para abrir el documento y clonarlo. Los selectores de <strong>estado del documento</strong> y <strong>fecha</strong> permiten filtrar la lista, y <strong>Filtros</strong> habilita condiciones adicionales.</p>
 <h3 id="2-abre-el-albaran">2. Abre el albarán<a class="headerlink" href="#2-abre-el-albaran" title="Permanent link">¶</a></h3>
 <figure>
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/crear-y-gestionar-albaranes-de-compra-6.png" data-desc-position="bottom"><img alt="Vista detalle de Albarán de compra" src="../assets/crear-y-gestionar-albaranes-de-compra-6.png"></a>
 <br>
 <figcaption>Vista detalle de un albarán completado sin factura generada todavía: Pedido origen y Documentos relacionados muestran "—" / vacío.</figcaption>
 </figure>
-<p>Al hacer clic sobre un albarán existente en la lista se abre el panel de detalle, con la acción <strong>Editar</strong> en la cabecera. El panel muestra <strong>Nº documento</strong>, <strong>Proveedor</strong>, <strong>Almacén</strong>, <strong>Fecha del movimiento</strong>, <strong>Estado</strong> y <strong>Estado de facturación</strong> (el mismo indicador de progreso que en la vista lista); el campo <strong>Pedido origen</strong> enlaza al pedido de compra desde el que se generó el albarán y muestra "—" cuando el albarán se creó directamente o desde una factura, y la sección <strong>DOCUMENTOS RELACIONADOS</strong> muestra la factura generada a partir del albarán, cuando corresponde.</p>
+<p>Al hacer clic sobre un albarán existente en la lista se abre el panel de detalle, con la acción <strong>Editar</strong> en la cabecera. El panel muestra <strong>Nº documento</strong>, <strong>Proveedor</strong>, <strong>Almacén</strong>, <strong>Fecha del movimiento</strong>, <strong>Estado</strong> y <strong>Estado de facturación</strong> (el mismo indicador de progreso que en la vista lista); el campo <strong>Pedido origen</strong> enlaza al pedido de compra desde el que se generó el albarán y muestra "—" cuando el albarán se creó directamente o desde una factura, y la sección <strong>DOCUMENTOS RELACIONADOS</strong> muestra los documentos vinculados al albarán, cuando corresponde: el pedido de origen, las facturas generadas a partir del albarán y la devolución, si la hay.</p>
 <p>A la izquierda del panel, un área para <strong>subir un documento</strong> (PDF, JPG, PNG, WebP o GIF) permite adjuntar una copia del comprobante físico entregado por el proveedor, útil como respaldo del movimiento aunque no se haya cargado nada en la pestaña Adjuntos del formulario.</p>
 <h3 id="3-genera-la-factura-o-la-devolucion">3. Genera la factura o la devolución<a class="headerlink" href="#3-genera-la-factura-o-la-devolucion" title="Permanent link">¶</a></h3>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/crear-y-gestionar-albaranes-de-compra-4.png" data-desc-position="bottom"><img alt="Albarán completado con las acciones Crear Devolución y Crear Factura" src="../assets/crear-y-gestionar-albaranes-de-compra-4.png"></a>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/formulario-facturado-parcial.png" data-desc-position="bottom"><img alt="Albarán completado y facturado parcialmente con la acción Crear Factura" src="../assets/formulario-facturado-parcial.png"></a>
 <br>
-<figcaption>Albarán en estado Completado, con las acciones Crear Devolución y Crear Factura disponibles en la cabecera.</figcaption>
+<figcaption>Albarán Completado y Contabilizado, facturado en parte: la acción Crear Factura sigue disponible en la barra superior para facturar lo que queda pendiente.</figcaption>
 </figure>
-<p>Si el albarán Completado todavía no tiene una factura asociada, la acción <strong>Crear Factura</strong> genera una <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">factura de compra</a> en Borrador con el proveedor, los productos recibidos y las cantidades del albarán.</p>
+<figure>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/generar-factura-albaran.png" data-desc-position="bottom"><img alt="Popup Generar factura abierto desde un Albarán de compra con el selector Tarifa" src="../assets/generar-factura-albaran.png"></a>
+<br>
+<figcaption>Popup Generar factura de un albarán completado, con el proveedor, el importe, el selector Tarifa y las unidades pendientes de facturar.</figcaption>
+</figure>
+<p>Mientras quede cantidad pendiente de facturar, la acción <strong>Crear Factura</strong> abre el popup <strong>Generar factura</strong>, que muestra el proveedor, el importe, el selector <strong>Tarifa</strong> y las unidades pendientes de facturar. Pulsa <strong>Crear →</strong> para generar la <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">factura de compra</a> con el proveedor, los productos recibidos y las cantidades pendientes: la factura se crea y se confirma automáticamente, en estado Completado, y el popup <strong>Factura creada</strong> te lo confirma. Pulsa <strong>Cancelar</strong> para cerrar el popup sin generar nada.</p>
+<p><strong>Crear Factura</strong> sigue disponible aunque el albarán ya tenga facturas generadas, si estas cubren solo una parte (facturación parcial). Cuando el albarán llega a <strong>Facturado 100%</strong>, el botón desaparece y solo queda <strong>Crear Devolución</strong>. Para ver qué línea de factura quedó emparejada con cada línea del albarán, consulta <a href="../../relacion-albaran-factura/relacion-albaran-factura/">Relación albarán-factura</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">El proveedor necesita una tarifa de compra para generar la factura</p>
 <p>Si el proveedor no tiene una lista de precios de compra configurada, <strong>Crear Factura</strong> (o la opción del popup al confirmar) muestra un aviso y no genera el documento. Configura la tarifa del proveedor antes de intentarlo de nuevo.</p>
 </div>
-<p>La acción <strong>Crear Devolución</strong> genera un <a href="../../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra/">albarán de devolución</a> prellenado con el proveedor y las líneas del albarán.</p>
-<p>Independientemente de estas acciones, usa <strong>Contabilizar</strong> (menú ⋮) cuando quieras registrar el movimiento contablemente — el badge <strong>Contabilizado / Sin contabilizar</strong> no cambia automáticamente al confirmar el albarán.</p>
+<p>La acción <strong>Crear Devolución</strong> abre el asistente <strong>Crear Devolución desde Albarán</strong>, en el que eliges qué productos y qué cantidades devuelves. El asistente crea un albarán de devolución en Borrador. Consulta <a href="../../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra/#registrar-una-devolucion-fisica">Crear una devolución de compra</a> para el paso a paso. Las devoluciones ya registradas se consultan en <a href="../../gestionar-tus-albaranes-de-devolucion/gestionar-tus-albaranes-de-devolucion/">Gestionar tus albaranes de devolución</a>.</p>
+<p>Independientemente de estas acciones, usa <strong>Contabilizar</strong> (menú ⋮) cuando quieras registrar el movimiento contablemente — la etiqueta <strong>Contabilizado / Sin contabilizar</strong> no cambia automáticamente al confirmar el albarán. El menú ⋮ muestra una sola opción según el caso: <strong>Contabilizar</strong> si el albarán está sin contabilizar, o <strong>Descontabilizar</strong> si ya está contabilizado, para revertir su contabilización.</p>
 <hr>
 <h2 id="estados-del-documento">Estados del Documento<a class="headerlink" href="#estados-del-documento" title="Permanent link">¶</a></h2>
 <table>
@@ -4509,8 +4681,8 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Cancelar</strong></td>
-<td style="text-align: left;">Descarta los cambios no guardados y vuelve a la lista.</td>
-<td style="text-align: left;">Solo en Borrador</td>
+<td style="text-align: left;">Cierra el formulario y vuelve a la lista, descarta los cambios no guardados.</td>
+<td style="text-align: left;">Borrador y Completado</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Guardar</strong></td>
@@ -4519,18 +4691,18 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Confirmar</strong></td>
-<td style="text-align: left;">Confirma el albarán y lo pasa a estado Completado, con la opción de generar la factura en el mismo paso (ver <a href="#3-confirma-el-albaran">Confirma el albarán</a>).</td>
+<td style="text-align: left;">Confirma el albarán y lo pasa a estado Completado, con la opción de generar la factura en el mismo paso (consulta <a href="#3-confirma-el-albaran">Confirma el albarán</a>).</td>
 <td style="text-align: left;">Solo en Borrador</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Crear Devolución</strong></td>
-<td style="text-align: left;">Genera un <a href="../../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra/">albarán de devolución</a> prellenado con el proveedor y las líneas del albarán.</td>
+<td style="text-align: left;">Abre el asistente <strong>Crear Devolución desde Albarán</strong>, que genera un <a href="../../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra/#registrar-una-devolucion-fisica">albarán de devolución</a> en Borrador.</td>
 <td style="text-align: left;">Solo en Completado</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Crear Factura</strong></td>
-<td style="text-align: left;">Genera una <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">factura de compra</a> en Borrador con el proveedor, los productos recibidos y las cantidades del albarán, cuando no se generó al confirmar.</td>
-<td style="text-align: left;">Solo en Completado</td>
+<td style="text-align: left;">Abre el popup <strong>Generar factura</strong> y crea una <a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">factura de compra</a> en estado Completado con las cantidades pendientes de facturar.</td>
+<td style="text-align: left;">Completado, mientras quede cantidad pendiente de facturar</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Clonar</strong></td>
@@ -4538,18 +4710,23 @@
 <td style="text-align: left;">Borrador y Completado</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Descargar PDF</strong></td>
-<td style="text-align: left;">Disponible en el menú ⋮. Descarga el documento en formato PDF.</td>
-<td style="text-align: left;">Solo en Completado</td>
+<td style="text-align: left;"><strong>Copiar enlace</strong></td>
+<td style="text-align: left;">Copia la dirección del albarán para compartirla con otra persona de tu equipo.</td>
+<td style="text-align: left;">Borrador y Completado</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Contabilizar</strong></td>
 <td style="text-align: left;">Disponible en el menú ⋮. Registra el movimiento contablemente.</td>
-<td style="text-align: left;">Solo en Completado</td>
+<td style="text-align: left;">Completado y Sin contabilizar</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Descontabilizar</strong></td>
+<td style="text-align: left;">Disponible en el menú ⋮. Revierte la contabilización del albarán.</td>
+<td style="text-align: left;">Completado y Contabilizado</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Eliminar</strong></td>
-<td style="text-align: left;">Elimina el documento con confirmación previa.</td>
+<td style="text-align: left;">Icono de papelera. Elimina el documento con confirmación previa.</td>
 <td style="text-align: left;">Solo en Borrador</td>
 </tr>
 </tbody>
@@ -4557,7 +4734,7 @@
 <h2 id="articulos-relacionados">Artículos Relacionados<a class="headerlink" href="#articulos-relacionados" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra/">Gestionar tus pedidos de compra</a></li>
-<li><a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">Crear una factura de compra</a></li>
+<li><a href="../../crear-una-factura-de-compra/crear-una-factura-de-compra/">Registrar una factura de compra</a></li>
 <li><a href="../../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra/">Crear una devolución de compra</a></li>
 </ul>
 <hr>
@@ -4584,7 +4761,7 @@
     <span class="md-icon" title="Última actualización">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 de septiembre de 2026 14:32:30 UTC">23 de septiembre de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="6 de noviembre de 2026 12:57:02 UTC">6 de noviembre de 2026</span>
   </span>
 
     
@@ -4611,6 +4788,11 @@
 
     
     <nav>
+      
+        <a href="https://github.com/valeg-etendo" class="md-author" title="@valeg-etendo">
+          
+          <img src="https://avatars.githubusercontent.com/u/95085326?v=4&amp;size=72" alt="valeg-etendo">
+        </a>
       
         <a href="https://github.com/mapenglishservices" class="md-author" title="@mapenglishservices">
           

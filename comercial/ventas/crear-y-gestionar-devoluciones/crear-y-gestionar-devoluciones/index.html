@@ -13,7 +13,7 @@
         <link rel="prev" href="../../anadir-pagos-a-tu-factura-de-venta/anadir-pagos-a-tu-factura-de-venta/">
       
       
-        <link rel="next" href="../../documentos-de-venta-preguntas-frecuentes/documentos-de-venta-preguntas-frecuentes/">
+        <link rel="next" href="../../crear-una-factura-rectificativa/crear-una-factura-rectificativa/">
       
       
         
@@ -1073,6 +1073,8 @@
       
         
       
+        
+      
     
     
     
@@ -1533,6 +1535,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crear-una-factura-rectificativa/crear-una-factura-rectificativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crear una factura rectificativa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1764,6 +1794,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1907,7 +1945,35 @@
   <span class="md-ellipsis">
     
   
-    Crear una factura de compra
+    Registrar una factura de compra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../operaciones/compras/escanear-facturas-de-compra-con-copilot/escanear-facturas-de-compra-con-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Escanear facturas de compra con Copilot
   
 
     
@@ -1992,6 +2058,90 @@
     
   
     Crear una devolución de compra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../operaciones/compras/registrar-una-factura-rectificativa/registrar-una-factura-rectificativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registrar una factura rectificativa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../operaciones/compras/gestionar-tus-albaranes-de-devolucion/gestionar-tus-albaranes-de-devolucion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gestionar tus albaranes de devolución
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../operaciones/compras/relacion-albaran-factura/relacion-albaran-factura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relación albarán-factura
   
 
     
@@ -4407,10 +4557,10 @@
 
 <h1 id="crear-y-gestionar-devoluciones">Crear y gestionar devoluciones<a class="headerlink" href="#crear-y-gestionar-devoluciones" title="Permanent link">¶</a></h1>
 <h2 id="descripcion-general">Descripción general<a class="headerlink" href="#descripcion-general" title="Permanent link">¶</a></h2>
-<p>Cuando un cliente devuelve mercadería, Etendo separa el evento físico del financiero:</p>
+<p>Cuando un cliente te devuelve mercancía, en Etendo registras dos cosas por separado:</p>
 <ol>
-<li><strong>El evento físico</strong> — la mercadería vuelve al stock del vendedor. Se registra en el <strong>albarán de devolución</strong>, disponible en <strong><a href="https://app.etendo.ai/return-material-receipt" target="_blank">Ventas &gt; Albarán de devolución</a></strong>.</li>
-<li><strong>El evento financiero</strong> — el cliente recibe un crédito. Se registra con una <strong><a href="#factura-rectificativa">factura rectificativa</a></strong>, que se genera habitualmente desde el albarán de devolución ya Completado.</li>
+<li><strong>La mercancía que vuelve a tu almacén</strong> — se registra en el <strong>albarán de devolución</strong>, disponible en <strong><a href="https://app.etendo.ai/return-material-receipt" target="_blank">Ventas &gt; Albarán de devolución</a></strong>.</li>
+<li><strong>El importe que corriges al cliente</strong> — se registra con una <strong><a href="#factura-rectificativa">factura rectificativa</a></strong>. Lo habitual es generarla al confirmar el albarán de devolución.</li>
 </ol>
 <pre class="mermaid"><code>flowchart LR
   A[Albarán de venta Completado] --&gt;|Crear Devolución| B[Albarán de devolución Borrador]
@@ -4444,7 +4594,7 @@
 <p>También es posible crear un albarán de devolución directamente desde <strong><a href="https://app.etendo.ai/return-material-receipt" target="_blank">Ventas &gt; Albarán de devolución</a></strong> con el botón <strong>+ Nuevo albarán de devolución</strong>.</p>
 <div class="admonition info">
 <p class="admonition-title">Este paso solo mueve stock</p>
-<p>Sea cual sea el camino que uses para crear el albarán de devolución, la factura rectificativa se genera en un paso posterior, al confirmar este albarán — ver <a href="#confirmar-el-albaran-de-devolucion">Confirmar el albarán de devolución</a> más abajo.</p>
+<p>Sea cual sea el camino que uses para crear el albarán de devolución, la factura rectificativa se genera en un paso posterior. Puedes generarla al confirmar este albarán, con el botón <strong>Crear Factura Rectificativa</strong> del albarán ya Completado o desde la factura, importando las líneas del albarán. Consulta <a href="../../crear-una-factura-rectificativa/crear-una-factura-rectificativa/#si-hay-devolucion-de-mercancia">Crear una factura rectificativa</a>.</p>
 </div>
 <h2 id="el-albaran-de-devolucion">El albarán de devolución<a class="headerlink" href="#el-albaran-de-devolucion" title="Permanent link">¶</a></h2>
 <h3 id="cabecera-del-documento">Cabecera del documento<a class="headerlink" href="#cabecera-del-documento" title="Permanent link">¶</a></h3>
@@ -4493,18 +4643,9 @@
 <p>Al hacer clic en <strong>Confirmar</strong> sobre el albarán de devolución en Borrador, se abre el popup <strong>Confirmar recepción de devolución</strong>, con un interruptor <strong>Crear Factura Rectificativa</strong> (activado por defecto): "Se crea en borrador, prellenada con los productos devueltos y los precios de la factura origen." Puedes dejarlo activado para generar ambos documentos a la vez, o desactivarlo y confirmar solo la recepción.</p>
 <p>Si no generaste la factura rectificativa al confirmar, el albarán de devolución ya Completado muestra un botón <strong>Crear Factura Rectificativa</strong> en la barra superior. Al hacer clic se abre el popup <strong>Gestionar documentos</strong>, con la opción <strong>Crear factura</strong> para generarla en ese momento.</p>
 <h2 id="factura-rectificativa">Factura rectificativa<a class="headerlink" href="#factura-rectificativa" title="Permanent link">¶</a></h2>
-<p>El ajuste financiero de una devolución se gestiona siempre con la <strong>Factura rectificativa</strong> — el único tipo de documento para este caso dentro de <strong><a href="https://app.etendo.ai/sales-invoice" target="_blank">Ventas &gt; Factura</a></strong>, seleccionable en el campo <strong>Tipo de documento</strong> de ese formulario (junto a <strong>Factura</strong>). Se muestra con importe en negativo en el listado de facturas, y al confirmarse reduce el saldo pendiente de cobro de la factura de venta de origen.</p>
-<p>La forma habitual de generarla es con el botón <strong>Crear Factura Rectificativa</strong> del albarán de devolución ya Completado (ver <a href="#confirmar-el-albaran-de-devolucion">Confirmar el albarán de devolución</a> más arriba), con sus líneas prellenadas desde ese albarán.</p>
-<div class="admonition info">
-<p class="admonition-title">Crear una factura rectificativa sin devolución física</p>
-<p>Para ajustes sin mercadería de por medio — como un error de precio, descuento o bonificación — ve a <strong><a href="https://app.etendo.ai/sales-invoice" target="_blank">Ventas &gt; Factura</a></strong>, haz clic en <strong>+ Nueva factura</strong> y selecciona <strong>Tipo de documento: Factura rectificativa</strong>. Sus líneas se cargan a mano.</p>
-<p>Además, en la pestaña <strong>Rectificaciones</strong> del formulario tienes que indicar cuál es la factura original que estás rectificando: haz clic en <strong>+ Añadir rectificación</strong> y selecciona esa factura en el campo <strong>Factura original</strong> (obligatorio). Sin esta asociación no se puede guardar la rectificación.</p>
-</div>
-<figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/crear-y-gestionar-devoluciones-5.png" data-desc-position="bottom"><img alt="Popup Seleccionar factura a rectificar" src="../assets/crear-y-gestionar-devoluciones-5.png"></a>
-<br>
-<figcaption>Pestaña Rectificaciones: al hacer clic en + Añadir rectificación, se abre el buscador para seleccionar la factura original.</figcaption>
-</figure>
+<p>El ajuste financiero de una devolución se gestiona siempre con la <strong>Factura rectificativa</strong> — el único tipo de documento para este caso dentro de <strong><a href="https://app.etendo.ai/sales-invoice" target="_blank">Ventas &gt; Factura</a></strong>, que eliges en el campo <strong>Tipo de documento</strong> de ese formulario (junto a <strong>Factura</strong>). Se muestra con importe en negativo en el listado de facturas. Al confirmarse, queda como un importe a favor del cliente, que no se descuenta automáticamente de la factura original.</p>
+<p>Lo habitual es generarla al confirmar el albarán de devolución, porque el interruptor <strong>Crear Factura Rectificativa</strong> viene activado por defecto (ver <a href="#confirmar-el-albaran-de-devolucion">Confirmar el albarán de devolución</a> más arriba). Si no la has generado entonces, puedes hacerlo con el botón <strong>Crear Factura Rectificativa</strong> del albarán de devolución ya Completado. En los dos casos, sus líneas ya vienen rellenas desde ese albarán.</p>
+<p>Para crear la rectificativa desde la factura, tanto si hay devolución de mercancía como si no (por ejemplo, un error de precio, un descuento o una bonificación), consulta <a href="../../crear-una-factura-rectificativa/crear-una-factura-rectificativa/">Crear una factura rectificativa</a>.</p>
 <h2 id="articulos-relacionados">Artículos Relacionados<a class="headerlink" href="#articulos-relacionados" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../crear-y-gestionar-albaranes/crear-y-gestionar-albaranes/">Crear y gestionar albaranes</a></li>
@@ -4535,7 +4676,7 @@
     <span class="md-icon" title="Última actualización">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 de septiembre de 2026 14:32:30 UTC">23 de septiembre de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="6 de noviembre de 2026 12:57:02 UTC">6 de noviembre de 2026</span>
   </span>
 
     
@@ -4562,6 +4703,11 @@
 
     
     <nav>
+      
+        <a href="https://github.com/valeg-etendo" class="md-author" title="@valeg-etendo">
+          
+          <img src="https://avatars.githubusercontent.com/u/95085326?v=4&amp;size=72" alt="valeg-etendo">
+        </a>
       
         <a href="https://github.com/mapenglishservices" class="md-author" title="@mapenglishservices">
           
