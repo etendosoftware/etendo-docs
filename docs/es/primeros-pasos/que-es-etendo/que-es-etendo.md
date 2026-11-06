@@ -13,14 +13,14 @@ tags:
 Etendo es el ERP (el software de gestión empresarial) en la nube de Etendo, pensado para empresas, autónomos y asesorías que necesitan gestionar su negocio sin complicaciones técnicas. Accedes desde el navegador, sin instalar nada ni mantener infraestructura propia, y siempre trabajas con la versión más actualizada.
 
 
-Con Etendo gestionas Contactos, Ventas, Compras, Inventario y Finanzas desde un mismo lugar, y cuentas con **Copilot**, el agente de IA integrado en la interfaz de Etendo: un asistente dentro de la propia plataforma que te ayuda a consultar información y a ejecutar acciones sin salir del sistema.
+Con Etendo gestionas Contactos, Ventas, Compras, Inventario y Finanzas desde un mismo lugar, y cuentas con **Copilot**, el agente de IA integrado en la interfaz de Etendo, que te ayuda a consultar información y a ejecutar acciones sin salir del sistema.
 
 ## Un ERP para personas y para agentes de IA
 
-Todo lo que haces en Etendo puede ejecutarse también mediante un agente de inteligencia artificial a través de MCP (Model Context Protocol), el estándar que conecta asistentes de IA con aplicaciones, con las mismas capacidades que tiene la interfaz visual. Este modelo dual te permite elegir, para cada tarea, el camino que más te convenga:
+Todo lo que haces en Etendo puede ejecutarse también mediante un agente de inteligencia artificial a través de MCP (Model Context Protocol), el estándar que conecta agentes de IA con aplicaciones, con las mismas capacidades que tiene la interfaz visual. Este modelo dual te permite elegir, para cada tarea, el camino que más te convenga:
 
 - **Desde la interfaz**: navega por los módulos, completa formularios y confirma documentos como en cualquier ERP.
-- **Desde un agente**: automatiza flujos de negocio completos (crear un cliente, registrar una venta) conectando tu asistente de IA a Etendo mediante MCP, sin intervención manual.
+- **Desde un agente**: automatiza flujos de negocio completos (crear un cliente, registrar una venta) conectando tu agente de IA a Etendo mediante MCP, sin intervención manual.
 - **Con Copilot**: pídele en lenguaje natural, desde la pantalla de inicio, que consulte datos o ejecute una acción por ti, como dar de alta un cliente o registrar una venta.
 
 ## Todo tu negocio, en un solo lugar
@@ -54,7 +54,7 @@ Al iniciar sesión llegas al **Inicio**, que te da una fotografía rápida del n
 Un filtro de período te permite enfocarte en el rango de fechas que te interesa en cada momento.
 
 !!! tip "Empieza con Copilot"
-    Desde el inicio, escríbele a Copilot lo que necesitas, por ejemplo, *"Crea un cliente nuevo"* — y deja que el asistente lo resuelva por ti.
+    Desde el inicio, escríbele a Copilot lo que necesitas, por ejemplo, *"Crea un cliente nuevo"* — y deja que el agente lo resuelva por ti.
 
 ## Artículos Relacionados
 

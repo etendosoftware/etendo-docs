@@ -29,21 +29,26 @@ flowchart LR
 ## Crear el pedido
 
 <figure markdown="span">
-  ![Vista formulario de Pedido de compra](assets/formulario.png)
-  <figcaption>Formulario de creación y edición del Pedido de compra.</figcaption>
+  ![Formulario de un Pedido de compra nuevo con los campos requeridos y el enlace Mostrar más datos](assets/formulario-mostrar-mas-datos.png)
+  <figcaption>Formulario de un Pedido de compra nuevo: cabecera con los campos requeridos, el enlace Mostrar más datos y la pestaña Líneas todavía vacía.</figcaption>
 </figure>
 
 1. Accede a **[Compras > Pedido de Compra](https://app.etendo.ai/purchase-order){target="_blank"}** y haz clic en **+ Nuevo pedido**.
 2. Completa la cabecera:
-    - **Contacto** *(obligatorio)* — proveedor al que se dirige el pedido. Al seleccionarlo, autocompleta **Dirección**, **Método de pago**, **Condiciones de pago**, **Moneda** y **Tarifa**.
-    - **Nº documento** — se asigna automáticamente al guardar; no editable.
-    - **Fecha de pedido** *(obligatorio)* — por defecto la fecha actual; editable.
-    - **Dirección** *(obligatorio)* — heredada del contacto; editable para este documento.
-    - **Fecha de entrega esperada** *(obligatorio)* — fecha prevista de recepción; por defecto hoy, editable. Exclusiva de este documento.
-    - **Almacén** *(obligatorio)* — donde se recibirá la mercancía; por defecto tu almacén, editable.
-    - **Condiciones de pago** *(obligatorio)*, **Moneda** *(obligatorio)*, **Tarifa** *(obligatorio)* — heredados del contacto; editables para este documento.
-    - **Método de pago** — heredado del contacto; editable para este documento.
-3. Si necesitas adjuntar algún archivo de referencia (por ejemplo, la cotización del proveedor), usa la pestaña **Adjuntos** — admite PDF, Word, Excel, PowerPoint e imágenes.
+    - **Contacto** *(requerido)* — proveedor al que se dirige el pedido. Al seleccionarlo, autocompleta **Dirección**, **Método de pago**, **Condiciones de pago**, **Moneda** y **Tarifa**.
+    - **Fecha de pedido** *(requerido)* — por defecto la fecha actual; editable.
+    - **Dirección** *(requerido)* — heredada del contacto; editable para este documento.
+    - **Fecha de entrega esperada** *(requerido)* — fecha prevista de recepción; por defecto hoy, editable. Exclusiva de este documento.
+    - **Almacén** *(requerido)* — donde se recibirá la mercancía; por defecto tu almacén, editable.
+    - **Condiciones de pago** *(requerido)*, **Moneda** *(requerido)*, **Tarifa** *(requerido)* — heredados del contacto; editables para este documento.
+
+    !!! tip "Campos tras Mostrar más datos"
+        Haz clic en **Mostrar más datos** para ver dos campos más: **Nº documento**, que se asigna automáticamente al guardar y no es editable, y **Método de pago**, heredado del contacto y no requerido. Para volver a ocultarlos, usa **Mostrar menos datos**.
+
+3. Haz clic en **Guardar**. El pedido queda en Borrador y ya puedes añadir las líneas.
+4. Si necesitas adjuntar algún archivo de referencia (por ejemplo, la cotización del proveedor), usa la pestaña **Adjuntos** — admite PDF, Word, Excel, PowerPoint e imágenes.
+
+Una vez guardado el pedido, la barra superior muestra **Cancelar**, la etiqueta **Borrador** y las acciones **Eliminar** (icono de papelera), **Copiar enlace**, **Clonar**, **Guardar** y **Confirmar**. **Confirmar** está deshabilitado mientras el pedido no tenga líneas.
 
 ## Añadir las líneas
 
@@ -52,11 +57,12 @@ flowchart LR
   <figcaption>Pestaña Líneas con los productos y servicios incluidos en el Pedido de compra.</figcaption>
 </figure>
 
-En la pestaña **Líneas**, usa **+ Añadir línea** para incorporar cada producto o servicio:
+Usa **+ Añadir líneas** para incorporar cada producto o servicio. El producto se elige en un buscador; si todavía no lo tienes cargado, puedes crearlo desde ahí con **+ Crear producto**. Cada línea tiene estas columnas:
 
 - **Producto** — autocompleta descripción, precio de tarifa e impuesto; editable para este pedido.
 - **Descripción** — precompletada desde el producto; editable por línea.
 - **Cant. pedido** — cantidad solicitada al proveedor. Por defecto 1.
+- **Unidad** - unidad del producto; no editable.
 - **Precio** — precio del producto según la tarifa de compra; editable.
 - **% de descuento** — descuento aplicado sobre el precio de la línea.
 - **Impuesto** — tipo impositivo aplicable, heredado del producto.
@@ -73,19 +79,29 @@ Para guardar una línea pulsa ++enter++ o haz clic fuera de la fila; para cancel
 
 El panel de totales muestra **Subtotal sin descuento**, **Descuento por producto**, **Subtotal**, **Impuesto** y **Total**, con la opción de añadir un descuento global vía **+ Añadir descuento total**. El campo **Notas** admite observaciones internas, no incluidas en el PDF enviado al proveedor.
 
-## Guardar o confirmar el pedido
+## Confirmar el pedido
 
-Usa **Guardar** para dejar el pedido en Borrador, o **Confirmar** para pasarlo a estado Completado.
+<figure markdown="span">
+  ![Popup Confirmar pedido con la sección Generar documentos opcional](assets/confirmar-pedido.png)
+  <figcaption>Popup Confirmar pedido, con el resumen del pedido y las casillas Crear albarán de proveedor y Crear factura, desmarcadas por defecto.</figcaption>
+</figure>
+
+Cuando el pedido esté listo, haz clic en **Confirmar** para pasarlo a estado Completado. Se abre el popup **Confirmar pedido**, que muestra el proveedor, el importe y el número de líneas con el subtotal.
+
+En la sección **Generar documentos (opcional)** puedes marcar, si quieres, una o las dos casillas:
+
+- **Crear albarán de proveedor** — crea un [albarán de compra](../crear-y-gestionar-albaranes-de-compra/crear-y-gestionar-albaranes-de-compra.md) en Borrador.
+- **Crear factura** — crea y confirma una [factura de compra](../crear-una-factura-de-compra/crear-una-factura-de-compra.md): la factura queda directamente en estado Completado.
+
+Pulsa **Confirmar pedido** para terminar, o **Cancelar** para volver al formulario. Si no marcas ninguna casilla, el pedido queda Completado sin documentos asociados y puedes generarlos más adelante: abre el pedido y haz clic en el botón **Gestionar recepción y factura** de la barra superior, que abre el popup **Generar factura** con las mismas dos opciones. Consulta [Gestionar tus pedidos de compra](../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra.md#gestionar-los-documentos-pendientes) para el detalle de esa gestión.
 
 !!! warning "El pedido no se puede editar tras confirmar"
     Una vez confirmado, el pedido queda bloqueado. Verifica las líneas, cantidades y precios antes de confirmar.
 
-Al pulsar **Confirmar** se abre un cuadro con la sección **Generar documentos (opcional)**, donde puedes marcar **Crear albarán de proveedor** y/o **Crear factura** para generarlos en el momento. Si no marcas ninguna, el pedido queda Completado sin documentos asociados y puedes generarlos más adelante desde el propio pedido — ver [Gestionar tus pedidos de compra](../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra.md) para el detalle de esa gestión.
-
 ## Artículos Relacionados
 
 - [Gestionar tus pedidos de compra](../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra.md)
-- [Crear una factura de compra](../crear-una-factura-de-compra/crear-una-factura-de-compra.md)
+- [Registrar una factura de compra](../crear-una-factura-de-compra/crear-una-factura-de-compra.md)
 - [Contactos](../../../comercial/contactos/que-es-la-seccion-contactos/que-es-la-seccion-contactos.md)
 
 ---

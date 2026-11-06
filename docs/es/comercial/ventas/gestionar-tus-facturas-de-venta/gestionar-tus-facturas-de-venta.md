@@ -58,7 +58,7 @@ El estado actual se muestra en la barra superior del formulario junto al botón 
 | <span style="background:#F0FDF4;color:#22C55E;padding:2px 10px;border-radius:12px;font-size:.85em;white-space:nowrap">Completado</span> | Confirmada. Ya no es editable. Queda pendiente de cobro. |
 
 !!! warning "La factura no se puede editar tras confirmar"
-    Una vez confirmada, la factura queda bloqueada. Verifica los importes, el contacto y las condiciones de pago antes de confirmar. Si todavía no tiene pagos registrados, puedes usar **Reactivar** (ver [Acciones Disponibles](#acciones-disponibles)) para devolverla a Borrador; si ya tiene algún pago asociado, esta acción deja de estar disponible.
+    Una vez confirmada, la factura queda bloqueada. Verifica los importes, el contacto y las condiciones de pago antes de confirmar. Si todavía cumple las condiciones, puedes usar **Reactivar** (ver [Acciones Disponibles](#acciones-disponibles)) para devolverla a Borrador; si no, corrígela con una [factura rectificativa](../crear-una-factura-rectificativa/crear-una-factura-rectificativa.md).
 
 Cuando la fecha de vencimiento ha pasado sin que se registre el pago completo, la barra superior muestra el indicador **Vencido · EUR [importe pendiente]** con un enlace para consultar los pagos pendientes.
 
@@ -75,7 +75,7 @@ La barra superior del formulario muestra las siguientes acciones:
 | **Enviar** | Abre el panel de envío por correo electrónico. | Solo en Completado |
 | **Añadir pago** | Registra un cobro sobre la factura. | Solo en Completado |
 | **Descargar PDF** | Descarga la factura en formato PDF. | Solo en Completado |
-| **Reactivar** | Disponible en el menú de tres puntos. Devuelve la factura a estado Borrador para poder editarla de nuevo. Solo funciona si la factura no tiene pagos asociados. | Solo en Completado |
+| **Reactivar** | Disponible en el menú de tres puntos. Devuelve la factura a estado Borrador para poder corregirla de nuevo. Solo funciona si la factura no tiene pagos asociados, no se ha enviado a Hacienda (SII o VERI*FACTU) y, si incluye mercancía, esta aún no se ha entregado. Si ya no puedes reactivarla, corrígela con una rectificativa: consulta [Crear una factura rectificativa](../crear-una-factura-rectificativa/crear-una-factura-rectificativa.md). | Solo en Completado |
 | **Papelera** | Elimina el documento con confirmación previa. | Solo en Borrador |
 
 ## Artículos Relacionados

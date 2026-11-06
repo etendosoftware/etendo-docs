@@ -85,6 +85,7 @@ plugins:
                         - Enviar tus facturas por email: comercial/ventas/enviar-tus-facturas-por-email/enviar-tus-facturas-por-email.md
                         - Añadir pagos a tu factura de venta: comercial/ventas/anadir-pagos-a-tu-factura-de-venta/anadir-pagos-a-tu-factura-de-venta.md
                         - Crear y gestionar devoluciones: comercial/ventas/crear-y-gestionar-devoluciones/crear-y-gestionar-devoluciones.md
+                        - Crear una factura rectificativa: comercial/ventas/crear-una-factura-rectificativa/crear-una-factura-rectificativa.md
                     - Ventas - Preguntas frecuentes: comercial/ventas/documentos-de-venta-preguntas-frecuentes/documentos-de-venta-preguntas-frecuentes.md
             - Operaciones:
                 - operaciones/index.md
@@ -94,10 +95,14 @@ plugins:
                         - Crear un pedido de compra: operaciones/compras/crear-un-pedido-de-compra/crear-un-pedido-de-compra.md
                         - Gestionar tus pedidos de compra: operaciones/compras/gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra.md
                         - Crear y gestionar albaranes de compra: operaciones/compras/crear-y-gestionar-albaranes-de-compra/crear-y-gestionar-albaranes-de-compra.md
-                        - Crear una factura de compra: operaciones/compras/crear-una-factura-de-compra/crear-una-factura-de-compra.md
+                        - Registrar una factura de compra: operaciones/compras/crear-una-factura-de-compra/crear-una-factura-de-compra.md
+                        - Escanear facturas de compra con Copilot: operaciones/compras/escanear-facturas-de-compra-con-copilot/escanear-facturas-de-compra-con-copilot.md
                         - Añadir pagos a tu factura de compra: operaciones/compras/anadir-pagos-a-tu-factura-de-compra/anadir-pagos-a-tu-factura-de-compra.md
                         - Gestionar tus facturas de compra: operaciones/compras/gestionar-tus-facturas-de-compra/gestionar-tus-facturas-de-compra.md
                         - Crear una devolución de compra: operaciones/compras/crear-una-devolucion-de-compra/crear-una-devolucion-de-compra.md
+                        - Registrar una factura rectificativa: operaciones/compras/registrar-una-factura-rectificativa/registrar-una-factura-rectificativa.md
+                        - Gestionar tus albaranes de devolución: operaciones/compras/gestionar-tus-albaranes-de-devolucion/gestionar-tus-albaranes-de-devolucion.md
+                        - Relación albarán-factura: operaciones/compras/relacion-albaran-factura/relacion-albaran-factura.md
                 - Inventario:
                     - ¿Qué es la sección Inventario?: operaciones/inventario/que-es-inventario/que-es-inventario.md
                     - Productos:

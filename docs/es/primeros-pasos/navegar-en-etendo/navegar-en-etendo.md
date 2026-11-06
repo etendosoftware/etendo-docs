@@ -36,7 +36,7 @@ Junto al logo, en la esquina superior izquierda, hay un menú desplegable con el
 
 En la parte superior de la pantalla encuentras una barra de búsqueda grande y prominente, ubicada en el centro superior, con la descripción "Buscar clientes, pedidos, facturas..." A su vez, en el extremo superior derecho encuentras tres accesos directos:
 
-- **Copilot** — abre el agente de IA integrado en la interfaz de Etendo, un asistente dentro de la propia plataforma que te ayuda a consultar información y a ejecutar acciones sin salir del sistema.
+- **Copilot** — abre el agente de IA integrado en la interfaz de Etendo, que te ayuda a consultar información y a ejecutar acciones sin salir del sistema.
 - **Crear** — genera un nuevo registro sin salir de la pantalla en la que estás.
 - **Notificaciones** — avisos sobre tareas pendientes y novedades de tu cuenta.
 
