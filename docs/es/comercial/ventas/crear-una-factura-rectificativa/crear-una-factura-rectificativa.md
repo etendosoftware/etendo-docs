@@ -50,6 +50,8 @@ Sigue estos pasos para crear la rectificativa desde la factura. Sirven para cual
     - A mano, con **+ Añadir líneas**.
     - Con **Importar desde factura origen**, que trae las líneas de la factura original. Es lo más cómodo para corregir un precio o aplicar un descuento sobre lo ya facturado.
     - Con **Importar desde devolución**, que trae las líneas de un albarán de devolución, cuando la rectificativa corresponde a una devolución.
+
+    Al importar, puedes indicar en cada línea cuántas unidades traer.
 6. Revisa los importes y pulsa **Confirmar**.
 
 !!! warning "Indica siempre qué factura corriges"

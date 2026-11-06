@@ -66,7 +66,7 @@ El formulario se abre al crear un albarán nuevo o al hacer clic en **Editar** d
 
 **Pestaña Líneas**
 
-En un albarán de compra en borrador, la pestaña Líneas ofrece tres formas de incorporar productos: **+ Añadir líneas** agrega una línea vacía para completar manualmente (producto y cantidad recibida); **Importar desde pedido** abre un buscador de pedidos de compra confirmados del proveedor, con cada pedido expandible para elegir qué líneas y qué cantidad importar; y **Añadir desde Factura** importa líneas desde una factura de compra ya existente del mismo proveedor.
+En un albarán de compra en borrador, la pestaña Líneas ofrece tres formas de incorporar productos: **+ Añadir líneas** agrega una línea vacía para completar manualmente (producto y cantidad recibida); **Importar desde pedido** abre un buscador de pedidos de compra confirmados del proveedor, con cada pedido expandible para elegir qué líneas y qué cantidad importar. Puedes marcar varios pedidos, o usar **Seleccionar todo**, y traer sus líneas a la vez con **Importar seleccionadas**: así un solo albarán recoge una entrega que corresponde a varios pedidos; y **Añadir desde Factura** importa líneas desde una factura de compra ya existente del mismo proveedor.
 
 <figure markdown="span">
   ![Albarán con dos líneas de producto añadidas manualmente](assets/crear-y-gestionar-albaranes-de-compra-2.png)

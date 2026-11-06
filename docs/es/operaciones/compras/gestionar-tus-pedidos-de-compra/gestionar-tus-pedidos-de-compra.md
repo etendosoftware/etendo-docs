@@ -57,7 +57,7 @@ El panel incluye además dos secciones:
 | <span style="background:#F0FDF4;color:#22C55E;padding:2px 10px;border-radius:12px;font-size:.85em;white-space:nowrap">Completado</span> | Confirmado. Ya no es editable. Se puede gestionar la recepción y la factura. |
 
 !!! warning "El pedido no se puede editar tras confirmar"
-    Una vez confirmado, el pedido queda bloqueado. Verifica las líneas, cantidades y precios antes de confirmar.
+    Una vez confirmado, el pedido queda bloqueado. Verifica las líneas, cantidades y precios antes de confirmar. Si todavía no tiene albaranes ni facturas, puedes devolverlo a Borrador con **Reactivar**, en el menú ⋮, para corregirlo y confirmarlo de nuevo. En cuanto el pedido tiene algún albarán o factura relacionados, **Reactivar** deja de estar disponible: usa **Clonar** para crear un pedido nuevo con los mismos datos.
 
 En un pedido Completado, el formulario se abre en solo lectura y cambia un poco su diseño:
 
@@ -78,6 +78,7 @@ Estas son las acciones disponibles en la barra superior del formulario y en la v
 | **Eliminar** | Icono de papelera. Elimina el documento con confirmación previa. | Solo en Borrador |
 | **Copiar enlace** | Copia la dirección del pedido para compartirla con otra persona de tu equipo. | Borrador y Completado |
 | **Clonar** | Crea un nuevo borrador con el mismo proveedor, líneas y condiciones. | Borrador y Completado |
+| **Reactivar** | Disponible en el menú ⋮. Devuelve el pedido a Borrador para poder corregirlo. Deja de estar disponible en cuanto el pedido tiene un albarán o una factura relacionados. | Solo en Completado, sin documentos relacionados |
 | **Imprimir** | Imprime el pedido. | Solo en Completado |
 | **Enviar / Descargar** | Disponible en la barra superior del formulario. Abre el envío por email al proveedor o la descarga del pedido en PDF. | Solo en Completado |
 | **Enviar** | Disponible en la vista detalle. Abre el envío por email al proveedor. | Solo en Completado |
@@ -113,6 +114,9 @@ Marca lo que necesites y pulsa **Crear →**, o **Cancelar** para cerrar el popu
 
 !!! info "Cuándo desaparece el botón"
     Cuando los indicadores **Recibido** y **Facturado** alcanzan el 100 %, el botón desaparece porque no quedan unidades ni importes pendientes.
+
+!!! info "Recepciones y facturas parciales"
+    Si el proveedor entrega solo una parte del pedido, registra en el albarán solo lo que ha llegado. El pedido queda con **Recibido** por debajo del 100 % y el botón principal sigue disponible: cuando llegue el resto, vuelve a usarlo y la ventana te propondrá solo las unidades que faltan por recibir. Lo mismo ocurre con la factura: siempre se genera por el importe que queda pendiente de facturar.
 
 !!! tip "Datos heredados en los documentos generados"
     El albarán y la factura creados desde el pedido heredan el contacto, la dirección, las condiciones de pago y las líneas pendientes.

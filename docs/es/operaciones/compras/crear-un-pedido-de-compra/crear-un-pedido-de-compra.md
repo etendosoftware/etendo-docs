@@ -96,7 +96,7 @@ En la sección **Generar documentos (opcional)** puedes marcar, si quieres, una 
 Pulsa **Confirmar pedido** para terminar, o **Cancelar** para volver al formulario. Si no marcas ninguna casilla, el pedido queda Completado sin documentos asociados y puedes generarlos más adelante: abre el pedido y haz clic en el botón **Gestionar recepción y factura** de la barra superior, que abre el popup **Generar factura** con las mismas dos opciones. Consulta [Gestionar tus pedidos de compra](../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra.md#gestionar-los-documentos-pendientes) para el detalle de esa gestión.
 
 !!! warning "El pedido no se puede editar tras confirmar"
-    Una vez confirmado, el pedido queda bloqueado. Verifica las líneas, cantidades y precios antes de confirmar.
+    Una vez confirmado, el pedido queda bloqueado. Verifica las líneas, cantidades y precios antes de confirmar. Si todavía no tiene albaranes ni facturas, puedes devolverlo a Borrador con **Reactivar**, en el menú ⋮, para corregirlo y confirmarlo de nuevo. En cuanto el pedido tiene algún albarán o factura relacionados, **Reactivar** deja de estar disponible: usa **Clonar** para crear un pedido nuevo con los mismos datos.
 
 ## Artículos Relacionados
 
