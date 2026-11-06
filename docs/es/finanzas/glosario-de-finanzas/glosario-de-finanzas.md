@@ -63,11 +63,11 @@ Acción que pasa una Amortización de Borrador a Procesado. Es independiente de 
 
 ## Contabilizado / Sin contabilizar
 
-Indicador independiente de otros estados (como Borrador/Procesado en una Amortización, o Conciliado/Sin conciliar en un movimiento) que muestra si ya se generaron los asientos contables de un registro. En una Amortización se activa con la acción **Contabilizar**, disponible una vez que el registro está Procesado; en un movimiento queda determinado automáticamente al confirmarlo.
+Indicador independiente de otros estados (como Borrador/Procesado en una Amortización, o Conciliado/Sin conciliar en un movimiento) que muestra si ya se generaron los asientos contables de un registro. En una Amortización se activa con la acción **Contabilizar**, disponible una vez que el registro está Procesado; en un movimiento queda determinado automáticamente al confirmarlo. Estas etiquetas también se muestran en las facturas, los albaranes y los albaranes de devolución, tanto en sus listas como en la barra superior del documento.
 
 ## Contabilizar
 
-Acción que genera los asientos contables de una Amortización ya Procesada y la pasa a **Contabilizado**.
+Acción que genera los asientos contables de un documento ya Procesado y lo pasa a **Contabilizado**.
 
 ## Cuenta
 
@@ -77,13 +77,21 @@ Cuenta de banco, tarjeta o caja que registras en Etendo para llevar el control d
 
 Cuenta contable opcional que puedes asociar a una cuenta desde **Editar cuenta > Contabilidad**. Sirve para registrar de forma temporal operaciones cuyo concepto contable definitivo todavía no está claro, sin afectar directamente a la cuenta contable principal.
 
+## Descontabilizar
+
+Acción que revierte la contabilización de un documento ya **Contabilizado**. Disponible en el menú ⋮ de los documentos que ya están contabilizados.
+
 ## Dimensiones contables
 
-Campos opcionales para asociar un registro a un eje de análisis: **Proyecto**, **Centro de coste**, **Contacto** o **Producto**. Se usan en activos, líneas de amortización, movimientos, pagos y cobros. No afectan el saldo ni la conciliación, solo permiten filtrar y analizar tus registros por ese eje. Qué dimensiones están disponibles depende de cada formulario.
+Campos opcionales para asociar un registro a un eje de análisis: **Proyecto**, **Centro de costo**, **Contacto** o **Producto**. Se usan en activos, líneas de amortización, movimientos, pagos y cobros. No afectan el saldo ni la conciliación, solo permiten filtrar y analizar tus registros por ese eje. Qué dimensiones están disponibles depende de cada formulario.
 
 ## Extracto bancario
 
 Archivo con el detalle de los movimientos de una cuenta bancaria en un período. Se importa a Etendo (en formato, CSV o Excel) para generar sus movimientos automáticamente, o se descarga para tu propio registro. Ver [Importar o descargar el extracto bancario](../como-importar-o-descargar-el-extracto-bancario/como-importar-o-descargar-el-extracto-bancario.md).
+
+## Factura Rectificativa
+
+Factura que corrige el importe de otra factura ya confirmada, por ejemplo por un precio mal facturado, un descuento o bonificación, o una devolución de mercancía. Es de las llamadas «por diferencias»: no sustituye a la factura original, solo recoge la diferencia, en negativo si el importe baja o en positivo si sube. Existe tanto en ventas como en compras. Para poder confirmarla tiene que indicar, en su pestaña **Rectificaciones**, la factura o facturas que corrige. Ver [Crear una factura rectificativa](../../comercial/ventas/crear-una-factura-rectificativa/crear-una-factura-rectificativa.md) para ventas y [Registrar una factura rectificativa](../../operaciones/compras/registrar-una-factura-rectificativa/registrar-una-factura-rectificativa.md) para compras.
 
 ## Grupo activo
 

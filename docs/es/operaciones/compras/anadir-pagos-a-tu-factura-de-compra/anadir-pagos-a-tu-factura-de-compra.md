@@ -59,7 +59,7 @@ Haz clic en **Confirmar** para registrar el pago.
 
 ### Aplicar saldo a favor y crédito disponible
 
-Si el proveedor tiene [facturas rectificativas](../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra.md) con saldo a favor disponible, el popup muestra también la sección **Saldo a favor y crédito disponible**, con la lista de esos documentos (número, fecha e importe disponible). Esta sección puede aparecer tanto en un pago en efectivo como en uno por transferencia.
+Si el proveedor tiene [facturas rectificativas](../registrar-una-factura-rectificativa/registrar-una-factura-rectificativa.md) con saldo a favor disponible, la ventana muestra también la sección **Saldo a favor y crédito disponible**, con la lista de esos documentos (número, fecha e importe disponible). Esta sección puede aparecer tanto en un pago en efectivo como en uno por transferencia.
 
 Marca el checkbox de uno o varios documentos para aplicar ese crédito al pago: puedes consumir el saldo disponible total o parcialmente. Al marcarlo, el importe que queda por pagar en efectivo o por transferencia (**Dinero**) se reduce en la misma medida, y el panel de conciliación pasa a mostrar Total factura = Dinero + Saldo a favor = Aplicado.
 
@@ -109,7 +109,7 @@ Cuando el saldo pendiente llega a 0, la etiqueta de la cabecera de la factura ca
 
 ## Artículos Relacionados
 
-- [Crear una factura de compra](../crear-una-factura-de-compra/crear-una-factura-de-compra.md)
+- [Registrar una factura de compra](../crear-una-factura-de-compra/crear-una-factura-de-compra.md)
 - [Gestionar tus facturas de compra](../gestionar-tus-facturas-de-compra/gestionar-tus-facturas-de-compra.md)
 
 ---

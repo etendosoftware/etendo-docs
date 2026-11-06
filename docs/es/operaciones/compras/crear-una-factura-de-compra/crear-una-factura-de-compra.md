@@ -1,5 +1,5 @@
 ---
-title: Crear una factura de compra
+title: Registrar una factura de compra
 tags:
   - Factura de Compra
   - Compras
@@ -7,82 +7,129 @@ tags:
   - Etendo
 ---
 
-# Crear una factura de compra
+# Registrar una factura de compra
 
-Sigue esta guía cuando necesites registrar la obligación de pago a un proveedor: puedes crear la factura directamente desde cero, o generarla desde un [pedido de compra](../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra.md) o un albarán de compra ya confirmados.
+Cuando un proveedor te envía una factura, regístrala aquí para saber cuánto le debes y cuándo tienes que pagarle.
 
-**Antes de empezar**, necesitas tener:
+Puedes registrarla de tres formas: subiendo el PDF para que Copilot la rellene por ti, [a mano](#registrar-la-factura-a-mano), o generándola desde un [pedido de compra](#generar-la-factura-desde-un-pedido-de-compra) o un [albarán de compra](#generar-la-factura-desde-un-albaran-de-compra) que ya estén confirmados.
 
-- El [contacto](../../../comercial/contactos/que-es-la-seccion-contactos/que-es-la-seccion-contactos.md) del proveedor cargado, con el rol **Proveedor** activo.
-- Al menos una dirección marcada como dirección de facturación.
+No hace falta que tengas el proveedor dado de alta antes de empezar: si todavía no existe, puedes crearlo mientras registras la factura, tanto a mano como con Copilot.
 
 ```mermaid
 flowchart LR
-  A[Pedido de compra] -->|Confirmar + factura| B[Factura de compra]
-  C[Albarán de compra] -->|Importar desde recibo| B
+  S[Subir PDF] -->|Copilot| F[Factura en Borrador]
+  F -->|Revisar y Confirmar| B
+  A[Pedido de compra] -->|Confirmar o Gestionar| B[Factura de compra]
+  C[Albarán de compra] -->|Crear Factura| B
   D[Nueva factura] --> B
 ```
 
+!!! tip "La forma más rápida: deja que Copilot lea el PDF"
+    Copilot es el agente de inteligencia artificial de Etendo: lee la factura por ti y rellena los datos. Si tienes la factura del proveedor en PDF, súbela en el panel **Subir Factura** de una factura nueva y pulsa **Extraer y completar**. Copilot detecta el proveedor, la fecha, el número y las líneas. Después, Copilot guarda la factura en Borrador para que la revises y la confirmes.
+
+    Si el proveedor o algún producto todavía no están dados de alta en Etendo, puedes crearlos sobre la marcha ([crear el proveedor](../escanear-facturas-de-compra-con-copilot/escanear-facturas-de-compra-con-copilot.md#crear-el-proveedor-durante-el-proceso), [crear los productos](../escanear-facturas-de-compra-con-copilot/escanear-facturas-de-compra-con-copilot.md#crear-los-productos-durante-el-proceso)). Tienes el paso a paso en [Escanear facturas de compra con Copilot](../escanear-facturas-de-compra-con-copilot/escanear-facturas-de-compra-con-copilot.md).
+
 ---
 
-## Crear una factura desde cero
+## Registrar la factura a mano
 
 <figure markdown="span">
-  ![Cabecera y pestañas del formulario de Factura de compra](assets/crear-una-factura-de-compra-1.png)
-  <figcaption>Cabecera de la factura con las pestañas Líneas, Rangos de Conversión, Adjuntos y Rectificaciones.</figcaption>
+  ![Cabecera, pestañas y panel Subir Factura del formulario de Factura de compra](assets/cabecera-nueva-factura.png)
+  <figcaption>Una factura nueva en Borrador: arriba, los datos principales con los campos obligatorios; debajo, las pestañas Líneas, Adjuntos y Rectificaciones; a la derecha, el panel Subir Factura.</figcaption>
 </figure>
 
-1. Accede a **[Compras > Factura](https://app.etendo.ai/purchase-invoice){target="_blank"}** y haz clic en **+ Nueva factura**.
-2. Si tienes el comprobante del proveedor, súbelo en el panel **Archivo** (PDF, JPG, PNG, WebP o GIF) para evitar la carga manual.
+Si no tienes el PDF del proveedor a mano, o prefieres escribir los datos tú, puedes registrar la factura desde el formulario.
 
-    !!! info "Lectura automática con Copilot"
-        Al subir el documento del proveedor, Copilot puede extraer automáticamente los datos clave — contacto, número de documento, fecha y líneas — y proponer el prellenado del formulario.
+1. Entra en **[Compras > Factura](https://app.etendo.ai/purchase-invoice){target="_blank"}** y pulsa **+ Nueva factura**. La factura se abre en estado **Borrador**. Arriba tienes los botones **Cancelar**, **Clonar**, **Guardar** y **Confirmar**.
+2. Rellena los datos principales de la factura:
+    - **Contacto** *(obligatorio)* — el proveedor que te ha enviado la factura. Si aún no lo tienes dado de alta, puedes crearlo desde el mismo desplegable con **+ Crear contacto**. Al elegirlo, se rellenan solos la **Dirección**, el **Método de pago**, las **Condiciones de pago** y la **Tarifa** que tengas configurados para ese proveedor.
+    - **Tipo de documento** *(obligatorio)* — elige *Factura* para una compra normal. *Factura rectificativa* sirve para corregir el importe de una factura de compra, por ejemplo un precio mal facturado: consulta [Registrar una factura rectificativa](../registrar-una-factura-rectificativa/registrar-una-factura-rectificativa.md). Si devuelves mercancía, lo más sencillo es generarla desde el albarán de devolución: consulta [Crear una devolución de compra](../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra.md#registrar-una-devolucion-fisica). Una vez guardada la factura, este dato ya no se puede cambiar.
+    - **Fecha de la factura** *(obligatorio)* — la fecha que aparece en la factura del proveedor. Viene con la fecha de hoy y puedes cambiarla.
+    - **Fecha contable** *(obligatorio)* — la fecha que cuenta para tu contabilidad. Si no la cambias, toma la fecha de la factura. Tienes más detalle en la nota *Para tu asesor*, al final de esta sección.
+    - **Dirección** *(obligatorio)*, **Método de pago** *(obligatorio)* y **Condiciones de pago** *(obligatorio)* — vienen de la ficha del proveedor. Puedes cambiarlos solo para esta factura. Con las condiciones de pago, Etendo calcula por sí mismo la fecha de vencimiento, es decir, cuándo tienes que pagar.
+    - **Moneda** *(obligatorio)* — viene en euros (**EUR**). Si el proveedor te factura en otra moneda, cámbiala y Etendo aplica el tipo de cambio del día de la factura. Si tu proveedor o tu asesor te indican otro, puedes cambiarlo a mano en la pestaña **Tipos de cambio**.
+3. Pulsa **Mostrar más datos** para ver los campos que no aparecen a primera vista. Para volver a ocultarlos, pulsa **Mostrar menos datos**.
+    - **Tarifa** *(obligatorio)* — la lista de precios de compra que se aplica. Viene de la ficha del proveedor y puedes cambiarla.
+    - **Nº interno** — el número con el que Etendo guardará la factura, por ejemplo `FC1000015`. Lo ves antes de guardar la factura y no se puede cambiar.
+    - **Nº documento** — el número que el proveedor ha puesto en su factura. Lo escribes tú. Si todavía no lo tienes, puedes dejarlo en blanco.
 
-3. Si no tienes el comprobante a mano, o quieres revisar los datos, completa la cabecera manualmente:
-    - **Contacto** — proveedor que emite la factura. Al seleccionarlo, el sistema autocompleta **Dirección**, **Método de pago**, **Condiciones de pago** y **Tarifa** configurados para ese proveedor.
-    - **Tipo de documento** — *Factura* (compra estándar) o *Factura Rectificativa*. Ver [Crear una devolución de compra](../crear-una-devolucion-de-compra/crear-una-devolucion-de-compra.md) para este segundo caso. No es editable una vez guardado.
-    - **Nº documento** — número de la factura del proveedor. Manual; puede dejarse en blanco si aún no lo tienes.
-    - **Fecha de la factura** — por defecto la fecha actual; editable.
-    - **Dirección**, **Método de pago**, **Condiciones de pago** — heredados del contacto; editables para este documento. Las condiciones de pago determinan la fecha de vencimiento calculada automáticamente.
-    - **Moneda** — por defecto **EUR**, editable si necesitas facturar en otra moneda. Al cambiarla, el sistema aplica automáticamente el tipo de cambio registrado (se actualiza diariamente al cierre del día); si lo editas manualmente, queda registrado en la pestaña **Rangos de Conversión**, ya que ese tipo de cambio es el que luego se usa para la contabilización del documento.
-    - **Tarifa** — lista de precios de compra aplicada; se carga desde el proveedor y es editable.
-    - La pestaña **Rectificaciones** muestra las facturas rectificativas vinculadas a esta factura, si las hay.
+La factura tiene además dos pestañas útiles:
+
+- **Adjuntos** — para guardar junto a la factura otros archivos relacionados.
+- **Rectificaciones** — solo se usa en una *Factura rectificativa*: muestra la factura o facturas que corrige.
+
+!!! info "Para tu asesor"
+    - *Fecha contable*: es la fecha con la que la factura entra en la contabilidad. Tiene que caer en un periodo contable abierto.
+    - *Tipo de cambio*: si la factura va en otra moneda, Etendo aplica el tipo de cambio registrado, que se actualiza automáticamente cada noche. Si lo cambias a mano, el ajuste queda anotado en la pestaña **Tipos de cambio**. Ese es el tipo de cambio que se usa después en la contabilidad.
+
+!!! info "Nº interno y Nº documento"
+    El **Nº interno** es la numeración propia de Etendo para tus facturas de compra, por ejemplo `FC1000015` para una factura o `FCR1000003` para una Factura Rectificativa. Es distinto del **Nº documento**, que es el número que ha puesto el proveedor. Así puedes identificar cada factura dentro de Etendo aunque varios proveedores usen numeraciones parecidas.
 
 ## Añadir las líneas
 
 <figure markdown="span">
-  ![Cabecera completa y pestaña Líneas vacía con las tres formas de añadir productos](assets/crear-una-factura-de-compra-2.png)
-  <figcaption>Cabecera ya completada y pestaña Líneas antes de añadir productos, con las opciones + Añadir líneas, Importar desde recibo e Importar desde pedido.</figcaption>
+  ![Pestaña Líneas vacía con el mensaje Sin líneas todavía y las tres formas de añadir productos](assets/lineas-vacias.png)
+  <figcaption>Pestaña Líneas de una factura con el proveedor ya elegido y todavía sin productos: el mensaje "Sin líneas" todavía y las opciones + Añadir líneas, Importar desde recibo e Importar desde pedido.</figcaption>
 </figure>
 
-En la pestaña **Líneas** tienes tres formas de incorporar productos:
+En las líneas indicas qué te ha facturado el proveedor: productos, cantidades y precios.
 
-- **+ Añadir líneas** — agrega una línea vacía para completar manualmente: producto, cantidad facturada, precio, % de descuento e impuesto.
-- **Importar desde recibo** — importa líneas desde un [albarán de compra](../crear-y-gestionar-albaranes-de-compra/crear-y-gestionar-albaranes-de-compra.md) (recepción) existente del mismo proveedor.
-- **Importar desde pedido** — importa líneas desde un pedido de compra confirmado del mismo proveedor.
+Mientras la factura no tiene líneas, la pestaña **Líneas** muestra el mensaje "Sin líneas todavía — Añade líneas manualmente o impórtalas desde un pedido de compra o albarán de recepción". Los botones para añadir líneas aparecen cuando eliges el **Contacto**. Hasta entonces solo verás ese mensaje.
 
-Al seleccionar un producto se autocompletan su descripción, precio de tarifa e impuesto; los tres son editables por línea. La columna **Importe bruto de línea** se calcula automáticamente como precio × cantidad facturada, menos el descuento de línea aplicado, más el impuesto de la línea. Para guardar una línea pulsa ++enter++ o haz clic fuera de la fila; para cancelar sin guardar, pulsa ++esc++.
+Con el proveedor elegido, tienes tres formas de añadir productos:
+
+- **+ Añadir líneas** — añade una línea vacía para que la rellenes tú.
+- **Importar desde recibo** — trae las líneas de un [albarán de compra](../crear-y-gestionar-albaranes-de-compra/crear-y-gestionar-albaranes-de-compra.md) (recepción) que ya tengas de ese mismo proveedor.
+- **Importar desde pedido** — trae las líneas de un pedido de compra confirmado de ese mismo proveedor.
+
+Al elegir un producto, su descripción, su precio de tarifa y su impuesto se rellenan solos. Puedes cambiar los tres en cada línea.
+
+La columna **Importe bruto de línea** se calcula sola: precio × cantidad facturada, menos el descuento de la línea, más el impuesto de la línea.
+
+Para guardar una línea, pulsa ++enter++ o pulsa fuera de la fila. Para salir sin guardar, pulsa ++esc++.
 
 ### Totales, notas y documentos
 
 <figure markdown="span">
   ![Factura con varias líneas de producto y el panel de totales](assets/crear-una-factura-de-compra-3.png)
-  <figcaption>Factura con varias líneas y cantidades — el panel de totales calcula el Subtotal y el Total a partir de todas las líneas.</figcaption>
+  <figcaption>Factura con varias líneas y cantidades: el panel de totales calcula el Subtotal y el Total a partir de todas las líneas.</figcaption>
 </figure>
 
-El panel de totales muestra **Subtotal sin descuento**, **Descuento por producto**, **Subtotal**, **Impuesto** y **Total** (con la opción de añadir un descuento global vía **+ Añadir descuento total**). El campo **Notas** permite agregar observaciones internas que no se incluyen en el PDF, y la sección **Documentos** muestra el pedido o albarán de origen, cuando corresponda.
+El panel de totales te muestra de un vistazo cuánto le debes al proveedor por esta factura:
+
+- **Subtotal sin descuento**
+- **Descuento por producto**
+- **Subtotal**
+- **Impuesto**
+- **Total**
+
+Si el proveedor te ha hecho un descuento sobre toda la factura, añádelo con **+ Añadir descuento total**.
+
+En **Notas** puedes apuntar observaciones para ti o tu equipo. No salen en el PDF de la factura.
+
+La sección **Documentos** muestra el pedido o el albarán del que sale la factura, si lo hay.
 
 ## Generar la factura desde un pedido de compra
 
-Si el pedido ya está confirmado, no hace falta crear la factura desde cero: marca la opción **Crear factura** al confirmarlo (o desde el pedido ya confirmado) para generarla automáticamente en Borrador, con proveedor, dirección, condiciones de pago y líneas pendientes ya cargadas.
+Si ya tienes un pedido de compra, no hace falta crear la factura desde cero. Cómo generarla depende de si el pedido ya está confirmado:
+
+- **Al confirmar el pedido** — marca la opción **Crear factura** en la ventana **Confirmar pedido**.
+- **Si el pedido ya está confirmado** — abre el pedido y pulsa **Gestionar recepción y factura**, arriba. Si ya has recibido toda la mercancía, el botón se llama **Gestionar factura**. En la ventana **Generar factura**, elige **Crear factura** y pulsa **Crear →**.
+
+En los dos casos, la factura se crea y se confirma sola, y queda en estado Completado. Ya viene con el proveedor, la dirección, las condiciones de pago y las líneas pendientes del pedido. Consulta [Gestionar tus pedidos de compra](../gestionar-tus-pedidos-de-compra/gestionar-tus-pedidos-de-compra.md#gestionar-los-documentos-pendientes).
 
 ## Generar la factura desde un albarán de compra
 
-Si ya recibiste la mercancía y el albarán de compra está confirmado, también puedes generar la factura directamente desde ahí, sin pasar por un pedido: haz clic en **Crear factura**, en la barra superior del albarán, para abrir el popup **Gestionar documentos**. Selecciona la **Tarifa** a aplicar y confirma la opción **Crear factura** para generarla automáticamente en Borrador, con el proveedor y las líneas del albarán ya cargadas.
+Si ya has recibido la mercancía y el albarán de compra está confirmado, puedes generar la factura directamente desde él, sin pasar por un pedido:
+
+1. En el albarán, pulsa **Crear Factura**, arriba. Se abre la ventana **Generar factura**.
+2. Elige la **Tarifa** que quieres aplicar y pulsa **Crear →**.
+
+La factura se crea y se confirma sola, y queda en estado Completado. Ya viene con el proveedor y las líneas del albarán. Consulta [Crear y gestionar albaranes de compra](../crear-y-gestionar-albaranes-de-compra/crear-y-gestionar-albaranes-de-compra.md#3-genera-la-factura-o-la-devolucion).
 
 ## Artículos Relacionados
 
-- [¿Qué es la sección Compras?](../que-es-la-seccion-compras/que-es-la-seccion-compras.md)
+Cuando guardas la factura, - [Escanear facturas de compra con Copilot](../escanear-facturas-de-compra-con-copilot/escanear-facturas-de-compra-con-copilot.md)
 - [Añadir pagos a tu factura de compra](../anadir-pagos-a-tu-factura-de-compra/anadir-pagos-a-tu-factura-de-compra.md)
 - [Gestionar tus facturas de compra](../gestionar-tus-facturas-de-compra/gestionar-tus-facturas-de-compra.md)
 

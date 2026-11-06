@@ -36,7 +36,7 @@ flowchart LR
 
 ## El ciclo de devolución
 
-Cuando un cliente devuelve mercadería, Etendo separa el evento físico del financiero: el reingreso de la mercadería se registra en un albarán de devolución, y el ajuste del saldo de cobro se resuelve con una factura rectificativa. Para el detalle completo de este flujo, consulta [Crear y gestionar devoluciones](../crear-y-gestionar-devoluciones/crear-y-gestionar-devoluciones.md).
+Cuando un cliente devuelve mercancía, Etendo separa el evento físico del financiero: la mercancía que vuelve al almacén se registra en un albarán de devolución, y el ajuste del saldo de cobro se resuelve con una factura rectificativa. Para el detalle completo de este flujo, consulta [Crear y gestionar devoluciones](../crear-y-gestionar-devoluciones/crear-y-gestionar-devoluciones.md).
 
 ## Qué vas a encontrar en esta sección
 

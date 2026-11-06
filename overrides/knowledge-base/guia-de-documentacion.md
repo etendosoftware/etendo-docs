@@ -59,9 +59,10 @@ Definir exactamente 6 tipos y usarlos de forma consistente. Cada artículo debe 
 
 - **Cercano pero profesional**: no corporativo ni demasiado informal. Tratar al lector como un profesional capaz.
 - **Segunda persona, siempre**: dirigirse al usuario como "tú". Usar "puedes", nunca comandos sin contexto.
+- **Español neutro**: el lector es el responsable de una pyme o un profesional independiente. Tuteo (nunca voseo, "vosotros" ni "usted") y vocabulario que se entienda igual en cualquier lugar de habla hispana. Ver [Léxico y registro](#lexico-y-registro).
 - **Lenguaje orientado al beneficio**: explicar el para qué antes del cómo. ("Para que tus facturas reflejen la información correcta, completa los siguientes campos...")
 - **Lenguaje claro**: evitar tecnicismos. Si un término técnico es necesario, definirlo en línea la primera vez o enlazar al glosario.
-- **Voz activa**: "Haz clic en Guardar", no "El botón Guardar debe ser presionado".
+- **Voz activa**: "Haz clic en **Guardar**", no "El botón Guardar debe ser presionado".
 - **Tiempo presente**: describir lo que ocurre ahora, no lo que "ocurrirá".
 
 ### Ejemplos de tono
@@ -74,6 +75,69 @@ Definir exactamente 6 tipos y usarlos de forma consistente. Cada artículo debe 
 ### Nivel de lectura
 
 Apuntar a un nivel intermedio. Oraciones cortas. Una idea por oración. Dividir explicaciones largas en viñetas.
+
+### Léxico y registro
+
+Escribe como le hablarías a alguien que lleva su propio negocio, no como un consultor de ERP. Habla de su negocio (cuánto debe, cuándo cobra, qué le queda en el almacén), no de cómo funciona el sistema por dentro. El texto tiene que sonar natural para cualquier lector de habla hispana, sin palabras que delaten de dónde es quien escribe.
+
+#### Reglas
+
+- **Primero el para qué**: cada campo o acción se presenta por lo que le resuelve al usuario, y después cómo se usa.
+- **Una idea por frase**: nada de paréntesis dentro de paréntesis ni de punto y coma encadenados.
+- **El detalle contable o técnico, al final**: fechas contables, tipos de cambio, numeraciones internas y similares van en una nota aparte, titulada `!!! info "Para tu asesor"`, no en mitad del paso a paso.
+- **Español neutro**: tuteo (nunca voseo, "vosotros" ni "usted"). Si una palabra solo se usa en una región, elegir otra que se entienda en todas (por ejemplo, "teléfono" en vez de "móvil" o "celular"). Cuando hay dos formas igual de comprensibles, usar la de la tabla.
+- **Nunca nombrar países ni regiones**: la documentación no menciona países ni compara cómo se dice algo en cada lugar. La única excepción son las opciones que aparecen literalmente en la interfaz (por ejemplo, los territorios fiscales que se eligen al configurar los impuestos).
+- **Obligaciones fiscales concretas** (SII, VERI*FACTU, TicketBAI, modelos de Hacienda y similares) se mencionan solo en los artículos que tratan de ellas. En artículos generales se habla de "la administración tributaria" o "tu identificación fiscal".
+- **Los nombres de la interfaz no se tocan**: botones, campos, pestañas y documentos (por ejemplo, **Albarán**) se escriben exactamente como aparecen en pantalla, en negrita, aunque no sigan esta tabla. Si un nombre de la interfaz puede no entenderse, se explica en el glosario con un sinónimo (por ejemplo, albarán: documento que acompaña la entrega de la mercancía, también llamado remito), sin nombrar países. Si un nombre suena mal, se avisa al equipo de producto; no se cambia en la documentación.
+
+#### Términos a evitar
+
+| Evitar | Usar en su lugar | Motivo |
+|---|---|---|
+| popup, modal | ventana (o ventana emergente si hace falta distinguirla) | Jerga de desarrollo |
+| pulsa, clica, cliquea, presiona | haz clic | Una sola forma en todo el sitio |
+| rellenar (un formulario o campo) | completar | Forma más extendida |
+| cargar, cargado (un registro) | registrar, crear | Ambiguo: también significa subir un archivo |
+| ingresar, introducir (datos) | escribir | Regionalismos |
+| monto | importe | Una sola forma en todo el sitio |
+| mercadería, género | mercancía (o productos) | Regionalismos |
+| móvil, celular | teléfono | Regionalismos |
+| ordenador, computadora | equipo (o evitarlo) | Regionalismos |
+| autónomo, monotributista | profesional independiente | Figuras fiscales locales |
+| Hacienda (en artículos generales) | la administración tributaria | Organismo local |
+| NIF, CUIT, RUT (en artículos generales) | identificación fiscal | Identificadores locales |
+| vale, guay, coger | (no usar) | Coloquialismos; "coger" tiene un sentido ofensivo en algunas regiones |
+| grilla | lista, tabla | Regionalismo |
+| heredado de | viene de, se completa con lo de | Jerga técnica |
+| editable / no editable | puedes cambiarlo / no se puede cambiar | Jerga técnica |
+| *(requerido)* | *(obligatorio)* | Más claro |
+| autocompleta, autocarga, prellenado | se completa solo, ya viene completado | Jerga técnica |
+| documento de origen | el pedido (o el albarán, la factura) del que sale | Nombrar el documento concreto |
+| obligación de pago | lo que le debes al proveedor | Lenguaje contable innecesario |
+| contabilización del documento | para tu contabilidad | Lenguaje contable innecesario |
+| Etendo Go, Etendo GO | Etendo | El producto ya no se llama Etendo Go |
+| asistente (referido a Copilot o a cualquier IA) | agente | Terminología del producto. "Asistente" solo se usa para los formularios guiados de varios pasos (ej. el asistente **Crear Devolución desde Albarán**) |
+
+#### Antes y después
+
+- ❌ "Sigue esta guía cuando necesites registrar la obligación de pago a un proveedor."
+- ✅ "Cuando un proveedor te envía una factura, regístrala aquí para saber cuánto le debes y cuándo tienes que pagarle."
+
+- ❌ "**Moneda** *(requerido)* — por defecto EUR, editable si necesitas facturar en otra moneda. Al cambiarla, el sistema aplica automáticamente el tipo de cambio registrado (se actualiza diariamente al cierre del día); si lo editas manualmente, queda registrado en la pestaña Tipos de cambio, ya que ese tipo de cambio es el que luego se usa para la contabilización del documento."
+- ✅ "**Moneda** *(obligatorio)* — viene con la moneda de tu empresa. Si el proveedor te factura en otra moneda, cámbiala y Etendo aplica el tipo de cambio del día de la factura. Si tu proveedor o tu asesor te indican otro, puedes cambiarlo a mano."
+
+- ❌ "**Dirección**, **Método de pago** y **Condiciones de pago** — heredados del contacto; editables para este documento."
+- ✅ "**Dirección**, **Método de pago** y **Condiciones de pago** — vienen de la ficha del proveedor. Puedes cambiarlos solo para esta factura."
+
+- ❌ "Una vez que tienes pedidos de compra cargados, vas a necesitar consultarlos."
+- ✅ "Cuando ya tengas pedidos de compra registrados, necesitarás consultarlos."
+
+- ❌ "Pulsa **Guardar** y rellena los datos de la mercadería que te ha llegado."
+- ✅ "Completa los datos de la mercancía que te ha llegado y haz clic en **Guardar**."
+
+#### Prueba final
+
+Antes de dar un artículo por bueno, léelo como lo leería el responsable de una pyme sin formación técnica, de cualquier lugar de habla hispana. Si en alguna frase tendría que preguntar qué significa, si una palabra solo se entiende en una región o si el texto menciona un país, hay que reescribirla.
 
 ## 4. Plantillas de Estructura de Artículos
 
@@ -226,6 +290,18 @@ H2: [Siguiente pregunta]
 - Usar capturas anotadas (flechas, resaltados) para interfaces complejas.
 - No insertar videos en medio de guías de tareas — interrumpen la lectura.
 
+### Pestañas de contenido
+
+- Usar pestañas (`=== "Título"`, extensión `pymdownx.tabbed`) solo cuando el mismo contenido tiene variantes paralelas que el lector elige según su caso (por ejemplo, Ventas frente a Compras). Nunca para esconder pasos que todos los lectores necesitan.
+- El título de cada pestaña nombra el caso del lector ("Si tu proveedor te envía una rectificativa"), no una categoría interna.
+
+### Fragmentos compartidos
+
+- Cuando el mismo texto tiene que aparecer igual en varios artículos (por ejemplo, un aviso legal o una nota que se repite literal en varias páginas), se escribe una sola vez en `overrides/snippets/<nombre>.md` y se incluye con `--8<-- "overrides/snippets/<nombre>.md"` (extensión `pymdownx.snippets`). Así se mantiene en un único sitio.
+- Si un artículo necesita solo una parte, el fragmento se divide con marcadores de sección (`<!-- --8<-- [start:nombre] -->` / `<!-- --8<-- [end:nombre] -->`) y se incluye `archivo.md:nombre`.
+- El fragmento no lleva frontmatter ni H1, y **no lleva enlaces relativos**: las rutas cambian según el artículo que lo incluye. Los enlaces van en el artículo, justo antes o después de la inclusión.
+- Antes de crear un fragmento, comprobar que el texto es de verdad idéntico en todos los artículos. Si cambia según la sección, mejor escribirlo en cada artículo.
+
 ## 6. Navegación y Enlazado
 
 - **Artículos en navegación**: todo artículo debe aparecer en la navegación — sin páginas huérfanas.
@@ -284,7 +360,7 @@ Más corto es mejor. Si un artículo supera estos rangos, evaluar dividirlo en d
 
 ### Dimensiones y formato
 
-- Resolución mínima: 1280px de ancho.
+- Resolución mínima de las capturas de pantalla completa: 1280×720 px. Los recortes de una ventana o un campo pueden ser más pequeños.
 - Formato: PNG.
 - Relación de aspecto: mantener la proporción original — nunca estirar ni recortar de forma arbitraria.
 - Área de captura: mostrar solo la sección relevante de la interfaz, no la pantalla completa, salvo que el contexto lo requiera.
@@ -296,11 +372,21 @@ Usar una herramienta consistente en todo el equipo. Las anotaciones permitidas s
 - **Recuadros**: para delimitar una sección de la interfaz. El recuadro debe ser color amarillo Etendo (`#FFD000`). Respetarlo en todas las imágenes del sitio.
 - **Numeración**: para correlacionar pasos del texto con elementos en la imagen.
 
-### Datos sensibles
+### Qué no puede aparecer en una captura
 
-- Nunca capturar emails reales, nombres de clientes, datos fiscales ni información financiera real.
-- Usar datos de ejemplo visiblemente ficticios: `empresa@ejemplo.com`, "Empresa Demo S.L.", montos como `1.000,00 EUR`.
-- Si la captura ya existe con datos reales, enmascarar con un bloque de color sólido — no usar blur ni pixelado.
+- **El menú lateral desplegado**: plegarlo antes de capturar, de modo que solo se vean los iconos.
+- **El usuario**: ni su nombre, ni su inicial o avatar, ni su email. Si al plegar el menú sigue viéndose la inicial abajo a la izquierda, recortar esa zona.
+- **El cursor del ratón, avisos y notificaciones** (por ejemplo, avisos de pago o de límite de crédito).
+- **Datos de clientes o documentos reales**, incluidos los de la empresa AGRO GM.
+- **Datos que delaten una prueba**: palabras como test, prueba, QA, demo o ejemplo; códigos inventados (QA5654, TEST-001); direcciones como "Calle Prueba"; archivos llamados `factura-prueba…`.
+- **Nombres de personas famosas** (cantantes, actores, deportistas…) como contactos, ni marcas o equipos reales como productos.
+- **Textos en inglés o de una versión anterior de la interfaz.**
+
+### Datos de ejemplo
+
+- Usar datos creíbles, parecidos a los de una pyme real, pero inventados: nombres de empresa y de producto normales (por ejemplo, "Picos Verticales SL", "Mochila Trekking 40L"), direcciones con aspecto real y documentos con su numeración habitual.
+- Nunca capturar emails reales, datos fiscales reales ni información financiera real de nadie.
+- Si la captura ya existe con datos que no se pueden mostrar, recapturarla. Si no es posible, enmascarar con un bloque de color sólido — no usar blur ni pixelado.
 
 ### Texto alternativo (alt text)
 
@@ -394,7 +480,7 @@ agencias-paso-3-implementa-en-tu-equipo
 H1: [Plataforma] para [perfil]: tu punto de partida
 [Párrafo de apertura: para quién es esta guía y qué problema resuelve]
 
-H2: ¿Qué módulos vas a usar principalmente?
+H2: ¿Qué módulos usarás principalmente?
 [Lista de módulos relevantes para este perfil con descripción de 1 línea]
 
 H2: 1. Configura tu cuenta para [perfil]

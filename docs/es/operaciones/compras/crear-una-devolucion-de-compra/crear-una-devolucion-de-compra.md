@@ -10,55 +10,67 @@ tags:
 
 # Crear una devolución de compra
 
-Sigue esta guía cuando necesites devolver mercancía a un proveedor o corregir el importe de una factura de compra ya emitida. Etendo distingue dos situaciones distintas, según si hay mercancía física de por medio o solo un ajuste económico:
+Sigue esta guía cuando devuelvas mercancía a un proveedor. La devolución se registra con un **Albarán de devolución**, vinculado al albarán de compra (recepción) con el que has recibido la mercancía. Al confirmarla, puedes registrar en el mismo paso la **Factura Rectificativa** que la acompaña.
 
-- **Devolución física** — se registra un **Albarán de devolución**, vinculado a un albarán de compra (recepción) ya confirmado. Genera automáticamente la **Factura Rectificativa** correspondiente.
-- **Ajuste financiero** — se crea directamente una **Factura Rectificativa** desde la ventana de Factura de Compra, sin devolver mercancía (por ejemplo, para corregir un precio o aplicar un descuento o bonificación del proveedor).
+Si no devuelves mercancía y solo hay que corregir un importe (por ejemplo, un precio mal facturado o un descuento del proveedor), consulta [Registrar una factura rectificativa](../registrar-una-factura-rectificativa/registrar-una-factura-rectificativa.md).
 
 **Antes de empezar**, necesitas tener:
 
-- Para una devolución física: un **albarán de compra (recepción)** ya confirmado, del que se vaya a devolver la mercancía.
-- Para un ajuste financiero por importación: la **factura de origen** ya confirmada, si vas a crear la Factura Rectificativa importando sus líneas en vez de añadirlas manualmente.
+- Un **albarán de compra (recepción)** ya confirmado, del que se vaya a devolver la mercancía.
 
 ```mermaid
 flowchart LR
   A[Albarán de compra confirmado] -->|Albarán de devolución| B[Factura Rectificativa]
-  C[Ajuste manual] -->|Factura de Compra: Tipo de documento = Factura Rectificativa| B
 ```
 
 ---
 
 ## Registrar una devolución física
 
+### Desde el albarán de compra
+
+<figure markdown="span">
+  ![Paso 1 de 2 del asistente Crear Devolución desde Albarán con los productos y las cantidades a devolver](assets/asistente-paso-1.png)
+  <figcaption>Paso 1 de 2 del asistente Crear Devolución desde Albarán: productos del albarán con la cantidad entregada, la cantidad a devolver y el campo Motivo de devolución.</figcaption>
+</figure>
+
+Es la forma más directa, porque la devolución hereda el proveedor y los productos del albarán de compra (recepción) del que devuelves la mercancía.
+
+1. Abre el [albarán de compra](../crear-y-gestionar-albaranes-de-compra/crear-y-gestionar-albaranes-de-compra.md) ya Completado y haz clic en **Crear Devolución**. Se abre el asistente **Crear Devolución desde Albarán**.
+2. En el **Paso 1 de 2**, marca las casillas de los productos que devuelves. Para cada uno ves la cantidad **ENTREGADO** y puedes ajustar la **CANT. DEVOLUCIÓN** si no devuelves todo lo recibido. Si quieres, completa el campo **Motivo de devolución** (opcional). Pulsa **Siguiente**.
+3. En el **Paso 2 de 2**, revisa el resumen del **Albarán de Devolución** que se va a crear, con los productos, las cantidades y el **Total**. Pulsa **Crear Devolución**, o **Atrás** si necesitas corregir algo.
+4. Aparece el popup **Devolución de compra creada**. Pulsa **Ver devolución** para abrirla: queda en estado **Borrador**, con el **Albarán origen** ya completado.
+5. Revisa la devolución y confírmala (consulta [Confirmar la devolución](#confirmar-la-devolucion)).
+
+### Desde Compras > Albarán de devolución
+
 1. Accede a **[Compras > Albarán de devolución](https://app.etendo.ai/return-to-vendor-shipment){target="_blank"}** y haz clic en **+ Nuevo albarán de devolución**.
 2. Completa la cabecera: **Contacto** (proveedor), **Fecha del movimiento**, **Almacén** y **Dirección**.
-3. En **Albarán origen**, selecciona el albarán de compra (recepción) del que se devuelve la mercancía — las líneas se importan desde ahí.
+3. Debajo de las líneas, haz clic en **Añadir desde Albarán** para incorporar las líneas que devuelves. El campo **Albarán origen** es de solo lectura.
 4. Ajusta las cantidades a devolver por línea si no se devuelve la totalidad de lo recibido.
-5. Al confirmar el albarán de devolución aparece el popup **¿Gestionar factura rectificativa?** con la opción **Crear Factura Rectificativa** activada por defecto — genera una Factura Rectificativa en Borrador, prellenada con los productos devueltos y los precios de la factura de origen. Puedes desactivarla si no quieres generarla en este paso.
+5. Guarda la devolución y confírmala (consulta [Confirmar la devolución](#confirmar-la-devolucion)).
 
-    <figure markdown="span">
-      ![Popup ¿Gestionar factura rectificativa? al confirmar un Albarán de devolución](assets/confirmacion.png)
-      <figcaption>Popup mostrado al confirmar el albarán de devolución, con la opción Crear Factura Rectificativa activada por defecto.</figcaption>
-    </figure>
+### Confirmar la devolución
 
-## Crear un ajuste financiero (Factura Rectificativa manual)
+<figure markdown="span">
+  ![Popup ¿Gestionar factura rectificativa? al confirmar un Albarán de devolución](assets/confirmacion-rectificativa.png)
+  <figcaption>Popup ¿Gestionar factura rectificativa?, con el interruptor Crear Factura Rectificativa activado por defecto y la factura a rectificar ya preseleccionada.</figcaption>
+</figure>
 
-1. Accede a **[Compras > Factura](https://app.etendo.ai/purchase-invoice){target="_blank"}** y haz clic en **+ Nueva factura**.
-2. En **Tipo de documento**, selecciona **Factura Rectificativa**. A diferencia de una Factura, aquí no puedes importar líneas desde un pedido ni desde un recibo — en cambio, puedes añadirlas manualmente, importarlas desde una devolución de compra ya confirmada, o importarlas desde la factura de origen (útil para corregir un precio o aplicar un descuento o bonificación sobre líneas ya facturadas).
+Al hacer clic en **Confirmar** aparece el popup **¿Gestionar factura rectificativa?**, con el número de la devolución y el proveedor. Desde ahí completas la devolución y, si quieres, generas la Factura Rectificativa en el mismo paso:
 
-    <figure markdown="span">
-      ![Cabecera de la Factura de Compra con Tipo de documento = Factura Rectificativa, con las opciones para añadir o importar líneas](assets/cabecera.png)
-      <figcaption>Factura Rectificativa manual: mismos campos de cabecera que una factura, con Tipo de documento en Factura Rectificativa y las opciones para añadir líneas manualmente o importarlas desde una devolución de compra o desde la factura de origen.</figcaption>
-    </figure>
-3. Completa el resto de la cabecera igual que en una [factura de compra](../crear-una-factura-de-compra/crear-una-factura-de-compra.md): Contacto, Dirección, Método de pago, Condiciones de pago, Moneda y Tarifa.
-4. Añade las líneas correspondientes al ajuste (precio, descuento o bonificación) y confirma el documento.
+- El interruptor **Crear Factura Rectificativa** viene activado por defecto. La Factura Rectificativa se crea y se confirma —queda en estado Completado—, prellenada con los productos devueltos y los precios de la factura de origen.
+- La sección **Factura a rectificar** muestra la factura de origen ya preseleccionada (número, fecha, proveedor e importe), con el contador de facturas seleccionadas. Usa **Cambiar selección** si necesitas rectificar otra factura.
+- Pulsa **Confirmar y crear factura rectificativa** para completar la devolución y generar la Factura Rectificativa en el mismo paso. Al terminar, el popup **Factura rectificativa de compra creada** te lo confirma.
 
-Una vez confirmada, la Factura Rectificativa queda como saldo a favor del proveedor (no se aplica automáticamente contra una factura puntual) — ver [Gestionar tus facturas de compra](../gestionar-tus-facturas-de-compra/gestionar-tus-facturas-de-compra.md) para el detalle de esa gestión.
+Puedes desactivar el interruptor si no quieres generar la Factura Rectificativa en este paso. Más adelante podrás registrarla desde la factura, importando las líneas de esta devolución: consulta [Registrar una factura rectificativa](../registrar-una-factura-rectificativa/registrar-una-factura-rectificativa.md).
+
+Para consultar las devoluciones ya registradas, su estado de factura y los documentos relacionados, ve a [Gestionar tus albaranes de devolución](../gestionar-tus-albaranes-de-devolucion/gestionar-tus-albaranes-de-devolucion.md).
 
 ## Artículos Relacionados
 
 - [Crear y gestionar albaranes de compra](../crear-y-gestionar-albaranes-de-compra/crear-y-gestionar-albaranes-de-compra.md)
-- [Crear una factura de compra](../crear-una-factura-de-compra/crear-una-factura-de-compra.md)
+- [Gestionar tus albaranes de devolución](../gestionar-tus-albaranes-de-devolucion/gestionar-tus-albaranes-de-devolucion.md)
 - [Gestionar tus facturas de compra](../gestionar-tus-facturas-de-compra/gestionar-tus-facturas-de-compra.md)
 
 ---

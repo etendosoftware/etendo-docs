@@ -24,7 +24,7 @@ El pedido de venta es la opción recomendada cuando hay stock o entrega física 
 No directamente. Pedidos y facturas quedan bloqueados al confirmarse, pero en algunos casos puedes reabrirlos con la opción **Reactivar** del menú de tres puntos de la barra superior, que devuelve el documento a estado Borrador y lo vuelve a hacer editable.
 
 - En un **pedido**, **Reactivar** solo aparece en el menú cuando el pedido no tiene ningún albarán ni factura relacionados, ni siquiera en estado Borrador; si tiene alguno, la opción no se ofrece.
-- En una **factura**, **Reactivar** aparece en el menú, pero falla si la factura tiene algún pago registrado.
+- En una **factura**, **Reactivar** aparece en el menú, pero falla si la factura tiene pagos registrados, si ya se ha enviado a Hacienda (SII o VERI*FACTU) o si incluye mercancía ya entregada. En ese caso, consulta [Crear una factura rectificativa](../crear-una-factura-rectificativa/crear-una-factura-rectificativa.md).
 
 Como alternativa, siempre puedes crear un documento nuevo — por ejemplo, clonando el original con la acción **Copia**.
 
@@ -32,9 +32,9 @@ Como alternativa, siempre puedes crear un documento nuevo — por ejemplo, clona
 
 Las acciones de creación de documentos derivados —**Crear albarán**, **Crear Factura**, **Gestionar envío y factura**— siempre operan sobre las cantidades o importes pendientes, nunca sobre el total del documento de origen. La acción desaparece automáticamente cuando el pedido queda procesado al 100 % en esa dimensión.
 
-## ¿Necesito un tipo de factura distinto si no hay devolución física de mercadería?
+## ¿Necesito un tipo de factura distinto si no hay devolución física de mercancía?
 
-No. Etendo usa un único tipo de documento, la **factura rectificativa**, tanto si hay devolución física como si no — no hay un tipo separado para cada caso. Lo que cambia es cómo se generan sus líneas: vinculada a un albarán de devolución cuando el cliente devolvió mercadería, o cargada manualmente cuando es un ajuste financiero sin retorno de mercadería (error de precio, descuento o bonificación). Consulta el detalle en [Crear y gestionar devoluciones](../crear-y-gestionar-devoluciones/crear-y-gestionar-devoluciones.md).
+No. Etendo usa un único tipo de documento, la **factura rectificativa**, tanto si hay devolución física como si no — no hay un tipo separado para cada caso. Lo que cambia es cómo se generan sus líneas: vinculadas a un albarán de devolución cuando el cliente ha devuelto mercancía, o añadidas a mano o importadas desde la factura original cuando es un ajuste financiero sin retorno de mercancía (error de precio, descuento o bonificación). Consulta [Crear una factura rectificativa](../crear-una-factura-rectificativa/crear-una-factura-rectificativa.md) para el caso sin devolución y [Crear y gestionar devoluciones](../crear-y-gestionar-devoluciones/crear-y-gestionar-devoluciones.md) para el caso con devolución.
 
 ## ¿Puedo registrar pagos parciales en una factura?
 

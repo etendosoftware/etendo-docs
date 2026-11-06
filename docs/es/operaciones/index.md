@@ -46,7 +46,7 @@ Todo lo que necesitas para gestionar tus compras a proveedores y el control de s
 
     [:octicons-arrow-right-24: Leer más](compras/crear-y-gestionar-albaranes-de-compra/crear-y-gestionar-albaranes-de-compra.md)
 
--   :material-receipt-text-outline:{ .lg .middle } **Crear una factura de compra**
+-   :material-receipt-text-outline:{ .lg .middle } **Registrar una factura de compra**
 
     ---
 
