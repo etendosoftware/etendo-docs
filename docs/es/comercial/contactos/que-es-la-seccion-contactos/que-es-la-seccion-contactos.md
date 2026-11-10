@@ -10,31 +10,35 @@ tags:
 
 # ¿Qué es la sección Contactos?
 
-Para poder empezar a trabajar con Etendo, una de las primeras cosas que deberás hacer es registrar tus **contactos**, ya que son indispensables para crear documentos tanto de ventas como de compras. Un mismo contacto puede representar a un cliente, un proveedor, o ambos a la vez, sin necesidad de duplicar sus datos.
+Para poder empezar a trabajar con Etendo, una de las primeras cosas que deberás hacer es registrar tus **contactos**, ya que son indispensables para crear documentos tanto de ventas como de compras. Un contacto puede ser una empresa o una persona, y puede representar a un cliente, un proveedor, o ambos a la vez, sin necesidad de duplicar sus datos.
 
 ## Un solo registro, dos roles
 
-Cada contacto puede tener activo uno o ambos roles al mismo tiempo, sin necesidad de crear dos registros distintos para la misma contraparte:
+Cada contacto puede tener uno o ambos roles al mismo tiempo, sin necesidad de crear dos registros distintos para la misma contraparte. El rol lo define la **Categoría de contacto** que eliges al crearlo:
 
-- **Cliente**: actívalo cuando el contacto te compra productos o servicios.
-- **Proveedor**: actívalo cuando el contacto te vende productos o servicios.
+- **Cliente**: para el contacto que te compra productos o servicios.
+- **Proveedor/Acreedor**: para el contacto que te vende productos o servicios.
 - **Cliente y Proveedor a la vez**: útil cuando, por ejemplo, una empresa te compra insumos y a la vez te vende servicios, sin duplicar datos entre dos registros.
 
 ## Dónde la vas a usar
 
 - **Antes de tu primera venta o compra**: es habitual cargar tus primeros contactos justo después de crear tu cuenta, para tenerlos listos cuando registres tu primer documento.
 - **Al emitir un pedido, una factura o un albarán**: seleccionas el contacto ya cargado en vez de escribir sus datos de nuevo en cada documento.
-- **Al conciliar cobros y pagos**: el sistema asocia cada movimiento financiero al contacto correspondiente, usando los datos que ya tiene configurados.
+- **Al registrar cobros y pagos**: cada cobro o pago queda asociado a su contacto.
+
+## Cómo cargar tus contactos
+
+- **Uno a uno**, desde el formulario de la ventana Contactos. Consulta [Cómo crear un contacto](../como-crear-un-contacto/como-crear-un-contacto.md).
+- **Varios a la vez**, desde un archivo CSV o Excel. Consulta [Importar contactos](../importar-contactos/importar-contactos.md).
+- **Sobre la marcha**, desde el campo **Contacto** de un pedido, una factura o un albarán, con la opción **+ Crear contacto**. Consulta [Crear un contacto desde un documento](../como-crear-un-contacto/como-crear-un-contacto.md#crear-un-contacto-desde-un-documento-de-venta-o-compra).
 
 Con tus contactos cargados, ya puedes avanzar a crear tu primer pedido de venta o registrar tu primera compra.
 
 ## Artículos Relacionados
 
-- [Cómo crear un contacto](../como-crear-un-contacto/como-crear-un-contacto.md)
-- [Importar contactos](../importar-contactos/importar-contactos.md)
+- [Gestionar tus contactos](../gestionar-tus-contactos/gestionar-tus-contactos.md)
 - [¿Qué es la sección Ventas?](../../ventas/que-es-la-seccion-ventas/que-es-la-seccion-ventas.md)
-- [Crear y gestionar pedidos](../../ventas/crear-y-gestionar-pedidos/crear-y-gestionar-pedidos.md)
-- [Compras](../../../operaciones/compras/que-es-la-seccion-compras/que-es-la-seccion-compras.md)
+- [¿Qué es la sección Compras?](../../../operaciones/compras/que-es-la-seccion-compras/que-es-la-seccion-compras.md)
 
 ---
 Esta obra está bajo la licencia :material-creative-commons: :fontawesome-brands-creative-commons-by: :fontawesome-brands-creative-commons-sa: [CC BY-SA 2.5 ES](https://creativecommons.org/licenses/by-sa/2.5/es/){target="_blank"} de [Futit Services S.L](https://etendo.software){target="_blank"}.

@@ -14,21 +14,21 @@ Si necesitas cargar varios contactos a la vez, en vez de crearlos uno por uno de
 ## Antes de empezar
 
 - **Solo se crean contactos nuevos, con una persona de contacto y una dirección cada uno.** Si el contacto ya existe, la fila se omite. Si repites el mismo NIF en varias filas, solo se importa la primera. Las personas y direcciones adicionales se añaden después desde las solapas **Persona** y **Dirección** del contacto.
-- **Todos los contactos se importan con el rol Cliente.** Si alguno es proveedor, activa ese rol después desde la solapa **Financiero**, como se explica en [Cómo crear un contacto](../como-crear-un-contacto/como-crear-un-contacto.md).
+- **El rol de cada contacto lo define su Categoría de contacto.** Con *Cliente* se importa como cliente; con *Proveedor* o *Acreedor*, como proveedor; con *Cliente/Proveedor*, con ambos roles. Las preferencias de facturación (tarifa, método y condiciones de pago) se completan después desde la solapa **Financiero**, como se explica en [Cómo crear un contacto](../como-crear-un-contacto/como-crear-un-contacto.md).
 
 ## Abre la ventana de importación
 
 1. Ve a **[Contactos](https://app.etendo.ai/contacts){target="_blank"}**.
-2. En la vista lista, haz clic en el ícono **Importar** de la barra de herramientas superior.
+2. En la vista lista, haz clic en la flecha que está junto al botón **Nuevo contacto** y elige **Importar contactos**.
 
     <figure markdown="span">
-      ![Vista lista de Contactos, con el ícono Importar en la barra de herramientas](assets/importar-contactos-1.jpg)
-      <figcaption>Ícono Importar en la barra de herramientas de la ventana Contactos.</figcaption>
+      ![Vista lista de Contactos con el menú del botón Nuevo contacto desplegado y la opción Importar contactos](assets/importar-contactos-1.jpg)
+      <figcaption>Opción Importar contactos, junto al botón Nuevo contacto.</figcaption>
     </figure>
 
 ## Descarga y completa la plantilla
 
-1. En la ventana **Importar**, descarga la plantilla en **CSV** o **Excel**.
+1. En la ventana **Importar**, descarga la plantilla con **Descargar plantilla CSV** o **Descargar plantilla Excel**.
 
     <figure markdown="span">
       ![Ventana Importar, con la zona para soltar el archivo y los enlaces de plantilla](assets/importar-contactos-2.jpg)
@@ -36,7 +36,7 @@ Si necesitas cargar varios contactos a la vez, en vez de crearlos uno por uno de
     </figure>
 
 2. Completa una fila por contacto. Consulta qué va en cada columna en [Columnas de la plantilla](#columnas-de-la-plantilla).
-3. Vuelve a la ventana **Importar** y arrastra tu archivo a la zona indicada, o haz clic para seleccionarlo desde tu ordenador.
+3. Vuelve a la ventana **Importar** y arrastra tu archivo a la zona **Suelta tu archivo aquí**, o haz clic para seleccionarlo desde tu ordenador. Se admiten archivos CSV, TXT y XLSX.
 
 ## Columnas de la plantilla
 
@@ -46,8 +46,8 @@ Si necesitas cargar varios contactos a la vez, en vez de crearlos uno por uno de
 | **Razón Social** | Sí, si es Empresa | Nombre o razón social. En una Persona se forma con el nombre y los apellidos. |
 | **Nombre de pila** y **Apellidos** | Sí, si es Persona | No se usan en una Empresa. |
 | **NIF** | Sí | Etendo comprueba que el dígito de control sea correcto. |
-| **Clave NIF País Residencia** | No | Tipo de identificador fiscal (NIF, CIF, VAT, etc.). Si la dejas vacía, se asigna **NIF**. |
-| **Categoría de contacto** | No | Ej. *Cliente*, *Proveedor*. Si la dejas vacía, se asigna **Cliente**. Si no existe, se crea automáticamente. |
+| **Clave NIF País Residencia** | No | Tipo de documento fiscal (por ejemplo, *NIF*, *NIF intracomunitario* o *Pasaporte*). Si la dejas vacía, se asigna **NIF**. |
+| **Categoría de contacto** | No | Ej. *Cliente*, *Proveedor*. Define también el rol del contacto (ver [Antes de empezar](#antes-de-empezar)). Si la dejas vacía, se asigna **Cliente**. Si no existe, se crea automáticamente. |
 | **Correo electrónico**, **Teléfono**, **Página web** | No | Datos de contacto generales. |
 | Columnas **(Contacto)**: correo, nombre, apellido, teléfono y posición | No | Una persona de contacto vinculada (solapa **Persona**). |
 | Columnas **(Dirección)**: dirección, ciudad, código postal, país y región | No | Una dirección, que queda marcada como dirección de envíos y de facturación (solapa **Dirección**). |
@@ -59,10 +59,8 @@ Si necesitas cargar varios contactos a la vez, en vez de crearlos uno por uno de
 
 ## Revisa las filas correctas y con errores
 
-Etendo separa las filas de tu archivo en tres pestañas: **Todas**, **Correctas** (listas para importarse) y **Errores** (con el motivo en rojo junto al campo, por ejemplo "Falta un campo obligatorio.").
-
 <figure markdown="span">
-  ![Ventana Importar con la pestaña Correctas y cuatro filas listas para importar](assets/importar-contactos-3.jpg)
+  ![Ventana Importar con la correspondencia de 20 campos y la pestaña Correctas con cuatro filas listas para importar](assets/importar-contactos-3.jpg)
   <figcaption>Pestaña Correctas: filas validadas, listas para importar.</figcaption>
 </figure>
 
@@ -70,6 +68,8 @@ Etendo separa las filas de tu archivo en tres pestañas: **Todas**, **Correctas*
   ![Ventana Importar con una fila en la pestaña Errores y el campo NIF vacío resaltado](assets/importar-contactos-4.jpg)
   <figcaption>Pestaña Errores: fila sin NIF, editable en la misma tabla.</figcaption>
 </figure>
+
+Etendo separa las filas de tu archivo en tres pestañas: **Todas**, **Correctas** (listas para importarse) y **Errores** (con el motivo en rojo junto al campo, por ejemplo "Falta un campo obligatorio.").
 
 Para cada fila de la pestaña **Errores**, elige una opción:
 
@@ -84,12 +84,14 @@ Para cada fila de la pestaña **Errores**, elige una opción:
 
 1. Haz clic en **Importar [cantidad]**.
 2. En el diálogo **Confirmar importación**, revisa cuántos registros se importan y cuántas filas se omiten. Luego haz clic en **Confirmar importación**.
-3. Espera a que termine la barra de progreso. El mensaje "[cantidad] registros importados correctamente" confirma la carga, y los contactos ya aparecen en la vista lista.
+3. Espera a que termine la barra de progreso. Al terminar, la ventana se cierra y los contactos ya aparecen en la vista lista.
 
     <figure markdown="span">
-      ![Vista lista de Contactos con los contactos importados y el mensaje de confirmación](assets/importar-contactos-5.jpg)
-      <figcaption>Vista lista de Contactos después de una importación exitosa.</figcaption>
+      ![Vista lista de Contactos con Ferretería El Yunque S.L., uno de los contactos recién importados](assets/importar-contactos-5.jpg)
+      <figcaption>Vista lista de Contactos después de la importación.</figcaption>
     </figure>
+
+Si alguna fila no se puede importar, queda marcada como **Error** en la ventana Importar. Desde esa fila puedes **Reintentar** la importación u **Omitir** la fila.
 
 ## Artículos Relacionados
 
