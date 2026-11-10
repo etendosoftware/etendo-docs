@@ -4409,23 +4409,23 @@
 <h2 id="antes-de-empezar">Antes de empezar<a class="headerlink" href="#antes-de-empezar" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Solo se crean contactos nuevos, con una persona de contacto y una dirección cada uno.</strong> Si el contacto ya existe, la fila se omite. Si repites el mismo NIF en varias filas, solo se importa la primera. Las personas y direcciones adicionales se añaden después desde las solapas <strong>Persona</strong> y <strong>Dirección</strong> del contacto.</li>
-<li><strong>Todos los contactos se importan con el rol Cliente.</strong> Si alguno es proveedor, activa ese rol después desde la solapa <strong>Financiero</strong>, como se explica en <a href="../../como-crear-un-contacto/como-crear-un-contacto/">Cómo crear un contacto</a>.</li>
+<li><strong>El rol de cada contacto lo define su Categoría de contacto.</strong> Con <em>Cliente</em> se importa como cliente; con <em>Proveedor</em> o <em>Acreedor</em>, como proveedor; con <em>Cliente/Proveedor</em>, con ambos roles. Las preferencias de facturación (tarifa, método y condiciones de pago) se completan después desde la solapa <strong>Financiero</strong>, como se explica en <a href="../../como-crear-un-contacto/como-crear-un-contacto/">Cómo crear un contacto</a>.</li>
 </ul>
 <h2 id="abre-la-ventana-de-importacion">Abre la ventana de importación<a class="headerlink" href="#abre-la-ventana-de-importacion" title="Permanent link">¶</a></h2>
 <ol>
 <li>Ve a <strong><a href="https://app.etendo.ai/contacts" target="_blank">Contactos</a></strong>.</li>
 <li>
-<p>En la vista lista, haz clic en el ícono <strong>Importar</strong> de la barra de herramientas superior.</p>
+<p>En la vista lista, haz clic en la flecha que está junto al botón <strong>Nuevo contacto</strong> y elige <strong>Importar contactos</strong>.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/importar-contactos-1.jpg" data-desc-position="bottom"><img alt="Vista lista de Contactos, con el ícono Importar en la barra de herramientas" src="../assets/importar-contactos-1.jpg"></a>
-  <figcaption>Ícono Importar en la barra de herramientas de la ventana Contactos.</figcaption>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/importar-contactos-1.jpg" data-desc-position="bottom"><img alt="Vista lista de Contactos con el menú del botón Nuevo contacto desplegado y la opción Importar contactos" src="../assets/importar-contactos-1.jpg"></a>
+  <figcaption>Opción Importar contactos, junto al botón Nuevo contacto.</figcaption>
 </figure><p></p>
 </li>
 </ol>
 <h2 id="descarga-y-completa-la-plantilla">Descarga y completa la plantilla<a class="headerlink" href="#descarga-y-completa-la-plantilla" title="Permanent link">¶</a></h2>
 <ol>
 <li>
-<p>En la ventana <strong>Importar</strong>, descarga la plantilla en <strong>CSV</strong> o <strong>Excel</strong>.</p>
+<p>En la ventana <strong>Importar</strong>, descarga la plantilla con <strong>Descargar plantilla CSV</strong> o <strong>Descargar plantilla Excel</strong>.</p>
 <p></p><figure markdown="span">
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/importar-contactos-2.jpg" data-desc-position="bottom"><img alt="Ventana Importar, con la zona para soltar el archivo y los enlaces de plantilla" src="../assets/importar-contactos-2.jpg"></a>
   <figcaption>Ventana Importar: zona de carga de archivo y enlaces de descarga de plantilla.</figcaption>
@@ -4434,7 +4434,7 @@
 <li>
 <p>Completa una fila por contacto. Consulta qué va en cada columna en <a href="#columnas-de-la-plantilla">Columnas de la plantilla</a>.</p>
 </li>
-<li>Vuelve a la ventana <strong>Importar</strong> y arrastra tu archivo a la zona indicada, o haz clic para seleccionarlo desde tu ordenador.</li>
+<li>Vuelve a la ventana <strong>Importar</strong> y arrastra tu archivo a la zona <strong>Suelta tu archivo aquí</strong>, o haz clic para seleccionarlo desde tu ordenador. Se admiten archivos CSV, TXT y XLSX.</li>
 </ol>
 <h2 id="columnas-de-la-plantilla">Columnas de la plantilla<a class="headerlink" href="#columnas-de-la-plantilla" title="Permanent link">¶</a></h2>
 <table>
@@ -4469,12 +4469,12 @@
 <tr>
 <td><strong>Clave NIF País Residencia</strong></td>
 <td>No</td>
-<td>Tipo de identificador fiscal (NIF, CIF, VAT, etc.). Si la dejas vacía, se asigna <strong>NIF</strong>.</td>
+<td>Tipo de documento fiscal (por ejemplo, <em>NIF</em>, <em>NIF intracomunitario</em> o <em>Pasaporte</em>). Si la dejas vacía, se asigna <strong>NIF</strong>.</td>
 </tr>
 <tr>
 <td><strong>Categoría de contacto</strong></td>
 <td>No</td>
-<td>Ej. <em>Cliente</em>, <em>Proveedor</em>. Si la dejas vacía, se asigna <strong>Cliente</strong>. Si no existe, se crea automáticamente.</td>
+<td>Ej. <em>Cliente</em>, <em>Proveedor</em>. Define también el rol del contacto (ver <a href="#antes-de-empezar">Antes de empezar</a>). Si la dejas vacía, se asigna <strong>Cliente</strong>. Si no existe, se crea automáticamente.</td>
 </tr>
 <tr>
 <td><strong>Correo electrónico</strong>, <strong>Teléfono</strong>, <strong>Página web</strong></td>
@@ -4499,9 +4499,8 @@
 <li>Si alguna columna no se asignó bien, haz clic en <strong>Editar correspondencia</strong> y corrígela.</li>
 </ol>
 <h2 id="revisa-las-filas-correctas-y-con-errores">Revisa las filas correctas y con errores<a class="headerlink" href="#revisa-las-filas-correctas-y-con-errores" title="Permanent link">¶</a></h2>
-<p>Etendo separa las filas de tu archivo en tres pestañas: <strong>Todas</strong>, <strong>Correctas</strong> (listas para importarse) y <strong>Errores</strong> (con el motivo en rojo junto al campo, por ejemplo "Falta un campo obligatorio.").</p>
 <figure>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/importar-contactos-3.jpg" data-desc-position="bottom"><img alt="Ventana Importar con la pestaña Correctas y cuatro filas listas para importar" src="../assets/importar-contactos-3.jpg"></a>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/importar-contactos-3.jpg" data-desc-position="bottom"><img alt="Ventana Importar con la correspondencia de 20 campos y la pestaña Correctas con cuatro filas listas para importar" src="../assets/importar-contactos-3.jpg"></a>
 <br>
 <figcaption>Pestaña Correctas: filas validadas, listas para importar.</figcaption>
 </figure>
@@ -4510,6 +4509,7 @@
 <br>
 <figcaption>Pestaña Errores: fila sin NIF, editable en la misma tabla.</figcaption>
 </figure>
+<p>Etendo separa las filas de tu archivo en tres pestañas: <strong>Todas</strong>, <strong>Correctas</strong> (listas para importarse) y <strong>Errores</strong> (con el motivo en rojo junto al campo, por ejemplo "Falta un campo obligatorio.").</p>
 <p>Para cada fila de la pestaña <strong>Errores</strong>, elige una opción:</p>
 <ul>
 <li><strong>Corregirla en la tabla:</strong> escribe el dato en la celda resaltada. Al salir de la celda, la fila pasa a <strong>Correctas</strong>.</li>
@@ -4525,13 +4525,14 @@
 <li>Haz clic en <strong>Importar [cantidad]</strong>.</li>
 <li>En el diálogo <strong>Confirmar importación</strong>, revisa cuántos registros se importan y cuántas filas se omiten. Luego haz clic en <strong>Confirmar importación</strong>.</li>
 <li>
-<p>Espera a que termine la barra de progreso. El mensaje "[cantidad] registros importados correctamente" confirma la carga, y los contactos ya aparecen en la vista lista.</p>
+<p>Espera a que termine la barra de progreso. Al terminar, la ventana se cierra y los contactos ya aparecen en la vista lista.</p>
 <p></p><figure markdown="span">
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/importar-contactos-5.jpg" data-desc-position="bottom"><img alt="Vista lista de Contactos con los contactos importados y el mensaje de confirmación" src="../assets/importar-contactos-5.jpg"></a>
-  <figcaption>Vista lista de Contactos después de una importación exitosa.</figcaption>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/importar-contactos-5.jpg" data-desc-position="bottom"><img alt="Vista lista de Contactos con Ferretería El Yunque S.L., uno de los contactos recién importados" src="../assets/importar-contactos-5.jpg"></a>
+  <figcaption>Vista lista de Contactos después de la importación.</figcaption>
 </figure><p></p>
 </li>
 </ol>
+<p>Si alguna fila no se puede importar, queda marcada como <strong>Error</strong> en la ventana Importar. Desde esa fila puedes <strong>Reintentar</strong> la importación u <strong>Omitir</strong> la fila.</p>
 <h2 id="articulos-relacionados">Artículos Relacionados<a class="headerlink" href="#articulos-relacionados" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../que-es-la-seccion-contactos/que-es-la-seccion-contactos/">¿Qué es la sección Contactos?</a></li>
@@ -4562,7 +4563,7 @@
     <span class="md-icon" title="Última actualización">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="29 de septiembre de 2026 17:35:37 UTC">29 de septiembre de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="10 de noviembre de 2026 23:21:07 UTC">10 de noviembre de 2026</span>
   </span>
 
     
