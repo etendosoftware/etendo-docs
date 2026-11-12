@@ -22,6 +22,14 @@ Todo lo que necesitas para configurar y mantener al día los datos generales de 
 
     [:octicons-arrow-right-24: Leer más](configuracion/como-gestionar-tu-organizacion/como-gestionar-tu-organizacion.md)
 
+-   :material-tag-multiple-outline:{ .lg .middle } **Cómo configurar las categorías de contacto**
+
+    ---
+
+    Define si tus contactos son clientes, proveedores o ambos, y revisa las cuentas contables de cada categoría.
+
+    [:octicons-arrow-right-24: Leer más](configuracion/como-configurar-las-categorias-de-contacto/como-configurar-las-categorias-de-contacto.md)
+
 </div>
 
 ## Roles y usuarios

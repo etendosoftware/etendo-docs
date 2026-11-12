@@ -116,7 +116,7 @@ La solapa **Financiero** se organiza en tres apartados:
   <figcaption>Bloque Proveedor/Acreedor de la solapa Financiero.</figcaption>
 </figure>
 
-Para cambiar el rol de un contacto, cambia su **Categoría de contacto**. Qué roles asigna cada categoría se configura en la ventana [Categoría de Contacto](https://app.etendo.ai/business-partner-category){target="_blank"}, en el menú **Configuración**. La etiqueta Cliente/Proveedor de la vista lista refleja estas casillas.
+Para cambiar el rol de un contacto, cambia su **Categoría de contacto**. Qué roles asigna cada categoría se configura en la ventana [Categoría de Contacto](https://app.etendo.ai/business-partner-category){target="_blank"}, en el menú **Configuración**; consulta [Cómo configurar las categorías de contacto](../../../sistema/configuracion/como-configurar-las-categorias-de-contacto/como-configurar-las-categorias-de-contacto.md). La etiqueta Cliente/Proveedor de la vista lista refleja estas casillas.
 
 !!! tip "Crear una condición de pago"
     Si el plazo que necesitas no aparece en **Condiciones de pago**, escríbelo en el campo y elige **+ Crear condición de pago**.
