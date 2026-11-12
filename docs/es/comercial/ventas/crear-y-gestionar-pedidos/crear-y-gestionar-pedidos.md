@@ -56,7 +56,7 @@ El formulario se abre al crear un pedido nuevo o al hacer clic en **Editar** des
 - **Dirección** — cargada desde el contacto; editable para este documento.
 - **Tarifa** — determina a qué precios se cotizarán los productos en este pedido (lista de precios asignada al cliente). Normalmente se carga sola al seleccionar el cliente.
 - **Método de pago** — heredado del contacto; editable para este documento.
-- **Condiciones de pago** — heredado del contacto; editable para este documento. Las opciones disponibles son *Inmediato* y *30 días*.
+- **Condiciones de pago** — vienen de la ficha del cliente. Puedes cambiarlas solo para este pedido. Puedes elegir cualquiera de las condiciones de pago creadas en tu cuenta, o crear una nueva con **+ Crear condición de pago**. Ver [Cómo configurar las condiciones de pago](../../../sistema/configuracion/como-configurar-las-condiciones-de-pago/como-configurar-las-condiciones-de-pago.md).
 - **Moneda** — moneda en la que se expresa el pedido. Por defecto, la moneda de la organización.
 - **Almacén** — almacén desde el cual se despachará la mercadería de este pedido.
 

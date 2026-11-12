@@ -55,7 +55,7 @@ El formulario se abre al crear un presupuesto nuevo o al hacer clic en **Editar*
 - **Tarifa** — determina a qué precios se cotizarán los productos en este presupuesto (lista de precios asignada al cliente). Normalmente se carga sola al seleccionar el cliente.
 - **Válido hasta** — fecha límite de vigencia de la oferta. No es obligatorio.
 - **Método de pago** — heredado del contacto; editable por documento.
-- **Condiciones de pago** — heredado del contacto; editable por documento. Las opciones disponibles son *Inmediato* y *30 días*.
+- **Condiciones de pago** — vienen de la ficha del cliente. Puedes cambiarlas solo para este presupuesto. Puedes elegir cualquiera de las condiciones de pago creadas en tu cuenta, o crear una nueva con **+ Crear condición de pago**. Ver [Cómo configurar las condiciones de pago](../../../sistema/configuracion/como-configurar-las-condiciones-de-pago/como-configurar-las-condiciones-de-pago.md).
 - **Moneda** — moneda en la que se expresa el presupuesto. Por defecto, la moneda de la organización.
 
 !!! tip "Autocompletado al elegir el contacto"

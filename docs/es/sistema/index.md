@@ -30,6 +30,14 @@ Todo lo que necesitas para configurar y mantener al día los datos generales de 
 
     [:octicons-arrow-right-24: Leer más](configuracion/como-configurar-las-categorias-de-contacto/como-configurar-las-categorias-de-contacto.md)
 
+-   :material-calendar-clock:{ .lg .middle } **Cómo configurar las condiciones de pago**
+
+    ---
+
+    Consulta los plazos que trae Etendo y crea los tuyos para que cada factura calcule sola su vencimiento.
+
+    [:octicons-arrow-right-24: Leer más](configuracion/como-configurar-las-condiciones-de-pago/como-configurar-las-condiciones-de-pago.md)
+
 </div>
 
 ## Roles y usuarios
