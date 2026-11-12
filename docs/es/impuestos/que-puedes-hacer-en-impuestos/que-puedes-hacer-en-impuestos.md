@@ -13,7 +13,7 @@ tags:
 ## Qué puedes gestionar
 
 - **Los impuestos y sus categorías** — consulta y define los tipos impositivos que aplicas en tus documentos de venta y compra (IVA, IGIC, IPSI) y agrúpalos por categoría fiscal. Ver [Tipos de impuestos y sus porcentajes](../tipos-de-impuestos-y-sus-porcentajes/tipos-de-impuestos-y-sus-porcentajes.md).
-- **El sistema fiscal de tu organización** — activa el mecanismo de envío telemático de facturación que corresponde según tu territorio: **SII**, **TicketBAI** o **VERI\*FACTU**. Ver [Cómo activar un modelo tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md).
+- **El sistema fiscal de tu organización** — activa el mecanismo de envío telemático de facturación que corresponde según tu territorio: **SII**, **TicketBAI** o **VERI\*FACTU**. Ver [Cómo activar tu sistema fiscal](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md).
 - **El seguimiento de tus envíos** — desde el [**Monitor Fiscal**](../monitor-fiscal/monitor-fiscal.md), revisa el estado de las facturas enviadas a Hacienda y sus incidencias.
 - **Tus declaraciones periódicas** — genera y presenta los modelos fiscales que te corresponden, como el [**Modelo 303**](../modelo-303/modelo-303.md) (autoliquidación del IVA) o el [**Modelo 349**](../modelo-349/modelo-349.md) (operaciones intracomunitarias), desde **[Finanzas > Modelos Fiscales](https://app.etendo.ai/fiscal-models){target="_blank"}**.
 
@@ -29,7 +29,7 @@ Empieza activando el sistema fiscal de tu organización — es la base sobre la 
 ## Artículos Relacionados
 
 - [Glosario de Impuestos](../glosario-de-impuestos/glosario-de-impuestos.md)
-- [Cómo activar un modelo tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md)
+- [Cómo activar tu sistema fiscal](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md)
 - [Modelo 303](../modelo-303/modelo-303.md)
 
 ---
