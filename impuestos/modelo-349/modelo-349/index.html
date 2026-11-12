@@ -3524,7 +3524,7 @@
   <span class="md-ellipsis">
     
   
-    Cómo Activar un Modelo Tributario
+    Cómo Activar tu Sistema Fiscal
   
 
     
@@ -3841,6 +3841,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#marcar-una-rectificativa-como-correctiva-del-349" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marcar una Rectificativa como Correctiva del 349
+      
+    </span>
+  </a>
   
 </li>
       
@@ -4258,6 +4269,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#marcar-una-rectificativa-como-correctiva-del-349" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marcar una Rectificativa como Correctiva del 349
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#articulos-relacionados" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4398,7 +4420,8 @@
 <li>Si no subiste el justificante al presentar, lo subes después desde la pestaña <strong>Justificante</strong>.</li>
 </ol>
 <h2 id="antes-de-empezar-activar-el-modelo">Antes de Empezar: Activar el Modelo<a class="headerlink" href="#antes-de-empezar-activar-el-modelo" title="Permanent link">¶</a></h2>
-<p>Para poder crear declaraciones, primero tienes que activar el Modelo 349 en el <strong><a href="../../glosario-de-impuestos/glosario-de-impuestos/#catalogo-de-modelos">Catálogo de modelos</a></strong> (una única vez): activa el interruptor de <strong>Modelo 349 — Operaciones intracomunitarias</strong>.</p>
+<p>Para poder crear declaraciones, primero tienes que activar el Modelo 349 en el <strong><a href="../../glosario-de-impuestos/glosario-de-impuestos/#catalogo-de-modelos">Catálogo de modelos</a></strong> (una única vez): pulsa <strong>Catálogo de modelos</strong> y activa el interruptor de <strong>Modelo 349 — Operaciones intracomunitarias</strong>. El cambio se guarda al momento.</p>
+<p>A diferencia del <a href="../../modelo-303/modelo-303/#antes-de-empezar-activar-el-modelo">Modelo 303</a>, activar el 349 no añade ninguna sección a la ventana <strong>Organización</strong>: ni el certificado digital ni las actividades del IAE dependen de este modelo. Lo que sí activa es la opción <strong>Correctiva del 349</strong> en las facturas rectificativas (ver <a href="#marcar-una-rectificativa-como-correctiva-del-349">Marcar una rectificativa como correctiva del 349</a>).</p>
 <h2 id="como-crear-una-declaracion">Cómo Crear una Declaración<a class="headerlink" href="#como-crear-una-declaracion" title="Permanent link">¶</a></h2>
 <ol>
 <li>Pulsa <strong>+ Nueva declaración</strong>.</li>
@@ -4475,7 +4498,7 @@
 </figure>
 <h3 id="otras-pestanas">Otras Pestañas<a class="headerlink" href="#otras-pestanas" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Rectificaciones</strong> — operaciones que corrigen la base imponible ya declarada en un período anterior; muestra <em>"Sin rectificaciones correctivas en este periodo"</em> cuando no hay ninguna.</li>
+<li><strong>Rectificaciones</strong> — operaciones que corrigen la base imponible ya declarada en un período anterior; muestra <em>"Sin rectificaciones correctivas en este periodo"</em> cuando no hay ninguna. Aquí entran las facturas rectificativas marcadas como <strong>Correctiva del 349</strong> (ver la sección siguiente).</li>
 <li><strong>Incidencias</strong> — detalle de los datos que generaron alguna advertencia durante el cálculo, como el aviso de validación VIES pendiente ya descrito arriba; si no hay ninguna, muestra un estado vacío "Sin incidencias".</li>
 <li><strong>Justificante</strong> — aquí aparece el comprobante que subiste al elegir "Con acuse de recibo" al presentar la declaración, o donde puedes subirlo más adelante si la marcaste como "Sin acuse de recibo".</li>
 </ul>
@@ -4487,6 +4510,20 @@
 <p class="admonition-title">Justificante es un área de carga manual</p>
 <p>Al igual que en el <a href="../../modelo-303/modelo-303/#otras-pestanas">Modelo 303</a>, Etendo no genera el comprobante de presentación de forma automática: lo subes tú.</p>
 </div>
+<h2 id="marcar-una-rectificativa-como-correctiva-del-349">Marcar una Rectificativa como Correctiva del 349<a class="headerlink" href="#marcar-una-rectificativa-como-correctiva-del-349" title="Permanent link">¶</a></h2>
+<p>Cuando una factura rectificativa corrige operaciones intracomunitarias que ya declaraste en un Modelo 349 anterior, tienes que indicarlo en la propia rectificativa para que vaya a la pestaña <strong>Rectificaciones</strong> de la declaración.</p>
+<figure>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/modelo-349-6.png" data-desc-position="bottom"><img alt="Pestaña Rectificaciones de una factura rectificativa en Borrador, con Correctiva del 349 marcada y los campos Año, Periodo y Base 349" src="../assets/modelo-349-6.png"></a>
+<br>
+<figcaption>Al marcar <strong>Correctiva del 349</strong> aparecen <strong>Año</strong> y <strong>Periodo</strong>, que se rellenan solos al elegir la factura original, y las bases 349 de productos y servicios, que no se editan aquí.</figcaption>
+</figure>
+<ol>
+<li>Abre la factura rectificativa (de venta o de compra) mientras está en <strong>Borrador</strong> y ve a la pestaña <strong>Rectificaciones</strong>. Una vez confirmada, la casilla ya no se puede cambiar.</li>
+<li>Pulsa <strong>+ Añadir rectificación</strong> (o despliega una línea ya añadida) y elige la <strong>Factura original</strong>.</li>
+<li>Marca <strong>Correctiva del 349</strong>. <strong>Año</strong> y <strong>Periodo</strong> se rellenan solos al elegir la factura original; revísalos y cámbialos si el período que declaraste era otro. Los campos <strong>Base 349 · Productos</strong> y <strong>Base 349 · Servicios</strong> son solo de lectura.</li>
+<li>Pulsa <strong>Guardar</strong>. En la lista, la columna <strong>Modelo 349</strong> indica si cada línea es correctiva.</li>
+</ol>
+<p>La columna <strong>Modelo 349</strong> y la casilla <strong>Correctiva del 349</strong> solo se muestran mientras el Modelo 349 está activo en el Catálogo de modelos. Si no usas este modelo, la pestaña Rectificaciones de tus facturas no las incluye.</p>
 <h2 id="articulos-relacionados">Artículos Relacionados<a class="headerlink" href="#articulos-relacionados" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../modelo-303/modelo-303/">Modelo 303</a></li>
@@ -4517,7 +4554,7 @@
     <span class="md-icon" title="Última actualización">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="29 de septiembre de 2026 18:23:15 UTC">29 de septiembre de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="12 de noviembre de 2026 13:39:39 UTC">12 de noviembre de 2026</span>
   </span>
 
     
