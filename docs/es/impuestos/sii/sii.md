@@ -10,10 +10,10 @@ tags:
 
 # SII
 
-El **SII** (Suministro Inmediato de Información) es el sistema por el que se envían electrónicamente los registros de facturación a la Sede electrónica de la AEAT, o a la Hacienda Foral correspondiente en Navarra. Es el sistema fiscal que Etendo activa automáticamente para organizaciones con domicilio fiscal en **Navarra**, y una de las opciones disponibles en el resto de territorios salvo Ceuta y Melilla, donde solo se ofrece [VERI\*FACTU](../verifactu/verifactu.md) (ver [Cómo Activar un Modelo Tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md) para la razón).
+El **SII** (Suministro Inmediato de Información) es el sistema por el que se envían electrónicamente los registros de facturación a la Sede electrónica de la AEAT, o a la Hacienda Foral correspondiente en Navarra. Es el sistema fiscal que Etendo activa automáticamente para organizaciones con domicilio fiscal en **Navarra**, y una de las opciones disponibles en el resto de territorios salvo Ceuta y Melilla, donde solo se ofrece [VERI\*FACTU](../verifactu/verifactu.md) (ver [Cómo Activar tu Sistema Fiscal](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md) para la razón).
 
 !!! tip "¿No sabes qué sistema te corresponde?"
-    Este artículo asume que ya sabes que el SII es tu sistema fiscal. Si todavía no lo activaste, empieza por [Cómo Activar un Modelo Tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md), que te guía según tu territorio.
+    Este artículo asume que ya sabes que el SII es tu sistema fiscal. Si todavía no lo activaste, empieza por [Cómo Activar tu Sistema Fiscal](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md), que te guía según tu territorio.
 
 ## Cuándo Aplica el SII
 
@@ -47,22 +47,22 @@ Si no estás en ninguno de estos supuestos, puedes acogerte al SII de forma **vo
 
 ## Detalles Operativos
 
-Tras confirmar, la pantalla se llama **Configuración Fiscal** (con el sufijo del sistema activo, por ejemplo *"Configuración Fiscal SII + TBAI"* si además activaste TicketBAI) y queda disponible en **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}**, con una pestaña **SII** para completar sus detalles operativos:
+Tras confirmar, la pantalla se llama **Configuración Fiscal** (con el sufijo del sistema activo, por ejemplo *"Configuración Fiscal SII + TBAI"* si además activaste TicketBAI) y queda disponible en **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}**, con una pestaña **SII** para completar sus detalles operativos y el panel **Estado** a la derecha (ver [Después de activarlo](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md#despues-de-activarlo)):
 
 <figure markdown="span">
-  ![Pestaña SII de Configuración Fiscal con Autorizaciones AEAT y Certificado digital](assets/sii-3.png)
-  <figcaption>Pestaña SII: Autorizaciones especiales AEAT y el certificado digital para autenticar con Hacienda.</figcaption>
+  ![Pestaña SII de Configuración Fiscal con Autorizaciones AEAT, Certificado digital y el panel Estado](assets/sii-3.png)
+  <figcaption>Pestaña SII: Autorizaciones especiales AEAT y el certificado digital para autenticar con Hacienda. A la derecha, el panel Estado resume la configuración activa.</figcaption>
 </figure>
 
 - **Autorizaciones especiales AEAT** — número de registro de la autorización, si tu organización cuenta con alguna.
-- **Certificado digital** — el certificado necesario para autenticar los envíos con Hacienda; muestra su fecha de vigencia y un botón **Reemplazar** para actualizarlo. Es el mismo certificado que usa la opción **Presentación telemática AEAT** al presentar el [Modelo 303](../modelo-303/modelo-303.md), fuera de su modo de prueba.
+- **Certificado digital** — el certificado necesario para autenticar los envíos con Hacienda; muestra su fecha de vigencia y un botón **Reemplazar** para actualizarlo. Es el mismo certificado que ves en la pestaña **TicketBAI** (si la tienes) y en la sección **Certificado digital** de la ventana [Organización](../../sistema/configuracion/como-gestionar-tu-organizacion/como-gestionar-tu-organizacion.md#certificado-digital), y el que usa la opción **Presentación telemática AEAT** al presentar el [Modelo 303](../modelo-303/modelo-303.md), salvo si marcas **Validar sin presentar**.
 
 !!! info "El certificado solo se puede cargar en cuentas productivas"
     En una cuenta de demostración puedes abrir la pestaña **SII** de Configuración Fiscal con normalidad, pero no puedes subir un certificado digital: esa carga requiere una cuenta productiva. Sin certificado cargado, los envíos al [SIF](../glosario-de-impuestos/glosario-de-impuestos.md#sif) no se pueden completar (ver [Monitor Fiscal](../monitor-fiscal/monitor-fiscal.md)).
 
 ## Artículos Relacionados
 
-- [Cómo Activar un Modelo Tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md)
+- [Cómo Activar tu Sistema Fiscal](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md)
 - [Monitor Fiscal](../monitor-fiscal/monitor-fiscal.md)
 - [Modelo 303](../modelo-303/modelo-303.md)
 

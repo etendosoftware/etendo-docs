@@ -91,8 +91,8 @@ Para poder emitir un documento de venta o de compra, primero necesitas tener el 
 !!! info "Cambiar el rol de un contacto"
     Las casillas Cliente y Proveedor/Acreedor dependen de la categoría. Si el contacto te compra y te vende a la vez, elige una categoría con ambos roles, como *Cliente/Proveedor*. Qué roles asigna cada categoría se configura en la ventana [Categoría de Contacto](https://app.etendo.ai/business-partner-category){target="_blank"}, en el menú **Configuración**.
 
-!!! tip "Factura simplificada"
-    En la misma solapa, el apartado **Valores por Defecto SIF** (Sistema de Información Fiscal) incluye el interruptor **Factura Simplificada**. Actívalo si a este cliente le emites normalmente facturas simplificadas: es el valor que se usa por defecto al enviar sus facturas a SII o TicketBAI.
+!!! tip "Valores por Defecto SIF"
+    En la misma solapa, el apartado **Valores por Defecto SIF** (Sistema de Información Fiscal) muestra un interruptor por cada sistema que tengas activo. Si usas **SII**, activa **Clave por Defecto** y elige en **Clave tipo factura** la clave que se enviará al SII al completar las facturas de este cliente (por defecto, *Factura*). Si usas **TicketBAI**, activa **Factura Simplificada** si a este cliente le emites normalmente facturas simplificadas. Ver [Gestionar tus contactos](../gestionar-tus-contactos/gestionar-tus-contactos.md).
 
 ## Crear un contacto desde un documento de venta o compra
 

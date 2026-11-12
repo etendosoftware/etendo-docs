@@ -33,10 +33,17 @@ El proceso completo, de punta a punta, sigue esta secuencia:
 
 ## Antes de Empezar: Activar el Modelo
 
-Para poder crear declaraciones, primero tienes que activar el Modelo 303 en el **[Catálogo de modelos](../glosario-de-impuestos/glosario-de-impuestos.md#catalogo-de-modelos)** (una única vez): activa el interruptor de **Modelo 303 - Autoliquidación IVA**.
+<figure markdown="span">
+  ![Panel Catálogo de modelos con los modelos 303, 349 y 390 activos](assets/modelo-303-9.png){ width=420 }
+  <figcaption>Catálogo de modelos: cada modelo tiene su interruptor y muestra las periodicidades que admite.</figcaption>
+</figure>
+
+Para poder crear declaraciones, primero tienes que activar el Modelo 303 en el **[Catálogo de modelos](../glosario-de-impuestos/glosario-de-impuestos.md#catalogo-de-modelos)** (una única vez): pulsa **Catálogo de modelos** y activa el interruptor de **Modelo 303 - Autoliquidación IVA**. El cambio se guarda al momento.
+
+Activar el Modelo 303 también hace aparecer dos secciones en **[Configuración > Organización](https://app.etendo.ai/organization){target="_blank"}** que antes no se mostraban: **Certificado digital** y **Actividades del IAE** (ver [Secciones fiscales](../../sistema/configuracion/como-gestionar-tu-organizacion/como-gestionar-tu-organizacion.md#secciones-fiscales)). Si más adelante lo desactivas, esas secciones se ocultan, pero los datos que guardaste en ellas se conservan.
 
 !!! tip "Configura la actividad del IAE de tu organización"
-    Al activar el interruptor, Etendo muestra el aviso *"Recuerda configurar la actividad del IAE de tu organización para poder generar el Modelo 303 correctamente"*, con un enlace directo **Ir a Organización**. El Impuesto de Actividades Económicas (IAE) identifica la actividad económica de tu empresa y es un dato que la AEAT espera en la declaración; configúralo antes de generar el fichero 303.
+    Al activar el interruptor, Etendo muestra el aviso *"Recuerda configurar la actividad del IAE de tu organización para poder generar el Modelo 303 correctamente"*, con un enlace directo **Ir a Organización**. El Impuesto sobre Actividades Económicas (IAE) identifica la actividad económica de tu empresa y es un dato que la AEAT espera en la declaración: antes de presentar el último período del año (el 4T o diciembre), al menos una actividad tiene que estar marcada como **Principal** y con un **Código** asignado. Si no conoces tu epígrafe, el enlace **Buscar epígrafe** de esa sección abre el buscador de la Agencia Tributaria.
 
 ## Cómo Crear una Declaración
 
@@ -62,7 +69,7 @@ Dentro de una declaración en **Borrador**, la cabecera resume el período y ofr
 - **Registrar/Presentar** — abre un diálogo con dos vías: **Registrar presentación** (la declaración ya se presentó en el portal de la AEAT u otra plataforma; Etendo solo registra el resultado) y **Presentar a la AEAT** (Etendo la envía por vía telemática y guarda el acuse automáticamente):
     - **Con acuse de recibo**: subes en el momento el justificante del portal de la AEAT.
     - **Sin acuse de recibo**: confirmas la presentación sin adjuntar nada todavía; la declaración pasa a **Presentado · Sin acuse**, y puedes subir el justificante más adelante desde la pestaña **Justificante**.
-    - **Presentación telemática AEAT**: muestra un resumen (NIF, Razón social, Ejercicio/Periodo, Tipo de declaración, Resultado) y pide el **NIF del presentador** y el **Nombre del presentador** (el titular del certificado). La casilla **Validar sin presentar** envía los datos a la AEAT para validarlos sin registrar una presentación real — no requiere tener cargado el certificado digital, aunque la AEAT igual valida los datos y puede devolver errores reales (por ejemplo, un NIF con formato incorrecto). Sin esa casilla, pulsar **Enviar a la AEAT** presenta la declaración de verdad y necesitas tener cargado el certificado digital en **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}** (ver [SII](../sii/sii.md)).
+    - **Presentación telemática AEAT**: muestra un resumen (NIF, Razón social, Ejercicio/Periodo, Tipo de declaración, Resultado) y pide el **NIF del presentador** y el **Nombre del presentador** (el titular del certificado). La casilla **Validar sin presentar** envía los datos a la AEAT para validarlos sin registrar una presentación real — no requiere tener cargado el certificado digital, aunque la AEAT igual valida los datos y puede devolver errores reales (por ejemplo, un NIF con formato incorrecto). Sin esa casilla, **Enviar a la AEAT** presenta la declaración de verdad y necesitas el certificado digital. Lo ves y lo reemplazas en la sección **Certificado digital** de [Organización](../../sistema/configuracion/como-gestionar-tu-organizacion/como-gestionar-tu-organizacion.md#certificado-digital), que aparece en cuanto activas el Modelo 303. Si además usas SII o TicketBAI, es el mismo certificado que ves en **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}**.
 
 <figure markdown="span">
   ![Declaración en estado Presentado · Sin acuse, sin los botones Calcular ni Registrar/Presentar](assets/modelo-303-6.jpg)

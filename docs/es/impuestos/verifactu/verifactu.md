@@ -10,10 +10,10 @@ tags:
 
 # VERI\*FACTU
 
-**VERI\*FACTU** es el sistema de verificación de facturas: el propio software de facturación genera los registros de alta y anulación de cada factura, su huella (*hash*) y un código QR, y los remite a la AEAT de forma automática, segura y continuada. Es la alternativa al SII para organizaciones con domicilio fiscal en régimen común (España peninsular y Baleares) o Canarias que no están obligadas al SII. En Ceuta y Melilla es la única opción (ver [Cómo Activar un Modelo Tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md) para la razón).
+**VERI\*FACTU** es el sistema de verificación de facturas: el propio software de facturación genera los registros de alta y anulación de cada factura, su huella (*hash*) y un código QR, y los remite a la AEAT de forma automática, segura y continuada. Es la alternativa al SII para organizaciones con domicilio fiscal en régimen común (España peninsular y Baleares) o Canarias que no están obligadas al SII. En Ceuta y Melilla es la única opción (ver [Cómo Activar tu Sistema Fiscal](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md) para la razón).
 
 !!! tip "¿No sabes qué sistema te corresponde?"
-    Este artículo asume que ya sabes que VERI\*FACTU es tu sistema fiscal. Si todavía no lo activaste, empieza por [Cómo Activar un Modelo Tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md), que te guía según tu territorio.
+    Este artículo asume que ya sabes que VERI\*FACTU es tu sistema fiscal. Si todavía no lo activaste, empieza por [Cómo Activar tu Sistema Fiscal](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md), que te guía según tu territorio.
 
 ## Cuándo Elegir VERI\*FACTU
 
@@ -47,7 +47,7 @@ Si tu organización **no está obligada al SII** (no es Gran Empresa, no pertene
 
 ## Artículos Relacionados
 
-- [Cómo Activar un Modelo Tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md)
+- [Cómo Activar tu Sistema Fiscal](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md)
 - [SII](../sii/sii.md)
 - [Glosario de Impuestos](../glosario-de-impuestos/glosario-de-impuestos.md)
 

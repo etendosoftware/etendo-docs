@@ -1,5 +1,5 @@
 ---
-title: Cómo Activar un Modelo Tributario
+title: Cómo Activar tu Sistema Fiscal
 tags:
     - Impuestos
     - Fiscalidad
@@ -8,9 +8,9 @@ tags:
     - Cómo hacer
 ---
 
-# Cómo Activar un Modelo Tributario
+# Cómo Activar tu Sistema Fiscal
 
-Antes de poder facturar, cada organización debe activar su **modelo tributario**: el **sistema fiscal** que le corresponde según el territorio en el que opera, ya sea **SII**, **TicketBAI** o **VERI\*FACTU**. Etendo incluye un asistente guiado que determina automáticamente qué sistema aplica a partir de tu territorio fiscal y tu volumen de facturación, con una alternativa manual para configurarlo tú mismo.
+Antes de poder facturar, cada organización debe activar el **sistema fiscal** que le corresponde según el territorio en el que opera, ya sea **SII**, **TicketBAI** o **VERI\*FACTU**. Etendo incluye un asistente guiado que determina automáticamente qué sistema aplica a partir de tu territorio fiscal y tu volumen de facturación, con una alternativa manual para configurarlo tú mismo.
 
 ## Cómo Activar el Sistema Fiscal (Asistente Guiado)
 
@@ -18,8 +18,8 @@ Antes de poder facturar, cada organización debe activar su **modelo tributario*
 2. **Paso 1 — Territorio:** selecciona el territorio fiscal en el que opera tu organización.
 
     <figure markdown="span">
-      ![Paso 1 del asistente de Configuración Fiscal, con las opciones de territorio](assets/como-activar-un-modelo-tributario-1.jpg)
-      <figcaption>Paso 1: selección del territorio fiscal (Navarra, Álava, Bizkaia, Guipúzcoa, España/Baleares, Canarias o Ceuta/Melilla).</figcaption>
+      ![Paso 1 del asistente de Configuración Fiscal, con los territorios agrupados por sistema fiscal](assets/como-activar-un-modelo-tributario-1.jpg)
+      <figcaption>Paso 1: los territorios se agrupan según el sistema fiscal que les corresponde (SII para Navarra; TicketBAI o SII + TicketBAI para Álava, Vizcaya y Guipúzcoa; SII o VERI*FACTU para España/Baleares y Canarias; solo VERI*FACTU para Ceuta/Melilla).</figcaption>
     </figure>
 
 3. **Paso 2 — Detalles:** el asistente hace preguntas adicionales según el territorio elegido. Para **España/Baleares y Canarias**, primero pregunta si estás obligado al SII:
@@ -45,13 +45,13 @@ Antes de poder facturar, cada organización debe activar su **modelo tributario*
 
     <figure markdown="span">
       ![Paso 3 de confirmación con el resumen de la configuración](assets/como-activar-un-modelo-tributario-4.jpg)
-      <figcaption>Resumen final: territorio, Hacienda y sistema fiscal activado.</figcaption>
+      <figcaption>Resumen final: territorio, Hacienda y sistema fiscal que se va a activar.</figcaption>
     </figure>
 
 5. Pulsa **Confirmar**. A continuación podrás completar los detalles operativos de tu sistema fiscal (por ejemplo, autorizaciones AEAT y certificado digital para SII, o territorio y envío automático para TicketBAI). Ver [SII](../sii/sii.md) y [TicketBAI](../ticketbai/ticketbai.md).
 
 !!! tip "Territorios forales"
-    Para **Navarra**, el sistema fiscal es siempre **SII** y el asistente salta directo del paso 1 al paso 3 (confirmar), sin preguntas adicionales. Para **Álava, Bizkaia y Guipúzcoa**, el paso 2 pregunta "¿También debes declarar por SII?", con las opciones **Solo TicketBAI** o **TicketBAI + SII**, y el resultado es **TicketBAI**, combinado o no con SII.
+    Para **Navarra**, el sistema fiscal es siempre **SII** y el asistente salta directo del paso 1 al paso 3 (confirmar), sin preguntas adicionales. Para **Álava, Vizcaya y Guipúzcoa**, el paso 2 pregunta "¿También debes declarar por SII?", con las opciones **Solo TicketBAI** o **TicketBAI + SII**, y el resultado es **TicketBAI**, combinado o no con SII.
 
 ## Cómo Configurarlo Manualmente
 
@@ -62,8 +62,19 @@ Si prefieres elegir el sistema fiscal tú mismo, sin responder a las preguntas d
 3. Elige el sistema fiscal disponible para ese territorio (por ejemplo, para Navarra la única opción es SII).
 4. Pulsa **Continuar** y confirma.
 
-!!! info "Puedes cambiarlo más adelante"
-    Tanto si usas el asistente guiado como la configuración manual, podrás editar cualquier campo después desde la misma pantalla, que una vez configurada pasa a llamarse **Configuración Fiscal** con el sufijo de tu sistema activo (por ejemplo, *"Configuración Fiscal SII + TBAI"*) y se ubica en **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}**.
+## Después de Activarlo
+
+Una vez confirmado, **[Configuración > Configuración Fiscal](https://app.etendo.ai/fiscal-config){target="_blank"}** deja de mostrar el asistente y pasa a llamarse **Configuración Fiscal** con el sufijo de tu sistema activo (por ejemplo, *"Configuración Fiscal SII + TBAI"*). La pantalla tiene:
+
+- **Una pestaña por sistema** (por ejemplo, **SII** y **TicketBAI**) con sus detalles operativos y el **Certificado digital**. Ver [SII](../sii/sii.md#detalles-operativos) y [TicketBAI](../ticketbai/ticketbai.md#detalles-operativos).
+- **El panel Estado**, a la derecha: resume el sistema activo y si está en **Producción**, el territorio fiscal, la Hacienda, si la operativa nacional (SII) está activa, la validez del certificado y la fecha de activación.
+- **Guardar**, que solo se habilita cuando cambias algún dato.
+- **Cambiar SIF**, en el menú **⋮** junto a Guardar, para volver a elegir el sistema fiscal.
+
+Con un sistema fiscal configurado, la ventana **Organización** muestra además la sección **Certificado digital** (ver [Cómo gestionar tu organización](../../sistema/configuracion/como-gestionar-tu-organizacion/como-gestionar-tu-organizacion.md#secciones-fiscales)).
+
+!!! info "Sistema fiscal no es lo mismo que modelo fiscal"
+    Lo que activas aquí es el sistema por el que envías tus facturas (SII, TicketBAI o VERI\*FACTU). Los modelos de declaración periódica, como el [Modelo 303](../modelo-303/modelo-303.md) o el [Modelo 349](../modelo-349/modelo-349.md), se activan aparte, desde el [Catálogo de modelos](../glosario-de-impuestos/glosario-de-impuestos.md#catalogo-de-modelos) de **Finanzas > Modelos Fiscales**.
 
 ## Artículos Relacionados
 

@@ -32,7 +32,9 @@ El proceso completo, de punta a punta, sigue esta secuencia:
 
 ## Antes de Empezar: Activar el Modelo
 
-Para poder crear declaraciones, primero tienes que activar el Modelo 349 en el **[Catálogo de modelos](../glosario-de-impuestos/glosario-de-impuestos.md#catalogo-de-modelos)** (una única vez): activa el interruptor de **Modelo 349 — Operaciones intracomunitarias**.
+Para poder crear declaraciones, primero tienes que activar el Modelo 349 en el **[Catálogo de modelos](../glosario-de-impuestos/glosario-de-impuestos.md#catalogo-de-modelos)** (una única vez): pulsa **Catálogo de modelos** y activa el interruptor de **Modelo 349 — Operaciones intracomunitarias**. El cambio se guarda al momento.
+
+A diferencia del [Modelo 303](../modelo-303/modelo-303.md#antes-de-empezar-activar-el-modelo), activar el 349 no añade ninguna sección a la ventana **Organización**: ni el certificado digital ni las actividades del IAE dependen de este modelo. Lo que sí activa es la opción **Correctiva del 349** en las facturas rectificativas (ver [Marcar una rectificativa como correctiva del 349](#marcar-una-rectificativa-como-correctiva-del-349)).
 
 ## Cómo Crear una Declaración
 
@@ -116,7 +118,7 @@ Muestra las facturas que Etendo usó (o usará, tras pulsar Calcular) para compl
 
 ### Otras Pestañas
 
-- **Rectificaciones** — operaciones que corrigen la base imponible ya declarada en un período anterior; muestra *"Sin rectificaciones correctivas en este periodo"* cuando no hay ninguna.
+- **Rectificaciones** — operaciones que corrigen la base imponible ya declarada en un período anterior; muestra *"Sin rectificaciones correctivas en este periodo"* cuando no hay ninguna. Aquí entran las facturas rectificativas marcadas como **Correctiva del 349** (ver la sección siguiente).
 - **Incidencias** — detalle de los datos que generaron alguna advertencia durante el cálculo, como el aviso de validación VIES pendiente ya descrito arriba; si no hay ninguna, muestra un estado vacío "Sin incidencias".
 - **Justificante** — aquí aparece el comprobante que subiste al elegir "Con acuse de recibo" al presentar la declaración, o donde puedes subirlo más adelante si la marcaste como "Sin acuse de recibo".
 
@@ -125,6 +127,22 @@ Muestra las facturas que Etendo usó (o usará, tras pulsar Calcular) para compl
 
 !!! tip "Justificante es un área de carga manual"
     Al igual que en el [Modelo 303](../modelo-303/modelo-303.md#otras-pestanas), Etendo no genera el comprobante de presentación de forma automática: lo subes tú.
+
+## Marcar una Rectificativa como Correctiva del 349
+
+Cuando una factura rectificativa corrige operaciones intracomunitarias que ya declaraste en un Modelo 349 anterior, tienes que indicarlo en la propia rectificativa para que vaya a la pestaña **Rectificaciones** de la declaración.
+
+<figure markdown="span">
+  ![Pestaña Rectificaciones de una factura rectificativa en Borrador, con Correctiva del 349 marcada y los campos Año, Periodo y Base 349](assets/modelo-349-6.png)
+  <figcaption>Al marcar <strong>Correctiva del 349</strong> aparecen <strong>Año</strong> y <strong>Periodo</strong>, que se rellenan solos al elegir la factura original, y las bases 349 de productos y servicios, que no se editan aquí.</figcaption>
+</figure>
+
+1. Abre la factura rectificativa (de venta o de compra) mientras está en **Borrador** y ve a la pestaña **Rectificaciones**. Una vez confirmada, la casilla ya no se puede cambiar.
+2. Pulsa **+ Añadir rectificación** (o despliega una línea ya añadida) y elige la **Factura original**.
+3. Marca **Correctiva del 349**. **Año** y **Periodo** se rellenan solos al elegir la factura original; revísalos y cámbialos si el período que declaraste era otro. Los campos **Base 349 · Productos** y **Base 349 · Servicios** son solo de lectura.
+4. Pulsa **Guardar**. En la lista, la columna **Modelo 349** indica si cada línea es correctiva.
+
+La columna **Modelo 349** y la casilla **Correctiva del 349** solo se muestran mientras el Modelo 349 está activo en el Catálogo de modelos. Si no usas este modelo, la pestaña Rectificaciones de tus facturas no las incluye.
 
 ## Artículos Relacionados
 

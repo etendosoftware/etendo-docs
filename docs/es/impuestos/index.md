@@ -36,7 +36,7 @@ Todo lo que necesitas para gestionar la fiscalidad de tu organización en Etendo
 
 <div class="grid cards" markdown>
 
--   :material-cog-outline:{ .lg .middle } **Cómo Activar un Modelo Tributario**
+-   :material-cog-outline:{ .lg .middle } **Cómo Activar tu Sistema Fiscal**
 
     ---
 

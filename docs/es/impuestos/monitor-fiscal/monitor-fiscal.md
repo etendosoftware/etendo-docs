@@ -20,7 +20,7 @@ Si tu organización todavía no tiene un sistema fiscal configurado, el Monitor 
   <figcaption>Sin un sistema fiscal activo, el Monitor Fiscal no puede mostrar el estado de tus facturas.</figcaption>
 </figure>
 
-Pulsa **Configurar sistema fiscal** para ir a Configuración Fiscal y activar SII, TicketBAI o VERI\*FACTU. Ver [Cómo Activar un Modelo Tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md).
+Pulsa **Configurar sistema fiscal** para ir a Configuración Fiscal y activar SII, TicketBAI o VERI\*FACTU. Ver [Cómo Activar tu Sistema Fiscal](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md).
 
 ## Con un Sistema Fiscal Activo
 
@@ -74,7 +74,7 @@ Desde ahí también puedes forzar el envío: el botón **Enviar a SIF** del deta
 
 ## Artículos Relacionados
 
-- [Cómo Activar un Modelo Tributario](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md)
+- [Cómo Activar tu Sistema Fiscal](../como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md)
 - [SII](../sii/sii.md)
 - [TicketBAI](../ticketbai/ticketbai.md)
 

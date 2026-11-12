@@ -105,7 +105,11 @@ La solapa **Financiero** se organiza en tres apartados:
 - **Preferencias de facturación** — un bloque por rol. Sus casillas se marcan solas según la **Categoría de contacto**:
     - **Cliente**: **Tarifa** (tarifa de venta por defecto, que se hereda en los documentos de venta), **Método de pago** (forma habitual de cobro), **Cuenta** (cuenta financiera donde se registran los cobros), **Condiciones de pago** (plazo de cobro por defecto, ej: *30 Días*) y **Bloquear** (impide crear nuevos documentos de venta para este contacto).
     - **Proveedor/Acreedor**: los mismos campos orientados al ciclo de compras: **Tarifa de compra**, **Método de pago**, **Cuenta**, **Condiciones de pago** y su propio interruptor **Bloquear**.
-- **Valores por Defecto SIF (Sistema de Información Fiscal)** — interruptor **Factura Simplificada**. Es el valor que se usa por defecto al enviar las facturas de este cliente a SII o TicketBAI.
+- **Valores por Defecto SIF (Sistema de Información Fiscal)** — valores que se usan por defecto al enviar las facturas de este cliente. Cada interruptor solo aparece si su sistema está activo en [Configuración Fiscal](../../../impuestos/como-activar-un-modelo-tributario/como-activar-un-modelo-tributario.md):
+    - **Clave por Defecto** (solo **SII**) — al activarlo aparece el desplegable **Clave tipo factura**, que parte de *Factura* y ofrece también *Factura rectificativa*, *Factura simplificada* y *Asiento resumen facturas simplificadas*. Cuando completas una factura de este cliente, esa es la clave de tipo de factura que se envía al SII.
+    - **Factura Simplificada** (solo **TicketBAI**) — actívalo si a este cliente le emites normalmente facturas simplificadas.
+
+    ![Apartado Valores por Defecto SIF con Clave por Defecto activado y el desplegable Clave tipo factura en Factura](assets/gestionar-tus-contactos-9.png)
 
 <figure markdown="span">
   ![Solapa Financiero con el bloque Proveedor/Acreedor configurado](assets/gestionar-tus-contactos-7.png)
