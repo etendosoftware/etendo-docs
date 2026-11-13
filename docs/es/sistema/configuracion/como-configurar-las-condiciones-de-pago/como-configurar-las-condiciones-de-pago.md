@@ -30,7 +30,7 @@ Las **condiciones de pago** son el plazo que das a tus clientes para pagarte, o 
     - **Nombre** — el que eliges en tus contactos y documentos.
     - **Días** — el plazo, contado desde la fecha de la factura.
     - **Siguiente día hábil** — si el vencimiento se mueve al siguiente día hábil cuando cae en un día no hábil.
-    - **Por defecto** — si es la condición predeterminada.
+    - **Por defecto** — marca qué condición es la habitual en tu organización, como referencia visual. No completa automáticamente los documentos nuevos: la condición que aparece en un presupuesto, pedido o factura viene de la ficha del contacto (pestaña **Financiero**).
 
 Vienen creados los plazos más habituales, de **Inmediato** a **364 Días**, así que lo más probable es que el que usas ya esté en la lista.
 
@@ -49,7 +49,7 @@ Si acuerdas con un cliente o proveedor un plazo que no está en la lista, por ej
 1. Haz clic en **+ Nueva condición de pago**.
 2. Completa **Nombre** *(obligatorio)*. Usa un nombre que diga el plazo, como `10 Días`: es el que vas a ver al elegir la condición en tus contactos y documentos.
 3. Completa **Días** *(obligatorio)*: el número de días desde la fecha de la factura hasta su vencimiento. Puedes escribirlo o ajustarlo con los botones **−** y **+**. Para pago al contado, usa `0`.
-4. Deja desmarcada la casilla **Por defecto**, como viene.
+4. Decide si marcar **Por defecto**. Esta casilla señala la condición habitual de tu organización en la lista, como referencia visual, pero no completa automáticamente los documentos nuevos: la condición que se propone en un presupuesto, pedido o factura viene de la pestaña **Financiero** de cada contacto.
 5. Revisa la casilla **Siguiente día hábil**. Viene marcada: si el vencimiento cae en un día no hábil, por ejemplo un domingo, pasa al siguiente día hábil. Desmárcala si quieres que la factura venza justo el día que resulta del plazo.
 6. Haz clic en **Guardar**. Para salir sin crear nada, haz clic en **Cancelar**.
 

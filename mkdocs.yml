@@ -125,6 +125,7 @@ plugins:
                 - Glosario de Finanzas: finanzas/glosario-de-finanzas/glosario-de-finanzas.md
                 - Cuentas:
                     - Añadir y configurar un banco, tarjeta o caja: finanzas/como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja.md
+                    - Editar una cuenta: finanzas/como-editar-una-cuenta/como-editar-una-cuenta.md
                     - Conectar, desconectar, archivar, desarchivar o eliminar una cuenta: finanzas/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md
                     - Gestionar caja y movimientos en efectivo: finanzas/como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo.md
                 - Pagos y cobros:
