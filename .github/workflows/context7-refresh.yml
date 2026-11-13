@@ -22,7 +22,16 @@ jobs:
     steps:
       - name: Trigger Context7 Refresh
         run: |
-          curl -sS --fail-with-body -X POST https://context7.com/api/v1/refresh \
+          response_body=$(mktemp)
+          trap 'rm -f "$response_body"' EXIT
+          http_code=$(curl -sS -o "$response_body" -w "%{http_code}" -X POST https://context7.com/api/v1/refresh \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${{ secrets.CONTEXT7_API_KEY }}" \
-            -d "{\"libraryName\": \"${CONTEXT7_LIBRARY}\"}"
+            -d "{\"libraryName\": \"${CONTEXT7_LIBRARY}\"}")
+          cat "$response_body"
+          if [[ "$http_code" == "400" ]] && jq -e '.error == "too-early"' "$response_body" > /dev/null 2>&1; then
+            echo "Context7 refresh skipped: minimum update interval has not elapsed."
+          elif [[ "$http_code" != 2?? ]]; then
+            echo "::error::Context7 refresh failed (HTTP $http_code)."
+            exit 1
+          fi
