@@ -125,6 +125,7 @@ plugins:
                 - Glosario de Finanzas: finanzas/glosario-de-finanzas/glosario-de-finanzas.md
                 - Cuentas:
                     - Añadir y configurar un banco, tarjeta o caja: finanzas/como-anadir-y-configurar-un-banco-tarjeta-o-caja/como-anadir-y-configurar-un-banco-tarjeta-o-caja.md
+                    - Editar una cuenta: finanzas/como-editar-una-cuenta/como-editar-una-cuenta.md
                     - Conectar, desconectar, archivar, desarchivar o eliminar una cuenta: finanzas/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria/como-conectar-desconectar-desactivar-o-eliminar-una-cuenta-bancaria.md
                     - Gestionar caja y movimientos en efectivo: finanzas/como-gestionar-caja-y-movimientos-en-efectivo/como-gestionar-caja-y-movimientos-en-efectivo.md
                 - Pagos y cobros:
@@ -157,6 +158,7 @@ plugins:
                 - Configuración:
                     - Cómo gestionar tu organización: sistema/configuracion/como-gestionar-tu-organizacion/como-gestionar-tu-organizacion.md
                     - Cómo configurar las categorías de contacto: sistema/configuracion/como-configurar-las-categorias-de-contacto/como-configurar-las-categorias-de-contacto.md
+                    - Cómo configurar las condiciones de pago: sistema/configuracion/como-configurar-las-condiciones-de-pago/como-configurar-las-condiciones-de-pago.md
                     - ¿Qué es la sección Roles y usuarios?: sistema/configuracion/que-es-roles-y-usuarios/que-es-roles-y-usuarios.md
                     - Cómo invitar a un usuario: sistema/configuracion/como-invitar-a-un-usuario/como-invitar-a-un-usuario.md
                     - Gestionar tus usuarios: sistema/configuracion/gestionar-tus-usuarios/gestionar-tus-usuarios.md
